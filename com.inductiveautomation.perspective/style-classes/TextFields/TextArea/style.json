@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "var(--input-border-radius)",
+      "borderTopRightRadius": "var(--input-border-radius)",
+      "borderBottomLeftRadius": "var(--input-border-radius)",
+      "borderBottomRightRadius": "var(--input-border-radius)",
+      "marginBottom": "var(--text-top-and-bottom-margin)",
+      "marginTop": "var(--text-top-and-bottom-margin)"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "borderColor": "var(--callToAction)",
+        "borderStyle": "solid",
+        "borderWidth": "2px"
+      }
+    }
+  ]
+}

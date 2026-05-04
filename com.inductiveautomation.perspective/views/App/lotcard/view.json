@@ -1,0 +1,400 @@
+{
+  "custom": {
+    "data": {
+      "materialLotNumber": ""
+    }
+  },
+  "params": {
+    "index": "",
+    "lotId": "",
+    "lotLocations": [
+      {
+        "label": "Test Lot Location",
+        "value": 1
+      }
+    ],
+    "lotName": "",
+    "quantity": "",
+    "uom": ""
+  },
+  "propConfig": {
+    "custom.data.idx": {
+      "binding": {
+        "config": {
+          "path": "view.params.index"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.lotId": {
+      "binding": {
+        "config": {
+          "path": "view.params.lotId"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.lotName": {
+      "binding": {
+        "config": {
+          "path": "view.params.lotName"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.quantity": {
+      "binding": {
+        "config": {
+          "path": "view.params.quantity"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.uom": {
+      "binding": {
+        "config": {
+          "path": "view.params.uom"
+        },
+        "type": "property"
+      }
+    },
+    "params.index": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lotId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lotLocations": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.lotName": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.quantity": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.uom": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 96,
+      "width": 579
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "RowNum"
+        },
+        "position": {
+          "basis": "34px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "toString({view.custom.data.idx} + 1)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "",
+            "textAlign": "center",
+            "width": "34px"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "textAlign": "center"
+              },
+              "text": "Lot #"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onValueChanged": {
+                  "config": {
+                    "script": "if not currentValue or currentValue.value \u003d\u003d previousValue.value:\n\treturn\n\nsystem.perspective.sendMessage(\n\t\u0027LotRowChanged\u0027,\n\t{\n\t\t\u0027idx\u0027: self.view.custom.data.idx,\n\t\t\u0027field\u0027: \u0027materialLotNumber\u0027,\n\t\t\u0027value\u0027: currentValue.value\n\t},\n\tscope\u003d\u0027page\u0027\n)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "LotNumber"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.lotName"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": "",
+              "placeholder": "Lot #",
+              "placeholderText": "LOT-...",
+              "style": {
+                "minHeight": "30px"
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "LotContainer"
+        },
+        "position": {
+          "basis": "50px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "textAlign": "center"
+              },
+              "text": "Quantity"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onValueChanged": {
+                  "config": {
+                    "script": "if not currentValue or currentValue.value \u003d\u003d previousValue.value:\n\treturn\n\nsystem.perspective.sendMessage(\n\t\u0027LotRowChanged\u0027,\n\t{\n\t\t\u0027idx\u0027: self.view.custom.data.idx,\n\t\t\u0027field\u0027: \u0027quantity\u0027,\n\t\t\u0027value\u0027: currentValue.value\n\t},\n\tscope\u003d\u0027page\u0027\n)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Qty"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.quantity"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "inputBounds": {
+                "minimum": 0
+              },
+              "label": "Qty",
+              "min": 0,
+              "placeholder": "Quantity",
+              "style": {
+                "minHeight": "30px"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          }
+        ],
+        "meta": {
+          "name": "QtyContainer"
+        },
+        "position": {
+          "basis": "50px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "textAlign": "center"
+              },
+              "text": "Location"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\timport traceback\n\t\n\t\"\"\"\n\ttry:\n\t\tif type(self.props.value) !\u003d int:\n\t\t\tsystem.perspective.print(self.props.value)\n\t\t\tpayload \u003d {\n\t\t\t\t\"location\": {\n\t\t\t\t\t\"name\": self.props.value,\n\t\t\t\t\t\"parentLotLocationId\": None,\n\t\t\t\t\t\"hasChildren\": False,\n\t\t\t\t\t\"description\": None,\n\t\t\t\t\t\"metadata\": None\n\t\t\t\t}\n\t\t\t}\n\t\t\t\t\n\t\t\tsystem.perspective.sendMessage(\"addMaterialLotLocation\", payload)\n\texcept Exception as e:\n\t\tsystem.perspective.print(traceback.format_exc())\n\t\"\"\"\n\tsystem.perspective.print(type(self.props.value))"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "LotLocationsDropdown"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.lotLocations"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "allowCustomOptions": true,
+                  "value": "Loc"
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "Icon",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Add a lot location"
+                  }
+                },
+                "position": {
+                  "basis": "24px",
+                  "display": false
+                },
+                "props": {
+                  "path": "lucide/map-plus"
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "LotLocationsContainer"
+        },
+        "position": {
+          "basis": "100px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.perspective.sendMessage(\n\t\t\u0027RemoveLotRow\u0027,\n\t\t{\u0027idx\u0027: self.view.custom.data.idx},\n\t\tscope\u003d\u0027page\u0027\n\t)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Delete",
+          "tooltip": {
+            "enabled": true,
+            "text": "Remove lot row"
+          }
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "props": {
+          "path": "lucide/trash",
+          "style": {
+            "classes": "icon-button"
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "style": {
+        "classes": "card",
+        "gap": "15px",
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "custom": {
+    "ui": {
+      "hover": false,
+      "selected": false
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 103,
+      "width": 658
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "LotsRow"
+            },
+            "position": {
+              "basis": "43px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.params.data.LotNumber}) || toString({view.params.data.LotNumber}) \u003d \u0027\u0027, \u0027Lot: —\u0027, \u0027Lot: \u0027 + toString({view.params.data.LotNumber}))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "color": "rgba(230,238,247,0.75)"
+              },
+              "textStyle": {
+                "fontWeight": "600"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "SetNext"
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.ui.hover} || {view.custom.ui.selected}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "border": "1px solid #3a3a3d",
+                "borderRadius": "8px",
+                "color": "#e6e6e6",
+                "fontWeight": "700",
+                "padding": "6px 10px"
+              },
+              "text": "Set Next Run"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "PriorityChip"
+            },
+            "position": {
+              "basis": "33.4%"
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.params.data.Priority}) || toString({view.params.data.Priority}) \u003d \u0027\u0027, \u0027#E0E0E0\u0027, if({view.params.data.Priority} \u003c\u003d 1, \u0027#2ecc71\u0027, if({view.params.data.Priority} \u003c\u003d 2, \u0027#f1c40f\u0027, if({view.params.data.Priority} \u003c\u003d 3, \u0027#e67e22\u0027, \u0027#e74c3c\u0027))))"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.border": {
+                "binding": {
+                  "config": {
+                    "expression": "\"1px solid \" + (if(isNull({view.params.data.Priority}) || toString({view.params.data.Priority}) \u003d \u0027\u0027, \u0027#BDBDBD\u0027, if({view.params.data.Priority} \u003c\u003d 1, \u0027#2ECC71\u0027, if({view.params.data.Priority} \u003c\u003d 2, \u0027#F1C40F\u0027, if({view.params.data.Priority} \u003c\u003d 3, \u0027#E67E22\u0027, \u0027#E74C3C\u0027)))))"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.params.data.Priority}) || toString({view.params.data.Priority}) \u003d \u0027\u0027, \u0027#111111\u0027, if({view.params.data.Priority} \u003e\u003d 3, \u0027white\u0027, \u0027black\u0027))"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.data.Priority"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if(isNull({value}) || toString({value}) \u003d \u0027\u0027, \u0027Priority Unknown\u0027, \u0027Priority: \u0027 + toString({value}))",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "borderRadius": "999px",
+                "padding": "4px 14px"
+              },
+              "textStyle": {
+                "fontWeight": "value",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "HeaderRow"
+        },
+        "position": {
+          "basis": "37px"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "gap": "10px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Divider"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "rgba(255,255,255,0.06)",
+            "height": "1px",
+            "marginBottom": "6px",
+            "marginTop": "6px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tdata \u003d self.view.params.data\n\turl  \u003d data.get(\u0027ProgramURL\u0027) or data.get(\u0027DxfUrl\u0027) or \u0027https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw\u0027\n\tsystem.perspective.navigate(url\u003durl, newTab\u003dTrue)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ProgramName"
+        },
+        "position": {
+          "basis": "70%",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.data.ProgramName"
+              },
+              "transforms": [
+                {
+                  "expression": "if(isNull({value}), \u0027Program: \u0027, \u0027Program: \u0027 + {value})",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "#E6EEF7",
+            "cursor": "pointer",
+            "fontSize": "14px",
+            "fontWeight": "700",
+            "textDecoration": "underline"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onMouseEnter": {
+          "config": {
+            "script": "\tself.view.custom.ui.hover \u003d True"
+          },
+          "scope": "G",
+          "type": "script"
+        },
+        "onMouseLeave": {
+          "config": {
+            "script": "\tself.view.custom.ui.hover \u003d False"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.border": {
+        "binding": {
+          "config": {
+            "expression": "if({view.custom.ui.selected}, \u00271px solid #d97814\u0027, \u00271px solid rgba(255,255,255,0.06)\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.boxShadow": {
+        "binding": {
+          "config": {
+            "expression": "if({view.custom.ui.selected}, \u00270 0 0 1px rgba(217,120,20,0.35), 0 6px 14px rgba(0,0,0,.35)\u0027, \u0027inset 0 0 0 1px rgba(255,255,255,0.02), 0 4px 10px rgba(0,0,0,0.35)\u0027)"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderRadius": "12px",
+        "classes": "card",
+        "gap": "10px",
+        "padding": "14px 16px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

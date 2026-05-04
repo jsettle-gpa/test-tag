@@ -1,0 +1,279 @@
+{
+  "custom": {},
+  "params": {
+    "eqConfig": {
+      "derived": false,
+      "edge": false,
+      "modes": false,
+      "name": "",
+      "parent": "",
+      "states": false,
+      "type": ""
+    }
+  },
+  "propConfig": {
+    "params.eqConfig": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 630,
+      "width": 802
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "eqConfigTitle"
+            },
+            "props": {
+              "style": {
+                "fontSize": 28,
+                "fontWeight": "bold"
+              },
+              "text": "Equipment Config"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "eqName"
+            },
+            "props": {
+              "text": "Equipment Name"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "eqNameField"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.eqConfig.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": "enter equipment name"
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "props": {
+              "text": "Equipment Type"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "EquipmentTypeDropdown"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {},
+                    "tagPath": "[mes]global/equipment_type"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn system.dataset.filterColumns(value, [\u0027type_id\u0027, \"name\"])",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.eqConfig.type"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "Label_2"
+            },
+            "props": {
+              "text": "Parent"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "eqParentDropdown"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[mes]global/equipment"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn system.dataset.filterColumns(value, [\u0027eq_id\u0027, \u0027name\u0027])",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.eqConfig.parent"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ModesChk"
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.eqConfig.modes"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Modes"
+                },
+                "type": "ia.input.checkbox"
+              },
+              {
+                "meta": {
+                  "name": "StatesChk"
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.eqConfig.states"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "States"
+                },
+                "type": "ia.input.checkbox"
+              },
+              {
+                "meta": {
+                  "name": "EdgeChk"
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.eqConfig.edge"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Edge"
+                },
+                "type": "ia.input.checkbox"
+              },
+              {
+                "meta": {
+                  "name": "DerivedChk"
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.eqConfig.derived"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Derived"
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": 8
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "EquipmentConfigPage"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": 16,
+            "padding": "24px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

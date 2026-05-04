@@ -1,0 +1,503 @@
+{
+  "custom": {
+    "Error": false,
+    "Success": false,
+    "Warning": false
+  },
+  "params": {
+    "ErrorMessage": " ",
+    "ModalName": ""
+  },
+  "propConfig": {
+    "custom.Error": {
+      "binding": {
+        "config": {
+          "expression": "if(indexOf({/root/FlexContainer/Markdown.props.source}, \"error\") \u003e\u003d 0||indexOf({/root/FlexContainer/Markdown.props.source}, \"Error\") \u003e\u003d 0,\r\n true, if(indexOf({/root/FlexContainer/Markdown.props.source}, \"fail\") \u003e\u003d0||indexOf({/root/FlexContainer/Markdown.props.source}, \"Fail\") \u003e\u003d0, true, false))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.Success": {
+      "binding": {
+        "config": {
+          "expression": "if(indexOf({/root/FlexContainer/Markdown.props.source}, \"success\") \u003e\u003d 0||indexOf({/root/FlexContainer/Markdown.props.source}, \"Success\") \u003e\u003d 0, true, false)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.Warning": {
+      "binding": {
+        "config": {
+          "expression": "indexof(lower({view.params.ErrorMessage}), \u0027warning\u0027) \u003e\u003d 0"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.functionalSubAreas": {
+      "persistent": true
+    },
+    "custom.projectName": {
+      "persistent": true
+    },
+    "custom.projectSiteId": {
+      "persistent": true
+    },
+    "params.ErrorMessage": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.FunctionalAreaId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ModalName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ae": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.alarmType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.alertType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.delay": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.functionalAreaId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.hyst": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.limit": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.loopId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.loopType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.loopalarmid": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.mode": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.projectId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.projectName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.projectSiteId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.projectname": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.repeat": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.severity": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.subareaid": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 244,
+      "width": 602
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "domId": "success-message",
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Text/Heading"
+              },
+              "text": "Success!",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "path": "material/check_circle"
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "domId": "success-message-container",
+          "name": "SuccessMessage"
+        },
+        "position": {
+          "basis": "200px",
+          "display": false
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.Success} \u003d True, if({view.custom.Error} \u003d true, false, true), false)"
+              },
+              "type": "expr"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#11A429"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "domId": "error-message",
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Text/Heading"
+              },
+              "text": "Error!",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "path": "material/error"
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "domId": "error-message-container",
+          "name": "ErrorMessage"
+        },
+        "position": {
+          "basis": "200px",
+          "display": false
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.Error} \u003d True, if({view.custom.Success} \u003d true, false, true), false)"
+              },
+              "type": "expr"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#A41115"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "domId": "error-message",
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Text/Heading"
+              },
+              "text": "Warning",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "path": "material/warning"
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "domId": "error-message-container",
+          "name": "warningMessage"
+        },
+        "position": {
+          "basis": "200px",
+          "display": false
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.Warning"
+              },
+              "type": "property"
+            },
+            "persistent": true
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#F08F2C"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "TextField"
+            },
+            "position": {
+              "basis": "600px",
+              "display": false
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.ErrorMessage"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "textAlign": ""
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "TextArea"
+            },
+            "position": {
+              "display": false,
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.ErrorMessage"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.input.text-area"
+          },
+          {
+            "meta": {
+              "domId": "text-return-message",
+              "name": "Markdown"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.source": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.ErrorMessage"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "aligh-items": "center",
+                "alignContent": "center",
+                "alignItems": "center",
+                "display": "flex",
+                "justifyContent": "center",
+                "overflowWrap": "normal",
+                "text-align": "center",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.markdown"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "justify": "center",
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "  system.perspective.closePopup(\"\")"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "domId": "btn-error-modal",
+              "name": "Button"
+            },
+            "position": {
+              "basis": "150px"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "elev8/close"
+                }
+              },
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "Ok"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "backgroundColor": "--neutral-20",
+            "classes": "Global/MarginBottom Modals/DefaultModal",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "domId": "popup-error-check",
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": "1px",
+        "classes": "Modals/DefaultModal",
+        "minWidth": "320px"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "config-tool-refresh",
+          "pageScope": true,
+          "script": "\t# We have new project data to display (probably) update as needed.\n#\tself.getChild(\"ColContainer\").getChild(\"Row 1\").getChild(\"Col2\").getChild(\"Label\").refreshBinding(\"props.text\")\n#\tsystem.perspective.print(self.view.params.projectName)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "base": {
+    "style": {
+      "cursor": "grabbing"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "cursor": "grab"
+      }
+    },
+    {
+      "pseudo": "active",
+      "style": {
+        "cursor": "grabbing"
+      }
+    }
+  ]
+}

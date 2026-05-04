@@ -1,0 +1,161 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 261,
+      "width": 437
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "WO"
+            },
+            "position": {
+              "basis": "70%"
+            },
+            "props": {
+              "style": {
+                "fontSize": "14px",
+                "fontWeight": "700"
+              },
+              "text": "WO — • Operation"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PriorityChip"
+            },
+            "position": {
+              "basis": "30%"
+            },
+            "props": {
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "999px",
+                "padding": "2px 6px",
+                "textAlign": "right"
+              },
+              "text": "P?"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "HeaderRow"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "QtyRow"
+        },
+        "props": {
+          "style": {
+            "opacity": 0.95
+          },
+          "text": "Qty: 0 / 0"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "LineRow"
+        },
+        "props": {
+          "style": {
+            "opacity": 0.95
+          },
+          "text": "Line: —"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "LotsRow"
+        },
+        "props": {
+          "style": {
+            "opacity": 0.85
+          },
+          "text": "Lots: —"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Divider"
+        },
+        "position": {
+          "basis": "69px"
+        },
+        "props": {
+          "style": {
+            "height": "1px",
+            "marginBottom": "4px",
+            "marginTop": "4px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "RunLabel"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "style": {
+                "fontWeight": "600"
+              },
+              "text": "Run (Start/Stop)"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "RunRow"
+        },
+        "props": {
+          "alignItems": "center",
+          "justifyContent": "space-between"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-30)",
+        "borderRadius": "10px",
+        "boxShadow": "var(--low-elevation)",
+        "classes": "Cards/Root",
+        "gap": "8px",
+        "minWidth": "260px",
+        "padding": "12px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

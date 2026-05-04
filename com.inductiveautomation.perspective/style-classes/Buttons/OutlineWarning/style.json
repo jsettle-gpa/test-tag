@@ -1,0 +1,33 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--neutral-10)",
+      "borderColor": "var(--warningSecondary)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--warningSecondary)",
+      "marginBottom": "3px",
+      "marginTop": "3px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--warning)",
+        "color": "var(--neutral-100)"
+      }
+    },
+    {
+      "pseudo": "active",
+      "style": {
+        "backgroundColor": "var(--neutral-100)",
+        "color": "var(--neutral-10)"
+      }
+    }
+  ]
+}

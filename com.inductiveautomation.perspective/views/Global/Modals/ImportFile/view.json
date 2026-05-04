@@ -1,0 +1,267 @@
+{
+  "custom": {
+    "configCSV": "value"
+  },
+  "params": {
+    "EqPath": "value",
+    "EqType": "value",
+    "ID": "value",
+    "Type": "value"
+  },
+  "propConfig": {
+    "custom.configCSV": {
+      "persistent": true
+    },
+    "params.EqPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.EqType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ID": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Type": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 104,
+      "width": 260
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "configCSV": "",
+          "csvDict": {
+            "$": [
+              "ds",
+              192,
+              1744993029003
+            ],
+            "$columns": [
+              {
+                "data": [],
+                "name": "ID",
+                "type": "Integer"
+              },
+              {
+                "data": [],
+                "name": "LineID",
+                "type": "Integer"
+              },
+              {
+                "data": [],
+                "name": "Description",
+                "type": "String"
+              },
+              {
+                "data": [],
+                "name": "AltCode",
+                "type": "String"
+              },
+              {
+                "data": [],
+                "name": "IconPath",
+                "type": "String"
+              },
+              {
+                "data": [],
+                "name": "DisplayColor",
+                "type": "String"
+              },
+              {
+                "data": [],
+                "name": "ReasonCode",
+                "type": "Integer"
+              },
+              {
+                "data": [],
+                "name": "RecordDowntime",
+                "type": "Boolean"
+              },
+              {
+                "data": [],
+                "name": "PlannedDowntime",
+                "type": "Boolean"
+              },
+              {
+                "data": [],
+                "name": "OperatorSelectable",
+                "type": "Boolean"
+              },
+              {
+                "data": [],
+                "name": "SubReasonOf",
+                "type": "Integer"
+              },
+              {
+                "data": [],
+                "name": "StateTypeID",
+                "type": "Integer"
+              },
+              {
+                "data": [],
+                "name": "DowntimeCategoryCode",
+                "type": "Integer"
+              }
+            ]
+          }
+        },
+        "events": {
+          "component": {
+            "onFileReceived": {
+              "config": {
+                "script": "\tself.custom.configCSV \u003d event.file.getString()\n\tself.custom.csvDict \u003d system.dataset.fromCSV(event.file.getString())"
+              },
+              "scope": "G",
+              "type": "script"
+            },
+            "onUploadsCleared": {
+              "config": {
+                "script": "\t# logger \u003d system.util.getLogger(\"importFile\")\n\t\n\ttry:\n\t\t# logger.info(\"1.. [clearUpload] configCSV cleared\")\n\t\t# 1 [clearUpload] Clear configCSV\n\t\tself.custom.configCSV \u003d \u0027\u0027\n\t\t# logger.info(\"1 [clearUpload] configCSV cleared\")\n\texcept Exception as e:\n\t\t# logger.info(\"2 [clearUpload] ERROR: %s\" % str(e))\n\t\tpass\n\t\n\tpass"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "FileUpload"
+        },
+        "position": {
+          "basis": "55px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.csvDict": {
+            "binding": {
+              "config": {
+                "path": "this.custom.configCSV"
+              },
+              "enabled": false,
+              "transforms": [
+                {
+                  "code": "\treturn system.dataset.fromCSV(value)",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "fileUploadIcon": {
+            "path": "material/folder_open",
+            "style": {
+              "cursor": "pointer"
+            }
+          },
+          "maxUploads": 1,
+          "supportedFileTypes": [
+            "CSV"
+          ]
+        },
+        "type": "ia.input.fileupload"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t# logger \u003d system.util.getLogger(\"importFile\")\n\t\n\ttry:\n\t\t# 1 [importFile] Start import\n\t\t# logger.info(\"1 [importFile] Start import. Type\u003d%s EqType\u003d%s\" % (self.view.params.Type, self.view.params.EqType))\n\t\n\t\t# 2 [importFile] Grab upload data\n\t\tcsvFile \u003d self.parent.parent.getChild(\"FileUpload\").custom.configCSV\n\t\tcsvDS \u003d self.parent.parent.getChild(\"FileUpload\").custom.csvDict\n\t\tEqType \u003d self.view.params.EqType\n\t\tpayload \u003d { \"csvString\": csvFile, \"csvDS\": csvDS, \"EqType\": EqType }\n\t\t# logger.info(\"2 [importFile] Data grabbed. Rows\u003d%s Cols\u003d%s\" % (csvDS.getRowCount(), csvDS.getColumnCount()))\n\t\t\n\t\t# → Add these two lines:\n\t\t# logger.info(\"2.1 [importFile] csvString:\\n\" + str(csvFile))\n\t\t# logger.info(\"2.2 [importFile] csvDS:\\n\" + str(system.dataset.toCSV(csvDS)))\n\n\t\t# 3 [importFile] Determine message type\n\t\ttype_map \u003d {\n\t\t\t\"states\": \"importStates\",\n\t\t\t\"modes\": \"importModes\",\n\t\t\t\"scrapCategory\": \"importScrapCategory\",\n\t\t\t\"scrapReasons\": \"importScrapReasons\",\n\t\t\t\"materials\": \"importMaterials\",\n\t\t\t\"sites\": \"importSites\",\n\t\t\t\"areas\": \"importAreas\",\n\t\t\t\"lines\": \"importLines\",\n\t\t\t\"cells\": \"importCells\",\n\t\t\t\"attributes\": \"importAttributes\",\n\t\t\t\"productcodes\": \"importProductCodes\"\n\t\t}\n\t\tmessageType \u003d type_map.get(self.view.params.Type)\n\t\tif messageType:\n\t\t\t# logger.info(\"3 [importFile] Dispatching message: %s\" % messageType)\n\t\t\tsystem.perspective.sendMessage(messageType, payload)\n\t\telse:\n\t\t\t# logger.info(\"3 [importFile] No matching messageType found.\")\n\t\t\tpass\n\t\n\t\t# 4 [importFile] Clear input\n\t\tself.parent.parent.getChild(\"FileUpload\").custom.configCSV \u003d \"\"\n\t\tsystem.dataset.clearDataset(csvDS)\n\t\t# logger.info(\"4 [importFile] Cleared input buffers\")\n\t\n\t\t# 5 [importFile] Import routine complete\n\t\t# logger.info(\"5 [importFile] Import routine complete\")\n\t\n\texcept Exception as e:\n\t\t# logger.info(\"6 [importFile] ERROR: %s\" % str(e))\n\t\tpass\n\t\n\tpass"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Import"
+            },
+            "position": {
+              "basis": "80px"
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": ".../FileUpload.custom.configJson"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tconfigJson \u003d str(value)\n\treturn not configJson \u003d\u003d \u0027\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "text": "Import"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t#close popup\n\tid \u003d \u0027ImportFile\u0027\n\tsystem.perspective.closePopup(id)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "80px"
+            },
+            "props": {
+              "primary": false,
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Controls"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "justify": "space-around",
+          "style": {
+            "marginTop": "5px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "margin": "5px",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

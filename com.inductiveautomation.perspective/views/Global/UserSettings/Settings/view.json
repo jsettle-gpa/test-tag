@@ -1,0 +1,373 @@
+{
+  "custom": {},
+  "params": {
+    "inputs": {
+      "displayUnit": "pcs",
+      "language": "en-US",
+      "theme": "custom-dark",
+      "timeFormat": "yyyy-MM-dd HH:mm:ss"
+    }
+  },
+  "propConfig": {
+    "custom.form": {
+      "binding": {
+        "config": {
+          "path": "view.params.inputs"
+        },
+        "type": "property"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 380
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "Language"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "140px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.form.language"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "English",
+                  "value": "en-US"
+                },
+                {
+                  "label": "Español",
+                  "value": "es-US"
+                },
+                {
+                  "label": "Portuguese",
+                  "value": "pt-PT"
+                },
+                {
+                  "label": "Czech",
+                  "value": "cs-CZ"
+                }
+              ],
+              "search": {
+                "enabled": false
+              },
+              "style": {
+                "minWidth": "120px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "Row_Language"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "Theme"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "140px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.form.theme"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Light",
+                  "value": "custom-light"
+                },
+                {
+                  "label": "Dark",
+                  "value": "custom-dark"
+                }
+              ],
+              "search": {
+                "enabled": false
+              },
+              "style": {
+                "minWidth": "120px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "Row_Theme"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "Measured Units"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "140px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.form.displayUnit"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "pieces",
+                  "value": "pcs"
+                },
+                {
+                  "label": "each",
+                  "value": "ea"
+                },
+                {
+                  "label": "cases",
+                  "value": "cas"
+                },
+                {
+                  "label": "kilograms",
+                  "value": "kg"
+                },
+                {
+                  "label": "pounds",
+                  "value": "lb"
+                }
+              ],
+              "search": {
+                "enabled": false
+              },
+              "style": {
+                "minWidth": "120px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "Row_Units"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "Time Format"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "140px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.form.timeFormat"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "12-hour",
+                  "value": "yyyy-MM-dd hh:mm:ss a"
+                },
+                {
+                  "label": "24-hour",
+                  "value": "yyyy-MM-dd HH:mm:ss"
+                }
+              ],
+              "search": {
+                "enabled": false
+              },
+              "style": {
+                "minWidth": "120px"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "Row_TimeFormat"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "BtnSave"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/save"
+                }
+              },
+              "style": {
+                "padding": "6px 12px"
+              },
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Row_Buttons"
+        },
+        "position": {
+          "basis": "46px"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "center",
+          "style": {
+            "gap": "8px",
+            "overflow": "hidden",
+            "paddingTop": "4px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "12px",
+        "padding": "16px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

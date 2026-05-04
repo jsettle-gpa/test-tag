@@ -1,0 +1,648 @@
+{
+  "custom": {
+    "sourceData": {
+      "selectedUser": "planner",
+      "users": [
+        {
+          "authProfile": "default",
+          "displayName": "System Admin",
+          "email": "admin@example.com",
+          "enabled": true,
+          "initials": "AD",
+          "rolesCsv": "MES-Admin",
+          "userName": "admin"
+        },
+        {
+          "authProfile": "default",
+          "displayName": "Production Planner",
+          "email": "planner@example.com",
+          "enabled": true,
+          "initials": "PP",
+          "rolesCsv": "MES-Planner, MES-Operator",
+          "userName": "planner"
+        },
+        {
+          "authProfile": "default",
+          "displayName": "Line Operator",
+          "email": "operator@example.com",
+          "enabled": true,
+          "initials": "OP",
+          "rolesCsv": "MES-Operator",
+          "userName": "operator"
+        },
+        {
+          "authProfile": "default",
+          "displayName": "Quality Tech",
+          "email": "quality@example.com",
+          "enabled": false,
+          "initials": "QT",
+          "rolesCsv": "MES-Quality",
+          "userName": "quality"
+        },
+        {
+          "authProfile": "external-ldap",
+          "displayName": "Maintenance",
+          "email": "maint@example.com",
+          "enabled": true,
+          "initials": "MT",
+          "rolesCsv": "MES-Operator",
+          "userName": "maint"
+        }
+      ]
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.sourceData": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 820,
+      "width": 1360
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "20px",
+                "fontWeight": "600"
+              },
+              "text": "Users \u0026 Roles"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Search"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "placeholder": "Search users…"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "FilterProfile"
+                },
+                "position": {
+                  "basis": "200px"
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "All Profiles",
+                      "value": ""
+                    },
+                    {
+                      "label": "default",
+                      "value": "default"
+                    },
+                    {
+                      "label": "external-ldap",
+                      "value": "external-ldap"
+                    }
+                  ],
+                  "placeholder": "Auth profile"
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "BtnNewUser"
+                },
+                "props": {
+                  "icon": "material/person_add",
+                  "text": "New User"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSave"
+                },
+                "props": {
+                  "icon": "material/save",
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Toolbar"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "display": false,
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "classes": "card",
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "UsersLabel"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "16px",
+                    "fontWeight": "600"
+                  },
+                  "text": "Users"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "UsersRepeater"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "elementPosition": {
+                    "basis": "auto",
+                    "grow": 0
+                  },
+                  "instances": [
+                    {
+                      "authProfile": "default",
+                      "displayName": "System Admin",
+                      "email": "admin@example.com",
+                      "enabled": true,
+                      "initials": "AD",
+                      "roles": "MES-Admin",
+                      "userName": "admin"
+                    },
+                    {
+                      "authProfile": "default",
+                      "displayName": "Production Planner",
+                      "email": "planner@example.com",
+                      "enabled": true,
+                      "initials": "PP",
+                      "rolesCsv": "MES-Planner, MES-Operator",
+                      "userName": "planner"
+                    },
+                    {
+                      "authProfile": "default",
+                      "displayName": "Line Operator",
+                      "email": "operator@example.com",
+                      "enabled": true,
+                      "initials": "OP",
+                      "rolesCsv": "MES-Operator",
+                      "userName": "operator"
+                    },
+                    {
+                      "authProfile": "default",
+                      "displayName": "Quality Tech",
+                      "email": "quality@example.com",
+                      "enabled": false,
+                      "initials": "QT",
+                      "rolesCsv": "MES-Quality",
+                      "userName": "quality"
+                    },
+                    {
+                      "authProfile": "external-ldap",
+                      "displayName": "Maintenance",
+                      "email": "maint@example.com",
+                      "enabled": true,
+                      "initials": "MT",
+                      "rolesCsv": "MES-Operator",
+                      "userName": "maint"
+                    },
+                    {
+                      "authProfile": "external-ldap",
+                      "displayName": "Maintenance",
+                      "email": "maint@example.com",
+                      "enabled": true,
+                      "initials": "MT",
+                      "rolesCsv": "MES-Operator",
+                      "userName": "maint"
+                    }
+                  ],
+                  "path": "App/Administration/Embedded/Users/UserCard",
+                  "style": {
+                    "gap": "12px",
+                    "overflowY": "auto",
+                    "paddingRight": "4px"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewParams": true,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "meta": {
+              "name": "UserGridPane"
+            },
+            "position": {
+              "basis": "30%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "6px",
+                "classes": "card",
+                "gap": "8px",
+                "height": "100%",
+                "minHeight": "0",
+                "padding": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "DetailsTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "columns": [
+                            {
+                              "field": "Field",
+                              "header": {
+                                "title": "Field"
+                              },
+                              "width": "220px"
+                            },
+                            {
+                              "editable": true,
+                              "field": "Value",
+                              "header": {
+                                "title": "Value"
+                              },
+                              "width": "flex"
+                            }
+                          ],
+                          "data": [
+                            {
+                              "Field": "UserName",
+                              "Value": "planner"
+                            },
+                            {
+                              "Field": "DisplayName",
+                              "Value": "Production Planner"
+                            },
+                            {
+                              "Field": "Email",
+                              "Value": "planner@example.com"
+                            },
+                            {
+                              "Field": "AuthProfile",
+                              "Value": "default"
+                            },
+                            {
+                              "Field": "Enabled",
+                              "Value": true
+                            }
+                          ]
+                        },
+                        "type": "ia.display.table"
+                      }
+                    ],
+                    "meta": {
+                      "name": "TabDetails"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "8px",
+                        "minHeight": "0",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "RolesTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "columns": [
+                            {
+                              "field": "RoleName",
+                              "header": {
+                                "title": "Role"
+                              },
+                              "width": "flex"
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "editable": true,
+                              "field": "Assigned",
+                              "header": {
+                                "title": "Assigned"
+                              },
+                              "width": "140px"
+                            }
+                          ],
+                          "data": [
+                            {
+                              "Assigned": true,
+                              "RoleName": "MES-Planner"
+                            },
+                            {
+                              "Assigned": true,
+                              "RoleName": "MES-Operator"
+                            },
+                            {
+                              "Assigned": false,
+                              "RoleName": "MES-Admin"
+                            },
+                            {
+                              "Assigned": false,
+                              "RoleName": "MES-Quality"
+                            }
+                          ]
+                        },
+                        "type": "ia.display.table"
+                      }
+                    ],
+                    "meta": {
+                      "name": "TabRoles"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "8px",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "PermTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "columns": [
+                            {
+                              "field": "Permission",
+                              "header": {
+                                "title": "Permission"
+                              },
+                              "width": "flex"
+                            },
+                            {
+                              "align": "center",
+                              "boolean": "checkbox",
+                              "editable": false,
+                              "field": "Allowed",
+                              "header": {
+                                "title": "Allowed (via roles)"
+                              },
+                              "width": "200px"
+                            }
+                          ],
+                          "data": [
+                            {
+                              "Allowed": true,
+                              "Permission": "MES.View"
+                            },
+                            {
+                              "Allowed": true,
+                              "Permission": "MES.EditMasterData"
+                            },
+                            {
+                              "Allowed": true,
+                              "Permission": "MES.Schedule.Board"
+                            }
+                          ]
+                        },
+                        "type": "ia.display.table"
+                      }
+                    ],
+                    "meta": {
+                      "name": "TabPermissions"
+                    },
+                    "position": {
+                      "tabIndex": 2
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "8px",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "AuditTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "columns": [
+                            {
+                              "field": "When",
+                              "header": {
+                                "title": "When"
+                              },
+                              "width": "180px"
+                            },
+                            {
+                              "field": "Who",
+                              "header": {
+                                "title": "Who"
+                              },
+                              "width": "140px"
+                            },
+                            {
+                              "field": "Action",
+                              "header": {
+                                "title": "Action"
+                              },
+                              "width": "220px"
+                            },
+                            {
+                              "field": "Detail",
+                              "header": {
+                                "title": "Detail"
+                              },
+                              "width": "flex"
+                            }
+                          ],
+                          "data": [
+                            {
+                              "Action": "Role Granted",
+                              "Detail": "MES-Operator",
+                              "When": "2025-10-14 16:03",
+                              "Who": "admin"
+                            },
+                            {
+                              "Action": "Password Reset",
+                              "Detail": "",
+                              "When": "2025-10-13 08:22",
+                              "Who": "admin"
+                            }
+                          ]
+                        },
+                        "type": "ia.display.table"
+                      }
+                    ],
+                    "meta": {
+                      "name": "TabAudit"
+                    },
+                    "position": {
+                      "tabIndex": 3
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "8px",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "RightTabs"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "contentStyle": {
+                    "height": "100%"
+                  },
+                  "currentTabIndex": 3,
+                  "menuType": "modern",
+                  "style": {
+                    "height": "100%",
+                    "minHeight": "0"
+                  },
+                  "tabs": [
+                    "Details",
+                    "Roles",
+                    "Permissions",
+                    "Audit"
+                  ]
+                },
+                "type": "ia.container.tab"
+              }
+            ],
+            "meta": {
+              "name": "RightDrawer"
+            },
+            "position": {
+              "basis": "60%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "6px",
+                "classes": "card",
+                "height": "100%",
+                "minHeight": "0",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": "8px",
+            "height": "100%",
+            "minHeight": "0"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "height": "100%",
+        "padding": "8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

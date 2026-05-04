@@ -1,0 +1,937 @@
+{
+  "custom": {
+    "data": {
+      "hasCells": ""
+    }
+  },
+  "params": {
+    "selectedEqData": {
+      "EqEnabled": true,
+      "EqID": 1,
+      "EqMeta": {
+        "countMode": null,
+        "keyCell": false,
+        "stateMode": null
+      },
+      "EqName": "GPA",
+      "EqPath": "GPA",
+      "EqType": "enterprise"
+    }
+  },
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.EqSettings": {
+      "binding": {
+        "config": {
+          "path": "view.params.selectedEqData"
+        },
+        "type": "property"
+      }
+    },
+    "params.selectedEqData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "borderLeftStyle": "none",
+                "borderRightStyle": "none",
+                "borderTopStyle": "none",
+                "fontSize": "1.1rem",
+                "marginTop": "15px",
+                "textAlign": "center"
+              },
+              "text": "Tag Mapping"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Asset Path:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.EqSettings.EqPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "marginLeft": "15px",
+                    "textAlign": "left"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "AssetContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "center",
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "MappingContainer"
+        },
+        "position": {
+          "basis": "450px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "borderLeftStyle": "none",
+                "borderRightStyle": "none",
+                "borderTopStyle": "none",
+                "fontSize": "1.1rem",
+                "marginTop": "15px",
+                "textAlign": "center"
+              },
+              "text": "Properties"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "Name:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Enter the name for the selected asset..."
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.EqSettings.EqName"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "deferUpdates": false,
+                  "placeholder": "Enter a name for the asset...",
+                  "rejectUpdatesWhileFocused": false
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "NameContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "Line Operation Order:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Enter the operation order of the selected asset (e.g., 1)"
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.assetSettings.operationOrder"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "deferUpdates": false,
+                  "placeholder": "Enter a value...",
+                  "rejectUpdatesWhileFocused": false
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "OperationOrderContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically determines the display based on asset type \u0027\u0027\u0027\n\t\n\tif value \u003d\u003d \u0027cell\u0027:\n\t\treturn True\n\telse:\n\t\treturn False",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "State Mode:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Select the desired state detection for the selected asset..."
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.EqSettings.EqMeta.stateMode"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Automatic",
+                      "value": 1
+                    },
+                    {
+                      "label": "Manual",
+                      "value": 2
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select the state detection..."
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "StateDetectionContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.EqSettings.EqType"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": true,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "enterprise",
+                          "output": false
+                        },
+                        {
+                          "input": "site",
+                          "output": false
+                        },
+                        {
+                          "input": "area",
+                          "output": false
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "Count Mode:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Select the desired mode entry for the selected asset..."
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.EqSettings.EqMeta.countMode"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Automatic",
+                      "value": 1
+                    },
+                    {
+                      "label": "Manual",
+                      "value": 2
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select the mode entry..."
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "ModeEntryContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.EqSettings.EqType"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": true,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "enterprise",
+                          "output": false
+                        },
+                        {
+                          "input": "site",
+                          "output": false
+                        },
+                        {
+                          "input": "area",
+                          "output": false
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "Has Cells?"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Select the desired mode entry for the selected asset..."
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.hasCells"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Yes",
+                      "value": true
+                    },
+                    {
+                      "label": "No",
+                      "value": false
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Does the Line have Cells?"
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "HasCellsContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.EqSettings.EqType"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": true,
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": "enterprise",
+                          "output": false
+                        },
+                        {
+                          "input": "site",
+                          "output": false
+                        },
+                        {
+                          "input": "area",
+                          "output": false
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Key Cell:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Checkbox",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Checking this will set this asset as the key cell for the line..."
+                  }
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.EqSettings.EqMeta.keyCell"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "12px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "KeyCellContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.EqSettings.EqType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically determines the display based on asset type \u0027\u0027\u0027\n\t\n\tif value \u003d\u003d \u0027cell\u0027:\n\t\treturn True\n\telse:\n\t\treturn False",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Enabled:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Checkbox",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Checking this will set this asset as the key cell for the line..."
+                  }
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.EqSettings.EqEnabled"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "12px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "Enable"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Spacer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Clears the properties form \u0027\u0027\u0027\n\t\n\tself.parent.parent.getChild(\"NameContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"DisabledContainer\").getChild(\"Checkbox\").props.selected \u003d False\n\tself.parent.parent.getChild(\"ModeEntryContainer\").getChild(\"Dropdown\").props.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StateDetectionContainer\").getChild(\"Dropdown\").props.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"MicrostopDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"DefaultRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"RunningRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"RunningDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StoppedRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StoppedDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\t"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "props": {
+                  "primary": false,
+                  "text": "Clear"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\"\"\"\n\tCollects the form fields, builds the JSON payload, \n\tand calls the saveConfig message handler for the first-time insert.\n\t\"\"\"\n\t# Grab all form values\n\tassetName          \u003d self.parent.parent.getChild(\"NameContainer\").getChild(\"TextField\").props.text\n\tassetEnabled       \u003d self.parent.parent.getChild(\"DisabledContainer\").getChild(\"Checkbox\").props.selected\n\tmodeEntry          \u003d self.parent.parent.getChild(\"ModeEntryContainer\").getChild(\"Dropdown\").props.value\n\tstateDetection     \u003d self.parent.parent.getChild(\"StateDetectionContainer\").getChild(\"Dropdown\").props.value\n\tmicrostopDuration  \u003d self.parent.parent.getChild(\"MicrostopDurationContainer\").getChild(\"TextField\").props.text\n\tdefaultRate        \u003d self.parent.parent.getChild(\"DefaultRateContainer\").getChild(\"TextField\").props.text\n\trunningRate        \u003d self.parent.parent.getChild(\"RunningRateContainer\").getChild(\"TextField\").props.text\n\trunningDuration    \u003d self.parent.parent.getChild(\"RunningDurationContainer\").getChild(\"TextField\").props.text\n\tstoppedRate        \u003d self.parent.parent.getChild(\"StoppedRateContainer\").getChild(\"TextField\").props.text\n\tstoppedDuration    \u003d self.parent.parent.getChild(\"StoppedDurationContainer\").getChild(\"TextField\").props.text\n\t\n\t# 2) defaultSettings block\n\tdefaultSettings \u003d {\n\t\t\"assetName\":         assetName,\n\t\t\"assetEnabled\":      assetEnabled,\n\t\t\"modeEntry\":         modeEntry,\n\t\t\"stateDetection\":    stateDetection,\n\t\t\"microstopDuration\": microstopDuration,\n\t\t\"defaultRate\":       defaultRate,\n\t\t\"runningRate\":       runningRate,\n\t\t\"runningDuration\":   runningDuration,\n\t\t\"stoppedRate\":       stoppedRate,\n\t\t\"stoppedDuration\":   stoppedDuration\n\t}\n\n\t# 3) Wrap it under the top‐level key\n\tconfigPayload \u003d {\n\t\t\"defaultSettings\": defaultSettings\n\t}\n\n\t# get the equipmentId\n\tequipmentId \u003d self.view.params.selectedAssetData[\"assetID\"]\n\n\t#send request\n\tsuccess \u003d assetConfig.requests.saveEquipmentConfig(equipmentId, { \"defaultSettings\": defaultSettings })\n\n\t# get results\n\tif success:\n\t\tsystem.perspective.print(\"Configuration saved!\")\n\t\tsystem.perspective.sendMessage(\u0027refreshTree\u0027)\n\telse:\n\t\tsystem.perspective.print(\"Error saving configuration.\")"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "SaveButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "ButtonContainer"
+            },
+            "position": {
+              "basis": "45px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "marginTop": "15px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SettingsContainer"
+        },
+        "position": {
+          "basis": "584px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "space-evenly",
+      "style": {
+        "margin": "15px",
+        "overflow": "visible"
+      },
+      "wrap": "wrap"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "mapSetting",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Maps the asset\u0027s setting to the selected tag from the TagMap popup \u0027\u0027\u0027\n\t\n\ttry:\n\t\t# Defines the variables from the payload\n\t\tselectedTagPath \u003d payload.get(\u0027selectedTagPath\u0027)\n\t\tsetting \u003d payload.get(\u0027setting\u0027)\n\t\tselectedAssetData \u003d payload.get(\u0027selectedAssetData\u0027)\n\t\t\n\t\t# Calls XYZ backend function(s)\n\t\t\n\t\t# Refreshes the tagPaths property\n\t\tself.view.refreshBinding(\"custom.data.tagPaths\")\n\t\t\n\t\t# If successful, then closes the popup\n\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t    \"ModalName\": \"ErrorModal\",\n\t\t    \"ErrorMessage\": \u0027There was an error: \u0027 + str(e)\n\t\t}\n\t\t\n\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalViews/PopupViews/ErrorModal\", errorParams)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

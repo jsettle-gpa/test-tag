@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "Embedded View viewed from the AssetSettings view when on the Line States tab. Allows users to view and edit the asset\u0027s line states\n\nInput Data:\n-selectedAssetData param from the AssetSettings view\n-custom.config.tableData\n\nOutput Data:\n-",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-20T20:15:38Z"
+    },
+    "lastModificationSignature": "f47bb82ad2d87242e2ce2d800429860d01cfd73dedfdf5254ca22fffb3ea677e"
+  }
+}

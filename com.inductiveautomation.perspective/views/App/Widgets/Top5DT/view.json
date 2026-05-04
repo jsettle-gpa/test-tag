@@ -1,0 +1,108 @@
+{
+  "custom": {},
+  "params": {
+    "Top5Data": [
+      {
+        "Minutes": 42,
+        "Reason": "Changeover"
+      },
+      {
+        "Minutes": 37,
+        "Reason": "No Material"
+      },
+      {
+        "Minutes": 28,
+        "Reason": "Quality Hold"
+      },
+      {
+        "Minutes": 21,
+        "Reason": "Breakdown"
+      },
+      {
+        "Minutes": 12,
+        "Reason": "Meetings"
+      }
+    ]
+  },
+  "propConfig": {
+    "params.Top5Data": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 314,
+      "width": 520
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "props": {
+          "style": {
+            "fontWeight": "600"
+          },
+          "text": "Top 5 Downtime (min)"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "270px"
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.Top5Data"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "columns": [
+            {
+              "field": "Reason",
+              "header": {
+                "title": "Reason"
+              },
+              "width": "flex"
+            },
+            {
+              "field": "Minutes",
+              "header": {
+                "title": "Min"
+              },
+              "number": "value",
+              "numberFormat": "0,0",
+              "width": "120px"
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-40)",
+        "borderRadius": "10px",
+        "classes": "card",
+        "gap": "8px",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "custom": {},
+  "params": {
+    "title": "Downtime Entry"
+  },
+  "propConfig": {
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 420
+    },
+    "name": "Downtime Form"
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "16px",
+                "fontWeight": "700"
+              },
+              "text": "Downtime Entry"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "backgroundColor": "#2a2a2a",
+            "borderBottom": "1px solid #3a3a3a",
+            "borderRadius": "6px 6px 0 0",
+            "overflow": "hidden",
+            "padding": "10px 12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Form"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "actions": {
+                "submit": {
+                  "autoDisable": false
+                }
+              },
+              "columns": {
+                "align": "stretch",
+                "items": [
+                  {
+                    "rows": {
+                      "align": "start",
+                      "items": [
+                        {
+                          "widgets": [
+                            {
+                              "dropdown": {
+                                "options": [
+                                  {
+                                    "label": "Mechanical",
+                                    "value": "mechanical"
+                                  },
+                                  {
+                                    "label": "Electrical",
+                                    "value": "electrical"
+                                  },
+                                  {
+                                    "label": "Material Shortage",
+                                    "value": "material"
+                                  },
+                                  {
+                                    "label": "Changeover",
+                                    "value": "changeover"
+                                  },
+                                  {
+                                    "label": "Other",
+                                    "value": "other"
+                                  }
+                                ],
+                                "placeholder": {
+                                  "text": "Select..."
+                                }
+                              },
+                              "id": "reason",
+                              "label": {
+                                "text": "Reason"
+                              },
+                              "style": {
+                                "classes": ""
+                              },
+                              "type": "dropdown",
+                              "visible": true
+                            }
+                          ]
+                        },
+                        {
+                          "widgets": [
+                            {
+                              "date-time-picker": {
+                                "displayType": "input",
+                                "format": "lll",
+                                "placeholder": "Select date \u0026 time"
+                              },
+                              "id": "start",
+                              "label": {
+                                "text": "Start Time"
+                              },
+                              "style": {
+                                "classes": ""
+                              },
+                              "type": "date-time-picker",
+                              "visible": true
+                            }
+                          ]
+                        },
+                        {
+                          "widgets": [
+                            {
+                              "id": "duration",
+                              "label": {
+                                "text": "Duration (min)"
+                              },
+                              "number": {
+                                "placeholder": "e.g., 15",
+                                "validation": {
+                                  "constraints": {
+                                    "min": {
+                                      "enabled": true,
+                                      "value": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "style": {
+                                "classes": ""
+                              },
+                              "type": "number",
+                              "visible": true
+                            }
+                          ]
+                        },
+                        {
+                          "widgets": [
+                            {
+                              "id": "comments",
+                              "label": {
+                                "text": "Comments"
+                              },
+                              "style": {
+                                "classes": ""
+                              },
+                              "text-area": {
+                                "placeholder": "Add any details…",
+                                "spellCheck": true,
+                                "wrap": "soft"
+                              },
+                              "type": "text-area",
+                              "visible": true
+                            }
+                          ]
+                        }
+                      ],
+                      "justify": "start",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "style": {
+                      "classes": ""
+                    },
+                    "visible": true
+                  }
+                ]
+              },
+              "data": {
+                "reason": "electrical"
+              },
+              "name": "Basic Form",
+              "style": {
+                "padding": "8px"
+              }
+            },
+            "type": "ia.input.form"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#2a2a2a",
+            "borderRadius": "0 0 6px 6px",
+            "gap": "12px",
+            "height": "100%",
+            "overflowY": "auto",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#1f1f1f",
+        "color": "#e6e6e6",
+        "height": "100%",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

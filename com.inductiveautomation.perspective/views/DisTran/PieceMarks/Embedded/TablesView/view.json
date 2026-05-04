@@ -1,0 +1,1921 @@
+{
+  "custom": {
+    "showRoutes": false,
+    "sourceData": {},
+    "viewData": {}
+  },
+  "events": {
+    "system": {
+      "onShutdown": {
+        "config": {
+          "script": "\tself.custom.viewData.selectedPiece \u003d None"
+        },
+        "scope": "G",
+        "type": "script"
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.showRoutes": {
+      "binding": {
+        "config": {
+          "path": "view.custom.viewData.selectedPiece"
+        },
+        "transforms": [
+          {
+            "expression": "if(!isNull({value}) \u0026\u0026 {value}, true, false)\r\n\r\n",
+            "type": "expression"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.sourceData": {
+      "persistent": true
+    },
+    "custom.sourceData.pieceMarksDS": {
+      "binding": {
+        "config": {
+          "queryPath": "Dis/PieceMark/getAll"
+        },
+        "type": "query"
+      }
+    },
+    "custom.sourceData.routesDS": {
+      "binding": {
+        "config": {
+          "parameters": {
+            "productCodeID": "{view.custom.viewData.selectedPiece}"
+          },
+          "queryPath": "Dis/PieceMark/getRouteByPmId"
+        },
+        "type": "query"
+      }
+    },
+    "custom.viewData": {
+      "persistent": true
+    },
+    "custom.viewData.selectedPiece": {
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 936,
+      "width": 1590
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1
+                },
+                "props": {
+                  "text": "Piece Marks"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\teditParams \u003d {\n\t\t\"projectId\":  self.view.params.projectId,\n\t\t\"loopTypeName\": self.parent.parent.getChild(\"Table\").custom.loopTypeName,\n\t\t\"loopTypeId\": self.parent.parent.getChild(\"Table\").custom.loopTypeId,\n\t\t\"loopId\":     self.parent.parent.getChild(\"Table\").custom.loopId,\n\t\t\"loopName\":   self.parent.parent.getChild(\"Table\").custom.loopName,\n\t\t\"functionalAreaId\": self.parent.parent.getChild(\"Table\").custom.areaId,\n\t\t\"functionalAreaName\": self.parent.parent.getChild(\"Table\").custom.areaName,\n\t\t\"subAreaId\":  self.parent.parent.getChild(\"Table\").custom.subAreaId,\n\t\t\"projectName\":  self.view.params.projectName,\n\t\t\"loopAlert\": self.parent.parent.getChild(\"Table\").custom.loopAlert,\n\t\t\"loopStatusKey\": self.parent.parent.getChild(\"Table\").custom.loopStatusKey\n\t}\n\t\n\tsystem.perspective.navigate(view\u003d\u0027ConfigTool/LoopConfigs/LoopConfig\u0027, params\u003deditParams)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Rename"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.color": {
+                        "binding": {
+                          "config": {
+                            "path": ".../Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#5A5A5A",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "#C9C9C9"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": ".../Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/contact_mail",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tparams \u003d {\n\t\t\"funcSubArea\": self.parent.parent.getChild(\"Table\").props.columns[7].visible,\n\t\t\"funcArea\": self.parent.parent.getChild(\"Table\").props.columns[9].visible,\n\t\t\"approvedUser\": self.parent.parent.getChild(\"Table\").props.columns[12].visible,\n\t\t\"statusUser\": self.parent.parent.getChild(\"Table\").props.columns[13].visible,\n\t\t\"completedUser\": self.parent.parent.getChild(\"Table\").props.columns[14].visible,\n\t\t\"statusDate\": self.parent.parent.getChild(\"Table\").props.columns[15].visible,\n\t\t\"approvedDate\": self.parent.parent.getChild(\"Table\").props.columns[16].visible,\n\t\t\"completedDate\": self.parent.parent.getChild(\"Table\").props.columns[17].visible\n\t}\n\t\n\tsystem.perspective.print(params)\n\tsystem.perspective.openPopup(\"tableColumns\", \"ConfigTool/Subviews/ColumnSelection\", params\u003dparams, modal\u003dTrue)\n\t"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Table/Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/filter_alt",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tif self.props.selected:\n\t    self.view.custom.ShowInstructions \u003d True\n\telse:\n\t    self.view.custom.ShowInstructions \u003d False\n\t    "
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-show-instructions",
+                      "name": "ShowInstructions"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Global/MarginRight"
+                      },
+                      "text": "Show Instructions"
+                    },
+                    "type": "ia.input.checkbox"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tif self.props.selected:\n\t    self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.columns[7].filter.enabled \u003d False\n\telse:\n\t    self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.columns[7].filter.enabled \u003d True\n\t    "
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-show-disabled",
+                      "name": "ShowDeleted"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Global/MarginRight"
+                      },
+                      "text": "Show Disabled"
+                    },
+                    "type": "ia.input.checkbox"
+                  },
+                  {
+                    "custom": {
+                      "RotateTimestamp": {
+                        "$": [
+                          "ts",
+                          192,
+                          1710973246442
+                        ],
+                        "$ts": 1710973246442
+                      }
+                    },
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\tself.custom.RotateTrigger \u003d True\n\tself.custom.RotateTimestamp \u003d system.date.now()"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-refresh",
+                      "name": "Refresh",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Refresh Dashboard"
+                      }
+                    },
+                    "position": {
+                      "basis": "30px"
+                    },
+                    "propConfig": {
+                      "custom.RotateTrigger": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(({this.custom.RotateTimestamp} + 500) \u003e now(500), true, false)"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "meta.domId": {
+                        "binding": {
+                          "config": {
+                            "path": "this.custom.RotateTrigger"
+                          },
+                          "enabled": false,
+                          "transforms": [
+                            {
+                              "fallback": "product-codes-refresh",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "product-codes-refresh"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "product-codes-rotating-icon"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "color": "white",
+                      "path": "material/refresh",
+                      "style": {
+                        "classes": "Global/MarginRight",
+                        "overflow": "hidden",
+                        "overflowX": "hidden",
+                        "overflowY": "hidden"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": [
+                          {
+                            "config": {
+                              "script": "#\tlogger \u003d system.util.getLogger(\"addMaterials\")\n#\t\n#\tparams \u003d {\n#\t\t\"ModalName\": \"materialsDock\",\n#\t\t\"ViewPath\": \"App/Schedule/Operations/Materials/Embedded/Popups/Add/AddManualMaterials\"\n#\t}\n#\t\n#\tlogger.info(str(params))\n#\t\n#\tsystem.perspective.toggleDock(\"materialsDock\", params\u003dparams)"
+                            },
+                            "enabled": false,
+                            "scope": "G",
+                            "type": "script"
+                          },
+                          {
+                            "config": {
+                              "draggable": true,
+                              "id": "addProductCode",
+                              "modal": true,
+                              "overlayDismiss": false,
+                              "resizable": true,
+                              "showCloseIcon": true,
+                              "title": "Add Product Code",
+                              "type": "open",
+                              "viewParams": {
+                                "ModalName": "addProductCode",
+                                "SiteID": "{view.params.SiteID}"
+                              },
+                              "viewPath": "App/Schedule/ProductCodes/Embedded/Popups/Add/AddProductCode",
+                              "viewportBound": false
+                            },
+                            "scope": "C",
+                            "type": "popup"
+                          }
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-add",
+                      "name": "Add",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Add"
+                      }
+                    },
+                    "position": {
+                      "basis": "29px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/add",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tselectedRowData \u003d self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.selection.data\n\tmodalName \u003d \"editProductCode\"\n\tmodalPath \u003d \"App/Schedule/ProductCodes/Embedded/Popups/Edit/EditProductCode\"\n\t\n\tparams \u003d {\n\t\t\"ModalName\": modalName,\n\t\t\"RowData\": selectedRowData\n\t}\n\t\n\terrorParams \u003d {\n\t\t\"ModalName\": \"ErrorModal\",\n\t\t\"ErrorMessage\": \"Please select a row first!\"\n\t}\n\t\n\tif len(selectedRowData) \u003e 0:\n\t\tsystem.perspective.openPopup(modalName, modalPath, params, title\u003d\"Edit Product Code\", modal\u003dTrue)\n\telse:\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams, modal\u003dTrue)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-edit",
+                      "name": "Edit"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/create",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tqueryPath \u003d \u0027app/Schedule/deletedProductCode\u0027\n\tpcID \u003d self.view.custom.RowData[0].ID\n\t\n\tparams \u003d { \u0027id\u0027: pcID }\n\n\ttry:\n\t\tsystem.db.runNamedQuery(queryPath, params)\n\t\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\"ErrorMessage\": \"The request could not be completed! \" + str(e) \n\t\t}\n\t\t\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams)\n\telse:\n\t\tgpa.frontEnd.localUI.throwSuccess(\u0027Disabled product code\u0027)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-disable",
+                      "name": "Delete",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Delete"
+                      }
+                    },
+                    "position": {
+                      "basis": "27px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/delete",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tlogger \u003d system.util.getLogger(\u0027productcodes_import\u0027)\n\t\n\ttry:\n\t\tparams \u003d { \u0027Type\u0027: \u0027productcodes\u0027 }\n\t\tsystem.perspective.openPopup(\"ImportFile\", \"GlobalComponents/Modals/ImportFile\", params)\n\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\"ErrorMessage\": \u0027There was an error: \u0027 + str(e)\n\t\t}\n\t\t\n\t\tmsg \u003d \u0027There was an error: \u0027 + str(e)\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-import",
+                      "name": "Import",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Import"
+                      }
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/arrow_circle_up",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tlogger \u003d system.util.getLogger(\u0027attribute_export\u0027)\n\t\n\ttry:\n\t\tdata \u003d self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.data\n\t\tcsv \u003d system.dataset.toCSV(dataset \u003d data, showHeaders \u003d True, forExport \u003d True)\n\t\tfileName \u003d \"ProductCodes.csv\"\n\t\t\n\t\tsystem.perspective.download(fileName, csv)\n\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\"ErrorMessage\": \u0027There was an error: \u0027 + str(e)\n\t\t}\n\t\t\n\t\tmsg \u003d \u0027There was an error: \u0027 + str(e)\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-codes-export",
+                      "name": "Export",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Export"
+                      }
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/arrow_circle_down",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Icons"
+                },
+                "position": {
+                  "basis": "450px",
+                  "display": false,
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "justify": "flex-end",
+                  "style": {
+                    "overflow": "hidden"
+                  },
+                  "wrap": "wrap"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "domId": "product-codes-table-header",
+              "name": "Row1"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onRowClick": {
+                      "config": {
+                        "script": "\trowData \u003d self.props.selection.data[0].productCodeId\n\n\tsystem.perspective.sendMessage(\"productCodesRowSelected\", rowData)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    },
+                    "onRowDoubleClick": {
+                      "config": {
+                        "script": "#\trowData \u003d self.props.selection.data\n#\n#\tsystem.perspective.sendMessage(\"productCodesRowSelected\", rowData)"
+                      },
+                      "enabled": false,
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "domId": "product-codes-table",
+                  "name": "ProductCodes"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.sourceData.pieceMarksDS"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "cells": {
+                    "style": {
+                      "marginLeft": "5px"
+                    }
+                  },
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "productCodeId",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": false,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "PieceMark",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Piece Mark"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "description",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Description"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  }
+                },
+                "scripts": {
+                  "customMethods": [],
+                  "extensionFunctions": null,
+                  "messageHandlers": [
+                    {
+                      "messageType": "addedPC",
+                      "pageScope": true,
+                      "script": "\t# implement your handler here\n\tself.view.refreshBinding(\u0027custom.Data\u0027)",
+                      "sessionScope": false,
+                      "viewScope": false
+                    },
+                    {
+                      "messageType": "addProductCodeMaterial",
+                      "pageScope": true,
+                      "script": "\t# implement your handler here\n\tself.view.refreshBinding(\u0027custom.Data\u0027)",
+                      "sessionScope": false,
+                      "viewScope": false
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Row2"
+            },
+            "position": {
+              "basis": "400px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Col1"
+        },
+        "position": {
+          "basis": "50%",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1
+                },
+                "props": {
+                  "text": "Route"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\teditParams \u003d {\n\t\t\"projectId\":  self.view.params.projectId,\n\t\t\"loopTypeName\": self.parent.parent.getChild(\"Table\").custom.loopTypeName,\n\t\t\"loopTypeId\": self.parent.parent.getChild(\"Table\").custom.loopTypeId,\n\t\t\"loopId\":     self.parent.parent.getChild(\"Table\").custom.loopId,\n\t\t\"loopName\":   self.parent.parent.getChild(\"Table\").custom.loopName,\n\t\t\"functionalAreaId\": self.parent.parent.getChild(\"Table\").custom.areaId,\n\t\t\"functionalAreaName\": self.parent.parent.getChild(\"Table\").custom.areaName,\n\t\t\"subAreaId\":  self.parent.parent.getChild(\"Table\").custom.subAreaId,\n\t\t\"projectName\":  self.view.params.projectName,\n\t\t\"loopAlert\": self.parent.parent.getChild(\"Table\").custom.loopAlert,\n\t\t\"loopStatusKey\": self.parent.parent.getChild(\"Table\").custom.loopStatusKey\n\t}\n\t\n\tsystem.perspective.navigate(view\u003d\u0027ConfigTool/LoopConfigs/LoopConfig\u0027, params\u003deditParams)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Rename"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.color": {
+                        "binding": {
+                          "config": {
+                            "path": ".../Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "#5A5A5A",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "#C9C9C9"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": ".../Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/contact_mail",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tif self.props.selected:\n\t    self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.columns[5].filter.enabled \u003d False\n\telse:\n\t    self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.columns[5].filter.enabled \u003d True\n\t    "
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-code-materials-show-disabled",
+                      "name": "ShowDeleted"
+                    },
+                    "props": {
+                      "style": {
+                        "classes": "Global/MarginRight"
+                      },
+                      "text": "Show Disabled"
+                    },
+                    "type": "ia.input.checkbox"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tparams \u003d {\n\t\t\"funcSubArea\": self.parent.parent.getChild(\"Table\").props.columns[7].visible,\n\t\t\"funcArea\": self.parent.parent.getChild(\"Table\").props.columns[9].visible,\n\t\t\"approvedUser\": self.parent.parent.getChild(\"Table\").props.columns[12].visible,\n\t\t\"statusUser\": self.parent.parent.getChild(\"Table\").props.columns[13].visible,\n\t\t\"completedUser\": self.parent.parent.getChild(\"Table\").props.columns[14].visible,\n\t\t\"statusDate\": self.parent.parent.getChild(\"Table\").props.columns[15].visible,\n\t\t\"approvedDate\": self.parent.parent.getChild(\"Table\").props.columns[16].visible,\n\t\t\"completedDate\": self.parent.parent.getChild(\"Table\").props.columns[17].visible\n\t}\n\t\n\tsystem.perspective.print(params)\n\tsystem.perspective.openPopup(\"tableColumns\", \"ConfigTool/Subviews/ColumnSelection\", params\u003dparams, modal\u003dTrue)\n\t"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Filter"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "display": false,
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Table/Table.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/filter_alt",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "custom": {
+                      "RotateTimestamp": {
+                        "$": [
+                          "ts",
+                          192,
+                          1710974072877
+                        ],
+                        "$ts": 1710974072877
+                      }
+                    },
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\tself.custom.RotateTrigger \u003d True\n\tself.custom.RotateTimestamp \u003d system.date.now()"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-code-materials-refresh",
+                      "name": "Refresh",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Refresh Dashboard"
+                      }
+                    },
+                    "position": {
+                      "basis": "30px"
+                    },
+                    "propConfig": {
+                      "custom.RotateTrigger": {
+                        "binding": {
+                          "config": {
+                            "expression": "if(({this.custom.RotateTimestamp} + 500) \u003e now(500), true, false)"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "meta.domId": {
+                        "binding": {
+                          "config": {
+                            "path": "this.custom.RotateTrigger"
+                          },
+                          "enabled": false,
+                          "transforms": [
+                            {
+                              "fallback": "product-code-materials-refresh",
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": false,
+                                  "output": "product-code-materials-refresh"
+                                },
+                                {
+                                  "input": true,
+                                  "output": "rotating-icon"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/refresh",
+                      "style": {
+                        "classes": "Global/MarginRight",
+                        "overflow": "hidden",
+                        "overflowX": "hidden",
+                        "overflowY": "hidden"
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": [
+                          {
+                            "config": {
+                              "script": "\tlogger \u003d system.util.getLogger(\"addProductCodeMaterials\")\n\t\n\tselectedProductCodeData \u003d self.view.params.SelectedProductCodeData\n\tmodalName \u003d \"addProductCodeMaterial\"\n\tmodalPath \u003d \"App/Schedule/ProductCodes/Embedded/Popups/Add/AddPCMaterial\"\n\t\n\tparams \u003d {\n\t\t\"ModalName\": modalName,\n\t\t\"ViewPath\": modalPath,\n\t\t\"ProductCodeID\": self.view.params.ProductCodeID,\n\t\t\"SiteID\": self.view.params.SiteID\n\t}\n\t\n\terrorParams \u003d {\n\t\t\"ModalName\": \"ErrorModal\",\n\t\t\"ErrorMessage\": \"Please select a row from the left table first!\"\n\t}\n\t\n\tif len(selectedProductCodeData) \u003e 0:\n\t\tsystem.perspective.openPopup(modalName, modalPath, params, title\u003d\"Add Product Code Material\", modal\u003dTrue)\n\telse:\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams, modal\u003dTrue)"
+                            },
+                            "scope": "G",
+                            "type": "script"
+                          },
+                          {
+                            "config": {
+                              "draggable": true,
+                              "id": "addProductCodeMaterial",
+                              "modal": true,
+                              "overlayDismiss": false,
+                              "resizable": true,
+                              "showCloseIcon": true,
+                              "title": "Add Product Code Material",
+                              "type": "open",
+                              "viewParams": {
+                                "ModalName": "addProductCodeMaterial",
+                                "ProductCodeID": "{view.params.ProductCodeID}",
+                                "SiteID": "{view.params.SiteID}"
+                              },
+                              "viewPath": "App/Schedule/ProductCodes/Embedded/Popups/Add/AddPCMaterial",
+                              "viewportBound": false
+                            },
+                            "enabled": false,
+                            "scope": "C",
+                            "type": "popup"
+                          }
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-code-materials-add",
+                      "name": "Add",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Add"
+                      }
+                    },
+                    "position": {
+                      "basis": "29px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/add",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tselectedRowData \u003d self.parent.parent.parent.getChild(\"Row2/ProductCodes\").props.selection.data\n\tmodalName \u003d \"editProductCodeMaterial\"\n\tmodalPath \u003d \"App/Schedule/ProductCodes/Embedded/Popups/Edit/EditPCMaterial\"\n\t\n\tparams \u003d {\n\t\t\"ModalName\": modalName,\n\t\t\"RowData\": selectedRowData\n\t}\n\t\n\terrorParams \u003d {\n\t\t\"ModalName\": \"ErrorModal\",\n\t\t\"ErrorMessage\": \"Please select a row first!\"\n\t}\n\t\n\tif len(selectedRowData) \u003e 0:\n\t\tsystem.perspective.openPopup(modalName, modalPath, params, title\u003d\"Edit Product Code Material\", modal\u003dTrue)\n\telse:\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams, modal\u003dTrue)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-code-materials-edit",
+                      "name": "Edit"
+                    },
+                    "position": {
+                      "basis": "24px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/create",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tqueryPath \u003d \u0027app/Schedule/deletePCMaterial\u0027\n\tpcMaterialID \u003d self.view.custom.RowData[0].ID\n\t\n\tparams \u003d { \u0027id\u0027: pcMaterialID }\n\n\ttry:\n\t\tsystem.db.runNamedQuery(queryPath, params)\n\t\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\"ErrorMessage\": \"The request could not be completed! \" + str(e) \n\t\t}\n\t\t\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalComponents/Modals/ErrorModal\", errorParams)\n\telse:\n\t\tgpa.frontEnd.localUI.throwSuccess(\u0027Disabled product code material\u0027)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "domId": "product-code-materials-delete",
+                      "name": "Delete",
+                      "tooltip": {
+                        "enabled": true,
+                        "text": "Delete"
+                      }
+                    },
+                    "position": {
+                      "basis": "27px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "position.display": {
+                        "binding": {
+                          "config": {
+                            "expression": "!{session.custom.ERPIntegration}"
+                          },
+                          "type": "expr"
+                        }
+                      },
+                      "props.style.cursor": {
+                        "binding": {
+                          "config": {
+                            "path": "..../Row2/ProductCodes.props.selection.selectedRow"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": "pointer",
+                              "inputType": "expression",
+                              "mappings": [
+                                {
+                                  "input": "None",
+                                  "output": "auto"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/delete",
+                      "style": {
+                        "classes": "",
+                        "marginRight": 8
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Icons"
+                },
+                "position": {
+                  "basis": "450px",
+                  "display": false,
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "justify": "flex-end",
+                  "style": {
+                    "overflow": "hidden"
+                  },
+                  "wrap": "wrap"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "domId": "product-codes-materials-table-header",
+              "name": "Row1"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onRowDoubleClick": {
+                      "config": {
+                        "script": "\trowData \u003d self.props.selection.data\n\n\tsystem.perspective.sendMessage(\"productCodesMaterialRowSelected\", rowData)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "domId": "product-codes-materials-table",
+                  "name": "ProductCodes"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.sourceData.routesDS"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "cells": {
+                    "style": {
+                      "marginLeft": "5px"
+                    }
+                  },
+                  "columns": [
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "seq",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Code"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "stepName",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Name"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": false,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "dateFormat": "MM/DD/YYYY",
+                      "editable": false,
+                      "field": "eligibleLines",
+                      "filter": {
+                        "boolean": {
+                          "condition": ""
+                        },
+                        "date": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "enabled": false,
+                        "number": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "string": {
+                          "condition": "",
+                          "value": ""
+                        },
+                        "visible": "on-hover"
+                      },
+                      "footer": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "header": {
+                        "align": "center",
+                        "justify": "left",
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": "Eligible Lines"
+                      },
+                      "justify": "auto",
+                      "nullFormat": {
+                        "includeNullStrings": true,
+                        "nullFormatValue": "",
+                        "strict": false
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "progressBar": {
+                        "bar": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "max": 100,
+                        "min": 0,
+                        "track": {
+                          "color": "",
+                          "style": {
+                            "classes": ""
+                          }
+                        },
+                        "value": {
+                          "enabled": true,
+                          "format": "0,0.##",
+                          "justify": "center",
+                          "style": {
+                            "classes": ""
+                          }
+                        }
+                      },
+                      "render": "auto",
+                      "resizable": true,
+                      "sort": "none",
+                      "sortable": true,
+                      "strictWidth": false,
+                      "style": {
+                        "classes": ""
+                      },
+                      "toggleSwitch": {
+                        "color": {
+                          "selected": "",
+                          "unselected": ""
+                        }
+                      },
+                      "viewParams": {},
+                      "viewPath": "",
+                      "visible": true,
+                      "width": ""
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  }
+                },
+                "scripts": {
+                  "customMethods": [],
+                  "extensionFunctions": null,
+                  "messageHandlers": [
+                    {
+                      "messageType": "addProductCodeMaterial",
+                      "pageScope": true,
+                      "script": "\t# implement your handler here\n\tself.view.refreshBinding(\u0027custom.Data\u0027)",
+                      "sessionScope": false,
+                      "viewScope": false
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Row2"
+            },
+            "position": {
+              "basis": "400px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Col2"
+        },
+        "position": {
+          "basis": "50%",
+          "grow": 1
+        },
+        "propConfig": {
+          "position.display": {
+            "persistent": true
+          }
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "productCodesRowSelected",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.view.custom.viewData.selectedPiece \u003d payload\n\tself.getChild(\"Col2\").position.display \u003d True",
+          "sessionScope": true,
+          "viewScope": true
+        },
+        {
+          "messageType": "productCodesMaterialRowSelected",
+          "pageScope": true,
+          "script": "\t# implement your handler here\n\tself.view.custom.ProductCodesMaterialData \u003d payload",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

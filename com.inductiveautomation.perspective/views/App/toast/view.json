@@ -1,0 +1,331 @@
+{
+  "custom": {
+    "autoClose": "4000",
+    "message": "Success",
+    "method": "success",
+    "position": "top-right",
+    "theme": "light",
+    "toastId": "",
+    "trigger": ""
+  },
+  "params": {},
+  "propConfig": {
+    "custom.autoClose": {
+      "persistent": true
+    },
+    "custom.message": {
+      "persistent": true
+    },
+    "custom.method": {
+      "persistent": true
+    },
+    "custom.position": {
+      "persistent": true
+    },
+    "custom.theme": {
+      "persistent": true
+    },
+    "custom.toastId": {
+      "persistent": true
+    },
+    "custom.trigger": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tval \u003d (currentValue.value or \"\").strip()\n\tif not val:\n\t\treturn\n\t\n\tform \u003d self.view.custom\n\tmsg \u003d form.message or \"\"\n\ttid \u003d form.toastId or \"op\"\n\t\n\ttry:\n\t\tif val \u003d\u003d \"success\":\n\t\t\ttoast.success(msg)\n\t\telif val \u003d\u003d \"info\":\n\t\t\ttoast.info(msg)\n\t\telif val \u003d\u003d \"warn\":\n\t\t\ttoast.warn(msg)\n\t\telif val \u003d\u003d \"error\":\n\t\t\ttoast.error(msg)\n\t\telif val \u003d\u003d \"loading\":\n\t\t\ttoast.loading(msg or \"Working...\", tid)\n\t\telif val \u003d\u003d \"update\":\n\t\t\t# change type if needed: \"success\" | \"error\" | \"info\" | \"warning\" | \"default\"\n\t\t\ttoast.update(tid, msg or \"Done\", \"success\")\n\t\telif val \u003d\u003d \"dismiss\":\n\t\t\tif (form.toastId or \"\").strip():\n\t\t\t\ttoast.dismiss(tid)\n\t\t\telse:\n\t\t\t\ttoast.dismiss()\n\tfinally:\n\t\t# reset trigger so it won\u0027t retrigger\n\t\tself.view.custom.trigger \u003d \"\""
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 230
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Method"
+        },
+        "position": {
+          "height": 36,
+          "width": 180,
+          "x": 23.999998092651367,
+          "y": 71.00000190734863
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.method"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "success",
+              "value": "success"
+            },
+            {
+              "label": "info",
+              "value": "info"
+            },
+            {
+              "label": "warning",
+              "value": "warning"
+            },
+            {
+              "label": "error",
+              "value": "error"
+            },
+            {
+              "label": "loading",
+              "value": "loading"
+            },
+            {
+              "label": "update",
+              "value": "update"
+            },
+            {
+              "label": "dismiss",
+              "value": "dismiss"
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Message"
+        },
+        "position": {
+          "height": 36,
+          "width": 178,
+          "x": 308,
+          "y": 71.00000190734863
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.message"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "placeholder": "Toast message"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "ToastId"
+        },
+        "position": {
+          "height": 36,
+          "width": 130,
+          "x": 646,
+          "y": 71.00000190734863
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.toastId"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "placeholder": "toastId (optional)"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Position"
+        },
+        "position": {
+          "height": 36,
+          "width": 200,
+          "x": 23.999998092651367,
+          "y": 123.00000190734863
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.position"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "top-left",
+              "value": "top-left"
+            },
+            {
+              "label": "top-center",
+              "value": "top-center"
+            },
+            {
+              "label": "top-right",
+              "value": "top-right"
+            },
+            {
+              "label": "bottom-left",
+              "value": "bottom-left"
+            },
+            {
+              "label": "bottom-center",
+              "value": "bottom-center"
+            },
+            {
+              "label": "bottom-right",
+              "value": "bottom-right"
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Theme"
+        },
+        "position": {
+          "height": 36,
+          "width": 160,
+          "x": 235.99999809265137,
+          "y": 123.00000190734863
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.theme"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "dark",
+              "value": "dark"
+            },
+            {
+              "label": "light",
+              "value": "light"
+            },
+            {
+              "label": "colored",
+              "value": "colored"
+            }
+          ]
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "AutoClose"
+        },
+        "position": {
+          "height": 36,
+          "width": 200,
+          "x": 407.99999809265137,
+          "y": 123.00000190734863
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.autoClose"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "placeholder": "autoClose ms or \u0027false\u0027"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tself.view.custom.trigger \u003d (self.view.custom.method or u\u0027\u0027)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Run"
+        },
+        "position": {
+          "height": 34,
+          "width": 72,
+          "x": 615.9999980926514,
+          "y": 123.00000190734863
+        },
+        "props": {
+          "text": "Run"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 32,
+          "width": 94,
+          "x": 218.99,
+          "y": 75.00000762939453
+        },
+        "props": {
+          "text": "Message"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "height": 32,
+          "width": 67,
+          "x": 562,
+          "y": 75.00000762939453
+        },
+        "props": {
+          "text": "Toast ID"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

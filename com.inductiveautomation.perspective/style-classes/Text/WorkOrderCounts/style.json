@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--neutral-100)",
+      "fontSize": "1rem",
+      "fontWeight": "300",
+      "textTransform": "capitalize"
+    }
+  }
+}

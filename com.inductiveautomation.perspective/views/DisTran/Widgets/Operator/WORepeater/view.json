@@ -1,0 +1,883 @@
+{
+  "custom": {
+    "FilterWorkOrders": [
+      {
+        "data": {
+          "EndTs": 1759158000000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759150800000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759345200000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759338000000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759237200000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759230000000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759237200000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759230000000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759244400000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759244400000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759330800000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759323600000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759338000000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759330800000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759345200000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759338000000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759352400000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759345200000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759158000000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759150800000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759165200000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759158000000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759165200000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759158000000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-3333P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759244400000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759237200000,
+          "WO": "25-3333P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759251600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759244400000,
+          "WO": "25-3333P-10-1S01"
+        }
+      }
+    ]
+  },
+  "params": {
+    "workorders": [
+      {
+        "data": {
+          "EndTs": 1759330800000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759323600000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759158000000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759150800000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759165200000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759158000000,
+          "WO": "25-1234P-03-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759338000000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759330800000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1234P-03-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-1234P-03-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759158000000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759150800000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-8912P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759345200000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759338000000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759345200000,
+          "HeatNumber": "B504454",
+          "Line": "1S02",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759338000000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759352400000,
+          "HeatNumber": "A504641",
+          "Line": "1S02",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-8912P-10-1S02_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759345200000,
+          "WO": "25-8912P-10-1S02"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759165200000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759158000000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759237200000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "356179",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-1111P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759230000000,
+          "WO": "25-1111P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759172400000,
+          "HeatNumber": "A2525640",
+          "Line": "1S01",
+          "LotNumber": "355691",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 3,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759165200000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759237200000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353224",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759230000000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759244400000,
+          "HeatNumber": "B504454",
+          "Line": "1S01",
+          "LotNumber": "353225",
+          "MaterialName": "PL 1/4 A572-65",
+          "Operation": "Plasma",
+          "Priority": 2,
+          "ProgramName": "25-2222P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759244400000,
+          "WO": "25-2222P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759179600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352066",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759172400000,
+          "WO": "25-3333P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759244400000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352067",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759237200000,
+          "WO": "25-3333P-10-1S01"
+        }
+      },
+      {
+        "data": {
+          "EndTs": 1759251600000,
+          "HeatNumber": "A504641",
+          "Line": "1S01",
+          "LotNumber": "352068",
+          "MaterialName": "PL 3/16 A572-65",
+          "Operation": "Plasma",
+          "Priority": 1,
+          "ProgramName": "25-3333P-10-1S01_Plasma",
+          "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+          "QtyDone": 0,
+          "QtyPlanned": 1,
+          "StartTs": 1759244400000,
+          "WO": "25-3333P-10-1S01"
+        }
+      }
+    ]
+  },
+  "propConfig": {
+    "custom.FilterWorkOrders": {
+      "binding": {
+        "config": {
+          "path": "view.custom.search"
+        },
+        "transforms": [
+          {
+            "code": "\t# transform(self, value, quality, timestamp)\n\t# value \u003d current search text\n\t\n\tq \u003d (value or \u0027\u0027).strip()\n\t\n\t# Source list (change to self.view.custom.workorders if that\u0027s your source)\n\trecords \u003d self.view.params.workorders or []\n\tif not records:\n\t\treturn []\n\t\n\tdef digits_only(x):\n\t\treturn \u0027\u0027.join([ch for ch in str(x or \u0027\u0027) if ch.isdigit()])\n\t\n\tdef get(rec, key, default\u003dNone):\n\t\ttry:\n\t\t\treturn (rec.get(\u0027data\u0027) or {}).get(key, default)\n\t\texcept:\n\t\t\treturn default\n\t\n\tdef prio(rec):\n\t\ttry:\n\t\t\treturn int(get(rec, \u0027Priority\u0027, 0))\n\t\texcept:\n\t\t\treturn 0\n\t\n\tdef start_ts(rec):\n\t\ttry:\n\t\t\treturn int(get(rec, \u0027StartTs\u0027, 0))\n\t\texcept:\n\t\t\treturn 0\n\t\n\tdef lot_digits(rec):\n\t\treturn digits_only(get(rec, \u0027LotNumber\u0027, \u0027\u0027))\n\t\n\tq_dig \u003d digits_only(q)\n\t\n\tif q_dig:\n\t\t# rank: 0 \u003d startswith, 1 \u003d contains, 2 \u003d no match\n\t\tdef key(rec):\n\t\t\tlot \u003d lot_digits(rec)\n\t\t\tif lot.startswith(q_dig):\n\t\t\t\trank \u003d 0\n\t\t\telif q_dig in lot:\n\t\t\t\trank \u003d 1\n\t\t\telse:\n\t\t\t\trank \u003d 2\n\t\t\treturn (rank, -prio(rec), start_ts(rec), lot)\n\telse:\n\t\t# default ordering when there is no search\n\t\tdef key(rec):\n\t\t\treturn (-prio(rec), start_ts(rec), lot_digits(rec))\n\t\n\t# Return the whole list, just reordered\n\treturn sorted(records, key\u003dkey)",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.search": {
+      "binding": {
+        "config": {
+          "path": "/root/SearchRow/Search.props.text"
+        },
+        "type": "property"
+      },
+      "persistent": false
+    },
+    "params.workorders": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 700,
+      "width": 754
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SearchLabel"
+            },
+            "props": {
+              "style": {
+                "fontWeight": "600"
+              },
+              "text": "Search by Lot #"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Search"
+            },
+            "position": {
+              "basis": "57%"
+            },
+            "propConfig": {
+              "props.text": {
+                "persistent": false
+              }
+            },
+            "props": {
+              "deferUpdates": false,
+              "placeholder": "e.g. 356123",
+              "spellcheck": false,
+              "style": {
+                "marginBottom": 4,
+                "marginTop": 4
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "SearchRow"
+        },
+        "position": {
+          "basis": "5%"
+        },
+        "props": {
+          "style": {
+            "gap": "10px",
+            "marginBottom": "8px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Repeater"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.FilterWorkOrders"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "elementPosition": {
+                "basis": "auto",
+                "grow": 0
+              },
+              "justify": "center",
+              "loading": {
+                "order": "with-parent"
+              },
+              "path": "App/DisTran/Widgets/Operator/FlexRepeater/test",
+              "style": {
+                "alignContent": "flex-start",
+                "gap": 12
+              },
+              "useDefaultViewParams": true,
+              "wrap": "wrap"
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "minHeight": 0
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "boxShadow": "inset 0 0 2px white",
+        "gap": "8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

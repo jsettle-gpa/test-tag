@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "10px",
+      "borderTopRightRadius": "10px",
+      "borderBottomLeftRadius": "10px",
+      "borderBottomRightRadius": "10px",
+      "marginBottom": "5px",
+      "marginTop": "5px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "borderColor": "var(--callToAction)",
+        "borderStyle": "solid",
+        "borderWidth": "2px"
+      }
+    }
+  ]
+}

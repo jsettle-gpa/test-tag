@@ -1,0 +1,791 @@
+{
+  "custom": {
+    "activePage": "eqConfig",
+    "output": {
+      "cellConfig": {
+        "cellOrder": "",
+        "downtimeMode": "",
+        "keyCell": ""
+      },
+      "derived": {
+        "custom": {
+          "input": "",
+          "outfeed": "",
+          "path": "",
+          "reject": "",
+          "status": ""
+        },
+        "customDerivedValues": ""
+      },
+      "edgeGroup": {
+        "device": "",
+        "input": "",
+        "outfeed": "",
+        "reject": "",
+        "server": "",
+        "state": ""
+      },
+      "lineConfig": {
+        "downtimeDetectionType": "",
+        "hasCells": ""
+      },
+      "modeGroup": "",
+      "stateGroup": ""
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.activePage": {
+      "persistent": true
+    },
+    "custom.output": {
+      "persistent": true
+    },
+    "custom.output.eqConfig": {
+      "binding": {
+        "config": {
+          "path": "/root/FlexContainer_0/EmbeddedView.props.params.eqConfig"
+        },
+        "type": "property"
+      }
+    },
+    "custom.pages": {
+      "persistent": false
+    },
+    "custom.pages.cellConfig": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.type"
+        },
+        "transforms": [
+          {
+            "code": "\tif value \u003d\u003d 5:\n\t\treturn True\n\telse: return False",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.pages.derivedConfig": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.derived"
+        },
+        "type": "property"
+      }
+    },
+    "custom.pages.edgeConfig": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.edge"
+        },
+        "type": "property"
+      }
+    },
+    "custom.pages.lineConfig": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.type"
+        },
+        "transforms": [
+          {
+            "code": "\tif value \u003d\u003d 4:\n\t\treturn True\n\telse: return False",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.pages.modeGroup": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.modes"
+        },
+        "type": "property"
+      }
+    },
+    "custom.pages.stateGroup": {
+      "binding": {
+        "config": {
+          "path": "view.custom.output.eqConfig.states"
+        },
+        "type": "property"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 515,
+      "width": 873
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Icon"
+                    },
+                    "position": {
+                      "basis": "20%"
+                    },
+                    "props": {
+                      "color": "#372BE5",
+                      "path": "material/info",
+                      "style": {
+                        "padding": 5
+                      }
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "50px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "text": "Equipment Config"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "eqConfig"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "Line Config"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "lineConfig"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.lineConfig"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "Cell Config"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "cellConfig"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.cellConfig"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "Mode Group"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "modeGroup"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.modeGroup"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "State Group"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "stateGroup"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.stateGroup"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "Edge Config"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "edgeConfig"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.edgeConfig"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Icon"
+                        },
+                        "position": {
+                          "basis": "30px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "path": "material/info",
+                          "style": {
+                            "padding": 5
+                          }
+                        },
+                        "type": "ia.display.icon"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer"
+                    },
+                    "position": {
+                      "basis": "58px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "basis": "50px",
+                          "grow": 1
+                        },
+                        "props": {
+                          "text": "Derived Config"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlexContainer_0"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "grow": 1
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "derivedConfig"
+                },
+                "position": {
+                  "basis": "38px"
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.pages.derivedConfig"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "navigation"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tpageOrder \u003d [\n\t\t\"eqConfig\",\n\t\t\"lineConfig\",\n\t\t\"cellConfig\",\n\t\t\"modeGroup\",\n\t\t\"stateGroup\",\n\t\t\"edgeConfig\",\n\t\t\"derivedConfig\"\n\t]\n\t\n\tenabledPages \u003d [\"eqConfig\"] + [\n\t\tpage for page in pageOrder[1:] if self.view.custom.pages.get(page, False)\n\t]\n\t\n\tcurrent \u003d self.view.custom.activePage\n\tidx \u003d enabledPages.index(current) if current in enabledPages else 0\n\t\n\t\n\tif idx \u003e 0:\n\t\tself.view.custom.activePage \u003d enabledPages[idx - 1]"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "backBtn"
+                },
+                "position": {
+                  "basis": "80px",
+                  "grow": 1
+                },
+                "props": {
+                  "primary": false,
+                  "text": "Back"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tpageOrder \u003d [\n\t\t\"eqConfig\",\n\t\t\"lineConfig\",\n\t\t\"cellConfig\",\n\t\t\"modeGroup\",\n\t\t\"stateGroup\",\n\t\t\"edgeConfig\",\n\t\t\"derivedConfig\"\n\t]\n\tenabledPages \u003d [\"eqConfig\"] + [\n\t\tpage for page in pageOrder[1:] if self.view.custom.pages.get(page, False)\n\t]\n\tcurrent \u003d self.view.custom.activePage\n\tidx \u003d enabledPages.index(current) if current in enabledPages else 0\n\tif idx \u003c len(enabledPages) - 1:\n\t\tself.view.custom.activePage \u003d enabledPages[idx + 1]"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "nextBtn"
+                },
+                "position": {
+                  "basis": "80px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.custom.activePage} !\u003d \r\n    if({view.custom.pages.derivedConfig}, \"derivedConfig\",\r\n      if({view.custom.pages.edgeConfig}, \"edgeConfig\",\r\n        if({view.custom.pages.stateGroup}, \"stateGroup\",\r\n          if({view.custom.pages.modeGroup}, \"modeGroup\",\r\n            if({view.custom.pages.cellConfig}, \"cellConfig\",\r\n              if({view.custom.pages.lineConfig}, \"lineConfig\",\r\n                \"eqConfig\"\r\n              )\r\n            )\r\n          )\r\n        )\r\n      )\r\n    )\r\n"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Next"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "submitBtn"
+                },
+                "position": {
+                  "basis": "80px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "{view.custom.activePage} \u003d \r\n    if({view.custom.pages.derivedConfig}, \"derivedConfig\",\r\n      if({view.custom.pages.edgeConfig}, \"edgeConfig\",\r\n        if({view.custom.pages.stateGroup}, \"stateGroup\",\r\n          if({view.custom.pages.modeGroup}, \"modeGroup\",\r\n            if({view.custom.pages.cellConfig}, \"cellConfig\",\r\n              if({view.custom.pages.lineConfig}, \"lineConfig\",\r\n                \"eqConfig\"\r\n              )\r\n            )\r\n          )\r\n        )\r\n      )\r\n    )\r\n"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Submit"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "buttons"
+            },
+            "position": {
+              "basis": "60px"
+            },
+            "props": {
+              "style": {
+                "gap": 2,
+                "padding": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "250px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": 4,
+            "padding": "20px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedView"
+            },
+            "position": {
+              "basis": "320px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.activePage"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value \u003d\u003d \"eqConfig\":\n\t\treturn \"embedded/baseEqConfig\"\n\telif value \u003d\u003d \"lineConfig\":\n\t\treturn \"embedded/lineConfig\"\n\telif value \u003d\u003d \"cellConfig\":\n\t\treturn \"embedded/cellConfig\"\n\telif value \u003d\u003d \"modeGroup\":\n\t\treturn \"embedded/modeConfig\"\n\telif value \u003d\u003d \"stateGroup\":\n\t\treturn \"embedded/stateConfig\"\n\telif value \u003d\u003d \"edgeConfig\":\n\t\treturn \"embedded/edgeConfig\"\n\telif value \u003d\u003d \"derivedConfig\":\n\t\treturn \"embedded/derivedConfig\"\n\telse: return None",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "eqConfig": {
+                  "derived": false,
+                  "edge": false,
+                  "modes": false,
+                  "name": "",
+                  "parent": "",
+                  "states": false,
+                  "type": 4
+                }
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

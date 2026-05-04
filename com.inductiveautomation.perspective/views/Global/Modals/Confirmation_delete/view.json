@@ -1,0 +1,268 @@
+{
+  "custom": {},
+  "params": {
+    "displayHeader": "Are you sure?",
+    "displayMessage": "This will delete this grouping row",
+    "messageHandler": "",
+    "pageId": "",
+    "payload": {}
+  },
+  "propConfig": {
+    "params.displayHeader": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.displayMessage": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.messageHandler": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pageId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.payload": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 230,
+      "width": 305
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "icon"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "controls": {
+                  "circle": {
+                    "Visible": false
+                  },
+                  "color": "#FF0000",
+                  "icon": {
+                    "IconPath": "material/error_outline",
+                    "Visible": true
+                  },
+                  "square": {
+                    "Visible": false
+                  }
+                }
+              },
+              "path": "components/icons/icon",
+              "useDefaultViewHeight": true,
+              "useDefaultViewWidth": true
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "areYouSure"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.displayHeader"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Text/LabelTextLarge",
+                "fontWeight": "bold",
+                "paddingBottom": "1ch",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "displayMessage"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.displayMessage"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Text/LabelTextMedium Text/textColorGray",
+                "fontWeight": "bold",
+                "overflowWrap": "normal",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "main"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "paddingBottom": "1ch"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "confirmation",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "close",
+                    "viewPath": "modals/message/confirmation"
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "no"
+            },
+            "position": {
+              "basis": "6ch",
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "Borders": {
+                  "borderBottomLeftRadius": "10px",
+                  "borderBottomRightRadius": "10px",
+                  "borderTopLeftRadius": "10px",
+                  "borderTopRightRadius": "10px"
+                },
+                "Label": "No",
+                "State": "false",
+                "enabled": true,
+                "value": "value"
+              },
+              "path": "components/buttons/processButton",
+              "style": {
+                "paddingRight": "0.5ch"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tmsgHandler \u003d self.view.params.messageHandler\n\tif msgHandler !\u003d \u0027\u0027:\n\t\tpageId \u003d self.view.params.pageId\n\t\tpayload \u003d self.view.params.payload \n\t\t\n\t\tsystem.perspective.sendMessage(msgHandler, {} if payload is None else payload, pageId \u003d pageId)\n\t\t\n\t\n\tsystem.perspective.closePopup(\u0027confirmation\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "yes"
+            },
+            "position": {
+              "basis": "6ch",
+              "shrink": 0
+            },
+            "props": {
+              "params": {
+                "Borders": {
+                  "borderBottomLeftRadius": "10px",
+                  "borderBottomRightRadius": "10px",
+                  "borderTopLeftRadius": "10px",
+                  "borderTopRightRadius": "10px"
+                },
+                "Label": "Yes",
+                "State": "false",
+                "enabled": true,
+                "value": "value"
+              },
+              "path": "components/buttons/processButton",
+              "style": {
+                "paddingLeft": "0.5ch"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "buttons"
+        },
+        "position": {
+          "basis": "4ch",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "padding": "5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

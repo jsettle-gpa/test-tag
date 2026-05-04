@@ -1,0 +1,239 @@
+{
+  "custom": {},
+  "params": {
+    "DeleteNamedQueriesParams": [],
+    "DeleteNamedQueriesPaths": [],
+    "MessageHandlers": [],
+    "ObjectBeingDeletedName": "",
+    "ObjectBeingDeletedType": "",
+    "Payloads": []
+  },
+  "propConfig": {
+    "params.DeleteNamedQueriesParams": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.DeleteNamedQueriesPaths": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.MessageHandlers": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ObjectBeingDeletedName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ObjectBeingDeletedType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Payloads": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 180,
+      "width": 360
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "61px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "ObjectBeingDeletedName": "{view.params.ObjectBeingDeletedName}",
+                      "ObjectBeingDeletedType": "{view.params.ObjectBeingDeletedType}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tobject_name \u003d value.ObjectBeingDeletedName\n\tobject_type \u003d value.ObjectBeingDeletedType\n\t\n\tif object_name not in (None, \"\"):\n\t\treturn \"Do you wish to delete \" + str(object_name) + \"?\"\n\telif object_type not in (None, \"\"):\n\t\treturn \"Do you wish to delete this \" + str(object_type) + \"?\"\n\telse:\n\t\treturn \"Do you wish to delete this record?\"",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontWeight": "normal",
+                "text-align": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "props": {
+              "text": "WARNING: This action cannot be undone.",
+              "textStyle": {
+                "fontWeight": "bold",
+                "text-align": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Row1"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "Global/MarginBottom Global/MarginLeft Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\n\t################################\n\t##########REV NOTES#############\n\t# Description\n\t# onClick action for global delete confirmation popup. Receives delete named query path and query parameters from the view parameters.\n\t#\n\t# Initials ... Date ... Change #\n\t# NG ... 05/01/2025 ... Initial Creation\n\t# NG ... 05/20/2025 ... Added .capitalize() to success message with record_type\n\t# NG ... 06/05/2025 ... Modified code to accept new array parameters\n\t# NG ... 06/27/2025 ... Results of queries are now filtered by data type to determine result checking logic\n\t# NG ... 07/17/2025 ... Code now checks if the name of the deleted record was passed into the view and displays it in the confirmation message if it is present\n\t\n\timport sys\n\tPyUnicode \u003d sys.modules[\u0027org.python.core\u0027].PyUnicode\n\t\n\ttry:\n\t\tquery_paths \u003d self.view.params.DeleteNamedQueriesPaths\n\t\tquery_params \u003d self.view.params.DeleteNamedQueriesParams\n\t\trecord_type \u003d self.view.params.ObjectBeingDeletedType\n\t\trecord_name \u003d self.view.params.ObjectBeingDeletedName\n\t\tmessage_handlers \u003d self.view.params.MessageHandlers\n\t\tpayloads \u003d self.view.params.Payloads\n   \n\t\t#if query_path in (None, \"\"):\n\t\tif len(query_paths) \u003d\u003d 0:\n\t\t\traise Exception(\"Named query path not supplied to delete confirmation popup.\")\n\t\tif len(query_params) \u003d\u003d 0:\n\t\t\traise Exception(\"Named query parameters not supplied to delete confirmation popup.\")\n\t\tquery_params_map_array \u003d []\n\t\tfor params_map in query_params:\n\t\t\tquery_params_map \u003d {}\n\t\t\tfor key, value in params_map.items():\n\t\t\t\tquery_params_map[key] \u003d value\n\t\t\tquery_params_map_array.append(query_params_map.copy())\n\t\tfor query_path, query_params_map in zip(query_paths, query_params_map_array):\n\t\t\tres \u003d system.db.runNamedQuery(query_path, query_params_map)\n\t\t\tif isinstance(res, PyUnicode):\n\t\t\t\tif str(res) !\u003d \"Success\": \n\t\t\t\t\traise Exception(str(res))\n\t\t\t\telse:\n\t\t\t\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\t\telse:\n\t\t\t\tif str(res[0][0]) !\u003d \"Success\": \n\t\t\t\t\traise Exception(str(res[0][0]))\n\t\t\t\telse:\n\t\t\t\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\tif record_name not in (None, \"\"):\n\t\t\tgpa.frontEnd.localUI.throwSuccess(str(record_name).capitalize() + \" deleted\")\n\t\telif record_type not in (None, \"\"):\n\t\t\tgpa.frontEnd.localUI.throwSuccess(str(record_type).capitalize() + \" deleted\")\n\t\telse:\n\t\t\tgpa.frontEnd.localUI.throwSuccess(\"Record deleted\")\n\t\t\n\t\tpayloads_map_array \u003d []\n\t\tfor payload_map in payloads:\n\t\t\tquery_payload_map \u003d {}\n\t\t\tfor key, value in payload_map.items():\n\t\t\t\tquery_payload_map[key] \u003d value\n\t\t\tpayloads_map_array.append(query_payload_map.copy())\n\t\t\n\t\tfor message_handler, payload in zip(message_handlers, payloads_map_array):\n\t\t\tsystem.perspective.sendMessage(message_handler, payload)\n\t\t\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ConfirmButton"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/check",
+                    "IsSelectable": false,
+                    "Label": "Yes",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "value",
+                    "ValidPermissions": true
+                  },
+                  "path": "GlobalComponents/Buttons/Button"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Confirm"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Global/MarginRight"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tsystem.perspective.closePopup(\u0027\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "CancelButton"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/close",
+                    "IsSelectable": false,
+                    "Label": "No",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "value",
+                    "ValidPermissions": true
+                  },
+                  "path": "GlobalComponents/Buttons/Button"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Row2"
+        },
+        "position": {
+          "basis": "48px"
+        },
+        "props": {
+          "justify": "space-around",
+          "style": {
+            "classes": "Global/MarginBottom Global/MarginLeft Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center"
+    },
+    "type": "ia.container.flex"
+  }
+}

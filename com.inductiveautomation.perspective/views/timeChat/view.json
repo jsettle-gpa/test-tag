@@ -1,0 +1,157 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {
+    "custom.test": {
+      "binding": {
+        "config": {
+          "aggregate": "LastValue",
+          "avoidScanClassValidation": true,
+          "dateRange": {
+            "endDate": "now(0)",
+            "startDate": "dateArithmetic(now(0), -1, \u0027hour\u0027)"
+          },
+          "enableValueCache": true,
+          "ignoreBadQuality": false,
+          "preventInterpolation": false,
+          "returnFormat": "Wide",
+          "returnSize": {
+            "delay": "1",
+            "delayUnits": "MIN",
+            "type": "INTERVAL"
+          },
+          "tags": [
+            {
+              "path": "[Canary/ignition-elev8-script-prod-gw:default]Canary8-LaTech/Mes/GPA/Site/Area/L1/MachineInput/infeed"
+            }
+          ],
+          "valueFormat": "DOCUMENT"
+        },
+        "type": "tag-history"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1454
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "height": 600,
+          "width": 800,
+          "x": 166,
+          "y": 55
+        },
+        "props": {
+          "config": {
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1771251216524
+              ],
+              "$ts": 1771251120123
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1771251216524
+              ],
+              "$ts": 1771222416123
+            },
+            "visibility": {
+              "showTagBrowser": true
+            }
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "mode": "annotation",
+            "rangeZoomLevel": 1
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:Canary:/drv:ignition-elev8-script-prod-gw:default:/tag:Canary8-LaTech/Mes/GPA/Site/Area/L7/MachineInput/infeed"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "infeed",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ]
+        },
+        "type": "ia.chart.powerchart"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

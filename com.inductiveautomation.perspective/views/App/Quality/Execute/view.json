@@ -1,0 +1,521 @@
+{
+  "custom": {},
+  "params": {
+    "JobId": "",
+    "TestCode": ""
+  },
+  "propConfig": {
+    "params.JobId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.TestCode": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "LblJob"
+                },
+                "props": {
+                  "text": "Job: {view.params.JobId}"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "LblTest"
+                },
+                "props": {
+                  "text": "Test: {view.params.TestCode}"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Info"
+            },
+            "props": {
+              "style": {
+                "gap": "16px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "BtnPause"
+                },
+                "props": {
+                  "text": "Pause"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSave"
+                },
+                "props": {
+                  "text": "Save Draft"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSubmit"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Submit Results"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "TopActions"
+            },
+            "props": {
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid var(--neutral-40)",
+            "borderRadius": "8px",
+            "gap": "8px",
+            "padding": "6px 10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Measurements"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Lbl1"
+                },
+                "props": {
+                  "text": "Length (in)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "In1"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "Lbl2"
+                },
+                "props": {
+                  "text": "Twist (deg)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "In2"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "Lbl3"
+                },
+                "props": {
+                  "text": "Rough Cut (in)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "In3"
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "CardInputs"
+            },
+            "position": {
+              "basis": "420px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "8px",
+                "minHeight": "280px",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Angles"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "AnglesTable"
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "Angle",
+                      "header": {
+                        "title": "Angle #"
+                      },
+                      "width": "120px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Value",
+                      "header": {
+                        "title": "Value (deg)"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.0",
+                      "width": "flex"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Angle": "1",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "2",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "3",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "4",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "5",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "6",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "7",
+                      "Value": 0
+                    },
+                    {
+                      "Angle": "8",
+                      "Value": 0
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "CardAngles"
+            },
+            "position": {
+              "basis": "420px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "8px",
+                "minHeight": "280px",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Welding"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "LblMiss"
+                },
+                "props": {
+                  "text": "Inches of Missed"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "InMiss"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "LblUnder"
+                },
+                "props": {
+                  "text": "Inches of Underfill"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "InUnder"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "LblBlow"
+                },
+                "props": {
+                  "text": "Inches of Blow-Thru"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "InBlow"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "LblHiLo"
+                },
+                "props": {
+                  "text": "Inches of High-Low"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "InHiLo"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "LblPor"
+                },
+                "props": {
+                  "text": "Inches of Porosity"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "InPor"
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "CardWelding"
+            },
+            "position": {
+              "basis": "420px"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "8px",
+                "minHeight": "280px",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Summary \u0026 Notes"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ResultsTable"
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "Metric",
+                      "header": {
+                        "title": "Metric"
+                      },
+                      "width": "40%"
+                    },
+                    {
+                      "field": "Value",
+                      "header": {
+                        "title": "Value"
+                      },
+                      "width": "30%"
+                    },
+                    {
+                      "field": "Status",
+                      "header": {
+                        "title": "Status"
+                      },
+                      "width": "30%"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Metric": "Length",
+                      "Status": "",
+                      "Value": ""
+                    },
+                    {
+                      "Metric": "Twist",
+                      "Status": "",
+                      "Value": ""
+                    },
+                    {
+                      "Metric": "Angles",
+                      "Status": "",
+                      "Value": ""
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "meta": {
+                  "name": "Notes"
+                },
+                "props": {
+                  "placeholder": "Operator notes…"
+                },
+                "type": "ia.input.text-area"
+              }
+            ],
+            "meta": {
+              "name": "CardSummary"
+            },
+            "position": {
+              "basis": "100%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "8px",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "alignContent": "flex-start",
+            "gap": "12px",
+            "height": "100%"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "height": "100%",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "custom": {},
+  "params": {
+    "title": "Sectioned Table"
+  },
+  "propConfig": {
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 720,
+      "width": 1200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "16px",
+                "fontWeight": "800"
+              },
+              "text": "{view.params.title}"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FilterAll"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#2a2a2a",
+                    "borderRadius": "999px",
+                    "padding": "4px 10px"
+                  },
+                  "text": "All"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "FilterQueued"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#334155",
+                    "borderRadius": "999px",
+                    "padding": "4px 10px"
+                  },
+                  "text": "Queued"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "FilterErrors"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#5b2a2a",
+                    "borderRadius": "999px",
+                    "color": "#fff",
+                    "padding": "4px 10px"
+                  },
+                  "text": "Errors"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "QuickFilters"
+            },
+            "props": {
+              "style": {
+                "gap": "6px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "backgroundColor": "#262626",
+            "border": "1px solid #3a3a3a",
+            "borderRadius": "10px",
+            "padding": "8px 10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "H_Time"
+                    },
+                    "props": {
+                      "style": {
+                        "opacity": 0.7
+                      },
+                      "text": "Time"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "H_Type"
+                    },
+                    "props": {
+                      "style": {
+                        "opacity": 0.7
+                      },
+                      "text": "Type"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "H_Ref"
+                    },
+                    "props": {
+                      "style": {
+                        "opacity": 0.7
+                      },
+                      "text": "Reference"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "H_Status"
+                    },
+                    "props": {
+                      "style": {
+                        "opacity": 0.7,
+                        "textAlign": "right",
+                        "width": "100%"
+                      },
+                      "text": "Status"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Head"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#1f1f1f",
+                    "borderBottom": "1px solid #3a3a3a",
+                    "display": "grid",
+                    "gridTemplateColumns": "18% 20% 1fr 18%",
+                    "padding": "8px 10px",
+                    "position": "sticky",
+                    "top": "0",
+                    "zIndex": 2
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "C_Time"
+                        },
+                        "props": {
+                          "text": "2025-10-06 09:41"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Type"
+                        },
+                        "props": {
+                          "text": "WorkOrder"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Ref"
+                        },
+                        "props": {
+                          "text": "WO-10482 • Laps"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Status"
+                        },
+                        "props": {
+                          "style": {
+                            "textAlign": "right"
+                          },
+                          "text": "Queued"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row1"
+                    },
+                    "props": {
+                      "style": {
+                        "borderBottom": "1px solid #2a2a2a",
+                        "display": "grid",
+                        "gridTemplateColumns": "18% 20% 1fr 18%",
+                        "padding": "8px 10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "C_Time"
+                        },
+                        "props": {
+                          "text": "2025-10-06 09:35"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Type"
+                        },
+                        "props": {
+                          "text": "Schedule"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Ref"
+                        },
+                        "props": {
+                          "text": "SCH-20251006"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "C_Status"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#5b2a2a",
+                            "borderRadius": "999px",
+                            "color": "#fff",
+                            "justifySelf": "end",
+                            "padding": "2px 8px",
+                            "textAlign": "right"
+                          },
+                          "text": "Error"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row2"
+                    },
+                    "props": {
+                      "style": {
+                        "borderBottom": "1px solid #2a2a2a",
+                        "display": "grid",
+                        "gridTemplateColumns": "18% 20% 1fr 18%",
+                        "padding": "8px 10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Rows"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "0px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "LiteTable"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid #3a3a3a",
+                "borderRadius": "10px",
+                "gap": "0px",
+                "height": "100%",
+                "overflowY": "auto"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "style": {
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#111315",
+        "color": "#e6e6e6",
+        "gap": "10px",
+        "height": "100%",
+        "padding": "10px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

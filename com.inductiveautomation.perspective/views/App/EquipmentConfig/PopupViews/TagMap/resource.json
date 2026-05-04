@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "Popup opened from the AssetSettings view. Allows user to select a tag to map the selected asset setting to.\n\nInput Data:\n-Only params from the AssetSettings view, no backend           input data\n\nOutput Data:\n-Sends message to the mapSettings message handler on       the AssetSettings root, no backend output data",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-20T17:12:21Z"
+    },
+    "lastModificationSignature": "bf1e8f686a8f8385d9dcd99ccc7026af9735db089767d33d1bdcce089aa4cb8d"
+  }
+}

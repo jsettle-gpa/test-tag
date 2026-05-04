@@ -1,0 +1,782 @@
+{
+  "custom": {
+    "data": {
+      "currentPane": 0,
+      "nextPaneReady": true,
+      "selection": {
+        "attributeSelection": {},
+        "dataSourceSelection": {
+          "dataSource": null,
+          "fileData": null,
+          "fileName": null
+        }
+      }
+    }
+  },
+  "params": {
+    "domainMapingSelections": [
+      {
+        "domain": "core.equipment_mode_group_mapping",
+        "mesValue": "Required:   equipment_id",
+        "selectedERP": "allow_alternative_item"
+      },
+      {
+        "domain": "core.equipment_mode_group_mapping",
+        "mesValue": "Required:   mode_group_id",
+        "selectedERP": "analysis_code"
+      },
+      {
+        "domain": "core.equipment_mode_group_mapping",
+        "mesValue": "Optional:   enabled",
+        "selectedERP": "analysis_code"
+      }
+    ],
+    "erpData": [
+      {
+        "data": {
+          "actual_operating_cost": 0,
+          "additional_operating_cost": 0,
+          "allow_alternative_item": 0,
+          "analysis_code": "AN-1520",
+          "batch_size": 0,
+          "bom_no": "BOM-1S03-001",
+          "catalog_part": "CAT-8594",
+          "catalog_path": "\\Catalog\\1S03",
+          "company": "Global Process Automation",
+          "corrective_operation_cost": 0,
+          "created_by": "John Smith",
+          "created_date": "2025-11-25",
+          "creation": "2025-12-01 01:38:24.651896",
+          "cross_reference": "230kV Polymer Insulator - AS-3",
+          "delivery_code": "B",
+          "description": "1S03",
+          "disassembled_qty": 0,
+          "docstatus": 1,
+          "doctype": "Work Order",
+          "due_date": "2026-03-23",
+          "dxf_location": "N:\\Common\\DXF\\25-46663S\\AS-3.dxf",
+          "exp_code": "EXP-575",
+          "fg_warehouse": "Finished Goods - GPA",
+          "final_op": "2025-12-05 22:38:24",
+          "from_wip_warehouse": 0,
+          "group": "SPECIALTY-CUSTOM",
+          "has_batch_no": 0,
+          "has_serial_no": 0,
+          "idx": 0,
+          "item_name": "1S03",
+          "job": "25-46663S-29",
+          "job_code": "JC-266",
+          "job_net_weight": 1182.3,
+          "job_weight": 491.09,
+          "last_printed": "",
+          "lead_time": 6,
+          "locked": true,
+          "mass_print": true,
+          "material_transferred_for_manufacturing": 0,
+          "mode": "Custom",
+          "modified": "2025-12-02 16:38:24.651966",
+          "modified_by": "cedwards@global-business.net",
+          "name": "MFG-WO-2025-09019",
+          "naming_series": "MFG-WO-.YYYY.-",
+          "operations": [
+            {
+              "actual_operating_cost": 0,
+              "actual_operation_time": 0,
+              "batch_size": 1,
+              "bom": "BOM-1S03-001",
+              "completed_qty": 0,
+              "creation": "2025-12-02 16:38:24.652062",
+              "description": "60 OP QCPrep",
+              "docstatus": 1,
+              "doctype": "Work Order Operation",
+              "hour_rate": 32.24,
+              "idx": 1,
+              "modified": "2025-12-02 16:38:24.652084",
+              "modified_by": "cedwards@global-business.net",
+              "name": "ija08voz1i",
+              "operation": "60 OP QCPrep",
+              "owner": "cedwards@global-business.net",
+              "parent": "MFG-WO-2025-09019",
+              "parentfield": "operations",
+              "parenttype": "Work Order",
+              "planned_end_time": "2025-12-02 16:53:24",
+              "planned_operating_cost": 0,
+              "planned_start_time": "2025-12-02 16:38:24",
+              "process_loss_qty": 0,
+              "sequence_id": 1,
+              "status": "Pending",
+              "time_in_mins": 15,
+              "workstation": "QC Station",
+              "workstation_type": "QC Workstations"
+            },
+            {
+              "actual_operating_cost": 0,
+              "actual_operation_time": 0,
+              "batch_size": 1,
+              "bom": "BOM-1S03-001",
+              "completed_qty": 0,
+              "creation": "2025-12-02 16:38:24.652194",
+              "description": "Bending",
+              "docstatus": 1,
+              "doctype": "Work Order Operation",
+              "hour_rate": 74.62,
+              "idx": 2,
+              "modified": "2025-12-02 16:38:24.652212",
+              "modified_by": "cedwards@global-business.net",
+              "name": "86o6gbb8jv",
+              "operation": "Bending",
+              "owner": "cedwards@global-business.net",
+              "parent": "MFG-WO-2025-09019",
+              "parentfield": "operations",
+              "parenttype": "Work Order",
+              "planned_end_time": "2025-12-02 18:18:24",
+              "planned_operating_cost": 0,
+              "planned_start_time": "2025-12-02 17:03:24",
+              "process_loss_qty": 0,
+              "sequence_id": 2,
+              "status": "Pending",
+              "time_in_mins": 75,
+              "workstation": "Press Brake",
+              "workstation_type": "Plant 3 Workstations"
+            },
+            {
+              "actual_operating_cost": 0,
+              "actual_operation_time": 0,
+              "batch_size": 1,
+              "bom": "BOM-1S03-001",
+              "completed_qty": 0,
+              "creation": "2025-12-02 16:38:24.652283",
+              "description": "50 OP Prep",
+              "docstatus": 1,
+              "doctype": "Work Order Operation",
+              "hour_rate": 33.45,
+              "idx": 3,
+              "modified": "2025-12-02 16:38:24.652298",
+              "modified_by": "cedwards@global-business.net",
+              "name": "0lxyq78ckr",
+              "operation": "50 OP Prep",
+              "owner": "cedwards@global-business.net",
+              "parent": "MFG-WO-2025-09019",
+              "parentfield": "operations",
+              "parenttype": "Work Order",
+              "planned_end_time": "2025-12-02 18:48:24",
+              "planned_operating_cost": 0,
+              "planned_start_time": "2025-12-02 18:28:24",
+              "process_loss_qty": 0,
+              "sequence_id": 3,
+              "status": "Pending",
+              "time_in_mins": 20,
+              "workstation": "Prep Station",
+              "workstation_type": "Plant 1 Workstations"
+            },
+            {
+              "actual_operating_cost": 0,
+              "actual_operation_time": 0,
+              "batch_size": 1,
+              "bom": "BOM-1S03-001",
+              "completed_qty": 0,
+              "creation": "2025-12-02 16:38:24.652361",
+              "description": "60 OP QCPrep",
+              "docstatus": 1,
+              "doctype": "Work Order Operation",
+              "hour_rate": 33.2,
+              "idx": 4,
+              "modified": "2025-12-02 16:38:24.652376",
+              "modified_by": "cedwards@global-business.net",
+              "name": "ivrt3lkqgm",
+              "operation": "60 OP QCPrep",
+              "owner": "cedwards@global-business.net",
+              "parent": "MFG-WO-2025-09019",
+              "parentfield": "operations",
+              "parenttype": "Work Order",
+              "planned_end_time": "2025-12-02 19:13:24",
+              "planned_operating_cost": 0,
+              "planned_start_time": "2025-12-02 18:58:24",
+              "process_loss_qty": 0,
+              "sequence_id": 4,
+              "status": "Pending",
+              "time_in_mins": 15,
+              "workstation": "QC Station",
+              "workstation_type": "QC Workstations"
+            }
+          ],
+          "order_for_prod_code": "FSO",
+          "owner": "cedwards@global-business.net",
+          "part": "AS-3",
+          "planned_end_date": "2025-12-01 04:38:24",
+          "planned_operating_cost": 1300.88,
+          "planned_start_date": "2025-11-30 22:38:24",
+          "planner": "Tom Brown",
+          "planning_contract": "CONTRACT-9117",
+          "print_status": "Engineered",
+          "process_loss_qty": 0,
+          "prod_code": "PSO",
+          "prod_qty": 2,
+          "produced_qty": 0,
+          "production_item": "1S03",
+          "production_yield": 0.959,
+          "proj_phase": 3,
+          "project": "25-46663S",
+          "project_id": "25-46663S",
+          "qty": 2,
+          "receive_time": 22,
+          "req_by": "2026-01-30",
+          "required_items": [
+            {
+              "allow_alternative_item": 0,
+              "amount": 0,
+              "available_qty_at_source_warehouse": 9.6,
+              "available_qty_at_wip_warehouse": 0,
+              "consumed_qty": 0,
+              "creation": "2025-12-02 16:38:24.652436",
+              "description": "Steel Plate 1/4 A36",
+              "docstatus": 1,
+              "doctype": "Work Order Item",
+              "idx": 1,
+              "include_item_in_manufacturing": 1,
+              "item_code": "Steel Plate 1/4 A36",
+              "item_name": "Steel Plate 1/4 A36",
+              "modified": "2025-12-02 16:38:24.652453",
+              "modified_by": "cedwards@global-business.net",
+              "name": "xkkzp8y4wj",
+              "owner": "cedwards@global-business.net",
+              "parent": "MFG-WO-2025-09019",
+              "parentfield": "required_items",
+              "parenttype": "Work Order",
+              "rate": 379.6,
+              "required_qty": 2,
+              "returned_qty": 0,
+              "source_warehouse": "All Warehouses - GPA",
+              "stock_uom": "Nos",
+              "transferred_qty": 0
+            }
+          ],
+          "revision": 6,
+          "roll_up_job_weight": 1070.39,
+          "rough_cut_scheduled": true,
+          "sales_order": "",
+          "short_job_comment": "Standard production",
+          "site": "Main Plant",
+          "skip_transfer": 0,
+          "start_date": "2025-11-30 22:38:24",
+          "status": "Completed",
+          "stock_uom": "Nos",
+          "total_operating_cost": 0,
+          "transfer_material_against": "Work Order",
+          "type": "Manufacturing",
+          "update_consumed_material_cost_in_project": 1,
+          "use_multi_level_bom": 1,
+          "wip_warehouse": "Work In Progress - GPA"
+        }
+      }
+    ],
+    "finalData": {
+      "$": [
+        "ds",
+        192,
+        1764855505053
+      ],
+      "$columns": [
+        {
+          "data": [
+            "core.equipment_mode_group_mapping",
+            "core.equipment_mode_group_mapping",
+            "core.equipment_mode_group_mapping"
+          ],
+          "name": "Domain",
+          "type": "String"
+        },
+        {
+          "data": [
+            "Required:   equipment_id",
+            "Required:   mode_group_id",
+            "Optional:   enabled"
+          ],
+          "name": "MES Value",
+          "type": "String"
+        },
+        {
+          "data": [
+            "allow_alternative_item",
+            "analysis_code",
+            "analysis_code"
+          ],
+          "name": "ERP Value",
+          "type": "String"
+        }
+      ]
+    },
+    "mesData": null
+  },
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.finalData": {
+      "binding": {
+        "config": {
+          "path": "view.custom.data.selection"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Creates a new dataset with the attribute name as the header and the selected data \u0027\u0027\u0027\n\t\n\t# Gets the file data and selections\n\tfileData \u003d self.custom.data.selection.dataSourceSelection.fileData\n\tattributeSelection \u003d value.attributeSelection\n\t\n\t# Returns a not ready message if not all selections have been made\n\tif not fileData or not attributeSelection:\n\t\treturn \u0027Final data not ready, make selections first\u0027\n\t\n\t# Loops through the original data set, filters out the unused data, and gets a list of column names (used for the headers)\n\tdata \u003d []\n\tcolumnNames \u003d []\n\tfor row in range(fileData.getRowCount()):\n\t\trowData \u003d []\n\t\tfor col in range(fileData.getColumnCount()):\n\t\t\tcolumnName \u003d fileData.getColumnName(col)\n\t\t\tif columnName in attributeSelection.values():\n\t\t\t\trowData.append(fileData.getValueAt(row, col))\n\t\t\t\tif columnName not in columnNames:\n\t\t\t\t\tcolumnNames.append(columnName)\n\t\t\telse:\n\t\t\t\tcontinue\n\t\tdata.append(rowData)\n\t\n\t# Updates the headers to the attribute names\n\theaderMapping \u003d {value: key for key, value in attributeSelection.items()}\n\theaders \u003d [headerMapping.get(header, header) for header in columnNames]\n\t\n\t# Creates the final dataset and returns it\n\tfinalData \u003d system.dataset.toDataSet(headers, data)\n\treturn finalData",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "params.domainMapingSelections": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.erpData": {
+      "binding": {
+        "config": {
+          "connectTimeout": 60000,
+          "enableCookies": true,
+          "enableValueCache": false,
+          "polling": {
+            "enabled": false,
+            "rate": "5000"
+          },
+          "request": {
+            "auth": {
+              "type": "None",
+              "value": ""
+            },
+            "method": "GET",
+            "url": "\"http://172.16.150.37:8000/work-orders\""
+          },
+          "socketTimeout": 60000
+        },
+        "enabled": false,
+        "type": "http"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.finalData": {
+      "binding": {
+        "config": {
+          "path": "view.params.domainMapingSelections"
+        },
+        "enabled": false,
+        "transforms": [
+          {
+            "code": "\n\n    headers \u003d [\"Domain\", \"MES Value\", \"ERP Value\"]\n    rows \u003d []\n\n    if not value:\n        return system.dataset.toDataSet(headers, rows)\n\n    for item in value:\n\n        # Handle Java Map (Ignition) and Python dict\n        if hasattr(item, \"get\"):\n            vp \u003d item.get(\"viewParams\")\n            src \u003d vp if vp is not None else item\n        else:\n            src \u003d item.get(\"viewParams\", item)\n\n        # Extract fields\n        domain \u003d src.get(\"domain\") if src else None\n        mes \u003d src.get(\"mesValue\") if src else None\n        sel \u003d src.get(\"selectedERP\") if src else None\n\n        rows.append([domain, mes, sel])\n\n    return system.dataset.toDataSet(headers, rows)",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.mesData": {
+      "binding": {
+        "config": {
+          "queryPath": "App/Admin/Read/get_all_mes_column_headers"
+        },
+        "enabled": false,
+        "type": "query"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 700,
+      "width": 1238
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane - 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "PrevIcon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.data.currentPane} \u003e 0, True, False)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/arrow_back_ios",
+                  "style": {
+                    "classes": "icon-button"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "PrevtIconContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "alignContent": "flex-start",
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "ERPMap"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "params": {
+                        "domainMapingSelections": [
+                          {
+                            "domain": "core.equipment_mode_group_mapping",
+                            "mesValue": "equipment_id",
+                            "selectedERP": null
+                          },
+                          {
+                            "domain": "core.equipment_mode_group_mapping",
+                            "mesValue": "mode_group_id",
+                            "selectedERP": null
+                          },
+                          {
+                            "domain": "core.equipment_mode_group_mapping",
+                            "mesValue": "enabled",
+                            "selectedERP": null
+                          }
+                        ]
+                      },
+                      "path": "App/Administration/Embedded/ERP/ERPMapSubView",
+                      "style": {
+                        "flex": "0 0 100%",
+                        "height": "100%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "ERPMapPreview"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "App/Administration/Embedded/ERP/ERPMapSubViewPreview",
+                      "style": {
+                        "flex": "0 0 100%",
+                        "height": "100%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "TrackContainer"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.transform": {
+                    "binding": {
+                      "config": {
+                        "expression": "\u0027translateX(\u0027 + (-100 * {view.custom.data.currentPane}) + \u0027%)\u0027"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "height": "100%",
+                    "overflow": "visible",
+                    "transition": "transform 0.45s ease"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "ViewPortContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "margin": "15px",
+                "overflow": "hidden",
+                "position": "relative"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\t# Checks if the next pane is ready\n\tnextPaneReady \u003d self.view.custom.data.nextPaneReady\n\t\n\tif nextPaneReady:\n\t\tself.view.custom.data.currentPane +\u003d 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "NextIcon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.nextPaneReady"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.style.classes": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.data.nextPaneReady}, \u0027icon-button\u0027, \u0027icon-button-disabled\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/arrow_forward_ios"
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "NextIconContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "alignContent": "flex-start",
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "CustomCarousel"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane - 1"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "BackButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} \u003e 0, True, False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "text": "Previous"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane + 1"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "NextButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} !\u003d 2, True, False)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.nextPaneReady"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "text": "Next"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Imports the material data \u0027\u0027\u0027\n\t\n\t# Add logic to call the backend functions\n\t\n\tsystem.perspective.closePopup(\u0027MaterialConfig\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ImportButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} \u003d 2, True, False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "Import"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ButtonsContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-evenly",
+          "style": {
+            "marginBottom": "15px",
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "dataSourceSelection",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Recieves the data source selection from the SelectDataSource embedded view \u0027\u0027\u0027\n\t\n\t# Writes the incoming data to the custom properties\n\tdataSourceSelection \u003d self.view.custom.data.selection.dataSourceSelection\n\tdataSourceSelection[\u0027dataSource\u0027] \u003d payload.get(\u0027dataSource\u0027)\n\tdataSourceSelection[\u0027fileName\u0027] \u003d payload.get(\u0027fileName\u0027)\n\tdataSourceSelection[\u0027fileData\u0027] \u003d payload.get(\u0027fileData\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "attributeSelection",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Recieves the attribute selections from the MapMaterialAttributes embedded view \u0027\u0027\u0027\n\t\n\t# Writes the incoming data to the custom properties\n\tself.view.custom.data.selection.attributeSelection \u003d payload.get(\u0027attributeSelection\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

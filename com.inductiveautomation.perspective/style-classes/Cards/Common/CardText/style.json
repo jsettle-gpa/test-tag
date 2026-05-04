@@ -1,0 +1,11 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--neutral-100)",
+      "fontFamily": "Roboto",
+      "fontSize": "small",
+      "fontWeight": "300",
+      "textTransform": "capitalize"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--cardBg)",
+      "borderColor": "var(--card-Border)",
+      "borderStyle": "solid",
+      "borderWidth": "var(--card-Border-Width)",
+      "borderTopLeftRadius": "var(--card-Border-Radius)",
+      "borderTopRightRadius": "var(--card-Border-Radius)",
+      "borderBottomLeftRadius": "var(--card-Border-Radius)",
+      "borderBottomRightRadius": "var(--card-Border-Radius)",
+      "boxShadow": "var(--card-shadow)",
+      "color": "var(--neutral-100)"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--callToAction)",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--neutral-10)",
+      "marginBottom": "3px",
+      "marginTop": "3px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--callToActionHighlight )",
+        "color": "var(--neutral-100)"
+      }
+    },
+    {
+      "pseudo": "active",
+      "style": {
+        "backgroundColor": "var(--neutral-100)",
+        "color": "var(--neutral-10)"
+      }
+    }
+  ]
+}

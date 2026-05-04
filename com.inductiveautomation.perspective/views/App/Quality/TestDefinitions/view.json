@@ -1,0 +1,570 @@
+{
+  "custom": {
+    "seed": {
+      "metrics": [
+        {
+          "Name": "Length",
+          "Target": 45,
+          "TolMax": 0.25,
+          "TolMin": -0.25,
+          "Type": "number",
+          "Unit": "in"
+        },
+        {
+          "Name": "Twist",
+          "Target": 0,
+          "TolMax": 1,
+          "TolMin": -1,
+          "Type": "number",
+          "Unit": "deg"
+        },
+        {
+          "Name": "RoughCut",
+          "Target": 8,
+          "TolMax": 0.5,
+          "TolMin": -0.5,
+          "Type": "number",
+          "Unit": "in"
+        }
+      ],
+      "steps": [
+        {
+          "Instruction": "Measure Length",
+          "Required": true,
+          "Seq": 10
+        },
+        {
+          "Instruction": "Check Twist",
+          "Required": true,
+          "Seq": 20
+        },
+        {
+          "Instruction": "Rough Cut visual",
+          "Required": false,
+          "Seq": 30
+        }
+      ],
+      "tests": [
+        {
+          "Active": true,
+          "Category": "Cutting",
+          "Name": "Cutting QC",
+          "TestCode": "CUT-001",
+          "Version": "1.0"
+        },
+        {
+          "Active": true,
+          "Category": "Bending",
+          "Name": "Bending QC",
+          "TestCode": "BND-002",
+          "Version": "2.1"
+        },
+        {
+          "Active": false,
+          "Category": "Welding",
+          "Name": "Welding Visual",
+          "TestCode": "WLD-003",
+          "Version": "1.4"
+        }
+      ]
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.seed": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "18px",
+                "fontWeight": "600"
+              },
+              "text": "Quality • Test Definitions"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Search"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "placeholder": "Search tests…"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "BtnNew"
+                },
+                "props": {
+                  "icon": "material/add",
+                  "text": "New Test"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSave"
+                },
+                "props": {
+                  "icon": "material/save",
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Toolbar"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid var(--neutral-40)",
+            "borderRadius": "8px",
+            "gap": "8px",
+            "padding": "6px 10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "TestsTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "TestCode",
+                      "header": {
+                        "title": "Code"
+                      },
+                      "sortable": true,
+                      "width": "140px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Name",
+                      "header": {
+                        "title": "Name"
+                      },
+                      "sortable": true,
+                      "width": "flex"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Version",
+                      "header": {
+                        "title": "Ver"
+                      },
+                      "width": "90px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Category",
+                      "header": {
+                        "title": "Category"
+                      },
+                      "width": "120px"
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "editable": true,
+                      "field": "Active",
+                      "header": {
+                        "title": "Active"
+                      },
+                      "width": "90px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Active": true,
+                      "Category": "Cutting",
+                      "Name": "Cutting QC",
+                      "TestCode": "CUT-001",
+                      "Version": "1.0"
+                    },
+                    {
+                      "Active": true,
+                      "Category": "Bending",
+                      "Name": "Bending QC",
+                      "TestCode": "BND-002",
+                      "Version": "2.1"
+                    },
+                    {
+                      "Active": false,
+                      "Category": "Welding",
+                      "Name": "Welding Visual",
+                      "TestCode": "WLD-003",
+                      "Version": "1.4"
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "selection": {
+                    "enabled": true
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Left"
+            },
+            "position": {
+              "basis": "40%",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "8px",
+                "padding": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "StepsTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Procedure Steps"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "StepsTable"
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "editable": true,
+                          "field": "Seq",
+                          "header": {
+                            "title": "#"
+                          },
+                          "number": "value",
+                          "numberFormat": "0",
+                          "sortable": true,
+                          "width": "80px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Instruction",
+                          "header": {
+                            "title": "Instruction"
+                          },
+                          "width": "flex"
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "editable": true,
+                          "field": "Required",
+                          "header": {
+                            "title": "Required"
+                          },
+                          "width": "120px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "Instruction": "Measure Length",
+                          "Required": true,
+                          "Seq": 10
+                        },
+                        {
+                          "Instruction": "Check Twist",
+                          "Required": true,
+                          "Seq": 20
+                        },
+                        {
+                          "Instruction": "Rough Cut visual",
+                          "Required": false,
+                          "Seq": 30
+                        }
+                      ]
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "StepsCard"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "border": "1px solid var(--neutral-40)",
+                    "borderRadius": "8px",
+                    "gap": "6px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "MetricsTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Metrics / Limits"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "MetricsTable"
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "editable": true,
+                          "field": "Name",
+                          "header": {
+                            "title": "Metric"
+                          },
+                          "width": "200px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Type",
+                          "header": {
+                            "title": "Type"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Unit",
+                          "header": {
+                            "title": "Unit"
+                          },
+                          "width": "110px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Target",
+                          "header": {
+                            "title": "Target"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "TolMin",
+                          "header": {
+                            "title": "Tol -"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "TolMax",
+                          "header": {
+                            "title": "Tol +"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "width": "120px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "Name": "Length",
+                          "Target": 45,
+                          "TolMax": 0.25,
+                          "TolMin": -0.25,
+                          "Type": "number",
+                          "Unit": "in"
+                        },
+                        {
+                          "Name": "Twist",
+                          "Target": 0,
+                          "TolMax": 1,
+                          "TolMin": -1,
+                          "Type": "number",
+                          "Unit": "deg"
+                        },
+                        {
+                          "Name": "RoughCut",
+                          "Target": 8,
+                          "TolMax": 0.5,
+                          "TolMin": -0.5,
+                          "Type": "number",
+                          "Unit": "in"
+                        }
+                      ]
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "MetricsCard"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "border": "1px solid var(--neutral-40)",
+                    "borderRadius": "8px",
+                    "gap": "6px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "NotesTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Notes"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "Notes"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "placeholder": "Instructions for operators…"
+                    },
+                    "type": "ia.input.text-area"
+                  }
+                ],
+                "meta": {
+                  "name": "NotesCard"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "border": "1px solid var(--neutral-40)",
+                    "borderRadius": "8px",
+                    "gap": "6px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Right"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": "10px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "height": "100%",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

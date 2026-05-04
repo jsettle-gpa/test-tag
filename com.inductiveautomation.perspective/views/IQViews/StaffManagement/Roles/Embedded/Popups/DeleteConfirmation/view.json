@@ -1,0 +1,194 @@
+{
+  "custom": {},
+  "params": {
+    "ModalName": "value",
+    "UserId": ""
+  },
+  "propConfig": {
+    "params.ModalName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.UserId": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 134,
+      "width": 348
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "61px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027Are you sure you wish to delete User \u0027 + {view.params.UserId} + \u0027?\u0027"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontWeight": "bold",
+                "text-align": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Row1"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "style": {
+            "classes": "Global/MarginBottom Global/MarginLeft Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\ttry:\n\t\tid \u003d self.view.params.UserId\n\n\t\tsql \u003d \u0027EXEC auth.stp_deleteUser ?\u0027\n\t\tsystem.perspective.print(\u0027Deleting user from DB with id: \u0027 + str(id))\n\t\t\n\t\tparams \u003d [id]\n\t\n\t\tsystem.db.runPrepUpdate(sql, params, \u0027MSSQL_MES\u0027)\n\t\tsystem.perspective.sendMessage(\u0027refreshUserTable\u0027)\n\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\tgpa.frontEnd.localUI.throwSuccess(\u0027Deleted user \u0027 + id)\n\t\t\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ConfirmButton"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/check",
+                    "IsSelectable": false,
+                    "Label": "Yes",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "value"
+                  },
+                  "path": "GlobalComponents/Buttons/Button"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Confirm"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "classes": "Global/MarginRight"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tsystem.perspective.closePopup(\u0027\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "CancelButton"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/close",
+                    "IsSelectable": false,
+                    "Label": "No",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "value"
+                  },
+                  "path": "GlobalComponents/Buttons/Button"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Row2"
+        },
+        "position": {
+          "basis": "80px"
+        },
+        "props": {
+          "justify": "space-around",
+          "style": {
+            "classes": "Global/MarginBottom Global/MarginLeft Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "space-evenly",
+      "style": {
+        "classes": "Global/MarginAllEmbedded"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

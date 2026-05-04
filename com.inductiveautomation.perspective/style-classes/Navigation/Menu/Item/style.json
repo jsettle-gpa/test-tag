@@ -1,0 +1,24 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--containerRoot)",
+      "borderBottomColor": "#686868",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "1px",
+      "borderLeftStyle": "hidden",
+      "borderRightStyle": "hidden",
+      "borderTopStyle": "hidden",
+      "padding": "0.625em"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--callToAction)",
+        "color": "var(--neutral-10)",
+        "cursor": "pointer"
+      }
+    }
+  ]
+}

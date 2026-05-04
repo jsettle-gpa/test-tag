@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "color": "--neutral-100",
+      "fontSize": "1.5em",
+      "fontWeight": "bold"
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "custom": {
+    "CloseMenuLogic": {
+      "MouseReturned": false,
+      "TimeExited": null
+    },
+    "dataset": null,
+    "filterItems": null
+  },
+  "events": {
+    "system": {
+      "onStartup": {
+        "config": {
+          "script": "\tself.session.refreshBinding(\u0027custom.favoriteIcons\u0027)\n\tself.refreshBinding(\u0027custom.filterItems\u0027)"
+        },
+        "scope": "G",
+        "type": "script"
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.CloseMenuLogic": {
+      "persistent": true
+    },
+    "custom.CloseMenuLogic.ClosePopup": {
+      "binding": {
+        "config": {
+          "expression": "///Logic is as follows if TimeExited is NULL then false else get the seconds between the time the mouse left vs now\r\n//Wrapper logic looks at the value if the value is \u003e2 then turn true\r\nif(\r\n(if(IsNull({view.custom.CloseMenuLogic.TimeExited}), False,\r\n secondsBetween({view.custom.CloseMenuLogic.TimeExited}, now(0.5)))) \u003e\u003d 1, true, false)\r\n //"
+        },
+        "type": "expr"
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value \u003d\u003d True:\n\t\tsystem.perspective.closePopup(\u0027\u0027)"
+      }
+    },
+    "custom.CloseMenuLogic.MouseReturned": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tif currentValue.value \u003d\u003d True:\n\t\tself.custom.CloseMenuLogic.TimeExited \u003d None"
+      }
+    },
+    "custom.dataset": {
+      "binding": {
+        "config": {
+          "queryPath": "Newell/DeveloperApplications/NavigationMenu/GetNavMenuWithRoleNames"
+        },
+        "type": "query"
+      },
+      "persistent": true
+    },
+    "custom.filterItems": {
+      "binding": {
+        "config": {
+          "struct": {
+            "DS": "{view.custom.dataset}",
+            "NavItems": "{view.custom.navigationItemsDEV}",
+            "SearchTerm": "{/root/FlexContainer_0/FlexContainer/TextField.props.text}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\timport copy\n\timport json\n\tnavObj \u003d {}\n\tnavObj \u003d copy.copy(json.loads(system.util.jsonEncode(value[\u0027NavItems\u0027])))\n\t#navObj \u003d copy.copy(json.loads(system.util.jsonEncode(self.custom.navigationItems)))\n\t#check to see if the filter even has characters\n\tif(value[\u0027SearchTerm\u0027].strip()):\n\t\ttemp \u003d {}\n\t\tfor index, (firstKey, item) in enumerate(navObj.items()):\n\t\t\t#system.perspective.print(\"Index: \" + str(index) +\", Key: \" + str(item))\n\t\t\tcurrentObj \u003d item\n\t\t\tfor index, (secondKey, child) in enumerate(item.items()):\n\t\t\t\t#system.perspective.print(child)\n\t\t\t\t#make sure its an object and not a variable\n\t\t\t\t#system.perspective.print(type(child).__name__)\n\t\t\t\tif type(child).__name__ \u003d\u003d \u0027dict\u0027:\n\t\t\t\t\tif(value[\u0027SearchTerm\u0027].lower() in child[\u0027label\u0027].lower()):\n\t\t\t\t\t\t#system.perspective.print(currentObj[secondKey])\n\t\t\t\t\t\tchild[\u0027highlightText\u0027] \u003d True\n\t\t\t\t\t\ttemp[item[\u0027label\u0027]] \u003d currentObj\n\t\t\t\t\n\t\t\t\t\t\n\t\treturn temp\n\telse:\n\t\treturn navObj",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 753,
+      "width": 401
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "TextField"
+                },
+                "position": {
+                  "basis": "100%"
+                },
+                "props": {
+                  "deferUpdates": false,
+                  "placeholder": "Search here:",
+                  "style": {
+                    "margin": "auto",
+                    "padding": "0.3em"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "Icon_0"
+                },
+                "position": {
+                  "basis": "2em",
+                  "shrink": 0
+                },
+                "props": {
+                  "path": "material/search",
+                  "style": {
+                    "marginLeft": "0.625em",
+                    "marginRight": "0.625em",
+                    "width": "2em"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "",
+                "borderBottomColor": "#686868",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "padding": "1em"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "basis": "0px"
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.filterItems"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\timport collections\n\t\n\t# Treat any object that exposes .get() and .items() as dictionary\n\tdef is_map(obj):\n\t    return callable(getattr(obj, \u0027get\u0027, None)) and callable(getattr(obj, \u0027items\u0027, None))\n\t\n\tdef build_instances(menu_dict, favorite_icons):\n\t    temp \u003d []\n\t\n\t    # sorting helpers\n\t    def root_sort(node):\n\t        return (node.get(\u0027DisplayOrder\u0027, 0), node.get(\u0027label\u0027, \u0027\u0027))\n\t\n\t    def child_sort(node):\n\t        return (node.get(\u0027Depth\u0027, 0), node.get(\u0027DisplayOrder\u0027, 0), node.get(\u0027label\u0027, \u0027\u0027))\n\t\n\t    # get and sort root folders\n\t    roots \u003d [\n\t        v for k, v in menu_dict.items()\n\t        if is_map(v) and \u0027label\u0027 in v\n\t    ]\n\t    roots.sort(key\u003droot_sort)\n\t\n\t    for root in roots:\n\t        # Root items\n\t        temp.append({\n\t            \"instanceStyle\": {\"classes\": \"\"},\n\t            \"instancePosition\": {},\n\t            \"icon\": root.get(\u0027icon\u0027, None),\n\t            \"isChild\": root.get(\u0027isChild\u0027, False),\n\t            \"isDisabled\": root.get(\u0027isDisabled\u0027, False),\n\t            \"optionText\": root[\u0027label\u0027],\n\t            \"showFavoriteIcon\": False,\n\t            \"target\": \"\",\n\t            \"isVisible\": True,\n\t            \"clicked\": False,\n\t            \"highlightText\": False,\n\t            \"requiredRoles\": [],\n\t            \"Depth\": root.get(\u0027Depth\u0027, 0),\n\t            \"IsHiddenInNav\": root.get(\u0027IsHiddenInNav\u0027, False),\n\t            \u0027IsSpacer\u0027: root.get(\u0027IsSpacer\u0027, False)\n\t        })\n\t\n\t        # get and sort child items\n\t        children \u003d [\n\t            v for k, v in root.items()\n\t            if is_map(v) and \u0027label\u0027 in v\n\t        ]\n\t        children.sort(key\u003dchild_sort)\n\t\n\t        for child in children:\n\t            # child‑parent (TargetURL is NULL)\n\t            if child.get(\u0027target\u0027, None) is None:\n\t                temp.append({\n\t                    \"instanceStyle\": {\"classes\": \"\"},\n\t                    \"instancePosition\": {},\n\t                    \"icon\": child.get(\u0027icon\u0027, None),\n\t                    \"isChild\": False,\n\t                    \"clicked\": False,\n\t                    \"Depth\": child.get(\u0027Depth\u0027, 0),\n\t                    \"optionText\": child.get(\u0027label\u0027, None),\n\t                    \"showFavoriteIcon\": False,\n\t                    \"target\": None,\n\t                    \"isVisible\": False,\n\t                    \"parent\": child.get(\u0027Parent\u0027, root[\u0027label\u0027]),\n\t                    \"isDisabled\": child.get(\u0027isDisabled\u0027, False),\n\t                    \"favoritIcon\":\n\t                        \u0027elev8/star\u0027\n\t                        if any(f.get(\u0027target\u0027) \u003d\u003d child.get(\u0027target\u0027) for f in favorite_icons)\n\t                        else \u0027elev8/star_border\u0027,\n\t                    \"highlightText\": child.get(\u0027highlightText\u0027, False),\n\t                    \"requiredRoles\": child.get(\u0027requiredRoles\u0027, []),\n\t                    \"IsHiddenInNav\": child.get(\u0027IsHiddenInNav\u0027, False),\n\t                    \u0027IsSpacer\u0027: child.get(\u0027IsSpacer\u0027, False)\n\t                })\n\t            else:\n\t                temp.append({\n\t                    \"instanceStyle\": {\"classes\": \"\"},\n\t                    \"instancePosition\": {},\n\t                    \"icon\": child.get(\u0027icon\u0027, None),\n\t                    \"isChild\": True,\n\t                    \"optionText\": child.get(\u0027label\u0027, None),\n\t                    \"showFavoriteIcon\": True,\n\t                    \"target\": child.get(\u0027target\u0027, None),\n\t                    \"isVisible\": False,\n\t                    \"parent\": child.get(\u0027Parent\u0027, root[\u0027label\u0027]),\n\t                    \"Depth\": child.get(\u0027Depth\u0027, 0),\n\t                    \"isDisabled\": child.get(\u0027isDisabled\u0027, False),\n\t                    \"favoritIcon\":\n\t                        \u0027elev8/star\u0027\n\t                        if any(f.get(\u0027target\u0027) \u003d\u003d child.get(\u0027target\u0027) for f in favorite_icons)\n\t                        else \u0027elev8/star_border\u0027,\n\t                    \"highlightText\": child.get(\u0027highlightText\u0027, False),\n\t                    \"requiredRoles\": child.get(\u0027requiredRoles\u0027, []),\n\t                    \"IsHiddenInNav\": child.get(\u0027IsHiddenInNav\u0027, False),\n\t                    \u0027IsSpacer\u0027: child.get(\u0027IsSpacer\u0027, False)\n\t                })\n\t\n\t    return temp\n\t\n\t\n\t#Final output run\n\t#Original Menu\n\tmenu_dict \u003d value\n\t#Fav icons\n\tfav_icons \u003d self.session.custom.favoriteIcons\n\t#Final Instance Builds\n\ttemp      \u003d build_instances(menu_dict, fav_icons)\n\t\n\t#return temp\n\t\"\"\"\n\t\n\tBELOW IS THE LOGIC FOR SORTING THE DATA CORRECTLY\n\tThis sorts data by Parent/Children, Depth, AND DisplayOrder\n\t\n\t\n\t\"\"\"\n\t\n\t# 1) record original positions\n\torig_index \u003d { item[\u0027optionText\u0027]: i for i,item in enumerate(temp) }\n\t\n\t# 2) split out roots vs. children\n\tchildren_map \u003d {}\n\troots \u003d []\n\tfor item in temp:\n\t    parent \u003d item.get(\u0027parent\u0027)  # will be None or missing for top-level\n\t    if parent:\n\t        children_map.setdefault(parent, []).append(item)\n\t    else:\n\t        roots.append(item)\n\t\n\t# 3) sort roots and each child list by their original temp order\n\troots.sort(key\u003dlambda it: orig_index[it[\u0027optionText\u0027]])\n\tfor lst in children_map.values():\n\t    lst.sort(key\u003dlambda it: orig_index[it[\u0027optionText\u0027]])\n\t\n\t# 4) depth-first flatten\n\tordered \u003d []\n\tdef dfs(node):\n\t    ordered.append(node)\n\t    for child in children_map.get(node[\u0027optionText\u0027], []):\n\t        dfs(child)\n\t\n\tfor r in roots:\n\t    dfs(r)\n\t\n\t# 5) return FINAL Ordered List\n\treturn ordered",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementPosition": {
+                "basis": "auto",
+                "grow": 0,
+                "shrink": 0
+              },
+              "path": "Global/Navigation/Embedded/Item",
+              "style": {
+                "overflow": "visible"
+              },
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false
+            },
+            "scripts": {
+              "customMethods": [],
+              "extensionFunctions": null,
+              "messageHandlers": [
+                {
+                  "messageType": "navItemClicked",
+                  "pageScope": true,
+                  "script": "# ------------------------------------------------------------\n\t# utilities\n\t# ------------------------------------------------------------\n\tdef is_parent(inst):\n\t    \"\"\"True if this instance represents a \u0027folder\u0027 (TargetURL is null).\"\"\"\n\t    return not inst.get(\u0027target\u0027)\n\t\n\tdef children_of(label):\n\t    \"\"\"Generator of instances whose parent \u003d\u003d label.\"\"\"\n\t    for inst in self.props.instances:\n\t        if inst.get(\u0027parent\u0027) \u003d\u003d label:\n\t            yield inst\n\t\n\t# ------------------------------------------------------------\n\t# main toggle logic\n\t# ------------------------------------------------------------\n\tparent_label \u003d payload[\u0027parentSection\u0027]\n\t\n\t# 1️⃣  locate the instance the user clicked\n\tparent_inst \u003d next(\n\t    (inst for inst in self.props.instances if inst[\u0027optionText\u0027] \u003d\u003d parent_label),\n\t    None\n\t)\n\tif parent_inst is None:\n\t    return         # nothing matched\n\t\n\t# 2️⃣  flip its clicked flag and decide the new visible state\n\texpand_now \u003d not parent_inst.get(\u0027clicked\u0027, False)\n\tparent_inst[\u0027clicked\u0027] \u003d expand_now\n\t\n\t# 3️⃣  helper to set visibility recursively\n\tdef set_visibility(label, make_visible, depth\u003d0):\n\t    for child in children_of(label):\n\t        if make_visible:\n\t            # ------ expanding: show immediate children only ------\n\t            child[\u0027isVisible\u0027] \u003d True\n\t            child[\u0027clicked\u0027]   \u003d False      # start collapsed\n\t            if is_parent(child):\n\t                # keep grandchildren hidden\n\t                set_visibility(child[\u0027optionText\u0027], False, depth + 1)\n\t        else:\n\t            # ------ collapsing: hide everything below ----------\n\t            child[\u0027isVisible\u0027] \u003d False\n\t            child[\u0027clicked\u0027]   \u003d False\n\t            set_visibility(child[\u0027optionText\u0027], False, depth + 1)\n\t\n\t# 4️⃣  apply to the clicked branch\n\tset_visibility(parent_label, expand_now)",
+                  "sessionScope": true,
+                  "viewScope": true
+                }
+              ]
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer_0"
+        },
+        "position": {
+          "basis": "585px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onMouseEnter": {
+          "config": {
+            "script": "\tself.view.custom.CloseMenuLogic.MouseReturned \u003d True"
+          },
+          "scope": "G",
+          "type": "script"
+        },
+        "onMouseLeave": {
+          "config": {
+            "script": "\tself.view.custom.CloseMenuLogic.TimeExited \u003d system.date.now()\n\tself.view.custom.CloseMenuLogic.MouseReturned \u003d False\n\t#system.perspective.closePopup(\u0027\u0027)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "wrap": "wrap"
+    },
+    "type": "ia.container.flex"
+  }
+}

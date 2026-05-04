@@ -1,0 +1,15 @@
+{
+  "base": {
+    "style": {
+      "color": "white"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "color": "var(--callToAction)"
+      }
+    }
+  ]
+}

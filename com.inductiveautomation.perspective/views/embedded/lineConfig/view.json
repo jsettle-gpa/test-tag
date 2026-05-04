@@ -1,0 +1,173 @@
+{
+  "custom": {},
+  "params": {
+    "lineConfig": {
+      "downtimeDetectionType": "",
+      "hasCells": ""
+    }
+  },
+  "propConfig": {
+    "params.lineConfig": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 284
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "props": {
+              "style": {
+                "fontSize": 28,
+                "fontWeight": "bold"
+              },
+              "text": "Line Config"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "props": {
+              "text": "Has Cells"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "HasCellsDropdown"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.lineConfig.hasCells"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "Yes"
+                },
+                {
+                  "label": "No",
+                  "value": "No"
+                }
+              ]
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "props": {
+              "text": "Downtime Detection Type"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "DowntimeTypeDropdown"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.lineConfig.downtimeDetectionType"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Automatic",
+                  "value": "Automatic"
+                },
+                {
+                  "label": "Manual",
+                  "value": "Manual"
+                }
+              ]
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "CancelBtn"
+                },
+                "props": {
+                  "text": "Cancel"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "SaveBtn"
+                },
+                "props": {
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "display": false
+            },
+            "props": {
+              "gap": 8,
+              "justify": "flex-end",
+              "style": {
+                "gap": 8
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "LineConfigPage"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": 16,
+            "padding": "24px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

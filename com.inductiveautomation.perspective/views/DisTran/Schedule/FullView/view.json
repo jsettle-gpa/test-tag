@@ -1,0 +1,498 @@
+{
+  "custom": {
+    "sourceData": {},
+    "viewData": {}
+  },
+  "params": {},
+  "propConfig": {
+    "custom.sourceData": {
+      "persistent": true
+    },
+    "custom.sourceData.lines": {
+      "binding": {
+        "config": {
+          "path": "session.custom.LineDropdown"
+        },
+        "transforms": [
+          {
+            "code": "\t# value \u003d\u003e session.custom.LineDropdown  (array of dicts)\n\t\n\tTAG_PROVIDER \u003d \"default\"    # \u003c-- change if your tags aren\u0027t under [default]\n\t\n\t# 1) Filter out the \"All\" row and keep only entries with numeric IDs\n\tlines \u003d []\n\tfor x in (value or []):\n\t    val \u003d x.get(\"value\")\n\t    try:\n\t        val_int \u003d int(val)\n\t        lines.append({\n\t            \"id\": val_int,\n\t            \"label\": x.get(\"label\") or str(val_int),\n\t            \"eqPath\": (x.get(\"EquipmentPath\") or \"\").strip(\"/\")\n\t        })\n\t    except:\n\t        pass  # skip non-numeric (e.g., \"All\")\n\t\n\t# 2) Build tag paths: two per line (icon + color)\n\treadPaths \u003d []\n\tfor ln in lines:\n\t    base \u003d \"[%s]%s/OEE_Events/\" % (TAG_PROVIDER, ln[\"eqPath\"])\n\t    readPaths.append(base + \"stateIcon\")\n\t    readPaths.append(base + \"stateColor\")\n\t\n\t# 3) Bulk read\n\tresults \u003d system.tag.readBlocking(readPaths) if readPaths else []\n\t\n\t# 4) Map results back into items list\n\titems \u003d []\n\tfor i, ln in enumerate(lines):\n\t    icon_qv  \u003d results[i*2]   if i*2   \u003c len(results) else None\n\t    color_qv \u003d results[i*2+1] if i*2+1 \u003c len(results) else None\n\t\n\t    icon_val  \u003d icon_qv.value  if icon_qv and icon_qv.quality.isGood()  else None\n\t    color_val \u003d color_qv.value if color_qv and color_qv.quality.isGood() else None\n\t\n\t    # Normalize icon: if you store names like \"play-circle\", prefix a library (material/)\n\t    icon_path \u003d \"material/help-circle\"\n\t    if icon_val:\n\t        s \u003d str(icon_val)\n\t        icon_path \u003d s if (\"/\" in s or s.startswith(\"resource:\")) else (\"material/\" + s)\n\t\n\t    laneColor \u003d color_val or \"#6C757D\"\n\t\n\t    items.append({\n\t        \"id\": ln[\"id\"],\n\t        \"label\": ln[\"label\"],\n\t        \"iconConfig\": {\n\t            \"path\":  icon_path,\n\t            \"color\": laneColor,\n\t            \"style\": {\"marginRight\": 6}\n\t        },\n\t        # Optional cosmetics:\n\t        \"headerStyle\": {\"fontWeight\": \"600\"},\n\t        \"rowStyle\":    {\"borderBottom\": \"1px solid #eee\"}\n\t    })\n\n\treturn items",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.sourceData.runningIds": {
+      "binding": {
+        "config": {
+          "queryPath": "Dis/Schedule/activeRuns"
+        },
+        "type": "query"
+      }
+    },
+    "custom.sourceData.schedule": {
+      "binding": {
+        "config": {
+          "parameters": {
+            "areaID": "Null",
+            "endDateTime": "{view.custom.viewData.endTime}",
+            "lineID": "Null",
+            "productCodeID": "Null",
+            "startDateTime": "{view.custom.viewData.startTime}"
+          },
+          "queryPath": "app/Schedule/getAllEquipmentSchedule"
+        },
+        "transforms": [
+          {
+            "code": "\t# value -\u003e dataset (view.custom.sourceData.schedule)\n\t\n\tdef getv(r, k, default\u003dNone):\n\t\ttry:\n\t\t\treturn r[k]\n\t\texcept Exception:\n\t\t\ttry:\n\t\t\t\treturn r.getValue(k)\n\t\t\texcept Exception:\n\t\t\t\ttry:\n\t\t\t\t\treturn r.get(k, default)\n\t\t\t\texcept Exception:\n\t\t\t\t\treturn default\n\t\n\tdef to_int(x, d\u003dNone):\n\t\ttry:\n\t\t\treturn int(x)\n\t\texcept:\n\t\t\treturn d\n\t\n\tdef clamp(v, lo, hi):\n\t\ttry:\n\t\t\treturn max(lo, min(hi, v))\n\t\texcept:\n\t\t\treturn v\n\t\n\tdef valid_due(dt):\n\t\ttry:\n\t\t\treturn (dt is not None) and (system.date.getYear(dt) \u003e\u003d 2000)\n\t\texcept:\n\t\t\treturn False\n\t\n\tdef shade(hex_color, pct):\n\t\t# pct in [-1, +1] : - darken, + lighten\n\t\ttry:\n\t\t\th \u003d hex_color.lstrip(\u0027#\u0027)\n\t\t\tr \u003d int(h[0:2], 16)\n\t\t\tg \u003d int(h[2:4], 16)\n\t\t\tb \u003d int(h[4:6], 16)\n\t\t\tr \u003d int(clamp(r + pct*255, 0, 255))\n\t\t\tg \u003d int(clamp(g + pct*255, 0, 255))\n\t\t\tb \u003d int(clamp(b + pct*255, 0, 255))\n\t\t\treturn \u0027#%02x%02x%02x\u0027 % (r, g, b)\n\t\texcept:\n\t\t\treturn hex_color\n\t\n\tdef wo_compact(wo):\n\t\t# \u002725-8912P-10-1S01\u0027 -\u003e \u00278912-1S01\u0027, fallback last 10 chars\n\t\ttry:\n\t\t\tparts \u003d (wo or \u0027\u0027).split(\u0027-\u0027)\n\t\t\tif len(parts) \u003e\u003d 4:\n\t\t\t\tmiddle \u003d parts[1].replace(\u0027P\u0027,\u0027\u0027)\n\t\t\t\tlast   \u003d parts[-1]\n\t\t\t\treturn \u0027%s-%s\u0027 % (middle, last)\n\t\t\treturn (wo or \u0027\u0027)[-10:]\n\t\texcept:\n\t\t\treturn (wo or \u0027\u0027)[-10:]\n\t\n\t# ---------- INDUSTRIAL PALETTE ----------\n\t# Muted, low-saturation “shop floor” colors\n\tBRAND \u003d {\n\t\t\u0027plasma\u0027:  \u0027#2F6B8A\u0027,  # steel blue\n\t\t\u0027bend\u0027:    \u0027#2F7F7B\u0027,  # machine teal\n\t\t\u0027seam\u0027:    \u0027#3E6C4A\u0027,  # tooling green\n\t\t\u0027default\u0027: \u0027#5B6773\u0027   # slate\n\t}\n\t\n\tdef op_color(op):\n\t\tk \u003d (op or \u0027\u0027).lower()\n\t\tif   k.startswith(\u0027pla\u0027): return BRAND[\u0027plasma\u0027]\n\t\telif k.startswith(\u0027ben\u0027): return BRAND[\u0027bend\u0027]\n\t\telif k.startswith(\u0027sea\u0027): return BRAND[\u0027seam\u0027]\n\t\treturn BRAND[\u0027default\u0027]\n\t\n\t# compact labels by visible window\n\ttry:\n\t\tstart \u003d self.view.custom.viewData.startTime\n\t\tend   \u003d self.view.custom.viewData.endTime\n\t\tvisible_hours \u003d abs(system.date.hoursBetween(start, end))\n\texcept:\n\t\tvisible_hours \u003d 48\n\tcompact_mode \u003d (visible_hours \u003c\u003d 48)\n\t\n\t# running schedule IDs -\u003e progress bump\n\trunning \u003d set()\n\ttry:\n\t\trds \u003d self.view.custom.sourceData.runningIds\n\t\tfor r in system.dataset.toPyDataSet(rds):\n\t\t\tsid \u003d to_int(getv(r, \u0027ScheduleID\u0027))\n\t\t\tif sid is not None:\n\t\t\t\trunning.add(sid)\n\texcept:\n\t\tpass\n\t\n\tnow \u003d system.date.now()\n\tevents \u003d []\n\t\n\ttry:\n\t\tds \u003d system.dataset.toPyDataSet(value) if value is not None else None\n\texcept:\n\t\tds \u003d None\n\t\n\tif ds:\n\t\tfor row in ds:\n\t\t\ttry:\n\t\t\t\tschedId \u003d to_int(getv(row, \u0027ID\u0027))\n\t\t\t\tlineId  \u003d to_int(getv(row, \u0027LineID\u0027))\n\t\t\t\tif schedId is None or lineId is None:\n\t\t\t\t\tcontinue\n\t\n\t\t\t\two   \u003d getv(row, \u0027WorkOrder\u0027) or \u0027\u0027\n\t\t\t\top   \u003d (getv(row, \u0027ProductionVersion\u0027) or \u0027Op\u0027).strip()\n\t\t\t\tpc   \u003d getv(row, \u0027ProductCode\u0027) or \u0027\u0027\n\t\t\t\tqty  \u003d to_int(getv(row, \u0027Quantity\u0027), 1)\n\t\t\t\tdue  \u003d getv(row, \u0027RequiredEndDate\u0027)\n\t\n\t\t\t\tstartDate \u003d getv(row, \u0027ScheduleStartDateTime\u0027)\n\t\t\t\tendDate   \u003d getv(row, \u0027ScheduleEndDateTime\u0027)\n\t\n\t\t\t\t# time-based progress (fallback if running)\n\t\t\t\tpercent \u003d 0\n\t\t\t\ttry:\n\t\t\t\t\tif startDate and endDate and system.date.after(now, startDate):\n\t\t\t\t\t\ttotal_ms   \u003d float(system.date.millisBetween(startDate, endDate))\n\t\t\t\t\t\telapsed_ms \u003d float(system.date.millisBetween(startDate, now))\n\t\t\t\t\t\tif total_ms \u003e 0:\n\t\t\t\t\t\t\tpercent \u003d clamp(int(100.0 * elapsed_ms / total_ms), 0, 100)\n\t\t\t\texcept:\n\t\t\t\t\tpass\n\t\t\t\tif schedId in running:\n\t\t\t\t\tpercent \u003d max(10, percent)\n\t\n\t\t\t\t# due cues -\u003e border color\n\t\t\t\tborderClr \u003d \u0027rgba(0,0,0,0.10)\u0027\n\t\t\t\tif valid_due(due):\n\t\t\t\t\ttry:\n\t\t\t\t\t\tif endDate and system.date.after(endDate, due):\n\t\t\t\t\t\t\tborderClr \u003d \u0027#C84B31\u0027   # muted red for overdue\n\t\t\t\t\t\telse:\n\t\t\t\t\t\t\thrs \u003d abs(system.date.hoursBetween(endDate, due))\n\t\t\t\t\t\t\tif hrs \u003c\u003d 24:\n\t\t\t\t\t\t\t\tborderClr \u003d \u0027#B8872E\u0027 # muted amber for due soon\n\t\t\t\t\texcept:\n\t\t\t\t\t\tpass\n\t\n\t\t\t\t# colors (very subtle gradient)\n\t\t\t\tbg_base \u003d op_color(op)\n\t\t\t\tbg_top  \u003d shade(bg_base,  0.03)\n\t\t\t\tbg_bot  \u003d shade(bg_base, -0.04)\n\t\n\t\t\t\t# labels (ASCII only)\n\t\t\t\tif compact_mode:\n\t\t\t\t\top_letter \u003d (op[:1] or \u0027O\u0027).upper()\n\t\t\t\t\tlabel \u003d \u0027[%s] %s\u0027 % (op_letter, wo_compact(wo))\n\t\t\t\t\tfont_sz \u003d \u002711px\u0027\n\t\t\t\t\tpad_lr  \u003d 6\n\t\t\t\telse:\n\t\t\t\t\tparts \u003d [wo]\n\t\t\t\t\tif pc:  parts +\u003d [\u0027• \u0027 + pc]\n\t\t\t\t\tif op:  parts +\u003d [\u0027• \u0027 + op]\n\t\t\t\t\tif qty: parts +\u003d [\u0027• Qty %s\u0027 % qty]\n\t\t\t\t\tlabel \u003d \u0027  \u0027.join(parts)\n\t\t\t\t\tfont_sz \u003d \u002712px\u0027\n\t\t\t\t\tpad_lr  \u003d 10\n\t\n\t\t\t\tshadow \u003d \u00270 1px 2px rgba(0,0,0,0.12)\u0027\n\t\t\t\tif schedId in running:\n\t\t\t\t\tshadow \u003d \u00270 0 0 2px rgba(255,255,255,0.15), 0 0 10px rgba(0,0,0,0.20)\u0027\n\t\n\t\t\t\tevents.append({\n\t\t\t\t\t\u0027itemId\u0027:      lineId,\n\t\t\t\t\t\u0027eventId\u0027:     str(schedId),\n\t\t\t\t\t\u0027startDate\u0027:   startDate,\n\t\t\t\t\t\u0027endDate\u0027:     endDate,\n\t\t\t\t\t\u0027label\u0027:       label,\n\t\t\t\t\t\u0027percentDone\u0027: percent,\n\t\t\t\t\t\u0027leadTime\u0027:    0,\n\t\t\t\t\t\u0027style\u0027: {\n\t\t\t\t\t\t\u0027backgroundImage\u0027: \u0027linear-gradient(180deg, %s 0%%, %s 100%%)\u0027 % (bg_top, bg_bot),\n\t\t\t\t\t\t\u0027color\u0027:           \u0027#F4F5F7\u0027,     # off-white for legibility\n\t\t\t\t\t\t\u0027borderRadius\u0027:    8,\n\t\t\t\t\t\t\u0027border\u0027:          \u00271px solid %s\u0027 % borderClr,\n\t\t\t\t\t\t\u0027boxShadow\u0027:       shadow,\n\t\t\t\t\t\t\u0027paddingLeft\u0027:     pad_lr,\n\t\t\t\t\t\t\u0027paddingRight\u0027:    pad_lr,\n\t\t\t\t\t\t\u0027fontSize\u0027:        font_sz,\n\t\t\t\t\t\t\u0027fontWeight\u0027:      \u0027600\u0027,\n\t\t\t\t\t\t\u0027letterSpacing\u0027:   \u00270.2px\u0027\n\t\t\t\t\t}\n\t\t\t\t})\n\t\t\texcept:\n\t\t\t\tpass\n\t\n\treturn events",
+            "type": "script"
+          }
+        ],
+        "type": "query"
+      }
+    },
+    "custom.viewData": {
+      "persistent": true
+    },
+    "custom.viewData.endTime": {
+      "binding": {
+        "config": {
+          "expression": "addDays(now(0), 7)"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.viewData.startTime": {
+      "binding": {
+        "config": {
+          "expression": "now(0)"
+        },
+        "type": "expr"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1506
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "startTime"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.viewData.startTime"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "formattedValue": "Oct 23, 2025 10:33 AM",
+              "style": {
+                "width": "260px"
+              }
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "meta": {
+              "name": "endTime"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.viewData.endTime"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "formattedValue": "Oct 30, 2025 10:33 AM",
+              "style": {
+                "width": "260px"
+              }
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "meta": {
+              "name": "sp1"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "sp2"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime\n\tend \u003d self.view.custom.viewData.endTime\n\tif start and end:\n\t\twin \u003d system.date.millisBetween(start, end)\n\t\tself.view.custom.viewData.startTime \u003d system.date.addMillis(start, -win)\n\t\tself.view.custom.viewData.endTime   \u003d system.date.addMillis(end,   -win)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnPrev"
+            },
+            "props": {
+              "image": {
+                "style": {
+                  "classes": "Buttons/ButtonStyle Buttons/NormalButton Buttons/OperatorButtons"
+                }
+              },
+              "style": {
+                "classes": "Buttons/OperatorButtons"
+              },
+              "text": "◀ Prev"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime\n\tend \u003d self.view.custom.viewData.endTime\n\twin \u003d system.date.millisBetween(start, end) if (start and end) else (8 * 60 * 60 * 1000)\n\tnow \u003d system.date.now()\n\tself.view.custom.viewData.endTime   \u003d now\n\tself.view.custom.viewData.startTime \u003d system.date.addMillis(now, -win)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnNow"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "Now"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime\n\tend \u003d self.view.custom.viewData.endTime\n\tif start and end:\n\t\twin \u003d system.date.millisBetween(start, end)\n\t\tself.view.custom.viewData.startTime \u003d system.date.addMillis(start,  win)\n\t\tself.view.custom.viewData.endTime   \u003d system.date.addMillis(end,    win)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnNext"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "Next ▶"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "sp3"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime or system.date.now()\n\tself.view.custom.viewData.startTime \u003d start\n\tself.view.custom.viewData.endTime   \u003d system.date.addHours(start, 8)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btn8h"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "8h"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime or system.date.now()\n\tself.view.custom.viewData.startTime \u003d start\n\tself.view.custom.viewData.endTime   \u003d system.date.addHours(start, 12)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btn12h"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "12h"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime or system.date.now()\n\tself.view.custom.viewData.startTime \u003d start\n\tself.view.custom.viewData.endTime   \u003d system.date.addHours(start, 24)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnDay"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "Day"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime or system.date.now()\n\tself.view.custom.viewData.startTime \u003d start\n\tself.view.custom.viewData.endTime   \u003d system.date.addHours(start, 48)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btn2Day"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "2-Day"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tstart \u003d self.view.custom.viewData.startTime or system.date.now()\n\tself.view.custom.viewData.startTime \u003d start\n\tself.view.custom.viewData.endTime   \u003d system.date.addDays(start, 7)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "btnWeek"
+            },
+            "props": {
+              "style": {
+                "classes": "Buttons/ButtonStyle"
+              },
+              "text": "Week"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Filters"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px",
+            "padding": "8px"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onClickEvent": {
+                  "config": {
+                    "script": "\tparams \u003d {\n\t  \"scheduleId\": 9021,\n\t  \"workOrderId\": 174,\n\t  \"workOrder\": \"25-8912P-10-1S01\",\n\t  \"operation\": \"Plasma\",\n\t  \"lineName\": \"Kinetic 4\",\n\t  \"qty\": 1,\n\t  \"start\": \"2025-09-29T07:00:00\",\n\t  \"end\":   \"2025-09-29T09:00:00\",\n\t  \"due\":   \"2025-10-11T00:00:00\",\n\t  \"productCode\": \"1S01\",\n\t  \"programName\": \"D25-5438-01C\",\n\t  \"materialLot\": \"A36-PL-0.75-LOT-7F12\",\n\t  \"nestName\": \"NEST-25-8912-10\",\n\t  \"notes\": \"Verify heat number on sheet.\"\n\t}\n\t\n\tpopupId \u003d \"schInfo\"\n\tviewPath \u003d \"App/DisTran/Schedule/OrderDrawer\"\n\tsystem.perspective.openPopup(\n\t\tid\u003dpopupId,\n\t\tview\u003dviewPath,\n\t\tparams\u003dparams,\n\t\ttitle\u003d\"Work Order\",\n\t\tmodal\u003dFalse,\n\t\tdraggable\u003dTrue,\n\t\tresizable\u003dTrue,\n\t\tshowCloseIcon\u003dTrue,\n\t\toverlayDismiss\u003dTrue\n\t)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "EquipmentSchedule"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.dateRange.endDate": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.viewData.endTime"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.dateRange.startDate": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.viewData.startTime"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.items": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.sourceData.lines"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.scheduledEvents": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.sourceData.schedule"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "bodyStyle": {
+                "backgroundColor": "#0f1a2b"
+              },
+              "currentTimeIndicator": {
+                "color": "#00E676",
+                "opacity": 0.9
+              },
+              "dateRange": {},
+              "deleteEnabled": false,
+              "headerStyles": {
+                "primaryHeaderStyle": {
+                  "fontWeight": "600"
+                },
+                "secondaryHeaderStyle": {
+                  "color": "#E8EBF3",
+                  "fontSize": 12
+                }
+              },
+              "progressBar": {
+                "bar": {
+                  "color": "#FFFFFFCC",
+                  "style": {
+                    "borderRadius": "3px",
+                    "height": "4px",
+                    "opacity": 0.9
+                  }
+                },
+                "track": {
+                  "color": "#FFFFFFAA",
+                  "style": {
+                    "borderRadius": "3px",
+                    "height": "4px",
+                    "opacity": 0.3
+                  }
+                }
+              },
+              "rowHeight": 56,
+              "rowStyle": {
+                "backgroundColor": "#192438",
+                "paddingBottom": 6,
+                "paddingTop": 6
+              },
+              "selectedEvent": {
+                "eventId": "278",
+                "itemId": 5
+              },
+              "selectedEventStyle": {
+                "border": "1px solid rgba(0,0,0,.12)",
+                "borderRadius": 10,
+                "boxShadow": "0 2px 6px rgba(0,0,0,.25)",
+                "marginBottom": 4,
+                "marginTop": 4,
+                "outline": "1px solid rgba(255,255,255,0.04)"
+              }
+            },
+            "type": "ia.display.equipmentschedule"
+          }
+        ],
+        "meta": {
+          "name": "EqSchedule"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

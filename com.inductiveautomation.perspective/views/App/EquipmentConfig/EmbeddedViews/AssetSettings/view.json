@@ -1,0 +1,1390 @@
+{
+  "custom": {
+    "data": {}
+  },
+  "params": {},
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.assetSettings": {
+      "binding": {
+        "config": {
+          "path": "view.params.selectedAssetData"
+        },
+        "transforms": [
+          {
+            "code": "\t\"\"\"\n\tPopulate the form’s default-settings dict by:\n\t  • taking assetName \u0026 assetEnabled from the incoming selectedAssetData\n\t  • overlaying any stored defaults from defaultSettings\n\t\"\"\"\n\tlogger \u003d system.util.getLogger(\"AssetSettingsTransform\")\n\n\t# 1) start with the full template of fields\n\tassetSettings \u003d {\n\t\t\"stateDetection\":    \"\",\n\t\t\"microstopDuration\": \"\",\n\t\t\"modeEntry\":         \"\",\n\t\t\"defaultRate\":       \"\",\n\t\t\"stoppedRate\":       \"\",\n\t\t\"runningDuration\":   \"\",\n\t\t\"assetName\":         \"\",\n\t\t\"runningRate\":       \"\",\n\t\t\"assetEnabled\":      False,\n\t\t\"stoppedDuration\":   \"\",\n\t\t\"operationOrder\":    \"\",\n\t\t\"keyCell\":           False\n\t}\n\n\ttry:\n\t\t# 2) ensure we actually got a dict\n\t\t\t# override the two top‐level fields\n\t\t\tif \"assetName\" in value:\n\t\t\t\tassetSettings[\"assetName\"] \u003d value[\"assetName\"]\n\t\t\tif \"assetEnabled\" in value:\n\t\t\t\tassetSettings[\"assetEnabled\"] \u003d value[\"assetEnabled\"]\n\n\t\t\tdefaults \u003d value.get(\"defaultSettings\")\n\t\t\tfor k, v in defaults.iteritems():\n\t\t\t\t# only apply to keys we know about\n\t\t\t\tif k in assetSettings:\n\t\t\t\t\tassetSettings[k] \u003d v\n\n\texcept Exception, e:\n\t\t# single‐arg .error() to avoid Java Throwable mismatch\n\t\tlogger.error(\"Error in AssetSettings transform: %s\" % e)\n\n\t# 4) hand back the merged settings\n\treturn assetSettings",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "onChange": {
+        "enabled": null,
+        "script": "\t\u0027\u0027\u0027 Updates the DB with the user defined properties upon the pressing of the Save button \u0027\u0027\u0027\n\t\n\t# Input the call to the backend script\n\t"
+      }
+    },
+    "custom.data.tagPaths": {
+      "binding": {
+        "config": {
+          "path": "view.params.selectedAssetData"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the current tag mapping for the asset \u0027\u0027\u0027\n\t\n\t# Perform backend logic here\n\ttempData \u003d {\n\t\t\"infeedPath\": \"\",\n  \t\t\"modePath\": \"\",\n  \t\t\"outfeedPath\": \"\",\n  \t\t\"rejectPath\": \"\",\n  \t\t\"statePath\": \"\"\n\t}\n\t\n\treturn tempData",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.data.tagValues": {
+      "binding": {
+        "config": {
+          "expression": "now(10000)"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the tag values for the selected paths \u0027\u0027\u0027\n\t\n\ttagPaths \u003d self.custom.data.tagPaths\n\tinfeedPath \u003d tagPaths.get(\u0027infeedPath\u0027)\n\toutfeedPath \u003d tagPaths.get(\u0027outfeedPath\u0027)\n\trejectPath \u003d tagPaths.get(\u0027rejectPath\u0027)\n\tmodePath \u003d tagPaths.get(\u0027modePath\u0027)\n\tstatePath \u003d tagPaths.get(\u0027statePath\u0027)\n\t\n\t# Reads the tag values if a mapping has been selected\n\tif infeedPath not in [None, \u0027\u0027]:\n\t\tinfeedValue \u003d system.tag.readBlocking([infeedPath])[0].value\n\telse:\n\t\tinfeedValue \u003d \u0027\u0027\n\t\n\tif outfeedPath not in [None, \u0027\u0027]:\n\t\toutfeedValue \u003d system.tag.readBlocking([outfeedPath])[0].value\n\telse:\n\t\toutfeedValue \u003d \u0027\u0027\n\t\n\tif rejectPath not in [None, \u0027\u0027]:\n\t\trejectValue \u003d system.tag.readBlocking([rejectPath])[0].value\n\telse:\n\t\trejectValue \u003d \u0027\u0027\n\t\n\tif modePath not in [None, \u0027\u0027]:\n\t\tmodeValue \u003d system.tag.readBlocking([modePath])[0].value\n\telse:\n\t\tmodeValue \u003d \u0027\u0027\n\t\n\tif statePath not in [None, \u0027\u0027]:\n\t\tstateValue \u003d system.tag.readBlocking([statePath])[0].value\n\telse:\n\t\tstateValue \u003d \u0027\u0027\n\t\n\t# Returns the tagValues dict\n\ttagValues \u003d {\n\t\t\u0027infeedValue\u0027: infeedValue,\n\t\t\u0027outfeedValue\u0027: outfeedValue,\n\t\t\u0027rejectValue\u0027: rejectValue,\n\t\t\u0027modeValue\u0027: modeValue,\n\t\t\u0027stateValue\u0027: stateValue\n\t}\n\treturn tagValues",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.selectedAssetData": {
+      "paramDirection": "input",
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1000
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "borderLeftStyle": "none",
+                "borderRightStyle": "none",
+                "borderTopStyle": "none",
+                "fontSize": "1.1rem",
+                "marginTop": "15px",
+                "textAlign": "center"
+              },
+              "text": "Tag Mapping"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "150px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Asset Path:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "85px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.selectedAssetData.EqPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "marginLeft": "15px",
+                    "textAlign": "left"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "AssetContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Infeed:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "textAlign": "right"
+                  },
+                  "text": "Tag Value"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MappedTagField",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.text"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.tagPaths.infeedPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Map a Tag Location...",
+                  "style": {
+                    "fontSize": "0.8rem",
+                    "marginLeft": "15px"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Opens the tag tree popup to select a tag to map to \u0027\u0027\u0027\n\t\n\tparams \u003d {\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData,\n\t\t\u0027setting\u0027: \u0027infeed\u0027\n\t}\n\t\n\tsystem.perspective.openPopup(\u0027MapTag\u0027, \u0027AssetConfig/PopupViews/TagMap\u0027, params, \u0027Asset Setting Mapping\u0027, showCloseIcon \u003d False, modal \u003d True)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MapButton"
+                },
+                "position": {
+                  "basis": "100px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "15px"
+                  },
+                  "text": "Map"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "InfeedContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically displays based on assetType selected \u0027\u0027\u0027\n\t\n\tif value in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027]:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Outfeed:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "textAlign": "right"
+                  },
+                  "text": "Tag Value"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MappedTagField",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.text"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.tagPaths.outfeedPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Map a Tag Location...",
+                  "style": {
+                    "fontSize": "0.8rem",
+                    "marginLeft": "15px"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Opens the tag tree popup to select a tag to map to \u0027\u0027\u0027\n\t\n\tparams \u003d {\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData,\n\t\t\u0027setting\u0027: \u0027outfeed\u0027\n\t}\n\t\n\tsystem.perspective.openPopup(\u0027MapTag\u0027, \u0027AssetConfig/PopupViews/TagMap\u0027, params, \u0027Asset Setting Mapping\u0027, showCloseIcon \u003d False, modal \u003d True)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MapButton"
+                },
+                "position": {
+                  "basis": "100px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "15px"
+                  },
+                  "text": "Map"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "OutfeedContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically displays based on assetType selected \u0027\u0027\u0027\n\t\n\tif value in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027]:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Reject:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "textAlign": "right"
+                  },
+                  "text": "Tag Value"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MappedTagField",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.text"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.tagPaths.rejectPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Map a Tag Location...",
+                  "style": {
+                    "fontSize": "0.8rem",
+                    "marginLeft": "15px"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Opens the tag tree popup to select a tag to map to \u0027\u0027\u0027\n\t\n\tparams \u003d {\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData,\n\t\t\u0027setting\u0027: \u0027reject\u0027\n\t}\n\t\n\tsystem.perspective.openPopup(\u0027MapTag\u0027, \u0027AssetConfig/PopupViews/TagMap\u0027, params, \u0027Asset Setting Mapping\u0027, showCloseIcon \u003d False, modal \u003d True)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MapButton"
+                },
+                "position": {
+                  "basis": "100px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "15px"
+                  },
+                  "text": "Map"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "RejectContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically displays based on assetType selected \u0027\u0027\u0027\n\t\n\tif value in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027]:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Mode:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "textAlign": "right"
+                  },
+                  "text": "Tag Value"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MappedTagField",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.text"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.tagPaths.modePath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Map a Tag Location...",
+                  "style": {
+                    "fontSize": "0.8rem",
+                    "marginLeft": "15px"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Opens the tag tree popup to select a tag to map to \u0027\u0027\u0027\n\t\n\tparams \u003d {\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData,\n\t\t\u0027setting\u0027: \u0027mode\u0027\n\t}\n\t\n\tsystem.perspective.openPopup(\u0027MapTag\u0027, \u0027AssetConfig/PopupViews/TagMap\u0027, params, \u0027Asset Setting Mapping\u0027, showCloseIcon \u003d False, modal \u003d True)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MapButton"
+                },
+                "position": {
+                  "basis": "100px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "15px"
+                  },
+                  "text": "Map"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "ModeContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically displays based on assetType selected \u0027\u0027\u0027\n\t\n\tif value in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027, \u0027cell\u0027]:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "State:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TagValueLabel",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "75px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "0.9rem",
+                    "textAlign": "right"
+                  },
+                  "text": "Tag Value"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "MappedTagField",
+                  "tooltip": {
+                    "enabled": true
+                  }
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "path": "this.props.text"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.tagPaths.statePath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Map a Tag Location...",
+                  "style": {
+                    "fontSize": "0.8rem",
+                    "marginLeft": "15px"
+                  }
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Opens the tag tree popup to select a tag to map to \u0027\u0027\u0027\n\t\n\tparams \u003d {\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData,\n\t\t\u0027setting\u0027: \u0027state\u0027\n\t}\n\t\n\tsystem.perspective.openPopup(\u0027MapTag\u0027, \u0027AssetConfig/PopupViews/TagMap\u0027, params, \u0027Asset Setting Mapping\u0027, showCloseIcon \u003d False, modal \u003d True)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MapButton"
+                },
+                "position": {
+                  "basis": "100px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "15px"
+                  },
+                  "text": "Map"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "StateContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedAssetData.assetType"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Dynamically displays based on assetType selected \u0027\u0027\u0027\n\t\n\tif value in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027]:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Spacer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "TagPlotButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Tag Plots"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "draggable": true,
+                        "id": "63RfS9PV",
+                        "modal": false,
+                        "overlayDismiss": false,
+                        "resizable": true,
+                        "showCloseIcon": true,
+                        "type": "open",
+                        "viewParams": {
+                          "equipData": "{view.params.selectedAssetData}"
+                        },
+                        "viewPath": "AssetConfig/PopupViews/MaterialConfig",
+                        "viewportBound": false
+                      },
+                      "scope": "C",
+                      "type": "popup"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "MaterialConfigButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.params.selectedAssetData.assetType} \u003d\u0027line\u0027, True, False)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Configure Materials"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "ButtonContainer"
+            },
+            "position": {
+              "basis": "45px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "marginTop": "15px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "MappingContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "borderLeftStyle": "none",
+                "borderRightStyle": "none",
+                "borderTopStyle": "none",
+                "fontSize": "1.1rem",
+                "marginTop": "15px",
+                "textAlign": "center"
+              },
+              "text": "Properties"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.selectedAssetData.EqType"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\t\u0027\u0027\u0027 Formats the label \u0027\u0027\u0027\n\t\n\tassetType \u003d value.capitalize()\n\tlabel \u003d assetType + \u0027 Name:\u0027\n\treturn label",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "TextField",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "The asset name"
+                  }
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.assetSettings.assetName"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "deferUpdates": false,
+                  "placeholder": "Enter name for the asset...",
+                  "rejectUpdatesWhileFocused": false
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "NameContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "textAlign": "right"
+                  },
+                  "text": "Is Disabled:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Checkbox"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.assetSettings.assetEnabled"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "marginLeft": "12px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "DisabledContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "Mode Entry:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.assetSettings.modeEntry"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Test",
+                      "value": "Test"
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select mode entry..."
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "ModeEntryContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HeaderLabel"
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "15px",
+                    "textAlign": "right"
+                  },
+                  "text": "State Detection:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.assetSettings.stateDetection"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Test",
+                      "value": "Test"
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select state detection..."
+                  }
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "StateDetectionContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginLeft": "15px",
+                "marginRight": "15px",
+                "marginTop": "15px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "Spacer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Clears the properties form \u0027\u0027\u0027\n\t\n\tself.parent.parent.getChild(\"NameContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"DisabledContainer\").getChild(\"Checkbox\").props.selected \u003d False\n\tself.parent.parent.getChild(\"ModeEntryContainer\").getChild(\"Dropdown\").props.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StateDetectionContainer\").getChild(\"Dropdown\").props.value \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"MicrostopDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"DefaultRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"RunningRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"RunningDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StoppedRateContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\tself.parent.parent.getChild(\"StoppedDurationContainer\").getChild(\"TextField\").props.text \u003d \u0027\u0027\n\t"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Clear"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Sends the form data to the assetSettings custom view property where there is a change script that will make the changes in the backend \u0027\u0027\u0027\n\t\n\t# Gets all the form values\n\tassetName \u003d self.parent.parent.getChild(\"NameContainer\").getChild(\"TextField\").props.text \n\tassetEnabled \u003d self.parent.parent.getChild(\"DisabledContainer\").getChild(\"Checkbox\").props.selected\n\tmodeEntry \u003d self.parent.parent.getChild(\"ModeEntryContainer\").getChild(\"Dropdown\").props.value\n\tstateDetection \u003d self.parent.parent.getChild(\"StateDetectionContainer\").getChild(\"Dropdown\").props.value\n\tmicrostopDuration \u003d self.parent.parent.getChild(\"MicrostopDurationContainer\").getChild(\"TextField\").props.text\n\tdefaultRate \u003d self.parent.parent.getChild(\"DefaultRateContainer\").getChild(\"TextField\").props.text\n\trunningRate \u003d self.parent.parent.getChild(\"RunningRateContainer\").getChild(\"TextField\").props.text\n\trunningDuration \u003d self.parent.parent.getChild(\"RunningDurationContainer\").getChild(\"TextField\").props.text\n\tstoppedRate \u003d self.parent.parent.getChild(\"StoppedRateContainer\").getChild(\"TextField\").props.text\n\tstoppedDuration \u003d self.parent.parent.getChild(\"StoppedDurationContainer\").getChild(\"TextField\").props.text\n\t\n\t# Formats and sends the data to the assetSettings custom view property\n\tassetSettings \u003d {\n\t\t\u0027assetName\u0027: assetName,\n\t\t\u0027assetEnabled\u0027: assetEnabled,\n\t\t\u0027modeEntry\u0027: modeEntry,\n\t\t\u0027stateDetection\u0027: stateDetection,\n\t\t\u0027microstopDuration\u0027: microstopDuration,\n\t\t\u0027defaultRate\u0027: defaultRate,\n\t\t\u0027runningRate\u0027: runningRate,\n\t\t\u0027runningDuration\u0027: runningDuration,\n\t\t\u0027stoppedRate\u0027: stoppedRate,\n\t\t\u0027stoppedDuration\u0027: stoppedDuration\n\t}\n\t\n\tself.view.custom.data.assetSettings \u003d assetSettings"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "SaveButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "View 8-hour plots for the mapped tags"
+                  }
+                },
+                "position": {
+                  "basis": "110px",
+                  "shrink": 0
+                },
+                "props": {
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "ButtonContainer"
+            },
+            "position": {
+              "basis": "45px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "marginTop": "15px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SettingsContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "center",
+      "wrap": "wrap"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "mapSetting",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Maps the asset\u0027s setting to the selected tag from the TagMap popup \u0027\u0027\u0027\n\t\n\ttry:\n\t\t# Defines the variables from the payload\n\t\tselectedTagPath \u003d payload.get(\u0027selectedTagPath\u0027)\n\t\tsetting \u003d payload.get(\u0027setting\u0027)\n\t\tselectedAssetData \u003d payload.get(\u0027selectedAssetData\u0027)\n\t\t\n\t\t# Calls XYZ backend function(s)\n\t\t\n\t\t# Refreshes the tagPaths property\n\t\tself.view.refreshBinding(\"custom.data.tagPaths\")\n\t\t\n\t\t# If successful, then closes the popup\n\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\n\texcept Exception as e:\n\t\terrorParams \u003d {\n\t\t    \"ModalName\": \"ErrorModal\",\n\t\t    \"ErrorMessage\": \u0027There was an error: \u0027 + str(e)\n\t\t}\n\t\t\n\t\tsystem.perspective.closePopup(\u0027\u0027)\n\t\tsystem.perspective.openPopup(\"ErrorModal\", \"GlobalViews/PopupViews/ErrorModal\", errorParams)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

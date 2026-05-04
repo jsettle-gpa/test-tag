@@ -1,0 +1,114 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 700,
+      "width": 1100
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "15px",
+                    "fontWeight": "700"
+                  },
+                  "text": "Card Title"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Header"
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "classes": "Cards/Common/CardTitleBorder",
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ContentHint"
+                },
+                "props": {
+                  "style": {
+                    "opacity": 0.8
+                  },
+                  "text": "Place content here (tables, lists, forms, charts, etc.)"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Content"
+            },
+            "position": {
+              "basis": "100%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "card-content",
+                "gap": "8px",
+                "height": "100%",
+                "minWidth": "0",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Card"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "card",
+            "gap": "10px",
+            "height": "100%",
+            "width": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "custom": {
+      "CardSettings": {
+        "Header": {
+          "Title": "Card Title",
+          "key": "value"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "12px",
+        "height": "100%",
+        "padding": "12px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

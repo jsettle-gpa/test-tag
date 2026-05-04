@@ -1,0 +1,167 @@
+{
+  "custom": {
+    "viewData": {
+      "percent": 0,
+      "status": "Planned",
+      "woName": "24-15664P-01-1S02"
+    }
+  },
+  "params": {
+    "workOrder": {
+      "currentStep": {
+        "line": null,
+        "name": null,
+        "no": null
+      },
+      "dueDate": null,
+      "id": 19,
+      "no": "24-15664P-01-1S02",
+      "percent": 0,
+      "pieceMark": "1S02",
+      "status": "Planned"
+    }
+  },
+  "propConfig": {
+    "custom.viewData": {
+      "binding": {
+        "config": {
+          "struct": {
+            "percent": "{view.params.workOrder.percent}",
+            "status": "{view.params.workOrder.status}",
+            "woName": "{view.params.workOrder.no}"
+          },
+          "waitOnAll": true
+        },
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.workOrder": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 121,
+      "width": 381
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "woName"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.viewData.woName"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Text/NormalText",
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Col1"
+            },
+            "position": {
+              "basis": "161px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Status"
+                },
+                "position": {
+                  "basis": "50px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.viewData.status"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Col2"
+            },
+            "position": {
+              "basis": "216px"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Col3"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "grow": 1,
+      "shrink": 1
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "TextFields/TextFieldAlternate",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "custom": {
+    "readme": "# Home / Landing Page\n\n**View Path:** `App/LandingPage/Home`\n**Primary Component:** `ia.display.flex-repeater` → `App/LandingPage/Repeater/LandingPageTile`\n\n## Purpose\nDisplay a grid of navigation tiles that route users to core app areas (Asset Config, Operator Dashboard, Administration, Product Matrix). Tiles are driven by a static list by default, with an option to load from a Named Query.\n\n---\n\n## Data Contract\n\n### Params (inputs)\nNone.\n\n### View State\n```json\nview.custom.config.instances : [\n  { \"title\": \"Asset Config\", \"navToPath\": \"/assets\", \"imageSource\": \"material/add_business\" },\n  { \"title\": \"Operator Dashboard\", \"navToPath\": \"/operator_dashboard\", \"imageSource\": null },\n  { \"title\": \"Administration\", \"navToPath\": \"/administration\", \"imageSource\": null },\n  { \"title\": \"Product Matrix\", \"navToPath\": \"/product-matrix\", \"imageSource\": null }\n]\n```\n- **Persistent:** yes (`propConfig.custom.config \u003d true`)\n\n### Reads\n- (Optional) **Named Query**: `GlobalQueries/Navigation/getMenuNavItems` *(currently disabled in this view)*  \n  **Expected dataset columns (index → name):**\n  - 0 → `Title` (string)\n  - 1 → `NavToPath` (string, e.g. `/assets`)\n  - 3 → `IconPath` (string, e.g. `material/add_business`)\n\nTransform builds `instances` and sorts by `title` (A→Z).\n\n### Writes\nNone (navigation is handled by the tile view).\n\n### Messages / Tags\n- None.\n\n---\n\n## Behavior\n- **Tile Rendering:** `FlexRepeater.props.path \u003d App/LandingPage/Repeater/LandingPageTile`\n- **Instances Source:** `view.custom.config.instances` (property binding on repeater)\n- **Layout:** wrapped, top-left aligned, with element margins.\n\n---\n\n## Enable Dynamic Menu (optional)\nTo load tiles from DB instead of the static list:\n1. In **propConfig → custom.config.instances.binding**, set `enabled: true`.\n2. Ensure `GlobalQueries/Navigation/getMenuNavItems` returns the columns listed above.\n3. (Optional) Extend the transform to map extra fields.\n\n```python\n# Transform (already present)\ninstances \u003d []\nfor row in range(value.getRowCount()):\n    navToPath \u003d value.getValueAt(row, 1)\n    if navToPath not in [None, \u0027\u0027, \u0027/\u0027]:\n        title \u003d value.getValueAt(row, 0)\n        iconPath \u003d value.getValueAt(row, 3)\n        instances.append({\u0027imageSource\u0027: iconPath, \u0027navToPath\u0027: navToPath, \u0027title\u0027: title})\ninstances \u003d sorted(instances, key\u003dlambda x: x[\u0027title\u0027])\nreturn instances\n```\n\n---\n\n## Tile Contract (child view)\n**Child View:** `App/LandingPage/Repeater/LandingPageTile`\n\n**Expected params per instance:**\n```json\n{\n  \"title\": \"string\",\n  \"navToPath\": \"/route\",\n  \"imageSource\": \"material/icon-name\" | null\n}\n```\n\n---\n\n## UX \u0026 Error States\n- Empty menu → repeater shows nothing; consider an empty-state label.\n- Bad route → click doesn’t navigate; verify routes in QA.\n- Missing icon → child view should render a default icon.\n\n---\n\n## Validation Rules\n- Every instance needs **title** and **navToPath**.\n- `navToPath` should start with `/`.\n- `imageSource` may be `null` (child handles default).\n\n---\n\n## Test Checklist\n- [ ] Static default tiles render (4 tiles)\n- [ ] Each tile navigates\n- [ ] Named Query binding works and sorts A→Z\n- [ ] Empty dataset renders gracefully\n- [ ] Long titles wrap or truncate\n- [ ] Icons render; null → default icon\n\n---\n\n## Performance Notes\n- Keep `instances` under ~100 for instant paint.\n- Avoid heavy transforms; filter in the query.\n\n---\n\n## Change Log\n- **v1.0** – Initial landing page with static instances; optional DB-driven menu.\n"
+  },
+  "params": {},
+  "propConfig": {
+    "custom.readme": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 700,
+      "width": 900
+    }
+  },
+  "root": {
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "padding": "16px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

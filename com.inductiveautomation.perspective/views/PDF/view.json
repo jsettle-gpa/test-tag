@@ -1,0 +1,30 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "PDFViewer"
+        },
+        "position": {
+          "height": 772,
+          "width": 697,
+          "x": 41,
+          "y": 21
+        },
+        "props": {
+          "page": 1,
+          "pageCount": 2,
+          "source": "http://172.16.150.37:8088/system/webdev/elev8_tag/DTS-PDF-TEST/P25-5435-010.PDF"
+        },
+        "type": "ia.display.pdf-viewer"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.coord"
+  }
+}

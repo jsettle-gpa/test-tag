@@ -1,0 +1,468 @@
+{
+  "custom": {
+    "stats": {
+      "errors": 3,
+      "lastSync": "2025-10-06 09:42",
+      "pending": 87
+    },
+    "viewData": {
+      "viewPath": "App/Administration/Embedded/ERP"
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.viewData": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "18px",
+                    "fontWeight": "700",
+                    "letterSpacing": "0.3px"
+                  },
+                  "text": "Administration – ERP Intake"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "PendingLabel"
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": "12px",
+                            "opacity": 0.8
+                          },
+                          "text": "Pending Items"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "PendingValue"
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": "20px",
+                            "fontWeight": "700"
+                          },
+                          "text": "87"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "PendingCard"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "backgroundColor": "#2a2a2a",
+                        "border": "1px solid #3a3a3a",
+                        "borderRadius": "8px",
+                        "gap": "4px",
+                        "minWidth": "140px",
+                        "padding": "8px 10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "ErrorsLabel"
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": "12px",
+                            "opacity": 0.8
+                          },
+                          "text": "Errors"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "ErrorsValue"
+                        },
+                        "props": {
+                          "style": {
+                            "color": "#ff6666",
+                            "fontSize": "20px",
+                            "fontWeight": "700"
+                          },
+                          "text": "3"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "ErrorsCard"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "backgroundColor": "#2a2a2a",
+                        "border": "1px solid #3a3a3a",
+                        "borderRadius": "8px",
+                        "gap": "4px",
+                        "minWidth": "140px",
+                        "padding": "8px 10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LastSyncLabel"
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": "12px",
+                            "opacity": 0.8
+                          },
+                          "text": "Last Sync"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "LastSyncValue"
+                        },
+                        "props": {
+                          "style": {
+                            "fontSize": "14px",
+                            "fontWeight": "600"
+                          },
+                          "text": "2025-10-06 09:42"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "LastSyncCard"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "backgroundColor": "#2a2a2a",
+                        "border": "1px solid #3a3a3a",
+                        "borderRadius": "8px",
+                        "gap": "4px",
+                        "minWidth": "200px",
+                        "padding": "8px 10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "HeaderStats"
+                },
+                "props": {
+                  "style": {
+                    "gap": "10px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "HeaderLeft"
+            },
+            "propConfig": {
+              "props.direction": {
+                "binding": {
+                  "config": {
+                    "expression": "if(len({value}) \u003e 0, True, False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "gap": "14px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "RefreshIcon"
+                },
+                "position": {
+                  "basis": 34
+                },
+                "props": {
+                  "path": "material/autorenew",
+                  "style": {
+                    "fontSize": "20px",
+                    "opacity": 0.85
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "HeaderRight"
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "display": false
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid #3a3a3a",
+            "borderRadius": "8px",
+            "classes": "card",
+            "overflow": "hidden",
+            "padding": "10px 12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "AdminNavTitle"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "fontWeight": "700",
+                    "letterSpacing": "0.8px",
+                    "opacity": 0.8
+                  },
+                  "text": "ADMIN MENU"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.viewData.viewPath \u003d \u0027App/Administration/Embedded/ERP\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Nav_ERP"
+                },
+                "props": {
+                  "style": {
+                    "borderRadius": "6px",
+                    "fontWeight": "600",
+                    "padding": "8px 10px"
+                  },
+                  "text": "ERP",
+                  "textStyle": {
+                    "cursor": "pointer"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.viewData.viewPath \u003d \u0027App/Administration/Embedded/Users Roles\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Nav_Users"
+                },
+                "props": {
+                  "style": {
+                    "borderRadius": "6px",
+                    "padding": "8px 10px"
+                  },
+                  "text": "Users \u0026 Roles",
+                  "textStyle": {
+                    "cursor": "pointer"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.viewData.viewPath \u003d \u0027App/Administration/Embedded/Shifts\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Nav_Shifts"
+                },
+                "props": {
+                  "style": {
+                    "borderRadius": "6px",
+                    "padding": "8px 10px"
+                  },
+                  "text": "Shifts",
+                  "textStyle": {
+                    "cursor": "pointer"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Nav_Materials"
+                },
+                "props": {
+                  "style": {
+                    "borderRadius": "6px",
+                    "padding": "8px 10px"
+                  },
+                  "text": "KPIs",
+                  "textStyle": {
+                    "cursor": "pointer"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "SideNav"
+            },
+            "position": {
+              "basis": "15%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "borderRadius": "8px",
+                "classes": "card",
+                "gap": "6px",
+                "height": "100%",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "EmbeddedView"
+                },
+                "position": {
+                  "basis": "100%",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.viewData.viewPath"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Content"
+            },
+            "position": {
+              "basis": "75%",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "height": "100%",
+                "minWidth": 0,
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "style": {
+            "gap": "12px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "color": "#e6e6e6",
+        "gap": "12px",
+        "height": "100%",
+        "padding": "12px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

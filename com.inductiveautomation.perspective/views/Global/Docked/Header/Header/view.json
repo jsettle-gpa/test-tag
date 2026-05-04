@@ -1,0 +1,368 @@
+{
+  "custom": {
+    "activeAlarms": 0,
+    "inputs": {}
+  },
+  "params": {
+    "Kiosk": false,
+    "curentPage": "",
+    "pagePath": ""
+  },
+  "propConfig": {
+    "custom.inputs": {
+      "persistent": true
+    },
+    "custom.inputs.User": {
+      "binding": {
+        "config": {
+          "expression": "trim(coalesce({session.props.auth.user.firstName}, \u0027\u0027)) \r\n+ if(\r\n    len(trim(coalesce({session.props.auth.user.lastName}, \u0027\u0027))) \u003e 0,\r\n    \u0027 \u0027,\r\n    \u0027\u0027\r\n  ) \r\n+ trim(coalesce({session.props.auth.user.lastName}, \u0027\u0027))"
+        },
+        "type": "expr"
+      }
+    },
+    "custom.inputs.timeFormat": {
+      "binding": {
+        "config": {
+          "expression": "try(\r\n\tdateFormat(\r\n\t\tnow(10000),\r\n\t\treplace(replace({session.custom.UserSettings.App.TimeFormat}, \"DD\", \"dd\"), \"YYYY\", \"yyyy\")\r\n \r\n\t),\r\n\tnow(10000)\r\n)"
+        },
+        "type": "expr"
+      }
+    },
+    "params.curentPage": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pagePath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 65,
+      "width": 1900
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Logo"
+            },
+            "position": {
+              "basis": "26px",
+              "display": false
+            },
+            "props": {
+              "altText": "Logo",
+              "fit": {
+                "height": 50,
+                "mode": "contain",
+                "width": 50
+              },
+              "source": "/system/images/6.png",
+              "style": {
+                "marginBottom": 5,
+                "marginTop": 5
+              }
+            },
+            "type": "ia.display.image"
+          },
+          {
+            "meta": {
+              "domId": "header-menu-icon",
+              "name": "Menu"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/menu",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "Menu"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "style": {
+            "gap": "",
+            "marginRight": "10px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Breadcrumbs"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "instances": [
+                {
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                }
+              ],
+              "path": "Global/Docked/Header/Embedded/BreadCrumbItem",
+              "style": {
+                "alignItems": "center",
+                "gap": "4px"
+              }
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "BreadCrumbs"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "10px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Cells",
+              "tooltip": {
+                "enabled": true,
+                "text": "Cells View"
+              }
+            },
+            "position": {
+              "basis": "30px",
+              "display": false
+            },
+            "props": {
+              "color": "white",
+              "path": "material/account_tree",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "OperatorName"
+            },
+            "position": {
+              "basis": "107px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.inputs.User"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Global/MarginAllRight"
+              },
+              "textStyle": {
+                "color": "white",
+                "fontWeight": "bold",
+                "whiteSpace": "nowrap"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Alarms",
+              "tooltip": {
+                "enabled": true,
+                "text": "Alarm Notification"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/notifications",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Refresh",
+              "tooltip": {
+                "enabled": true,
+                "text": "Refresh"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/refresh",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "SaveConfig",
+              "tooltip": {
+                "enabled": true,
+                "text": "Save"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/save",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "vMKV0KCV",
+                    "modal": true,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "title": "User Settings",
+                    "type": "open",
+                    "viewParams": {
+                      "inputs": "{session.custom.UserSettings.App}"
+                    },
+                    "viewPath": "Global/UserSettings/Settings",
+                    "viewportBound": false
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "Configuration",
+              "tooltip": {
+                "enabled": true,
+                "text": "Configuration"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/settings",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {},
+                  "scope": "C",
+                  "type": "logout"
+                }
+              }
+            },
+            "meta": {
+              "domId": "logout-icon",
+              "name": "Logout",
+              "tooltip": {
+                "enabled": true,
+                "text": "Logout"
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "color": "white",
+              "path": "material/login",
+              "style": {
+                "opacity": 0.9
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "UserInfo"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "flex-end",
+          "style": {
+            "gap": "8px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "domId": "headerDock",
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "style": {
+        "gap": "8px",
+        "height": "100%",
+        "overflow": "hidden",
+        "padding": "0 8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

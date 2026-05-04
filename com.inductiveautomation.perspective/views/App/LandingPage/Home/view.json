@@ -1,0 +1,103 @@
+{
+  "custom": {
+    "config": {
+      "instances": [
+        {
+          "imageSource": "material/add_business",
+          "navToPath": "/assets",
+          "title": "Asset Config"
+        },
+        {
+          "imageSource": null,
+          "navToPath": "/operator_dashboard",
+          "title": "Operator Dashboard"
+        },
+        {
+          "imageSource": null,
+          "navToPath": "/administration",
+          "title": "Administration"
+        },
+        {
+          "imageSource": null,
+          "navToPath": "/product-matrix",
+          "title": "Product Matrix"
+        }
+      ]
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.config": {
+      "persistent": true
+    },
+    "custom.config.instances": {
+      "binding": {
+        "config": {
+          "queryPath": "GlobalQueries/Navigation/getMenuNavItems"
+        },
+        "enabled": false,
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the instances for the flex repeater \u0027\u0027\u0027\n\t\n\t# Loops through the nav items and adds the instance when ther is a url\n\tinstances \u003d []\n\tfor row in range(value.getRowCount()):\n\t\tnavToPath \u003d value.getValueAt(row, 1)\n\t\tif navToPath not in [None, \u0027\u0027, \u0027/\u0027]:\n\t\t\ttitle \u003d value.getValueAt(row, 0)\n\t\t\ticonPath \u003d value.getValueAt(row,3)\n\t\t\tinstance \u003d {\n\t\t\t\t\u0027imageSource\u0027: iconPath,\n\t\t\t    \u0027navToPath\u0027: navToPath,\n\t\t\t    \u0027title\u0027: title\n    \t\t}\n\t\t\tinstances.append(instance)\n\t\n\t# Sort alphabetically\n\tinstances \u003d sorted(instances, key \u003d lambda x: x[\u0027title\u0027])\n\t\n\treturn instances",
+            "type": "script"
+          }
+        ],
+        "type": "query"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1087
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.config.instances"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "alignContent": "flex-start",
+          "alignItems": "flex-start",
+          "elementStyle": {
+            "marginRight": "30px",
+            "marginTop": "30px"
+          },
+          "path": "App/LandingPage/Repeater/LandingPageTile",
+          "style": {
+            "marginBottom": "30px",
+            "marginLeft": "30px",
+            "overflow": "visible"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "domId": "Home",
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "fade-in"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

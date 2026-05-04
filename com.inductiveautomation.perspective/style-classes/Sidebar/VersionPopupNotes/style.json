@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "lineHeight": "20px",
+      "overflow": "scroll",
+      "padding": "36px"
+    }
+  }
+}

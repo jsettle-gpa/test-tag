@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "The main popup view for the material configuration feature that allows users to import material data into the DB. Popup is opened from the AssetConfig view when selected on a site asset.\n\nInput Data:\n-dataSourceSelection Message Handler on the root: Message sent from the SelectDataSource view\n-attributeSelection Message Handler on the root: Message sent from the MapMaterialAttributes view\n\nOutput Data:\n-Import button on the last pane will send the selected data to the backend to store to the database\n\nCustom Properties:\n-custom.data.currentPane: determines which pane of the custom carousel it makes visible\n-custom.data.selection.attributeSelection: updated from the attributeSelection message handler on the root and stores the user\u0027s attribute selections\n-custom.data.selection.dataSourceSelection: updated from the dataSourceSelection message handler on the root and stores the user\u0027s data source selection\n-custom.data.nextPaneReady: determines if all selections have been made and if the user can proceed to the next pane in the carousel\n-custom.data.finalData: formats what the data will look like and displays this on the preview pane (last pane)",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-21T13:50:01Z"
+    },
+    "lastModificationSignature": "9d34cef7ca26b9d9eaa743f4603bf1f9706f7c81390f5c2f44fab3568b147aaf"
+  }
+}

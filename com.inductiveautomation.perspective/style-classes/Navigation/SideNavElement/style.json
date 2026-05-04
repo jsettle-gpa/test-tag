@@ -1,0 +1,29 @@
+{
+  "base": {
+    "style": {
+      "color": "var(--white)",
+      "cursor": "pointer",
+      "paddingBottom": "0.2em",
+      "paddingLeft": "0.2em",
+      "paddingTop": "0.2em"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "animation": {
+        "duration": "250ms",
+        "direction": "normal",
+        "iterationCount": "1",
+        "keyframes": {
+          "0%": {},
+          "100%": {
+            "backgroundColor": "#EEF7FB",
+            "boxShadow": "inset 0 2px 4px 0 rgba(34,34,34,0.4)",
+            "color": "#000000"
+          }
+        }
+      }
+    }
+  ]
+}

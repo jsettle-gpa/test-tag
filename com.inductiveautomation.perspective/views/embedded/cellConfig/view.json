@@ -1,0 +1,168 @@
+{
+  "custom": {},
+  "params": {
+    "cellConfig": {
+      "cellOrder": "",
+      "downtimeMode": "",
+      "keyCell": ""
+    }
+  },
+  "propConfig": {
+    "params.cellConfig": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 339
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "props": {
+              "style": {
+                "fontSize": 28,
+                "fontWeight": "bold"
+              },
+              "text": "Cell Config"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "props": {
+              "text": "Cell Order"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "CellOrderField"
+            },
+            "position": {
+              "basis": "32px"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.cellConfig.cellOrder"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "format": "0,0"
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "props": {
+              "text": "Key Cell"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "KeyCellDropdown"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.cellConfig.keyCell"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": true
+                },
+                {
+                  "label": "No",
+                  "value": false
+                }
+              ],
+              "showClearIcon": true
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "Label_2"
+            },
+            "props": {
+              "text": "Downtime Mode"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "DowntimeModeDropdown"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.cellConfig.downtimeMode"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Automatic",
+                  "value": "Automatic"
+                },
+                {
+                  "label": "Manual",
+                  "value": "Manual"
+                }
+              ]
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "CellConfigPage"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": 16,
+            "padding": "24px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

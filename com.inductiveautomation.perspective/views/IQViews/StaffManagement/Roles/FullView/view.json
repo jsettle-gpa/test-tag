@@ -1,0 +1,96 @@
+{
+  "custom": {},
+  "params": {},
+  "permissions": {
+    "securityLevels": [],
+    "type": "AllOf"
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "RolesView"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "props": {
+          "params": {
+            "AreaID": "value",
+            "EqPath": "value",
+            "EqType": "site",
+            "HideTitle": false,
+            "Icon": "",
+            "IconDisplay": true,
+            "IsNavigate": false,
+            "Params": {
+              "SelectedID": null,
+              "SelectedRow": null,
+              "SiteID": "value",
+              "State": "",
+              "TableDataset": {
+                "$": [
+                  "ds",
+                  192,
+                  1760549438306
+                ],
+                "$columns": [
+                  {
+                    "data": [],
+                    "name": "ID",
+                    "type": "Integer"
+                  },
+                  {
+                    "data": [],
+                    "name": "Name",
+                    "type": "String"
+                  },
+                  {
+                    "data": [],
+                    "name": "Authority",
+                    "type": "String"
+                  },
+                  {
+                    "data": [],
+                    "name": "CodeNumber",
+                    "type": "String"
+                  },
+                  {
+                    "data": [],
+                    "name": "Description",
+                    "type": "String"
+                  },
+                  {
+                    "data": [],
+                    "name": "Length",
+                    "type": "String"
+                  }
+                ]
+              }
+            },
+            "Path": "App/StaffManagement/Roles/Embedded/RolesTable",
+            "Provider": "value",
+            "SizeBasis": "value",
+            "TagPath": "value",
+            "Title": "User Roles",
+            "Type": "",
+            "index": "value",
+            "useDefaultHeight": false,
+            "useDefaultWidth": false
+          },
+          "path": "GlobalComponents/Cards/Card"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

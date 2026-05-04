@@ -1,0 +1,698 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "IntakeTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Some Metrics"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "IntakeRateCard"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#2a2a2a",
+                    "border": "1px solid #3a3a3a",
+                    "borderRadius": "8px",
+                    "gap": "8px",
+                    "height": "220px",
+                    "padding": "10px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "StatusTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Somthing else?"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "StatusCard"
+                },
+                "position": {
+                  "basis": "153px"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#2a2a2a",
+                    "border": "1px solid #3a3a3a",
+                    "borderRadius": "8px",
+                    "gap": "8px",
+                    "height": "220px",
+                    "padding": "10px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "OverviewTopRow"
+            },
+            "props": {
+              "style": {
+                "gap": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "RecentIntakeTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "ts",
+                      "header": {
+                        "title": "Timestamp"
+                      },
+                      "width": "22%"
+                    },
+                    {
+                      "field": "type",
+                      "header": {
+                        "title": "Type"
+                      },
+                      "width": "18%"
+                    },
+                    {
+                      "field": "ref",
+                      "header": {
+                        "title": "Reference"
+                      },
+                      "width": "22%"
+                    },
+                    {
+                      "field": "status",
+                      "header": {
+                        "title": "Status"
+                      },
+                      "width": "18%"
+                    },
+                    {
+                      "field": "note",
+                      "header": {
+                        "title": "Note"
+                      },
+                      "width": "20%"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "note": "-",
+                      "ref": "WO-10482",
+                      "status": "Queued",
+                      "ts": "2025-10-06 09:41",
+                      "type": "WorkOrder"
+                    },
+                    {
+                      "note": "-",
+                      "ref": "MAT-7781",
+                      "status": "Validated",
+                      "ts": "2025-10-06 09:39",
+                      "type": "Material"
+                    },
+                    {
+                      "note": "Missing resource",
+                      "ref": "SCH-20251006",
+                      "status": "Error",
+                      "ts": "2025-10-06 09:35",
+                      "type": "Schedule"
+                    }
+                  ],
+                  "style": {
+                    "backgroundColor": "#2a2a2a",
+                    "borderColor": "#3a3a3a",
+                    "rowHeight": 34
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "OverviewBottomRow"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "gap": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Overview"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "12px",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "WO_Confirm"
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#3b7ddd",
+                        "borderRadius": "6px",
+                        "padding": "6px 10px"
+                      },
+                      "text": "Confirm Selected"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "WO_Reject"
+                    },
+                    "position": {
+                      "display": false
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#6b2020",
+                        "borderRadius": "6px",
+                        "padding": "6px 10px"
+                      },
+                      "text": "Reject"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "meta": {
+                      "name": "WO_Reprocess"
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#3b9092",
+                        "borderRadius": "6px",
+                        "padding": "6px 10px"
+                      },
+                      "text": "Reprocess"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "WO_Actions"
+                },
+                "props": {
+                  "style": {
+                    "gap": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "WO_TopBar"
+            },
+            "props": {
+              "justify": "space-between",
+              "style": {
+                "backgroundColor": "#262626",
+                "border": "1px solid #3a3a3a",
+                "borderRadius": "8px",
+                "padding": "8px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "WO_Table"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "columns": [
+                {
+                  "field": "wo",
+                  "header": {
+                    "title": "WO"
+                  },
+                  "width": "16%"
+                },
+                {
+                  "field": "part",
+                  "header": {
+                    "title": "Part"
+                  },
+                  "width": "22%"
+                },
+                {
+                  "align": "center",
+                  "field": "qty",
+                  "header": {
+                    "title": "Qty"
+                  },
+                  "width": "10%"
+                },
+                {
+                  "field": "start",
+                  "header": {
+                    "title": "Start"
+                  },
+                  "width": "20%"
+                },
+                {
+                  "field": "status",
+                  "header": {
+                    "title": "Status"
+                  },
+                  "width": "16%"
+                },
+                {
+                  "field": "msg",
+                  "header": {
+                    "title": "Message"
+                  },
+                  "width": "16%"
+                }
+              ],
+              "data": [
+                {
+                  "msg": "",
+                  "part": "Laps",
+                  "qty": 1200,
+                  "start": "2025-10-07 06:00",
+                  "status": "Queued",
+                  "wo": "WO-10482"
+                },
+                {
+                  "msg": "",
+                  "part": "Lids",
+                  "qty": 800,
+                  "start": "2025-10-06 14:00",
+                  "status": "Validated",
+                  "wo": "WO-10481"
+                },
+                {
+                  "msg": "Invalid UoM",
+                  "part": "Covers",
+                  "qty": 500,
+                  "start": "2025-10-06 08:00",
+                  "status": "Error",
+                  "wo": "WO-10480"
+                }
+              ],
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "borderColor": "#3a3a3a",
+                "rowHeight": 34
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Work Orders"
+        },
+        "position": {
+          "tabIndex": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "10px",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "MAT_Table"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "columns": [
+                {
+                  "field": "item",
+                  "header": {
+                    "title": "Item"
+                  },
+                  "width": "26%"
+                },
+                {
+                  "field": "desc",
+                  "header": {
+                    "title": "Description"
+                  },
+                  "width": "34%"
+                },
+                {
+                  "field": "uom",
+                  "header": {
+                    "title": "UoM"
+                  },
+                  "width": "10%"
+                },
+                {
+                  "field": "status",
+                  "header": {
+                    "title": "Status"
+                  },
+                  "width": "14%"
+                },
+                {
+                  "field": "note",
+                  "header": {
+                    "title": "Note"
+                  },
+                  "width": "16%"
+                }
+              ],
+              "data": [
+                {
+                  "desc": "Polymer A",
+                  "item": "MAT-7781",
+                  "note": "",
+                  "status": "Validated",
+                  "uom": "KG"
+                },
+                {
+                  "desc": "Label – 2x3",
+                  "item": "MAT-5520",
+                  "note": "",
+                  "status": "Queued",
+                  "uom": "EA"
+                },
+                {
+                  "desc": "Box 10x10",
+                  "item": "MAT-3390",
+                  "note": "Missing cost center",
+                  "status": "Error",
+                  "uom": "EA"
+                }
+              ],
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "borderColor": "#3a3a3a",
+                "rowHeight": 34
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Materials"
+        },
+        "position": {
+          "tabIndex": 2
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "10px",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SCH_Table"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "columns": [
+                {
+                  "field": "slot",
+                  "header": {
+                    "title": "Slot"
+                  },
+                  "width": "18%"
+                },
+                {
+                  "field": "workcenter",
+                  "header": {
+                    "title": "Work Center"
+                  },
+                  "width": "22%"
+                },
+                {
+                  "field": "wo",
+                  "header": {
+                    "title": "WO"
+                  },
+                  "width": "18%"
+                },
+                {
+                  "field": "start",
+                  "header": {
+                    "title": "Start"
+                  },
+                  "width": "22%"
+                },
+                {
+                  "field": "status",
+                  "header": {
+                    "title": "Status"
+                  },
+                  "width": "20%"
+                }
+              ],
+              "data": [
+                {
+                  "slot": "AM-1",
+                  "start": "2025-10-06 08:00",
+                  "status": "Error",
+                  "wo": "WO-10480",
+                  "workcenter": "CFMIU"
+                },
+                {
+                  "slot": "PM-1",
+                  "start": "2025-10-06 14:00",
+                  "status": "Validated",
+                  "wo": "WO-10481",
+                  "workcenter": "CFMIU"
+                }
+              ],
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "borderColor": "#3a3a3a",
+                "rowHeight": 34
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Schedule"
+        },
+        "position": {
+          "tabIndex": 3
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "10px",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ERR_Table"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "columns": [
+                {
+                  "field": "time",
+                  "header": {
+                    "title": "Time"
+                  },
+                  "width": "22%"
+                },
+                {
+                  "field": "source",
+                  "header": {
+                    "title": "Source"
+                  },
+                  "width": "18%"
+                },
+                {
+                  "field": "entity",
+                  "header": {
+                    "title": "Entity"
+                  },
+                  "width": "20%"
+                },
+                {
+                  "field": "detail",
+                  "header": {
+                    "title": "Detail"
+                  },
+                  "width": "26%"
+                },
+                {
+                  "field": "state",
+                  "header": {
+                    "title": "State"
+                  },
+                  "width": "14%"
+                }
+              ],
+              "data": [
+                {
+                  "detail": "Missing resource",
+                  "entity": "SCH-20251006",
+                  "source": "Schedule",
+                  "state": "Open",
+                  "time": "2025-10-06 09:35"
+                },
+                {
+                  "detail": "Invalid UoM",
+                  "entity": "WO-10480",
+                  "source": "WorkOrder",
+                  "state": "Open",
+                  "time": "2025-10-06 08:12"
+                }
+              ],
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "borderColor": "#3a3a3a",
+                "rowHeight": 34
+              }
+            },
+            "type": "ia.display.table"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ERR_Reprocess"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#3b9092",
+                    "borderRadius": "6px",
+                    "padding": "6px 10px"
+                  },
+                  "text": "Reprocess Selected"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "ERR_Dismiss"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#6b2020",
+                    "borderRadius": "6px",
+                    "padding": "6px 10px"
+                  },
+                  "text": "Dismiss"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "ERR_ActionBar"
+            },
+            "props": {
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Errors"
+        },
+        "position": {
+          "tabIndex": 4
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "10px",
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "currentTabIndex": 4,
+      "tabs": [
+        "Overview",
+        "Work Orders",
+        "Materials",
+        "Schedule",
+        "Errors"
+      ]
+    },
+    "type": "ia.container.tab"
+  }
+}

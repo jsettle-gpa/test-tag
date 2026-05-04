@@ -1,0 +1,20 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "handleTimerEvent.py"
+  ],
+  "attributes": {
+    "sharedThread": true,
+    "delay": 60000,
+    "lastModificationSignature": "0d0c6c1268570aedfefac650ab620792a418b9acbcc5d8a2c26dfcdf38e0ff30",
+    "fixedDelay": false,
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2026-03-30T12:44:45Z"
+    },
+    "enabled": true
+  }
+}

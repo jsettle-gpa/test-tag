@@ -1,0 +1,13 @@
+{
+  "base": {
+    "animation": {
+      "duration": "1s",
+      "keyframes": {
+        "0%": {},
+        "100%": {
+          "color": "--error"
+        }
+      }
+    }
+  }
+}

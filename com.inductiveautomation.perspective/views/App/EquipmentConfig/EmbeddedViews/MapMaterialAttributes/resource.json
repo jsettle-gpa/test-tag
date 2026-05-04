@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "The embedded view displayed on the 2nd pane of the MaterialConfig carousel. Allows users to map columns in their uploaded file to Elev8 material attributes\n\nInput Data:\n-params.fileDate: the data of the uploaded file\n-params.fileName: the name of the uploaded file\n\nOutput Data:\n-sends a message to the attributeSelection message handler: located on the root of the MaterialConfig view, sends from the custom.data binding\n\nCustom Properties:\n-custom.config.options: returns the headers of the uploaded file to be used in the dropdowns\n-custom.data.inputErrors: a dict of all the attirbutes and if there is an error in the selection made or not (e.g., duplicate entry or data type error)\n-custom.data.selections.columns: the selected column for each attribute\n-custom.data.selections.datetimeFormats: the selected datetime format for each datetime attribute",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-22T18:48:28Z"
+    },
+    "lastModificationSignature": "bf644638164e2fb8a704b406db17bb6e4723e8e63f51461e534879a5e9d484aa"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "Query",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "MES",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "9649ca11a22fca7fdf4a7e798d9c4ad53182aced515c16af84a2c2fdea65e8b5",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2026-02-09T18:01:38Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "assetId",
+        "sqlType": 2
+      }
+    ]
+  }
+}

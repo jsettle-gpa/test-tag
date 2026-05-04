@@ -1,0 +1,488 @@
+{
+  "custom": {
+    "data": {
+      "currentPane": 0,
+      "selection": {
+        "attributeSelection": {},
+        "dataSourceSelection": {
+          "dataSource": null,
+          "fileData": null,
+          "fileName": null
+        }
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.finalData": {
+      "binding": {
+        "config": {
+          "path": "view.custom.data.selection"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Creates a new dataset with the attribute name as the header and the selected data \u0027\u0027\u0027\n\t\n\t# Gets the file data and selections\n\tfileData \u003d self.custom.data.selection.dataSourceSelection.fileData\n\tattributeSelection \u003d value.attributeSelection\n\t\n\t# Returns a not ready message if not all selections have been made\n\tif not fileData or not attributeSelection:\n\t\treturn \u0027Final data not ready, make selections first\u0027\n\t\n\t# Loops through the original data set, filters out the unused data, and gets a list of column names (used for the headers)\n\tdata \u003d []\n\tcolumnNames \u003d []\n\tfor row in range(fileData.getRowCount()):\n\t\trowData \u003d []\n\t\tfor col in range(fileData.getColumnCount()):\n\t\t\tcolumnName \u003d fileData.getColumnName(col)\n\t\t\tif columnName in attributeSelection.values():\n\t\t\t\trowData.append(fileData.getValueAt(row, col))\n\t\t\t\tif columnName not in columnNames:\n\t\t\t\t\tcolumnNames.append(columnName)\n\t\t\telse:\n\t\t\t\tcontinue\n\t\tdata.append(rowData)\n\t\n\t# Updates the headers to the attribute names\n\theaderMapping \u003d {value: key for key, value in attributeSelection.items()}\n\theaders \u003d [headerMapping.get(header, header) for header in columnNames]\n\t\n\t# Creates the final dataset and returns it\n\tfinalData \u003d system.dataset.toDataSet(headers, data)\n\treturn finalData",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.data.nextPaneReady": {
+      "binding": {
+        "config": {
+          "struct": {
+            "attributeSelection": "{view.custom.data.selection.attributeSelection}",
+            "currentPane": "{view.custom.data.currentPane}",
+            "dataSourceSelection": "{view.custom.data.selection.dataSourceSelection}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Determines if user can go to the next pane based if all required content is filled in at each pane \u0027\u0027\u0027\n\t\n\t# Checks if ready to go to pane 1\n\tif value.currentPane \u003d\u003d 0:\n\t\treturn True if value.dataSourceSelection.fileData else False\n\t\n\t# Checks if ready to go to pane 2\n\tif value.currentPane \u003d\u003d 1:\n\t\treturn True if dict(value.attributeSelection) else False\n\t\n\t# Returns false if its the last pane\n\treturn False if value.currentPane \u003d\u003d 2 else \u0027Error - unrecognized pane\u0027",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 700
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane - 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "PrevIcon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.data.currentPane} \u003e 0, True, False)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/arrow_back_ios",
+                  "style": {
+                    "classes": "icon-button"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "PrevtIconContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "alignContent": "flex-start",
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "DataSource"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "path": "App/EquipmentConfig/EmbeddedViews/SelectDataSource",
+                      "style": {
+                        "flex": "0 0 100%",
+                        "height": "100%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "AttributeMapping"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.params.fileData": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.data.selection.dataSourceSelection.fileData"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.params.fileName": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.data.selection.dataSourceSelection.fileName"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "App/EquipmentConfig/EmbeddedViews/MapMaterialAttributes",
+                      "style": {
+                        "flex": "0 0 100%",
+                        "height": "100%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "AttributeMapping_0"
+                    },
+                    "position": {
+                      "basis": "100%",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.params.attributeSelection": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.data.selection.attributeSelection"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.params.fileData": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.data.finalData"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.params.fileName": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.data.selection.dataSourceSelection.fileName"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "App/EquipmentConfig/EmbeddedViews/MaterialConfigPreview",
+                      "style": {
+                        "flex": "0 0 100%",
+                        "height": "100%"
+                      }
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "TrackContainer"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.style.transform": {
+                    "binding": {
+                      "config": {
+                        "expression": "\u0027translateX(\u0027 + (-100 * {view.custom.data.currentPane}) + \u0027%)\u0027"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "height": "100%",
+                    "overflow": "visible",
+                    "transition": "transform 0.45s ease"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "ViewPortContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "margin": "15px",
+                "overflow": "hidden",
+                "position": "relative"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\t# Checks if the next pane is ready\n\tnextPaneReady \u003d self.view.custom.data.nextPaneReady\n\t\n\tif nextPaneReady:\n\t\tself.view.custom.data.currentPane +\u003d 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "NextIcon"
+                },
+                "position": {
+                  "basis": "30px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.nextPaneReady"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.style.classes": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({view.custom.data.nextPaneReady}, \u0027icon-button\u0027, \u0027icon-button-disabled\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/arrow_forward_ios"
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "NextIconContainer"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "alignContent": "flex-start",
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "CustomCarousel"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane - 1"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "BackButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} \u003e 0, True, False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "primary": false,
+              "text": "Previous"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Updates the currentPane property \u0027\u0027\u0027\n\t\n\tcurrentPane \u003d self.view.custom.data.currentPane\n\tself.view.custom.data.currentPane \u003d currentPane + 1"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "NextButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} !\u003d 2, True, False)"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.nextPaneReady"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "text": "Next"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Imports the material data \u0027\u0027\u0027\n\t\n\t# Add logic to call the backend functions\n\t\n\tsystem.perspective.closePopup(\u0027MaterialConfig\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ImportButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.data.currentPane} \u003d 2, True, False)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "text": "Import"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ButtonsContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-evenly",
+          "style": {
+            "marginBottom": "15px",
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "dataSourceSelection",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Recieves the data source selection from the SelectDataSource embedded view \u0027\u0027\u0027\n\t\n\t# Writes the incoming data to the custom properties\n\tdataSourceSelection \u003d self.view.custom.data.selection.dataSourceSelection\n\tdataSourceSelection[\u0027dataSource\u0027] \u003d payload.get(\u0027dataSource\u0027)\n\tdataSourceSelection[\u0027fileName\u0027] \u003d payload.get(\u0027fileName\u0027)\n\tdataSourceSelection[\u0027fileData\u0027] \u003d payload.get(\u0027fileData\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "attributeSelection",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Recieves the attribute selections from the MapMaterialAttributes embedded view \u0027\u0027\u0027\n\t\n\t# Writes the incoming data to the custom properties\n\tself.view.custom.data.selection.attributeSelection \u003d payload.get(\u0027attributeSelection\u0027)",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

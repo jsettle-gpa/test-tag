@@ -1,0 +1,26 @@
+{
+  "pages": {
+    "/": {
+      "viewPath": "App/test"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom",
+    "top": [
+      {
+        "anchor": "fixed",
+        "autoBreakpoint": 480,
+        "content": "push",
+        "handle": "hide",
+        "iconUrl": "",
+        "id": "GlobalHeader",
+        "modal": false,
+        "resizable": false,
+        "show": "visible",
+        "size": 50,
+        "viewParams": {},
+        "viewPath": "Global/Docked/Header/Header"
+      }
+    ]
+  }
+}

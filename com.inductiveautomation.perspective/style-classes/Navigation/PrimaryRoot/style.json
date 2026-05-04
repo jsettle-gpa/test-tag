@@ -1,0 +1,22 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--containerRoot)",
+      "borderBottomColor": "var(--callToAction--hover)",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "2px",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderTopStyle": "none",
+      "marginLeft": "15px",
+      "marginRight": "15px",
+      "paddingTop": "10px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "active",
+      "style": {}
+    }
+  ]
+}

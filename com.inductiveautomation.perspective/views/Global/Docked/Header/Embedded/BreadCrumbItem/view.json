@@ -1,0 +1,123 @@
+{
+  "custom": {},
+  "params": {
+    "isCurrent": false,
+    "isLast": false,
+    "label": "Home",
+    "navPath": "",
+    "popupId": "crumbPopup",
+    "popupView": "",
+    "title": ""
+  },
+  "propConfig": {
+    "params.isCurrent": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isLast": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.label": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.navPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupView": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 28,
+      "width": 140
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tnav \u003d \u0027/\u0027\n\t#view \u003d self.view.params.popupView\n\t#pid \u003d self.view.params.popupId or \u0027crumbPopup\u0027\n\t#title \u003d self.view.params.title or self.view.params.label\n\tif nav:\n\t\tsystem.perspective.navigate(nav)\n\telif pview:\n\t\tsystem.perspective.openPopup(id\u003dpid, view\u003dpview, title\u003dtitle, modal\u003dFalse, showCloseIcon\u003dTrue, draggable\u003dTrue)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Crumb"
+        },
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.isCurrent}, \u0027600\u0027 ,\u0027400\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "transparent",
+            "border": "none",
+            "boxShadow": "none",
+            "color": "#FFFDFD",
+            "cursor": "pointer",
+            "padding": "0",
+            "textDecoration": "{view.params.isCurrent} ? \u0027none\u0027 : \u0027underline\u0027"
+          },
+          "text": "Home"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "Separator"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "!{view.params.isLast}"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "opacity": 0.6
+          },
+          "text": "/"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "style": {
+        "gap": "6px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

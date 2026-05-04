@@ -1,0 +1,444 @@
+{
+  "custom": {},
+  "params": {
+    "title": "Master–Detail"
+  },
+  "propConfig": {
+    "params.title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 720,
+      "width": 1200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "16px",
+                "fontWeight": "800"
+              },
+              "text": "{view.params.title}"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SearchIcon"
+                },
+                "props": {
+                  "path": "material/search",
+                  "style": {
+                    "fontSize": "18px",
+                    "opacity": 0.8
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "SearchText"
+                },
+                "props": {
+                  "style": {
+                    "opacity": 0.7
+                  },
+                  "text": "Search…"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "SearchField"
+            },
+            "props": {
+              "alignItems": "center",
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "border": "1px solid #3a3a3a",
+                "borderRadius": "10px",
+                "gap": "8px",
+                "padding": "6px 10px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid #3a3a3a",
+            "borderRadius": "10px",
+            "classes": "card",
+            "padding": "8px 10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Badge1"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#334155",
+                            "borderRadius": "999px",
+                            "padding": "2px 8px"
+                          },
+                          "text": "WO-10482"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Title1"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "700"
+                          },
+                          "text": "Laps"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Sub1"
+                        },
+                        "props": {
+                          "style": {
+                            "opacity": 0.8
+                          },
+                          "text": "Qty: 1200 • CFMIU"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Status1"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#26332b",
+                            "borderRadius": "8px",
+                            "marginLeft": "auto",
+                            "padding": "4px 8px"
+                          },
+                          "text": "Validated"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row1"
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "style": {
+                        "backgroundColor": "#2a2a2a",
+                        "border": "1px solid #3a3a3a",
+                        "borderRadius": "10px",
+                        "gap": "10px",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Badge2"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#55333a",
+                            "borderRadius": "999px",
+                            "padding": "2px 8px"
+                          },
+                          "text": "WO-10480"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Title2"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "700"
+                          },
+                          "text": "Covers"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Sub2"
+                        },
+                        "props": {
+                          "style": {
+                            "opacity": 0.8
+                          },
+                          "text": "Qty: 500 • CFMIU"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "Status2"
+                        },
+                        "props": {
+                          "style": {
+                            "backgroundColor": "#5b2a2a",
+                            "borderRadius": "8px",
+                            "color": "#fff",
+                            "marginLeft": "auto",
+                            "padding": "4px 8px"
+                          },
+                          "text": "Error"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row2"
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "style": {
+                        "backgroundColor": "#222222",
+                        "border": "1px solid #3a3a3a",
+                        "borderRadius": "10px",
+                        "gap": "10px",
+                        "padding": "10px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Rows"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "ListPane"
+            },
+            "position": {
+              "basis": "40%",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid #3a3a3a",
+                "borderRadius": "10px",
+                "classes": "card",
+                "gap": "8px",
+                "height": "100%",
+                "overflowY": "auto",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "DetailTitle"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "800"
+                      },
+                      "text": "Work Order Details"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "L_WO"
+                        },
+                        "props": {
+                          "style": {
+                            "opacity": 0.75
+                          },
+                          "text": "WO"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "V_WO"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "700"
+                          },
+                          "text": "WO-10482"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "L_Part"
+                        },
+                        "props": {
+                          "style": {
+                            "opacity": 0.75
+                          },
+                          "text": "Part"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "V_Part"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "700"
+                          },
+                          "text": "Laps"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "L_Qty"
+                        },
+                        "props": {
+                          "style": {
+                            "opacity": 0.75
+                          },
+                          "text": "Qty"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "V_Qty"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "700"
+                          },
+                          "text": "1200"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "DetailGrid"
+                    },
+                    "props": {
+                      "style": {
+                        "alignItems": "center",
+                        "columnGap": "12px",
+                        "display": "grid",
+                        "gridTemplateColumns": "auto 1fr auto 1fr",
+                        "rowGap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "DetailCard"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#262f3c",
+                    "border": "1px solid #334155",
+                    "borderRadius": "10px",
+                    "gap": "10px",
+                    "padding": "10px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "DetailPane"
+            },
+            "position": {
+              "basis": "60%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "card",
+                "gap": "10px",
+                "height": "100%",
+                "minWidth": "0"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "style": {
+            "gap": "12px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "10px",
+        "height": "100%",
+        "padding": "10px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,898 @@
+{
+  "custom": {
+    "data": {
+      "form": {
+        "countMode": "",
+        "enabled": true,
+        "hasCells": true,
+        "infeedMult": 1,
+        "infeedPath": "",
+        "infeedUnit": "each",
+        "name": "",
+        "outfeedMult": 1,
+        "outfeedPath": "",
+        "outfeedUnit": "each",
+        "rejectPath": "",
+        "stateMode": ""
+      }
+    }
+  },
+  "params": {
+    "selectedAssetData": {
+      "EqEnabled": true,
+      "EqID": 1,
+      "EqMeta": {},
+      "EqName": "GPA",
+      "EqPath": "GPA",
+      "EqType": "enterprise"
+    }
+  },
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.form": {
+      "persistent": true
+    },
+    "custom.data.isLine": {
+      "binding": {
+        "config": {
+          "path": "view.params.selectedAssetData.EqType"
+        },
+        "transforms": [
+          {
+            "code": "\tpt \u003d (value or \u0027\u0027).strip().lower()\n\t# Child is a LINE when parent is an AREA\n\treturn pt \u003d\u003d \u0027area\u0027",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "params.selectedAssetData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 900
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "basis": "28px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "pPath": "{view.params.selectedAssetData.EqPath}",
+                      "pType": "{view.params.selectedAssetData.EqType}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tpt \u003d (value.get(\u0027pType\u0027) or \u0027\u0027).capitalize() or u\u0027Root\u0027\n\tpp \u003d value.get(\u0027pPath\u0027) or \u0027(no path)\u0027\n\t# What we\u0027re adding next (child type)\n\tchild \u003d {\u0027\u0027:\u0027Enterprise\u0027,\u0027Enterprise\u0027:\u0027Site\u0027,\u0027Site\u0027:\u0027Area\u0027,\u0027Area\u0027:\u0027Line\u0027,\u0027Line\u0027:\u0027Cell\u0027,\u0027Group\u0027:\u0027Cell\u0027}.get(pt, \u0027Cell\u0027)\n\treturn \u0027Add {} Under: {}\u0027.format(child, pp)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "card-title",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "NameLabel"
+                },
+                "position": {
+                  "basis": "200px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "12px",
+                    "textAlign": "right"
+                  },
+                  "text": "Name:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "NameField"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.form.name"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": "Enter name...",
+                  "rejectUpdatesWhileFocused": false
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "NameRow"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "margin": "10px 12px 0 12px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "EnabledLabel"
+                },
+                "position": {
+                  "basis": "200px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "12px",
+                    "textAlign": "right"
+                  },
+                  "text": "Enabled:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "EnabledCheckbox"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.selected": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.form.enabled"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": ""
+                },
+                "type": "ia.input.checkbox"
+              }
+            ],
+            "meta": {
+              "name": "EnabledRow"
+            },
+            "position": {
+              "basis": "36px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "margin": "10px 12px 0 12px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "HasCellsLabel"
+                },
+                "position": {
+                  "basis": "200px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "1rem",
+                    "fontWeight": "bold",
+                    "marginRight": "12px",
+                    "textAlign": "right"
+                  },
+                  "text": "Structure:"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "HasCellsToggle"
+                },
+                "position": {
+                  "basis": "300px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.data.form.hasCells"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Has cells",
+                      "value": true
+                    },
+                    {
+                      "label": "Treat as work center",
+                      "value": false
+                    }
+                  ]
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "HasCellsRow"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.isLine"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "margin": "10px 12px 0 12px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "WCHeader"
+                },
+                "position": {
+                  "basis": "5%"
+                },
+                "props": {
+                  "style": {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "marginTop": "12px",
+                    "textAlign": "center"
+                  },
+                  "text": "Work Center (Line without cells)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "StateModeLabel"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "marginRight": "12px",
+                        "textAlign": "right"
+                      },
+                      "text": "State Mode:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "StateModeDD"
+                    },
+                    "position": {
+                      "basis": "260px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.stateMode"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "options": [
+                        {
+                          "label": "LineStates",
+                          "value": "line"
+                        },
+                        {
+                          "label": "CellStates",
+                          "value": "cell"
+                        }
+                      ]
+                    },
+                    "type": "ia.input.dropdown"
+                  },
+                  {
+                    "meta": {
+                      "name": "CountModeLabel"
+                    },
+                    "position": {
+                      "basis": "140px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "marginLeft": "16px",
+                        "marginRight": "12px",
+                        "textAlign": "right"
+                      },
+                      "text": "Count Mode:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "CountModeDD"
+                    },
+                    "position": {
+                      "basis": "200px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.countMode"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "options": [
+                        {
+                          "label": "Automatic",
+                          "value": "auto"
+                        },
+                        {
+                          "label": "Manual",
+                          "value": "manual"
+                        }
+                      ]
+                    },
+                    "type": "ia.input.dropdown"
+                  }
+                ],
+                "meta": {
+                  "name": "ModesRow"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "margin": "10px 12px 0 12px",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "InfeedLbl"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "marginRight": "12px",
+                        "textAlign": "right"
+                      },
+                      "text": "Infeed:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "InfeedTag"
+                    },
+                    "position": {
+                      "basis": "300px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.infeedPath"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "placeholder": "[Provider]Path/To/Infeed"
+                    },
+                    "type": "ia.input.text-field"
+                  },
+                  {
+                    "meta": {
+                      "name": "InfeedUnitLbl"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "0 12px 0 16px",
+                        "textAlign": "right"
+                      },
+                      "text": "Unit:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "InfeedUnitDD"
+                    },
+                    "position": {
+                      "basis": "140px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.infeedUnit"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "options": [
+                        {
+                          "label": "each",
+                          "value": "each"
+                        },
+                        {
+                          "label": "lb",
+                          "value": "lb"
+                        },
+                        {
+                          "label": "case",
+                          "value": "case"
+                        }
+                      ]
+                    },
+                    "type": "ia.input.dropdown"
+                  },
+                  {
+                    "meta": {
+                      "name": "InfeedMultLbl"
+                    },
+                    "position": {
+                      "basis": "110px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "0 12px 0 16px",
+                        "textAlign": "right"
+                      },
+                      "text": "Multiplier:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "InfeedMult"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.infeedMult"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "placeholder": "1"
+                    },
+                    "type": "ia.input.text-field"
+                  }
+                ],
+                "meta": {
+                  "name": "InfeedRow"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "margin": "10px 12px 0 12px",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "OutfeedLbl"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "marginRight": "12px",
+                        "textAlign": "right"
+                      },
+                      "text": "Outfeed:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "OutfeedTag"
+                    },
+                    "position": {
+                      "basis": "300px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.outfeedPath"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "placeholder": "[Provider]Path/To/Outfeed"
+                    },
+                    "type": "ia.input.text-field"
+                  },
+                  {
+                    "meta": {
+                      "name": "OutfeedUnitLbl"
+                    },
+                    "position": {
+                      "basis": "80px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "0 12px 0 16px",
+                        "textAlign": "right"
+                      },
+                      "text": "Unit:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "OutfeedUnitDD"
+                    },
+                    "position": {
+                      "basis": "140px"
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.outfeedUnit"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "options": [
+                        {
+                          "label": "each",
+                          "value": "each"
+                        },
+                        {
+                          "label": "lb",
+                          "value": "lb"
+                        },
+                        {
+                          "label": "case",
+                          "value": "case"
+                        }
+                      ]
+                    },
+                    "type": "ia.input.dropdown"
+                  },
+                  {
+                    "meta": {
+                      "name": "OutfeedMultLbl"
+                    },
+                    "position": {
+                      "basis": "110px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "margin": "0 12px 0 16px",
+                        "textAlign": "right"
+                      },
+                      "text": "Multiplier:"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "OutfeedMult"
+                    },
+                    "position": {
+                      "basis": "100px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.outfeedMult"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "placeholder": "1"
+                    },
+                    "type": "ia.input.text-field"
+                  }
+                ],
+                "meta": {
+                  "name": "OutfeedRow"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "margin": "10px 12px 0 12px",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "RejectLbl"
+                    },
+                    "position": {
+                      "basis": "200px",
+                      "shrink": 0
+                    },
+                    "props": {
+                      "style": {
+                        "marginRight": "12px",
+                        "textAlign": "right"
+                      },
+                      "text": "Reject (optional):"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "RejectTag"
+                    },
+                    "position": {
+                      "basis": "300px"
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.data.form.rejectPath"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "placeholder": "[Provider]Path/To/Reject"
+                    },
+                    "type": "ia.input.text-field"
+                  }
+                ],
+                "meta": {
+                  "name": "RejectRow"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "style": {
+                    "margin": "10px 12px 0 12px",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Properties"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "hasCells": "{view.custom.data.form.hasCells}",
+                      "isLine": "{view.custom.data.isLine}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn bool(value.get(\u0027isLine\u0027)) and (value.get(\u0027hasCells\u0027) \u003d\u003d False)",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ClearBtn"
+                },
+                "position": {
+                  "basis": "110px"
+                },
+                "props": {
+                  "text": "Clear"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "SaveBtn"
+                },
+                "position": {
+                  "basis": "110px"
+                },
+                "props": {
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Buttons"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "flex-end",
+              "style": {
+                "gap": 6,
+                "margin": "14px 12px 0 12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FormCard"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "card",
+            "padding": "14px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

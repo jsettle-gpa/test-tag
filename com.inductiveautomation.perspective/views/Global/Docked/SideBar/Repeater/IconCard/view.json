@@ -1,0 +1,91 @@
+{
+  "custom": {},
+  "params": {
+    "iconPath": "value",
+    "isConfig": false,
+    "target": "value",
+    "tooltip": "value"
+  },
+  "propConfig": {
+    "params.iconPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isConfig": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.target": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tooltip": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tif self.view.params.isConfig \u003d\u003d False:\n\t\tsystem.perspective.navigate(page \u003d self.view.params.target, newTab \u003d False)\n\telse:\n\t\ttry:\n\t\t\tviewPath \u003d \u0027Global/UserSettings/Settings\u0027\n\t\t\ttitle \u003d \u0027Configuration\u0027\n\t\t\tsystem.perspective.openPopup(\u0027userConfig\u0027, viewPath, title\u003dtitle, overlayDismiss\u003dTrue, modal\u003dTrue)\n\t\texcept Exception as e:\n\t\t\tsystem.perspective.print(e)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Icon",
+          "tooltip": {
+            "enabled": true
+          }
+        },
+        "position": {
+          "basis": "2em"
+        },
+        "propConfig": {
+          "meta.tooltip.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.tooltip"
+              },
+              "transforms": [
+                {
+                  "expression": "try((if(len({value}), {value}, \u0027Please re-add this icon to your favorites list to see an accurate tooltip\u0027)), \u0027Please re-add this icon to your favorites list to see an accurate tooltip\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.iconPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": ""
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,881 @@
+{
+  "custom": {
+    "sourceData": {
+      "bom": [
+        {
+          "ComponentCode": "RM-AL-PLATE",
+          "Description": "Aluminum plate",
+          "EffectiveFrom": "2024-01-01",
+          "EffectiveTo": "",
+          "ProductCode": "P-1001",
+          "QtyPer": 1,
+          "ScrapPct": 0,
+          "Unit": "ea"
+        },
+        {
+          "ComponentCode": "HW-M6x12",
+          "Description": "M6 x 12 screw",
+          "EffectiveFrom": "2024-01-01",
+          "EffectiveTo": "",
+          "ProductCode": "P-1001",
+          "QtyPer": 4,
+          "ScrapPct": 1,
+          "Unit": "ea"
+        },
+        {
+          "ComponentCode": "RM-STEEL-BAR",
+          "Description": "Steel bar",
+          "EffectiveFrom": "2024-01-01",
+          "EffectiveTo": "",
+          "ProductCode": "P-2002",
+          "QtyPer": 0.25,
+          "ScrapPct": 0.5,
+          "Unit": "m"
+        }
+      ],
+      "capabilityMatrix": [
+        {
+          "Cell-3": false,
+          "Line-1": true,
+          "Line-2": true,
+          "ProductCode": "P-1001"
+        },
+        {
+          "Cell-3": true,
+          "Line-1": false,
+          "Line-2": true,
+          "ProductCode": "P-2002"
+        },
+        {
+          "Cell-3": true,
+          "Line-1": true,
+          "Line-2": false,
+          "ProductCode": "P-3003"
+        }
+      ],
+      "machines": [
+        "Line-1",
+        "Line-2",
+        "Cell-3"
+      ],
+      "products": [
+        {
+          "DefaultRunRateUPH": 420,
+          "Description": "Widget A",
+          "Enabled": true,
+          "MinLot": 100,
+          "ProductCode": "P-1001",
+          "SetupTimeMin": 30,
+          "Unit": "ea"
+        },
+        {
+          "DefaultRunRateUPH": 360,
+          "Description": "Widget B",
+          "Enabled": true,
+          "MinLot": 50,
+          "ProductCode": "P-2002",
+          "SetupTimeMin": 20,
+          "Unit": "ea"
+        },
+        {
+          "DefaultRunRateUPH": 275,
+          "Description": "Gadget C",
+          "Enabled": false,
+          "MinLot": 200,
+          "ProductCode": "P-3003",
+          "SetupTimeMin": 45,
+          "Unit": "ea"
+        }
+      ],
+      "runRatesByMachine": [
+        {
+          "Machine": "Line-1",
+          "ProductCode": "P-1001",
+          "RunRateUPH": 450
+        },
+        {
+          "Machine": "Line-2",
+          "ProductCode": "P-1001",
+          "RunRateUPH": 400
+        },
+        {
+          "Machine": "Line-2",
+          "ProductCode": "P-2002",
+          "RunRateUPH": 360
+        },
+        {
+          "Machine": "Cell-3",
+          "ProductCode": "P-2002",
+          "RunRateUPH": 300
+        },
+        {
+          "Machine": "Line-1",
+          "ProductCode": "P-3003",
+          "RunRateUPH": 290
+        },
+        {
+          "Machine": "Cell-3",
+          "ProductCode": "P-3003",
+          "RunRateUPH": 260
+        }
+      ]
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.sourceData": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontSize": "20px",
+                "fontWeight": "600"
+              },
+              "text": "Product Matrix"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FilterMachine"
+                },
+                "position": {
+                  "basis": "220px"
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "All Machines",
+                      "value": ""
+                    },
+                    {
+                      "label": "Line-1",
+                      "value": "Line-1"
+                    },
+                    {
+                      "label": "Line-2",
+                      "value": "Line-2"
+                    },
+                    {
+                      "label": "Cell-3",
+                      "value": "Cell-3"
+                    }
+                  ],
+                  "placeholder": "Filter by machine"
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "BtnImport"
+                },
+                "props": {
+                  "icon": "material/file_upload",
+                  "text": "Import CSV"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnExport"
+                },
+                "props": {
+                  "icon": "material/file_download",
+                  "text": "Export CSV"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnAddProduct"
+                },
+                "props": {
+                  "icon": "material/add",
+                  "text": "Add Product"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSave"
+                },
+                "props": {
+                  "icon": "material/save",
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "HeaderControls"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "classes": "card",
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ProductsLabel"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "16px",
+                    "fontWeight": "600"
+                  },
+                  "text": "Products"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ProductsTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "editable": false,
+                      "field": "ProductCode",
+                      "filter": {
+                        "enabled": true
+                      },
+                      "header": {
+                        "title": "Product"
+                      },
+                      "sort": "none",
+                      "sortable": true,
+                      "width": "140px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Description",
+                      "filter": {
+                        "enabled": true
+                      },
+                      "header": {
+                        "title": "Description"
+                      },
+                      "sort": "none",
+                      "sortable": true,
+                      "width": "flex"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Unit",
+                      "header": {
+                        "title": "Unit"
+                      },
+                      "sort": "none",
+                      "sortable": true,
+                      "width": "80px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "DefaultRunRateUPH",
+                      "header": {
+                        "title": "Default UPH"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0",
+                      "sort": "none",
+                      "sortable": true,
+                      "width": "120px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "SetupTimeMin",
+                      "header": {
+                        "title": "Setup (min)"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0",
+                      "sort": "descending",
+                      "sortable": true,
+                      "width": "120px"
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "editable": true,
+                      "field": "Enabled",
+                      "header": {
+                        "title": "Enabled"
+                      },
+                      "sort": "none",
+                      "width": "110px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "DefaultRunRateUPH": 420,
+                      "Description": "Widget A",
+                      "Enabled": true,
+                      "ProductCode": "P-1001",
+                      "SetupTimeMin": 30,
+                      "Unit": "ea"
+                    },
+                    {
+                      "DefaultRunRateUPH": 360,
+                      "Description": "Widget B",
+                      "Enabled": true,
+                      "MinLot": 50,
+                      "ProductCode": "P-2002",
+                      "SetupTimeMin": 20,
+                      "Unit": "ea"
+                    },
+                    {
+                      "DefaultRunRateUPH": 275,
+                      "Description": "Gadget C",
+                      "Enabled": false,
+                      "MinLot": 200,
+                      "ProductCode": "P-3003",
+                      "SetupTimeMin": 45,
+                      "Unit": "ea"
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "selection": {
+                    "data": [
+                      {
+                        "DefaultRunRateUPH": 275,
+                        "Description": "Gadget C",
+                        "Enabled": false,
+                        "ProductCode": "P-3003",
+                        "SetupTimeMin": 45,
+                        "Unit": "ea"
+                      }
+                    ],
+                    "selectedRow": 2
+                  },
+                  "sortOrder": [
+                    "SetupTimeMin"
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "LeftPane"
+            },
+            "position": {
+              "basis": "45%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "card"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "BOMLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Bill of Materials"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "BOMTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "field": "ProductCode",
+                          "header": {
+                            "title": "Product"
+                          },
+                          "sort": "none",
+                          "sortable": true,
+                          "width": "140px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "ComponentCode",
+                          "header": {
+                            "title": "Component"
+                          },
+                          "sort": "none",
+                          "sortable": true,
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Description",
+                          "header": {
+                            "title": "Description"
+                          },
+                          "sort": "none",
+                          "width": "flex"
+                        },
+                        {
+                          "editable": true,
+                          "field": "QtyPer",
+                          "header": {
+                            "title": "Qty/Per"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.####",
+                          "sort": "none",
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Unit",
+                          "header": {
+                            "title": "Unit"
+                          },
+                          "sort": "none",
+                          "width": "80px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "ScrapPct",
+                          "header": {
+                            "title": "Scrap (%)"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0.##",
+                          "sort": "none",
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveFrom",
+                          "header": {
+                            "title": "Effective From"
+                          },
+                          "sort": "none",
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveTo",
+                          "header": {
+                            "title": "Effective To"
+                          },
+                          "sort": "none",
+                          "width": "160px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "ComponentCode": "RM-AL-PLATE",
+                          "Description": "Aluminum plate",
+                          "EffectiveFrom": "2024-01-01",
+                          "EffectiveTo": "",
+                          "ProductCode": "P-1001",
+                          "QtyPer": 1,
+                          "ScrapPct": 0,
+                          "Unit": "ea"
+                        },
+                        {
+                          "ComponentCode": "HW-M6x12",
+                          "Description": "M6 x 12 screw",
+                          "EffectiveFrom": "2024-01-01",
+                          "EffectiveTo": "",
+                          "ProductCode": "P-1001",
+                          "QtyPer": 4,
+                          "ScrapPct": 1,
+                          "Unit": "ea"
+                        },
+                        {
+                          "ComponentCode": "RM-STEEL-BAR",
+                          "Description": "Steel bar",
+                          "EffectiveFrom": "2024-01-01",
+                          "EffectiveTo": "",
+                          "ProductCode": "P-2002",
+                          "QtyPer": 0.25,
+                          "ScrapPct": 0.5,
+                          "Unit": "m"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "data": [
+                          {
+                            "ComponentCode": "HW-M6x12",
+                            "Description": "M6 x 12 screw",
+                            "EffectiveFrom": "2024-01-01",
+                            "EffectiveTo": "",
+                            "ProductCode": "P-1001",
+                            "QtyPer": 4,
+                            "ScrapPct": 1,
+                            "Unit": "ea"
+                          }
+                        ],
+                        "selectedColumn": "ProductCode",
+                        "selectedRow": 1
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "BOM"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "CapabilitiesLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Capabilities (Product × Machine)"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "CapabilitiesTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "editable": false,
+                          "field": "ProductCode",
+                          "header": {
+                            "title": "Product"
+                          },
+                          "sortable": true,
+                          "width": "140px"
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "editable": true,
+                          "field": "Line-1",
+                          "header": {
+                            "title": "Line-1"
+                          },
+                          "width": "110px"
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "editable": true,
+                          "field": "Line-2",
+                          "header": {
+                            "title": "Line-2"
+                          },
+                          "width": "110px"
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "editable": true,
+                          "field": "Cell-3",
+                          "header": {
+                            "title": "Cell-3"
+                          },
+                          "width": "110px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "Cell-3": false,
+                          "Line-1": true,
+                          "Line-2": true,
+                          "ProductCode": "P-1001"
+                        },
+                        {
+                          "Cell-3": true,
+                          "Line-1": false,
+                          "Line-2": true,
+                          "ProductCode": "P-2002"
+                        },
+                        {
+                          "Cell-3": true,
+                          "Line-1": true,
+                          "Line-2": false,
+                          "ProductCode": "P-3003"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "data": [
+                          {
+                            "Cell-3": false,
+                            "Line-1": true,
+                            "Line-2": true,
+                            "ProductCode": "P-1001"
+                          }
+                        ],
+                        "selectedColumn": "Cell-3",
+                        "selectedRow": 0
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "Capabilities"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "RunRatesLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Run Rates by Machine (Overrides)"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "RunRatesTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "editable": false,
+                          "field": "ProductCode",
+                          "header": {
+                            "title": "Product"
+                          },
+                          "sortable": true,
+                          "width": "140px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Machine",
+                          "header": {
+                            "title": "Machine"
+                          },
+                          "sortable": true,
+                          "width": "140px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "RunRateUPH",
+                          "header": {
+                            "title": "Run Rate (UPH)"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0",
+                          "width": "160px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "Machine": "Line-1",
+                          "ProductCode": "P-1001",
+                          "RunRateUPH": 450
+                        },
+                        {
+                          "Machine": "Line-2",
+                          "ProductCode": "P-1001",
+                          "RunRateUPH": 400
+                        },
+                        {
+                          "Machine": "Line-2",
+                          "ProductCode": "P-2002",
+                          "RunRateUPH": 360
+                        },
+                        {
+                          "Machine": "Cell-3",
+                          "ProductCode": "P-2002",
+                          "RunRateUPH": 300
+                        },
+                        {
+                          "Machine": "Line-1",
+                          "ProductCode": "P-3003",
+                          "RunRateUPH": 290
+                        },
+                        {
+                          "Machine": "Cell-3",
+                          "ProductCode": "P-3003",
+                          "RunRateUPH": 260
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "enabled": true
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "RunRates"
+                },
+                "position": {
+                  "tabIndex": 2
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "TabContainer"
+            },
+            "position": {
+              "basis": "55%",
+              "grow": 1
+            },
+            "props": {
+              "menuType": "modern",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "6px",
+                "overflow": "hidden"
+              },
+              "tabSize": {
+                "width": 200
+              },
+              "tabs": [
+                "Bill Of Materials",
+                "Machine Config",
+                "Run Rates"
+              ]
+            },
+            "type": "ia.container.tab"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": "8px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

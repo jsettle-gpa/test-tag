@@ -1,0 +1,1 @@
+select * from operation.v_asset_active_shift_templates

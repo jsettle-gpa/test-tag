@@ -1,0 +1,445 @@
+{
+  "custom": {
+    "data": {
+      "lots": {
+        "lotLocations": null,
+        "lots": []
+      },
+      "material": {
+        "desc": "",
+        "item": "",
+        "itemId": "",
+        "uom": ""
+      }
+    },
+    "ui": {
+      "errors": {
+        "item": true,
+        "uom": ""
+      },
+      "saving": false
+    }
+  },
+  "params": {
+    "lots": [],
+    "material": {
+      "desc": "",
+      "item": "",
+      "itemId": "",
+      "uom": ""
+    },
+    "mode": ""
+  },
+  "propConfig": {
+    "custom.data.lotLocations": {
+      "binding": {
+        "config": {
+          "queryPath": "App/Admin/materials/get_material_lot_locations",
+          "returnFormat": "json"
+        },
+        "type": "query"
+      }
+    },
+    "custom.data.lots": {
+      "binding": {
+        "config": {
+          "struct": {
+            "lotLocations": "{view.custom.data.lotLocations}",
+            "lots": "{view.params.lots}"
+          },
+          "waitOnAll": true
+        },
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.data.material": {
+      "binding": {
+        "config": {
+          "path": "view.params.material"
+        },
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.data.submitAllowed": {
+      "binding": {
+        "config": {
+          "expression": "{view.custom.data.material.desc} !\u003d \u0027\u0027 \u0026\u0026\r\n{view.custom.data.material.item} !\u003d \u0027\u0027 \u0026\u0026\r\n{view.custom.data.material.uom} !\u003d \u0027\u0027"
+        },
+        "type": "expr"
+      }
+    },
+    "params.lots": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.material": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.mode": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 750,
+      "width": 850
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "NameLabel"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "Name"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "NameInput"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.data.material.item"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "spellcheck": false,
+              "style": {
+                "maxHeight": "35px"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "DescriptionLabel"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "text": "Description"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "DescriptionInput"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.data.material.desc"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "maxHeight": "35px"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "UomLabel"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "text": "UOM"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "UomInput"
+            },
+            "position": {
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.data.material.uom"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "maxHeight": "35px"
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "Form"
+        },
+        "position": {
+          "basis": "30%"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": "10px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "LotTitle"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.params.mode}\u003d\u0027edit\u0027,\u0027Edit Lots\u0027,\u0027Create Lots\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "1.1rem",
+                "fontWeight": "600"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tlots \u003d list(self.view.custom.data.lots or [])\n\tlots.append({\n\t\t\"lotId\": None,\n\t\t\"lotName\": \"\",\n\t\t\"quantity\": 0,\n\t\t\"location\": \"\",\n\t\t\"metadata\": {\u0027length\u0027: \"\", \u0027width\u0027: \"\", \"thickness\": \"\"},\n\t\t\"lotLocations\": self.view.custom.data.lotLocations\n\t})\n\tself.view.custom.data.lots \u003d lots"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "AddLot",
+              "tooltip": {
+                "enabled": true,
+                "text": "Add lot row"
+              }
+            },
+            "position": {
+              "basis": "30px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "lucide/plus-circle",
+              "style": {
+                "classes": "icon-button"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "LotsHeader"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "LotsRepeater"
+        },
+        "position": {
+          "basis": "30%",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "instances": [
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              }
+            },
+            {
+              "key": {}
+            }
+          ],
+          "path": "App/Administration/Popup/Materials/LotCard",
+          "style": {
+            "gap": "8px"
+          },
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tsystem.perspective.closePopup(\u0027AddEditMaterialPopup\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "primary": false,
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tfrom java.util import UUID\n\t\n\ttoastId  \u003d str(UUID.randomUUID())\n\tmaterial \u003d dict(self.view.custom.data.material or {})\n\tlots     \u003d list(self.view.custom.data.lots or [])\n\t\n\tmode \u003d self.view.params.mode\n\t\n\tmes.toast.loading(\"Saving material…\", toastId)\n\t\n\tres \u003d None\n\tokMsg \u003d None\n\terrMsg \u003d None\n\ttoastType \u003d \"error\"\n\t\n\ttry:\n\t\tif mode \u003d\u003d \"create\":\n\t\t\tres \u003d app.admin.materials.actions.createMaterial(material, lots)\n\t\t\tokMsg \u003d \"Material Created\"\n\t\telse:\n\t\t\tres \u003d app.admin.materials.actions.updateMaterial(material, lots)\n\t\t\tokMsg \u003d \"Material Updated\"\n\t\n\t\tif res.is_ok:\n\t\t\ttoastType \u003d \"success\"\n\t\telse:\n\t\t\terrMsg \u003d res.getData()\n\t\n\texcept Exception as e:\n\t\terrMsg \u003d \"Save failed: %s\" % str(e)\n\t\n\tfinally:\n\t\t# --- ALWAYS resolve loading toast ---\n\t\tif toastType \u003d\u003d \"success\":\n\t\t\tsystem.perspective.closePopup(\"AddEditMaterialPopup\")\n\t\t\tsystem.perspective.sendMessage(\"refresh\")\n\t\t\tmes.toast.update(toastId, okMsg, type\u003d\"success\")\n\t\telse:\n\t\t\tmes.toast.update(toastId, errMsg or \"Save failed\", type\u003d\"error\")"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Save"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "expression": "!{view.custom.ui.saving} \u0026\u0026\r\n{view.custom.data.submitAllowed}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "lucide/send"
+                }
+              },
+              "style": {
+                "classes": "primary"
+              },
+              "text": "Submit"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Actions"
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-evenly",
+          "style": {
+            "gap": "10px",
+            "paddingTop": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "15px",
+        "padding": "16px"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "RemoveLotRow",
+          "pageScope": true,
+          "script": "\tidx \u003d payload.get(\"idx\")\n\t\n\tlots \u003d list(self.view.custom.data.lots or [])\n\tif idx is None:\n\t\treturn\n\t\n\ttry:\n\t\tidx \u003d int(idx)\n\texcept:\n\t\treturn\n\t\n\tif idx \u003c 0 or idx \u003e\u003d len(lots):\n\t\treturn\n\t\n\tlots.pop(idx)\n\tself.view.custom.data.lots \u003d lots",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "addMaterialLotLocation",
+          "pageScope": true,
+          "script": "\timport traceback\n\t\n\ttry:\n\t\tsystem.perspective.print(\"addMaterialLotLocation fired\")\n\t\tapp.admin.materials.actions.createMaterialLotLocation(payload[\"location\"])\n\t\tself.view.refreshBinding(\"custom.data.lotLocations\")\n\texcept Exception as e:\n\t\tsystem.perspective.print(traceback.format_exc())",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,810 @@
+{
+  "custom": {
+    "config": {},
+    "data": {
+      "selection": {}
+    }
+  },
+  "params": {
+    "selectedRowData": {
+      "Description": "",
+      "DowntimeCategoryCode": "",
+      "OperatorSelectable": "",
+      "PlannedDowntime": "",
+      "ReasonCode": "",
+      "RecordDowntime": "",
+      "StateTypeID": "",
+      "SubReasonOf": ""
+    },
+    "updateType": ""
+  },
+  "propConfig": {
+    "custom.config": {
+      "persistent": true
+    },
+    "custom.config.options": {
+      "binding": {
+        "config": {
+          "path": "view.params.selectedRowData"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the available options for the dropdowns \u0027\u0027\u0027\n\t\n\t# Calls backend function(s)\n\ttempData \u003d {\n\t\t\"boolOptions\": [\n\t\t\t{\n\t\t\t\t\"label\": \"No\",\n\t\t\t\t\"value\": False\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Yes\",\n\t\t\t\t\"value\": True\n\t\t\t}\n\t\t\t],\n\t\t\t\"downtimeCategoryOptions\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Test\",\n\t\t\t\t\"value\": 1\n\t\t\t}\n\t\t\t],\n\t\t\t\"reasonCodeOptions\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Test\",\n\t\t\t\t\"value\": 1\n\t\t\t}\n\t\t\t],\n\t\t\t\"stateTypeOptions\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Test\",\n\t\t\t\t\"value\": 1\n\t\t\t}\n\t\t\t],\n\t\t\t\"subReasonOptions\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Test\",\n\t\t\t\t\"value\": 1\n\t\t\t}\n\t\t]\n\t}\n\treturn tempData",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.selection.downtimeCategoryCode": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column2/DowntimeCategoryContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.name": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column1/DescriptionContainer/InputContainer/TextField.props.text"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.operatorSelectable": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column2/OperatorContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.plannedDowntime": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column1/PlannedDowntimeContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.reasonCode": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column1/ReasonCodeContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.recordDowntime": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column1/RecordDowntimeContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.stateTypeID": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column2/StateTypeIDContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "custom.data.selection.subReason": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/SettingsContianer/Column2/SubReasonContainer/InputContainer/Dropdown.props.value"
+        },
+        "type": "property"
+      }
+    },
+    "params.selectedRowData": {
+      "onChange": {
+        "enabled": null,
+        "script": "\t\u0027\u0027\u0027 Writes the selectedRowData from the selection in the LineStates view table to the appropriate components \u0027\u0027\u0027\n\t\n\trowData \u003d currentValue.value\n\tif self.params.updateType \u003d\u003d \u0027edit\u0027:\n\t\tselection \u003d self.custom.data.selection\n\t\tselection[\u0027operatorSelectable\u0027] \u003d rowData.get(\u0027OperatorSelectable\u0027)\n\t\tselection[\u0027plannedDowntime\u0027] \u003d rowData.get(\u0027PlannedDowntime\u0027)\n\t\tselection[\u0027name\u0027] \u003d rowData.get(\u0027Description\u0027)\n\t\tselection[\u0027downtimeCategoryCode\u0027] \u003d rowData.get(\u0027DowntimeCategoryCode\u0027)\n\t\tselection[\u0027reasonCode\u0027] \u003d rowData.get(\u0027ReasonCode\u0027)\n\t\tselection[\u0027subReason\u0027] \u003d rowData.get(\u0027SubReasonOf\u0027)\n\t\tselection[\u0027recordDowntime\u0027] \u003d rowData.get(\u0027RecordDowntime\u0027)\n\t\tselection[\u0027stateTypeID\u0027] \u003d rowData.get(\u0027StateTypeID\u0027)"
+      },
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.updateType": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 426,
+      "width": 700
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Name",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "TextField"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "props": {
+                          "deferUpdates": false,
+                          "placeholder": "Enter a value...",
+                          "rejectUpdatesWhileFocused": false,
+                          "style": {
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "DescriptionContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Reason Code",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.reasonCodeOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "ReasonCodeContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Record Downtime",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "domId": "eqmanager-addeditstates-recorddt-dropdown",
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.boolOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "RecordDowntimeContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Planned Downtime",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "domId": "eqmanager-addeditstates-recorddt-dropdown",
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.boolOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "PlannedDowntimeContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Column1"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "space-evenly"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Operator Selectable",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.boolOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "OperatorContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "Sub Reason Of",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.subReasonOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "SubReasonContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "State Type ID",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.stateTypeOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "StateTypeIDContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "position": {
+                      "shrink": 0
+                    },
+                    "props": {
+                      "text": "DowntimeCategoryCode",
+                      "textStyle": {
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Dropdown"
+                        },
+                        "position": {
+                          "basis": "260px"
+                        },
+                        "propConfig": {
+                          "props.options": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.config.options.downtimeCategoryOptions"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "props": {
+                          "placeholder": {
+                            "text": "Select a value..."
+                          },
+                          "textAlign": "center"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "InputContainer"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "justify": "center"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "DowntimeCategoryContainer"
+                },
+                "position": {
+                  "basis": "62px",
+                  "shrink": 0
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Column2"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "justify": "space-evenly"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "SettingsContianer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Closes the popup \u0027\u0027\u0027\n\t\n\tsystem.perspective.closePopup(\u0027\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "CancelButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Calls the addLineState message handler \u0027\u0027\u0027\n\t\n\t# Sends a message to the add or edit message handlers\n\tupdateType \u003d self.view.params.updateType\n\tpayload \u003d {\n\t\t\u0027selectionData\u0027: self.view.custom.data.selection\n\t}\n\t\n\tif updateType \u003d\u003d \u0027add\u0027:\n\t\tsystem.perspective.sendMessage(\u0027addLineState\u0027, payload)\n\telif updateType \u003d\u003d \u0027edit\u0027:\n\t\tsystem.perspective.sendMessage(\u0027editLineState\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "SaveButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Save"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ButtonsContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-evenly"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "margin": "15px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "custom": {},
+  "params": {
+    "displayHeader": "Are you sure?",
+    "displayMessage": "This will delete this grouping row",
+    "messageHandler": "",
+    "noIcon": "value",
+    "noLabel": "value",
+    "pageId": "",
+    "payload": {},
+    "yesIcon": "value",
+    "yesLabel": "value"
+  },
+  "propConfig": {
+    "params.displayHeader": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.displayMessage": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.messageHandler": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.noIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.noLabel": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pageId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.payload": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.yesIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.yesLabel": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 192,
+      "width": 489
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "areYouSure"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.displayHeader"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Text/LabelTextLarge",
+                "fontWeight": "bold",
+                "paddingBottom": "1ch",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "displayMessage"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.displayMessage"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Text/LabelTextMedium Text/textColorGray",
+                "fontWeight": "bold",
+                "overflowWrap": "normal",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "main"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "paddingBottom": "10pt"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\tmsgHandler \u003d self.view.params.messageHandler\n\tif msgHandler !\u003d \u0027\u0027:\n\t\tpageId \u003d self.view.params.pageId\n\t\tpayload \u003d self.view.params.payload \n\t\t\n\t\tsystem.perspective.sendMessage(msgHandler, {} if payload is None else payload, pageId \u003d pageId)\n\t\t\n\t\n\tsystem.perspective.closePopup(\u0027confirmation\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "yes"
+            },
+            "position": {
+              "basis": "142pt",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.IconPath": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.yesIcon"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.Label": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.yesLabel"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "BackgroundColor": "value",
+                "ButtonDomId": "value",
+                "Enabled": true,
+                "Hover": true,
+                "IsSelectable": false,
+                "RequiredRoles": [
+                  "Supervisor",
+                  "Operator",
+                  "Quality_Manager",
+                  "Maintenance_Manager",
+                  "Engineering_Manager",
+                  "Team_Lead",
+                  "Maintenance_Operator",
+                  "Quality_Operator",
+                  "Site_Administrator"
+                ],
+                "Selected": true,
+                "Size": "value",
+                "Type": "value",
+                "ValidPermissions": true
+              },
+              "path": "GlobalComponents/Buttons/Button",
+              "style": {
+                "paddingLeft": "1pt",
+                "paddingRight": "4pt"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "confirmation",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "close",
+                    "viewPath": "modals/message/confirmation"
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "no"
+            },
+            "position": {
+              "basis": "142pt",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.IconPath": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.noIcon"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.Label": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.noLabel"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "BackgroundColor": "value",
+                "ButtonDomId": "value",
+                "Enabled": true,
+                "Hover": true,
+                "IsSelectable": false,
+                "RequiredRoles": [
+                  "Supervisor",
+                  "Operator",
+                  "Quality_Manager",
+                  "Maintenance_Manager",
+                  "Engineering_Manager",
+                  "Team_Lead",
+                  "Maintenance_Operator",
+                  "Quality_Operator",
+                  "Site_Administrator"
+                ],
+                "Selected": true,
+                "Size": "value",
+                "Type": "value",
+                "ValidPermissions": true
+              },
+              "path": "GlobalComponents/Buttons/Button",
+              "style": {
+                "paddingLeft": "4pt",
+                "paddingRight": "1pt"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "buttons"
+        },
+        "position": {
+          "basis": "42pt",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "padding": "5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

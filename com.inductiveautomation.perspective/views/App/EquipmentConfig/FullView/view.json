@@ -1,0 +1,508 @@
+{
+  "custom": {
+    "config": {},
+    "data": {
+      "expandedTree": [],
+      "filter": "",
+      "filterChanged": false,
+      "refresh": false,
+      "selectedAssetData": {
+        "EqEnabled": true,
+        "EqID": 1,
+        "EqMeta": {
+          "countMode": null,
+          "keyCell": false,
+          "stateMode": null
+        },
+        "EqName": "GPA",
+        "EqPath": "GPA",
+        "EqType": "enterprise"
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.config": {
+      "persistent": true
+    },
+    "custom.config.productionModel": {
+      "binding": {
+        "config": {
+          "queryPath": "App/EquipmentConfig/Read/get_equipment_tree",
+          "returnFormat": "json"
+        },
+        "transforms": [
+          {
+            "code": "\t\n\tproductionModel \u003d mes.equipmentConfig.transform.buildHierarchy(value)\n\t\n\treturn productionModel",
+            "type": "script"
+          }
+        ],
+        "type": "query"
+      }
+    },
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.formattedTree": {
+      "binding": {
+        "config": {
+          "struct": {
+            "filter": "{view.custom.data.filter}",
+            "productionModel": "{view.custom.config.productionModel}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Formats the data for the tree accounting for expanded state and filter \u0027\u0027\u0027\n\t\n\tuserFilter \u003d value.get(\"filter\")\n\tproductionModel \u003d value.get(\"productionModel\")\n\tfilterChanged \u003d self.custom.data.filterChanged\n\texpandedTree \u003d self.custom.data.expandedTree if self.custom.data.expandedTree not in [\u0027\u0027, None, []] and not filterChanged else False\n\tself.custom.data.filterChanged \u003d False\n\tif not productionModel:\n\t\treturn []\n\t# --- Loops through each asset type to determine if matched and also grabs the last expanded state from the expandedTree ---\n\tfilteredTree \u003d []\n\t# - Loops through the enterprise assets\n\ttest \u003d []\n\teNeedsExpanded \u003d False\n\tfor eIndex, enterprise in enumerate(productionModel):\n\t\teData \u003d enterprise.get(\"data\")\n\t\teLabel \u003d eData.get(\"assetName\")\n\t\teMatch \u003d userFilter.lower() in eLabel.lower() if userFilter else True\n\t\t# - Sets the expanded property to the last expanded state or initializes to false\n\t\tif expandedTree:\n\t\t\teLengthGood \u003d True if eIndex \u003c len(expandedTree) else False\n\t\t\teExpanded \u003d expandedTree[eIndex][\"expanded\"] if eLengthGood else False\n\t\telse:\n\t\t\teExpanded \u003d False\n\t\t\n\t\teTree \u003d {\n\t\t\t\"label\": eLabel,\n\t\t\t\"data\": eData,\n\t\t\t\"icon\": {\n\t\t\t\t\"path\": \"material/business\",\n\t\t\t\t\"color\": \"\",\n\t\t\t\t\"style\": {}\n\t\t\t},\n\t\t\t\"expanded\": eExpanded,\n\t\t\t\"items\": []\n\t\t}\n\t\t\n\t\t# - Loops through the site assets\n\t\tsNeedsExpanded \u003d False\n\t\tfor sIndex, site in enumerate(enterprise.get(\"items\", [])):\n\t\t\tsData \u003d site.get(\"data\")\n\t\t\tsLabel \u003d sData.get(\"assetName\")\n\t\t\tsMatch \u003d userFilter.lower() in sLabel.lower() if userFilter else True\n\t\t\tif sMatch:\n\t\t\t\teNeedsExpanded \u003d True\n\t\t\telse: pass\t\t\t\n\t\t\t# - Sets the expanded property to the last expanded state or initializes to false\n\t\t\tif expandedTree:\n\t\t\t\tsLengthGood \u003d True if sIndex \u003c len(expandedTree[eIndex][\"items\"]) else False\n\t\t\t\tsExpanded \u003d expandedTree[eIndex][\"items\"][sIndex][\"expanded\"] if eLengthGood and sLengthGood else False\n\t\t\telse:\n\t\t\t\tsExpanded \u003d False\n\t\t\t\n\t\t\tsTree \u003d {\n\t\t\t\t\"label\": sLabel,\n\t\t\t\t\"data\": sData,\n\t\t\t\t\"icon\": {\n\t\t\t\t\t\"path\": \"material/location_city\",\n\t\t\t\t\t\"color\": \"\",\n\t\t\t\t\t\"style\": {}\n\t\t\t\t},\n\t\t\t\t\"expanded\": sExpanded,\n\t\t\t\t\"items\": []\n\t\t\t}\n\t\t\t\n\t\t\t# - Loops through the area assets\n\t\t\taNeedsExpanded \u003d False\n\t\t\tfor aIndex, area in enumerate(site.get(\"items\", [])):\n\t\t\t\taData \u003d area.get(\"data\")\n\t\t\t\taLabel \u003d aData.get(\"assetName\")\n\t\t\t\taMatch \u003d userFilter.lower() in aLabel.lower() if userFilter else True\n\t\t\t\tif aMatch:\n\t\t\t\t\tsNeedsExpanded \u003d True\n\t\t\t\telse: pass\n\t\t\t\t# - Sets the expanded property to the last expanded state or initializes to false\n\t\t\t\tif expandedTree:\n\t\t\t\t\taLengthGood \u003d True if aIndex \u003c len(expandedTree[eIndex][\"items\"][sIndex][\"items\"]) else False\n\t\t\t\t\taExpanded \u003d expandedTree[eIndex][\"items\"][sIndex][\"items\"][aIndex][\"expanded\"] if eLengthGood and sLengthGood and aLengthGood else False\n\t\t\t\telse:\n\t\t\t\t\taExpanded \u003d False\n\t\t\t\t\n\t\t\t\taTree \u003d {\n\t\t\t\t\t\"label\": aLabel,\n\t\t\t\t\t\"data\": aData,\n\t\t\t\t\t\"icon\": {\n\t\t\t\t\t\t\"path\": \"material/business_center\",\n\t\t\t\t\t\t\"color\": \"\",\n\t\t\t\t\t\t\"style\": {}\n\t\t\t\t\t},\n\t\t\t\t\t\"expanded\": aExpanded,\n\t\t\t\t\t\"items\": []\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t# - Loops through the line assets\n\t\t\t\tlNeedsExpanded \u003d False\n\t\t\t\tfor lIndex, line in enumerate(area.get(\"items\", [])):\n\t\t\t\t\tlData \u003d line.get(\"data\")\n\t\t\t\t\tlLabel \u003d lData.get(\"assetName\")\n\t\t\t\t\tlMatch \u003d userFilter.lower() in lLabel.lower() if userFilter else True\n\t\t\t\t\tif lMatch:\n\t\t\t\t\t\taNeedsExpanded \u003d True\n\t\t\t\t\telse: pass\n\t\t\t\t\t# - Sets the expanded property to the last expanded state or initializes to false\n\t\t\t\t\tif expandedTree:\n\t\t\t\t\t\tlLengthGood \u003d True if lIndex \u003c len(expandedTree[eIndex][\"items\"][sIndex][\"items\"][aIndex][\"items\"]) else False\n\t\t\t\t\t\tlExpanded \u003d expandedTree[eIndex][\"items\"][sIndex][\"items\"][aIndex][\"items\"][lIndex][\"expanded\"] if eLengthGood and sLengthGood and aLengthGood and lLengthGood else False\n\t\t\t\t\telse:\n\t\t\t\t\t\tlExpanded \u003d False\n\t\t\t\t\t\n\t\t\t\t\tlTree \u003d {\n\t\t\t\t\t\t\"label\": lLabel,\n\t\t\t\t\t\t\"data\": lData,\n\t\t\t\t\t\t\"icon\": {\n\t\t\t\t\t\t\t\"path\": \"material/line_style\",\n\t\t\t\t\t\t\t\"color\": \"\",\n\t\t\t\t\t\t\t\"style\": {}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"expanded\": lExpanded,\n\t\t\t\t\t\t\"items\": []\n\t\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\t\t# - Loops through the cell and cell group assets\n\t\t\t\t\tfor cIndex, cell in enumerate(line.get(\"items\", [])):\n\t\t\t\t\t\tcData \u003d cell.get(\"data\")\n\t\t\t\t\t\tcLabel \u003d cData.get(\"assetName\")\n\t\t\t\t\t\tcMatch \u003d userFilter.lower() in cLabel.lower() if userFilter else True\n\t\t\t\t\t\tif cMatch:\n\t\t\t\t\t\t\tlNeedsExpanded \u003d True\n\t\t\t\t\t\telse: pass\n\t\t\t\t\t\tcExpanded \u003d False\n\t\t\t\t\t\t\n\t\t\t\t\t\t# - Appends the asset tree dict when a filter has not been entered, matches the filter, or has a parent that matches the filter\n\t\t\t\t\t\tif not userFilter or cMatch or lMatch or aMatch or sMatch or eMatch:\n\t\t\t\t\t\t\ticonPath \u003d \"material/fact_check\" if cell[\"data\"][\"assetType\"] \u003d\u003d \"group\" else \"material/settings_cell\"\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tlTree[\"items\"].append({\n\t\t\t\t\t\t\t\t\"label\": cLabel,\n\t\t\t\t\t\t\t\t\"data\": cData,\n\t\t\t\t\t\t\t\t\"icon\": {\n\t\t\t\t\t\t\t\t\t\"path\": iconPath,\n\t\t\t\t\t\t\t\t\t\"color\": \"\",\n\t\t\t\t\t\t\t\t\t\"style\": {}\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"expanded\": cExpanded,\n\t\t\t\t\t\t\t\t\"items\": []\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\n\t\t\t\t\t# - Appends the asset tree dict when a filter has not been entered, matches the filter, or has a child that matches the filter\n\t\t\t\t\t# - Also, updates the expanded property if there is a filter enetered\n\t\t\t\t\tlTree[\"expanded\"] \u003d True if userFilter and lNeedsExpanded else False\n\t\t\t\t\tif not userFilter or lMatch or lTree[\"items\"]:\n\t\t\t\t\t\taTree[\"items\"].append(lTree)\n\t\t\t\taTree[\"expanded\"] \u003d True if userFilter and (aNeedsExpanded or lNeedsExpanded) else False\n\t\t\t\tif not userFilter or aMatch or aTree[\"items\"]:\n\t\t\t\t\tsTree[\"items\"].append(aTree)\n\t\t\tsTree[\"expanded\"] \u003d True if userFilter and (sNeedsExpanded or aNeedsExpanded or lNeedsExpanded) else False\n\t\t\tif not userFilter or sMatch or sTree[\"items\"]:\n\t\t\t\teTree[\"items\"].append(sTree)\n\t\teTree[\"expanded\"] \u003d True if userFilter and (eNeedsExpanded or sNeedsExpanded or aNeedsExpanded or lNeedsExpanded) else False\n\t\tif not userFilter or eMatch or eTree[\"items\"]:\n\t\t\tfilteredTree.append(eTree)\n\t\n\treturn filteredTree",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      }
+    },
+    "custom.data.refresh": {
+      "onChange": {
+        "enabled": null,
+        "script": "\t\u0027\u0027\u0027 Restarts the property \u0027\u0027\u0027\n\t\n\tself.custom.data.refresh \u003d False"
+      }
+    },
+    "custom.data.tabs": {
+      "binding": {
+        "config": {
+          "path": "view.custom.data.selectedAssetData"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the tabs based on the the tree selection \u0027\u0027\u0027\n\t\n\tif value \u003d\u003d \u0027\u0027:\n\t\treturn []\n\telse:\n\t\tassetType \u003d value.get(\u0027EqType\u0027)\n\t\tassetType \u003d assetType.lower()\n\t\tif assetType in [\u0027enterprise\u0027, \u0027site\u0027, \u0027area\u0027]:\n\t\t\ttabs \u003d [\u0027Mapping\u0027]\n\t\telif assetType \u003d\u003d \u0027line\u0027:\n\t\t\ttabs \u003d [\u0027Mapping\u0027, \u0027Line States\u0027, \u0027Alert Thresholds\u0027]\n\t\telif assetType \u003d\u003d \u0027group\u0027:\n\t\t\ttabs \u003d [\u0027Mapping\u0027, \u0027Alert Thresholds\u0027]\n\t\telse:\n\t\t\ttabs \u003d [\u0027Mapping\u0027, \u0027Cell States\u0027, \u0027Alert Thresholds\u0027]\n\t\n\treturn tabs",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1150,
+      "width": 1500
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "style": {
+                    "classes": "card-title"
+                  },
+                  "text": "Production Model"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\t\n\t# Open a generic add-asset popup; child type is chosen inside popup by context\n\tparams \u003d {\u0027EqData\u0027: self.view.custom.data.selectedAssetData}\n\tsystem.perspective.openPopup(\u0027AddAsset\u0027,\u0027App/EquipmentConfig/PopupViews/AddAsset\u0027, params, modal\u003dTrue, showCloseIcon\u003dTrue)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "AddMenu"
+                },
+                "position": {
+                  "basis": "120px",
+                  "shrink": 0
+                },
+                "props": {
+                  "image": {
+                    "icon": {
+                      "path": "material/add"
+                    }
+                  },
+                  "text": "Add..."
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "space-between"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FilterField"
+                },
+                "props": {
+                  "placeholder": "Filter name...",
+                  "spellcheck": false
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.view.custom.data.filter \u003d self.getSibling(\u0027FilterField\u0027).props.text"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "SearchBtn"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "image": {
+                    "icon": {
+                      "path": "material/search"
+                    }
+                  },
+                  "style": {
+                    "marginLeft": "6px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tself.getSibling(\u0027FilterField\u0027).props.text \u003d \u0027\u0027\n\tself.view.custom.data.filter \u003d \u0027\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearBtn"
+                },
+                "position": {
+                  "basis": "40px",
+                  "shrink": 0
+                },
+                "props": {
+                  "image": {
+                    "icon": {
+                      "path": "material/clear"
+                    }
+                  },
+                  "style": {
+                    "marginLeft": "6px"
+                  },
+                  "text": ""
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "FilterRow"
+            },
+            "position": {
+              "basis": "38px",
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "events": {
+              "component": {
+                "onItemClicked": {
+                  "config": {
+                    "script": "\tselection \u003d event.data\n\t\n\tself.view.custom.data.selectedAssetData \u003d selection\n"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "domId": "eqmanager-asset-tree",
+              "name": "Tree"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.items": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.config.productionModel"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.selection": {
+                "persistent": false
+              },
+              "props.selectionData": {
+                "persistent": false
+              }
+            },
+            "props": {
+              "appearance": {
+                "defaultNodeIcons": {
+                  "collapsed": {
+                    "path": "material/folder"
+                  },
+                  "empty": {
+                    "path": "material/stop"
+                  },
+                  "expanded": {
+                    "path": "material/folder_open"
+                  }
+                },
+                "expandIcons": {
+                  "collapsed": {
+                    "path": "material/arrow_right"
+                  },
+                  "expanded": {
+                    "path": "material/arrow_drop_down"
+                  }
+                },
+                "selectedStyle": {
+                  "fontSize": "1rem",
+                  "fontWeight": "bolder"
+                }
+              }
+            },
+            "type": "ia.display.tree"
+          }
+        ],
+        "meta": {
+          "name": "TreeSelection"
+        },
+        "position": {
+          "basis": "400px",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "card",
+            "marginRight": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "32px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "classes": "card-title"
+              },
+              "text": "Asset Settings"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SettingsView"
+                },
+                "propConfig": {
+                  "props.params.selectedEqData": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.selectedAssetData"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "loading": {
+                    "order": "with-parent"
+                  },
+                  "path": "App/EquipmentConfig/EmbeddedViews/Mapping",
+                  "style": {
+                    "overflow": "auto"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "LineStatesView"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "propConfig": {
+                  "props.params.selectedAssetData": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.data.selectedAssetData"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "App/EquipmentConfig/EmbeddedViews/LineStates"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "SettingsContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.tabs"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t\u0027\u0027\u0027 Displays if there has been a selection made \u0027\u0027\u0027\n\t\n\tif value \u003d\u003d []:\n\t\treturn False\n\telse:\n\t\treturn True",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.tabs": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.tabs"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "menuType": "modern",
+              "tabSize": {
+                "width": 150
+              }
+            },
+            "type": "ia.container.tab"
+          },
+          {
+            "meta": {
+              "name": "SelectionLabel"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "position.display": {
+                "binding": {
+                  "config": {
+                    "path": "../SettingsContainer.position.display"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "!{value}",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "1.5rem",
+                "textAlign": "center"
+              },
+              "text": "Please make a selection..."
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "AssetConfig"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "classes": "card"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "center",
+      "style": {
+        "classes": "fade-in",
+        "padding": "30px"
+      }
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "deleteAsset",
+          "pageScope": true,
+          "script": "\t\u0027\u0027\u0027 Script to delete asset when user presses the trash can icon \u0027\u0027\u0027\n\t\n\t# Calls to the backend function(s)\n\t\n\tself.view.custom.data.refresh \u003d True\n\n",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "refreshTree",
+          "pageScope": true,
+          "script": "\ttree \u003d mes.config.equipment.buildProductionModel()\n\tself.view.custom.config.productionModel \u003d tree",
+          "sessionScope": false,
+          "viewScope": true
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "custom": {
+    "seed": {
+      "jobs": [
+        {
+          "JobId": "WO-258912",
+          "Line": "1S01",
+          "Lot": "356179",
+          "Product": "PL 1/4 A572-65",
+          "Qty": 1
+        },
+        {
+          "JobId": "WO-2222",
+          "Line": "1S01",
+          "Lot": "355691",
+          "Product": "PL 1/4 A572-65",
+          "Qty": 1
+        },
+        {
+          "JobId": "WO-8912",
+          "Line": "1S02",
+          "Lot": "352066",
+          "Product": "PL 3/16 A572-65",
+          "Qty": 1
+        }
+      ],
+      "tests": [
+        {
+          "label": "Cutting QC (CUT-001)",
+          "value": "CUT-001"
+        },
+        {
+          "label": "Bending QC (BND-002)",
+          "value": "BND-002"
+        },
+        {
+          "label": "Welding Visual (WLD-003)",
+          "value": "WLD-003"
+        }
+      ]
+    }
+  },
+  "params": {
+    "RunViewUrl": "/quality/run"
+  },
+  "propConfig": {
+    "custom.seed": {
+      "persistent": true
+    },
+    "params.RunViewUrl": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1440
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "18px",
+                "fontWeight": "600"
+              },
+              "text": "Quality • Select Job \u0026 Test"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Find"
+                },
+                "position": {
+                  "basis": "360px"
+                },
+                "props": {
+                  "placeholder": "Search job / lot / product…"
+                },
+                "type": "ia.input.text-field"
+              }
+            ],
+            "meta": {
+              "name": "Actions"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid var(--neutral-40)",
+            "borderRadius": "8px",
+            "gap": "8px",
+            "padding": "6px 10px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "JobsTitle"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Jobs"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "JobsTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "JobId",
+                      "header": {
+                        "title": "Job"
+                      },
+                      "sortable": true,
+                      "width": "160px"
+                    },
+                    {
+                      "field": "Lot",
+                      "header": {
+                        "title": "Lot"
+                      },
+                      "sortable": true,
+                      "width": "140px"
+                    },
+                    {
+                      "field": "Line",
+                      "header": {
+                        "title": "Line"
+                      },
+                      "width": "100px"
+                    },
+                    {
+                      "field": "Product",
+                      "header": {
+                        "title": "Product"
+                      },
+                      "width": "flex"
+                    },
+                    {
+                      "field": "Qty",
+                      "header": {
+                        "title": "Qty"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0",
+                      "width": "90px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "JobId": "WO-258912",
+                      "Line": "1S01",
+                      "Lot": "356179",
+                      "Product": "PL 1/4 A572-65",
+                      "Qty": 1
+                    },
+                    {
+                      "JobId": "WO-2222",
+                      "Line": "1S01",
+                      "Lot": "355691",
+                      "Product": "PL 1/4 A572-65",
+                      "Qty": 1
+                    },
+                    {
+                      "JobId": "WO-8912",
+                      "Line": "1S02",
+                      "Lot": "352066",
+                      "Product": "PL 3/16 A572-65",
+                      "Qty": 1
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "selection": {
+                    "enabled": true
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "JobsCard"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "gap": "6px",
+                "padding": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "PickTitle"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Select Test"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DropTest"
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "Cutting QC (CUT-001)",
+                      "value": "CUT-001"
+                    },
+                    {
+                      "label": "Bending QC (BND-002)",
+                      "value": "BND-002"
+                    },
+                    {
+                      "label": "Welding Visual (WLD-003)",
+                      "value": "WLD-003"
+                    }
+                  ],
+                  "placeholder": "Choose a test…"
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "Hint"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "opacity": 0.75
+                  },
+                  "text": "Later: pass JobId \u0026 TestCode via params or query string."
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "PickTestCard"
+            },
+            "position": {
+              "basis": "380px",
+              "shrink": 0
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "8px",
+                "classes": "card",
+                "gap": "8px",
+                "padding": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": "10px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "height": "100%",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

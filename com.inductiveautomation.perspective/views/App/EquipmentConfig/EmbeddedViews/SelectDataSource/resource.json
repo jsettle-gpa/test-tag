@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "The embedded view for the first pane of the MaterialConfig popup. Allows users to select a data source and file to upload data from\n\nOutput Data:\n-message sent to the dataSourceSelection message handler located on the root of the MaterialConfig view: the FileUpload has events to send a a message upon file uploaded or cleared as well as the binding on the selectedDataSource\n\nCustom Properties:\n-custom.data.selectedFile: the data and name of the uploaded file\n-custom.data.selectedDataSource: the selected datasource from the dropdown (e.g., csv or erp)",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-20T17:12:21Z"
+    },
+    "lastModificationSignature": "1f99924130b5a2f08e0e3870433f9e1eba1d61299f9462acd8d049ea509dd065"
+  }
+}

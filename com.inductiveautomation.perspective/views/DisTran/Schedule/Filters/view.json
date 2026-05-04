@@ -1,0 +1,193 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 85
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "startTime"
+            },
+            "props": {
+              "formattedValue": null,
+              "style": {
+                "width": "260px"
+              }
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "meta": {
+              "name": "endTime"
+            },
+            "props": {
+              "formattedValue": null,
+              "style": {
+                "width": "260px"
+              }
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "meta": {
+              "name": "sp1"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "cbPreset"
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "Today",
+                  "value": "Today"
+                },
+                {
+                  "label": "This Week",
+                  "value": "This Week"
+                }
+              ],
+              "placeholder": "Preset…",
+              "style": {
+                "width": "160px"
+              }
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "sp2"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "btnPrev"
+            },
+            "props": {
+              "text": "◀ Prev"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btnNow"
+            },
+            "props": {
+              "text": "Now"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btnNext"
+            },
+            "props": {
+              "text": "Next ▶"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "sp3"
+            },
+            "props": {
+              "style": {
+                "width": "12px"
+              },
+              "text": " "
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "btn8h"
+            },
+            "props": {
+              "text": "8h"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btn12h"
+            },
+            "props": {
+              "text": "12h"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btnDay"
+            },
+            "props": {
+              "text": "Day"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btn2Day"
+            },
+            "props": {
+              "text": "2-Day"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "btnWeek"
+            },
+            "props": {
+              "text": "Week"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Filters"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px",
+            "padding": "8px"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "padding": "8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

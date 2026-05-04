@@ -1,0 +1,197 @@
+{
+  "custom": {
+    "inputs": {
+      "Brand": null,
+      "UserFavorites": [
+        {
+          "iconPath": "material/settings",
+          "isConfig": true,
+          "target": "",
+          "tooltip": "Configuration"
+        }
+      ],
+      "Version": null
+    }
+  },
+  "params": {
+    "isDisplayed": true
+  },
+  "propConfig": {
+    "custom.inputs": {
+      "binding": {
+        "config": {
+          "struct": {
+            "Brand": "{session.custom.Config.BrandIcon}",
+            "UserFavorites": "{session.custom.UserSettings.SideBar}",
+            "Version": "{session.custom.Config.Version}"
+          },
+          "waitOnAll": true
+        },
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.isDisplayed": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 71
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.inputs.UserFavorites"
+              },
+              "transforms": [
+                {
+                  "code": "\ttemp \u003d []\n\tfor item in value:\n\t\ttemp.append({\n\t\t  \"instanceStyle\": {\n\t\t    \"classes\": \"\"\n\t\t  },\n\t\t  \"instancePosition\": {},\n\t\t  \"tooltip\": item[\"tooltip\"] if (\"tooltip\" in item) else \u0027\u0027,\n\t\t  \"iconPath\": item[\"iconPath\"],\n\t\t  \"target\": item[\"target\"],\n\t\t  \"isConfig\": item[\u0027isConfig\u0027] if \"isConfig\" in item else False\n\t\t}\n\t)\n\treturn temp",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "basis": "2em",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginTop": "0.5em"
+          },
+          "path": "Global/Docked/SideBar/Repeater/IconCard",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\ttry:\n\t\tpopup_position \u003d {\u0027width\u0027: \u002745rem\u0027, \u0027height\u0027: \u002745rem\u0027}\n\t\tsystem.perspective.openPopup(\n\t\t\tid\u003d\u0027VersionNotesPopup\u0027, \n\t\t\tview\u003d\u0027GlobalComponents/SideBar/Embedded/VersionPopup\u0027, \n\t\t\ttitle\u003d(\"Version \" + str(self.session.custom.Version) + \" Notes\"), \n\t\t\tposition\u003dpopup_position, \n\t\t\tshowCloseIcon\u003dTrue, \n\t\t\tdraggable\u003dTrue, \n\t\t\tresizable\u003dTrue, \n\t\t\tmodal\u003dTrue, \n\t\t\toverlayDismiss\u003dTrue\n\t\t)\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(msg\u003dstr(e))"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\u0027v\u0027+{view.custom.inputs.Version}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "classes": "Sidebar/VersionNumber",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Image"
+            },
+            "position": {
+              "basis": "44px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.source": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.inputs.Brand"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "fit": {
+                "mode": "contain"
+              }
+            },
+            "type": "ia.display.image"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "7em",
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "domId": "sidebarDock",
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.inputs": {
+        "binding": {
+          "config": {
+            "struct": {
+              "Brand": "{session.custom.Config.BrandIcon}",
+              "UserFavorites": "{session.custom.UserSettings.SideBar}"
+            },
+            "waitOnAll": true
+          },
+          "type": "expr-struct"
+        }
+      },
+      "meta.visible": {
+        "binding": {
+          "config": {
+            "path": "view.params.isDisplayed"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": ""
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

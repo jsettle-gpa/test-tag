@@ -1,0 +1,12 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "--neutral-40",
+      "backgroundImage": "var(--linearGradientNewell)",
+      "fontSize": "20px",
+      "fontWeight": "lighter",
+      "textAlign": "start",
+      "textIndent": "6px"
+    }
+  }
+}

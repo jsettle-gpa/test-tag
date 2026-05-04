@@ -1,0 +1,965 @@
+{
+  "custom": {
+    "data": {}
+  },
+  "params": {},
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.materials": {
+      "binding": {
+        "config": {
+          "queryPath": "Dis/Materials/getAll"
+        },
+        "type": "query"
+      }
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "50px",
+              "grow": 1
+            },
+            "props": {
+              "text": "Materials Table"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\teditParams \u003d {\n\t\t\"projectId\": self.view.params.projectId,\n\t\t\"loopTypeName\": self.parent.parent.getChild(\"Table\").custom.loopTypeName,\n\t\t\"loopTypeId\": self.parent.parent.getChild(\"Table\").custom.loopTypeId,\n\t\t\"loopId\": self.parent.parent.getChild(\"Table\").custom.loopId,\n\t\t\"loopName\": self.parent.parent.getChild(\"Table\").custom.loopName,\n\t\t\"functionalAreaId\": self.parent.parent.getChild(\"Table\").custom.areaId,\n\t\t\"functionalAreaName\": self.parent.parent.getChild(\"Table\").custom.areaName,\n\t\t\"subAreaId\": self.parent.parent.getChild(\"Table\").custom.subAreaId,\n\t\t\"projectName\": self.view.params.projectName,\n\t\t\"loopAlert\": self.parent.parent.getChild(\"Table\").custom.loopAlert,\n\t\t\"loopStatusKey\": self.parent.parent.getChild(\"Table\").custom.loopStatusKey\n\t}\n\t\n\t# logger \u003d system.util.getLogger(\"LoopConfigLogger\")\n\t\n\ttry:\n\t\t# logger.info(\"[{}] Navigating to \u0027LoopConfig\u0027 with params: {}\".format(self.meta.name, editParams))\n\t\n\t\tsystem.perspective.navigate(view\u003d\u0027ConfigTool/LoopConfigs/LoopConfig\u0027, params\u003deditParams)\n\t\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\t\n\tpass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Rename"
+                },
+                "position": {
+                  "basis": "24px",
+                  "display": false,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.color": {
+                    "binding": {
+                      "config": {
+                        "path": ".../Table.props.selection.selectedRow"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "#5A5A5A",
+                          "inputType": "expression",
+                          "mappings": [
+                            {
+                              "input": "None",
+                              "output": "#C9C9C9"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.style.cursor": {
+                    "binding": {
+                      "config": {
+                        "path": ".../Table.props.selection.selectedRow"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "pointer",
+                          "inputType": "expression",
+                          "mappings": [
+                            {
+                              "input": "None",
+                              "output": "auto"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/contact_mail",
+                  "style": {
+                    "classes": "",
+                    "marginRight": 8
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tparams \u003d {\n\t\t\"funcSubArea\": self.parent.parent.getChild(\"Table\").props.columns[7].visible,\n\t\t\"funcArea\": self.parent.parent.getChild(\"Table\").props.columns[9].visible,\n\t\t\"approvedUser\": self.parent.parent.getChild(\"Table\").props.columns[12].visible,\n\t\t\"statusUser\": self.parent.parent.getChild(\"Table\").props.columns[13].visible,\n\t\t\"completedUser\": self.parent.parent.getChild(\"Table\").props.columns[14].visible,\n\t\t\"statusDate\": self.parent.parent.getChild(\"Table\").props.columns[15].visible,\n\t\t\"approvedDate\": self.parent.parent.getChild(\"Table\").props.columns[16].visible,\n\t\t\"completedDate\": self.parent.parent.getChild(\"Table\").props.columns[17].visible\n\t}\n\n\t# logger \u003d system.util.getLogger(\"ColumnSelectionLogger\")\n\n\ttry:\n\t\t# logger.info(\"[{}] Opening \u0027ColumnSelection\u0027 popup with params: {}\".format(self.meta.name, params))\n\n\t\tsystem.perspective.openPopup(\n\t\t\t\"tableColumns\",\n\t\t\t\"ConfigTool/Subviews/ColumnSelection\",\n\t\t\tparams\u003dparams,\n\t\t\tmodal\u003dTrue\n\t\t)\n\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\npass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Filter"
+                },
+                "position": {
+                  "basis": "24px",
+                  "display": false,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.cursor": {
+                    "binding": {
+                      "config": {
+                        "path": "..../Table/Table.props.selection.selectedRow"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "pointer",
+                          "inputType": "expression",
+                          "mappings": [
+                            {
+                              "input": "None",
+                              "output": "auto"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/filter_alt",
+                  "style": {
+                    "classes": ""
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tcolumnFilter \u003d self.parent.parent.parent.getChild(\"Row2/Materials\").props.columns[8].filter\n\t\n\t# logger \u003d system.util.getLogger(\"MaterialsColumnLogger\")\n\t\n\ttry:\n\t\tif self.props.selected:\n\t\t\tcolumnFilter.enabled \u003d False\n\t\t\t# logger.info(\"[{}] Column filter disabled.\".format(self.meta.name))\n\t\telse:\n\t\t\tcolumnFilter.enabled \u003d True\n\t\t\t# logger.info(\"[{}] Column filter enabled.\".format(self.meta.name))\n\t\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\t\n\tpass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "domId": "materials-show-disabled",
+                  "name": "ShowDisabled"
+                },
+                "props": {
+                  "selected": true,
+                  "style": {
+                    "classes": "Global/MarginLeft"
+                  },
+                  "text": "Show Disabled"
+                },
+                "type": "ia.input.checkbox"
+              },
+              {
+                "custom": {
+                  "RotateTimestamp": {
+                    "$": [
+                      "ts",
+                      192,
+                      1736297827571
+                    ],
+                    "$ts": 1736297827571
+                  }
+                },
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\t# logger \u003d system.util.getLogger(\"DataRefreshLogger\")\n\n\ttry:\n\t\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\t\t# logger.info(\"[{}] Binding \u0027custom.Data\u0027 refreshed.\".format(self.meta.name))\n\n\t\tself.custom.RotateTrigger \u003d True\n\t\t# logger.info(\"[{}] RotateTrigger set to True.\".format(self.meta.name))\n\n\t\tself.custom.RotateTimestamp \u003d system.date.now()\n\t\t# logger.info(\"[{}] RotateTimestamp updated to: {}\".format(self.meta.name, self.custom.RotateTimestamp))\n\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\n\tpass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Refresh",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Refresh Dashboard"
+                  }
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "propConfig": {
+                  "custom.RotateTrigger": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(({this.custom.RotateTimestamp} + 500) \u003e now(500), true, false)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "meta.domId": {
+                    "binding": {
+                      "config": {
+                        "path": "this.custom.RotateTrigger"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "",
+                          "inputType": "scalar",
+                          "mappings": [
+                            {
+                              "input": false,
+                              "output": "materials-refresh"
+                            },
+                            {
+                              "input": true,
+                              "output": "rotating-icon"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/refresh",
+                  "style": {
+                    "classes": "Global/MarginRight",
+                    "overflow": "hidden",
+                    "overflowX": "hidden",
+                    "overflowY": "hidden"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": [
+                      {
+                        "config": {
+                          "script": "\tselectedRowData \u003d self.parent.parent.parent.getChild(\"Row2/Materials\").props.selection.data\n\tmodalName \u003d \"addMaterials\"\n\tmodalPath \u003d \"App/Schedule/Materials/Embedded/Popups/Add/AddManualMaterials\"\n\t\n\tparams \u003d {\n\t\t\"ModalName\": modalName,\n\t\t\"RowData\": selectedRowData\n\t}\n\t\n\terrorParams \u003d {\n\t\t\"ModalName\": \"ErrorModal\",\n\t\t\"ErrorMessage\": \"Please select a row first!\"\n\t}\n\t\n\t# logger \u003d system.util.getLogger(\"MaterialsPopupLogger\")\n\t\n\ttry:\n\t\tif len(selectedRowData) \u003e 0:\n\t\t\t# logger.info(\"[{}] Opening \u0027{}\u0027 popup with params: {}\".format(self.meta.name, modalName, params))\n\t\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\tmodalName, \n\t\t\t\tmodalPath, \n\t\t\t\tparams, \n\t\t\t\ttitle\u003d\"Add\", \n\t\t\t\tmodal\u003dTrue, \n\t\t\t\toverlayDismiss\u003dTrue\n\t\t\t)\n\t\telse:\n\t\t\t# logger.info(\"[{}] No row selected. Opening \u0027ErrorModal\u0027.\".format(self.meta.name))\n\t\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\t\"ErrorModal\", \n\t\t\t\t\"GlobalComponents/Modals/ErrorModal\", \n\t\t\t\terrorParams\n\t\t\t)\n\t\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\t\n\tpass"
+                        },
+                        "enabled": false,
+                        "scope": "G",
+                        "type": "script"
+                      },
+                      {
+                        "config": {
+                          "draggable": true,
+                          "id": "addModal",
+                          "modal": true,
+                          "overlayDismiss": true,
+                          "resizable": true,
+                          "showCloseIcon": true,
+                          "title": "Add",
+                          "type": "toggle",
+                          "viewParams": {
+                            "ModalName": "addModal",
+                            "SiteID": "{session.custom.SelectedSite}"
+                          },
+                          "viewPath": "App/Schedule/Materials/Embedded/Popups/Add/AddManualMaterials",
+                          "viewportBound": false
+                        },
+                        "scope": "C",
+                        "type": "popup"
+                      }
+                    ]
+                  }
+                },
+                "meta": {
+                  "domId": "materials-add",
+                  "name": "Add",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Add"
+                  }
+                },
+                "position": {
+                  "basis": "29px",
+                  "display": null,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "!{session.custom.ERPIntegration}"
+                      },
+                      "type": "expr"
+                    },
+                    "persistent": true
+                  }
+                },
+                "props": {
+                  "path": "material/add",
+                  "style": {
+                    "classes": "",
+                    "marginRight": 8
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tselectedRowData \u003d self.parent.parent.parent.getChild(\"Row2/Materials\").props.selection.data\n\tmodalName \u003d \"editMaterial\"\n\tmodalPath \u003d \"App/Schedule/Materials/Embedded/Popups/Edit/EditManualMaterials\"\n\tparams \u003d {\n\t\t\"ModalName\": modalName,\n\t\t\"RowData\": selectedRowData\n\t}\n\terrorParams \u003d {\n\t\t\"ModalName\": \"ErrorModal\",\n\t\t\"ErrorMessage\": \"Please select a row below first!\"\n\t}\n\t# logger \u003d system.util.getLogger(\"MaterialEditLogger\")\n\n\ttry:\n\t\tif len(selectedRowData) \u003e 0:\n\t\t\t# logger.info(\"[{}] Opening \u0027{}\u0027 popup with params: {}\".format(self.meta.name, modalName, params))\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\tmodalName, \n\t\t\t\tmodalPath, \n\t\t\t\tparams, \n\t\t\t\ttitle\u003d\"Edit\", \n\t\t\t\tmodal\u003dTrue, \n\t\t\t\toverlayDismiss\u003dTrue\n\t\t\t)\n\t\telse:\n\t\t\t# logger.info(\"[{}] No row selected. Opening \u0027ErrorModal\u0027.\".format(self.meta.name))\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\t\"ErrorModal\", \n\t\t\t\t\"GlobalComponents/Modals/ErrorModal\", \n\t\t\t\terrorParams\n\t\t\t)\n\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\npass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "domId": "materials-edit",
+                  "name": "Edit"
+                },
+                "position": {
+                  "basis": "24px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "!{session.custom.ERPIntegration}"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.style.cursor": {
+                    "binding": {
+                      "config": {
+                        "path": "..../Row2/Materials.props.selection.selectedRow"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "pointer",
+                          "inputType": "expression",
+                          "mappings": [
+                            {
+                              "input": "None",
+                              "output": "auto"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/create",
+                  "style": {
+                    "classes": "",
+                    "marginRight": 8
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tif self.meta.enabled:\n\t\tselectedRowData \u003d self.parent.parent.parent.getChild(\"Row2/Materials\").props.selection.data\n\t\tqueryPath \u003d \u0027app/Schedule/disableMaterial\u0027\n\t\n\t\tif len(selectedRowData) \u003c\u003d 0:\n\t\t\terrorParams \u003d {\n\t\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\t\"ErrorMessage\": \"Please select a row below first!\"\n\t\t\t}\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\t\"ErrorModal\", \n\t\t\t\t\"GlobalComponents/Modals/ErrorModal\", \n\t\t\t\terrorParams\n\t\t\t)\n\t\t\t\n\t\tmaterialID \u003d self.view.custom.RowData[0].ID\n\t\n\t\tparams \u003d { \u0027id\u0027: materialID }\n\t\n\t\t# logger \u003d system.util.getLogger(\"MaterialLotLogger\")\n\t\n\t\ttry:\n\t\t\tsystem.db.runNamedQuery(queryPath, params)\n\t\t\t# logger.info(\"[{}] Named query \u0027{}\u0027 executed with params: {}\".format(self.meta.name, queryPath, params))\n\t\n\t\t\t# logger.info(\"[{}] Binding \u0027custom.Data\u0027 refreshed.\".format(self.meta.name))\n\t\t\tsystem.perspective.sendMessage(\u0027refreshMaterial\u0027)\n\t\t\tsystem.perspective.sendMessage(\u0027refreshMaterialLots\u0027)\n\t\t\n\t\t\tgpa.frontEnd.localUI.throwSuccess(\u0027Disabled material\u0027)\n\t\t\tself.meta.enabled \u003d False\n\t\n\t\texcept Exception as e:\n\t\t\t# logger.error(\"[{}] Error while executing query: {}\".format(self.meta.name, str(e)))\n\t\t\terrorParams \u003d {\n\t\t\t\t\"ModalName\": \"ErrorModal\",\n\t\t\t\t\"ErrorMessage\": \"The request could not be completed! \" + str(e)\n\t\t\t}\n\t\n\t\t\tsystem.perspective.openPopup(\n\t\t\t\t\"ErrorModal\",\n\t\t\t\t\"GlobalComponents/Modals/ErrorModal\",\n\t\t\t\terrorParams\n\t\t\t)\n\n\tpass"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "domId": "materials-disable",
+                  "enabled": false,
+                  "name": "Disable",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Disable"
+                  }
+                },
+                "position": {
+                  "basis": "27px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "expression": "!{session.custom.ERPIntegration}"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.color": {
+                    "binding": {
+                      "config": {
+                        "path": "this.meta.enabled"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "#C0C0C0",
+                          "inputType": "scalar",
+                          "mappings": [
+                            {
+                              "input": false,
+                              "output": "#5B5B5B"
+                            },
+                            {
+                              "input": true,
+                              "output": "#C0C0C0"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.style.cursor": {
+                    "binding": {
+                      "config": {
+                        "path": "..../Row2/Materials.props.selection.selectedRow"
+                      },
+                      "transforms": [
+                        {
+                          "fallback": "pointer",
+                          "inputType": "expression",
+                          "mappings": [
+                            {
+                              "input": "None",
+                              "output": "auto"
+                            }
+                          ],
+                          "outputType": "scalar",
+                          "type": "map"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "material/block",
+                  "style": {
+                    "classes": "",
+                    "marginRight": 8
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "Icons"
+            },
+            "position": {
+              "basis": "450px",
+              "display": false,
+              "grow": 1,
+              "shrink": 0
+            },
+            "props": {
+              "justify": "flex-end",
+              "style": {
+                "overflow": "hidden"
+              },
+              "wrap": "wrap"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "domId": "materials-table-header",
+          "name": "Row1"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onRowClick": {
+                  "config": {
+                    "script": "\timport system\n\t\n\tlogger \u003d system.util.getLogger(\"MaterialsDataLogger\")\n\t\n\ttry:\n\t\trowData \u003d self.props.selection.data\n\t\t\n\t\tlogger.info(\"1 [{}] MATERIALS TABLE CLICKED! Row data selected: {}\".format(self.meta.name, rowData))\n\t\tself.parent.parent.getChild(\"Row1\").getChild(\"Icons\").getChild(\"Disable\").meta.enabled \u003d rowData[0][\u0027IsEnabled\u0027]\n\n\t\tsystem.perspective.sendMessage(\"RowSelectedFromMaterialsTable\", rowData)\n\t\tlogger.info(\"1 [{}] Message \u0027materialsRowSelected\u0027 sent with row data.\".format(self.meta.name))\n\n\texcept Exception as e:\n\t\tlogger.error(\"1 [{}] Error in runAction: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\n\tpass"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "domId": "materials-table",
+              "name": "Materials"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.data": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.materials"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "cells": {
+                "style": {
+                  "marginLeft": "5px"
+                }
+              },
+              "columns": [
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "ID",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                }
+              ],
+              "filter": {
+                "enabled": true,
+                "results": {
+                  "enabled": true
+                }
+              }
+            },
+            "scripts": {
+              "customMethods": [],
+              "extensionFunctions": null,
+              "messageHandlers": [
+                {
+                  "messageType": "refreshMaterial",
+                  "pageScope": true,
+                  "script": "\t# logger \u003d system.util.getLogger(\"MessageHandlerLogger\")\n\n\ttry:\n\t\tself.view.refreshBinding(\u0027custom.Data\u0027)\n\t\tself.refreshBinding(\u0027props.data\u0027)\n\t\t# logger.info(\"[{}] Binding \u0027custom.Data\u0027 refreshed after receiving payload: {}\".format(self.meta.name, payload))\n\n\t\t# Clearing selection data because it was not updating after successful edit\n\t\tself.props.selection.selectedRow \u003d -1\n\t\tself.props.selection.selectedColumn \u003d -1\n\texcept Exception as e:\n\t\t# logger.error(\"[{}] Error in onMessageReceived: {}\".format(self.meta.name, str(e)))\n\t\tpass\n\n\tpass",
+                  "sessionScope": false,
+                  "viewScope": false
+                }
+              ]
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Row2"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

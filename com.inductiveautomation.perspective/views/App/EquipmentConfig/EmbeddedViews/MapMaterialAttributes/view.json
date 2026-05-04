@@ -1,0 +1,1273 @@
+{
+  "custom": {
+    "config": {},
+    "data": null
+  },
+  "params": {
+    "fileData": {
+      "$": [
+        "ds",
+        192,
+        1755008116864
+      ],
+      "$columns": [
+        {
+          "data": [],
+          "name": "Purchase Number",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "Part Number",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "Details",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "Final Qty",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "Start Date",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "End Date",
+          "type": "String"
+        },
+        {
+          "data": [],
+          "name": "Due Date",
+          "type": "String"
+        }
+      ]
+    },
+    "fileName": ""
+  },
+  "propConfig": {
+    "custom.config": {
+      "persistent": true
+    },
+    "custom.config.options": {
+      "binding": {
+        "config": {
+          "path": "view.params.fileData"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the options based on uploaded file \u0027\u0027\u0027\n\t\n\t# Gets the column names\n\tfileData \u003d self.params.fileData\n\theaders \u003d fileData.getColumnNames()\n\t\n\t# Loops through the headers and returns the dropdown options\n\toptions \u003d []\n\tfor header in headers:\n\t\toption \u003d {\n\t\t\t\u0027value\u0027: header,\n\t\t\t\u0027label\u0027: header\n\t\t}\n\t\toptions.append(option)\n\t\n\treturn options\n\t",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.data": {
+      "binding": {
+        "config": {
+          "struct": {
+            "columns": {
+              "description": "{/root/DescriptionContainer/Dropdown.props.value}",
+              "endDate": "{/root/EndDateContainer/DropdownContainer/Dropdown.props.value}",
+              "productCode": "{/root/ProductCodeContainer/Dropdown.props.value}",
+              "requiredEndDate": "{/root/RequiredEndDateContainer/DropdownContainer/Dropdown.props.value}",
+              "requiredQuantity": "{/root/RequiredQtyContainer/Dropdown.props.value}",
+              "startDate": "{/root/StartDateContainer/DropdownContainer/Dropdown.props.value}",
+              "workOrderNumber": "{/root/WorkOrderNumberContainer/Dropdown.props.value}"
+            },
+            "datetimeFormats": {
+              "endDate": "{/root/EndDateContainer/DropdownContainer/FormatDropdown.props.value}",
+              "requiredEndDate": "{/root/RequiredEndDateContainer/DropdownContainer/FormatDropdown.props.value}",
+              "startDate": "{/root/StartDateContainer/DropdownContainer/FormatDropdown.props.value}"
+            },
+            "fileData": "{view.params.fileData}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Gets the selections, checks for any errors from the dropdown selections, and then sends a message to the MaterialConfig popup view (parent view) with the selections \u0027\u0027\u0027\n\t\n\t# Gets the selections\n\tselections \u003d {\n\t\t\u0027columns\u0027: value.columns,\n\t\t\u0027datetimeFormats\u0027: value.datetimeFormats\n\t}\n\t\n\t# Gets the inputErrors\n\tinputErrors \u003d assetConfig.util.invalidInputCheck(value.fileData, selections)\n\t\n\t\n\t# --- Sends a message to the attributeSelection message handler on the root of the MaterialConfig  popup view ---\n\t\n\t# Checks if all selections have been made and that there are no input errors\n\tattributeSelection \u003d selections[\u0027columns\u0027]\n\tallSelectionsMade \u003d all(selection for selection in attributeSelection.values())\n\tnoInputErrors \u003d all(val \u003d\u003d \u0027\u0027 for val in inputErrors.values())\n\t\n\t# Sends the message to the handler, sends selected attributes if allSelectionsMade and noInputErrors, else clears it\n\tif allSelectionsMade and noInputErrors:\n\t\tpayload \u003d {\n\t\t\t\u0027attributeSelection\u0027: attributeSelection\n\t\t}\n\telse:\n\t\tpayload \u003d {\n\t\t\t\u0027attributeSelection\u0027: {}\n\t\t}\n\tsystem.perspective.sendMessage(\u0027attributeSelection\u0027, payload)\n\t\n\t# Gets and returns the data property\n\tdata \u003d {\n\t\t\u0027selections\u0027: selections,\n\t\t\u0027inputErrors\u0027: inputErrors\n\t}\n\treturn data",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.fileData": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.fileName": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "card-title"
+          },
+          "text": "Customize Your Attributes"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SubTitle"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\u0027Configure how the columns in the \u0027 + {view.params.fileName} + \u0027 data source should be mapped to the Elev8 material attributes\u0027"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "var(--neutral-50)"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Work Order Number"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.workOrderNumber}), \u0027\u0027, if({view.custom.data.inputErrors.workOrderNumber} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Dropdown",
+              "tooltip": {
+                "enabled": true,
+                "sustain": 0
+              }
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.workOrderNumber}), \u0027\u0027, {view.custom.data.inputErrors.workOrderNumber})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.config.options"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select an attribute..."
+              },
+              "showClearIcon": true,
+              "style": {},
+              "value": null
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "WorkOrderNumberContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "30px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Product Code"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.productCode}), \u0027\u0027, if({view.custom.data.inputErrors.productCode} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Dropdown",
+              "tooltip": {
+                "enabled": true,
+                "sustain": 0
+              }
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.productCode}), \u0027\u0027, {view.custom.data.inputErrors.productCode})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.config.options"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select an attribute..."
+              },
+              "showClearIcon": true,
+              "style": {},
+              "value": null
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "ProductCodeContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Description"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.description}), \u0027\u0027, if({view.custom.data.inputErrors.description} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Dropdown",
+              "tooltip": {
+                "enabled": true,
+                "sustain": 0
+              }
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.description}), \u0027\u0027, {view.custom.data.inputErrors.description})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.config.options"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select an attribute..."
+              },
+              "showClearIcon": true,
+              "style": {},
+              "value": null
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "DescriptionContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Required Quantity"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.requiredQuantity}), \u0027\u0027, if({view.custom.data.inputErrors.requiredQuantity} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Dropdown",
+              "tooltip": {
+                "enabled": true,
+                "sustain": 0
+              }
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.requiredQuantity}), \u0027\u0027, {view.custom.data.inputErrors.requiredQuantity})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.config.options"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.classes": {
+                "binding": {
+                  "config": {
+                    "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select an attribute..."
+              },
+              "showClearIcon": true,
+              "style": {},
+              "value": null
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "RequiredQtyContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Scheduled Start Date"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.startDate}), \u0027\u0027, if({view.custom.data.inputErrors.startDate} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FormatDropdown"
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "yyyy-MM-dd HH:mm:ss",
+                      "value": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    {
+                      "label": "MM/dd/yyyy HH:mm:ss",
+                      "value": "MM/dd/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "dd/MM/yyyy HH:mm:ss",
+                      "value": "dd/MM/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "yyyy-MM-dd\u0027T\u0027HH:mm:ss",
+                      "value": "yyyy-MM-dd\u0027T\u0027HH:mm:ss"
+                    },
+                    {
+                      "label": "M/d/yyyy h:mm:ss a",
+                      "value": "M/d/yyyy h:mm:ss a"
+                    },
+                    {
+                      "label": "yyyy-MM-dd",
+                      "value": "yyyy-MM-dd"
+                    },
+                    {
+                      "label": "MM/dd/yyyy",
+                      "value": "MM/dd/yyyy"
+                    },
+                    {
+                      "label": "dd/MM/yyyy",
+                      "value": "dd/MM/yyyy"
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select format..."
+                  },
+                  "showClearIcon": true,
+                  "style": {
+                    "marginRight": "10px"
+                  },
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "sustain": 0
+                  }
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({view.custom.data.inputErrors.startDate}), \u0027\u0027, {view.custom.data.inputErrors.startDate})"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({../FormatDropdown.props.value}) ||  {../FormatDropdown.props.value} \u003d \u0027\u0027, False, True)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.config.options"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.style.classes": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": {
+                    "text": "Select attribute..."
+                  },
+                  "showClearIcon": true,
+                  "style": {},
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "DropdownContainer"
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "StartDateContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Scheduled End Date"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.endDate}), \u0027\u0027, if({view.custom.data.inputErrors.endDate} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FormatDropdown"
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "yyyy-MM-dd HH:mm:ss",
+                      "value": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    {
+                      "label": "MM/dd/yyyy HH:mm:ss",
+                      "value": "MM/dd/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "dd/MM/yyyy HH:mm:ss",
+                      "value": "dd/MM/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "yyyy-MM-dd\u0027T\u0027HH:mm:ss",
+                      "value": "yyyy-MM-dd\u0027T\u0027HH:mm:ss"
+                    },
+                    {
+                      "label": "M/d/yyyy h:mm:ss a",
+                      "value": "M/d/yyyy h:mm:ss a"
+                    },
+                    {
+                      "label": "yyyy-MM-dd",
+                      "value": "yyyy-MM-dd"
+                    },
+                    {
+                      "label": "MM/dd/yyyy",
+                      "value": "MM/dd/yyyy"
+                    },
+                    {
+                      "label": "dd/MM/yyyy",
+                      "value": "dd/MM/yyyy"
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select format..."
+                  },
+                  "showClearIcon": true,
+                  "style": {
+                    "marginRight": "10px"
+                  },
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "sustain": 0
+                  }
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({view.custom.data.inputErrors.endDate}), \u0027\u0027, {view.custom.data.inputErrors.endDate})"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({../FormatDropdown.props.value}) ||  {../FormatDropdown.props.value} \u003d \u0027\u0027, False, True)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.config.options"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.style.classes": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": {
+                    "text": "Select attribute..."
+                  },
+                  "showClearIcon": true,
+                  "style": {},
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "DropdownContainer"
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "EndDateContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "basis": "200px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "expression": "\"Select an attribute from your data source to map to the \u0027\" + {../Label.props.text} + \"\u0027\""
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "boxed-label"
+              },
+              "text": "Required End Date"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if(isNull({view.custom.data.inputErrors.requiredEndDate}), \u0027\u0027, if({view.custom.data.inputErrors.requiredEndDate} \u003d \u0027\u0027, \u0027var(--primary-2)\u0027, \u0027var(--red-60)\u0027))"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "material/arrow_forward",
+              "style": {
+                "marginLeft": "5px",
+                "marginRight": "5px",
+                "padding": "5px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "FormatDropdown"
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "yyyy-MM-dd HH:mm:ss",
+                      "value": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    {
+                      "label": "MM/dd/yyyy HH:mm:ss",
+                      "value": "MM/dd/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "dd/MM/yyyy HH:mm:ss",
+                      "value": "dd/MM/yyyy HH:mm:ss"
+                    },
+                    {
+                      "label": "yyyy-MM-dd\u0027T\u0027HH:mm:ss",
+                      "value": "yyyy-MM-dd\u0027T\u0027HH:mm:ss"
+                    },
+                    {
+                      "label": "M/d/yyyy h:mm:ss a",
+                      "value": "M/d/yyyy h:mm:ss a"
+                    },
+                    {
+                      "label": "yyyy-MM-dd",
+                      "value": "yyyy-MM-dd"
+                    },
+                    {
+                      "label": "MM/dd/yyyy",
+                      "value": "MM/dd/yyyy"
+                    },
+                    {
+                      "label": "dd/MM/yyyy",
+                      "value": "dd/MM/yyyy"
+                    }
+                  ],
+                  "placeholder": {
+                    "text": "Select format..."
+                  },
+                  "showClearIcon": true,
+                  "style": {
+                    "marginRight": "10px"
+                  },
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "Dropdown",
+                  "tooltip": {
+                    "enabled": true,
+                    "sustain": 0
+                  }
+                },
+                "position": {
+                  "basis": "50%",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "meta.tooltip.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({view.custom.data.inputErrors.requiredEndDate}), \u0027\u0027, {view.custom.data.inputErrors.requiredEndDate})"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({../FormatDropdown.props.value}) ||  {../FormatDropdown.props.value} \u003d \u0027\u0027, False, True)"
+                      },
+                      "type": "expr"
+                    }
+                  },
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.config.options"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.style.classes": {
+                    "binding": {
+                      "config": {
+                        "expression": "if({this.meta.tooltip.text} !\u003d \u0027\u0027, \u0027error-input\u0027, \u0027\u0027)"
+                      },
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "placeholder": {
+                    "text": "Select attribute..."
+                  },
+                  "showClearIcon": true,
+                  "style": {},
+                  "value": null
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "DropdownContainer"
+            },
+            "position": {
+              "basis": "350px",
+              "shrink": 0
+            },
+            "props": {
+              "justify": "space-evenly",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "RequiredEndDateContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

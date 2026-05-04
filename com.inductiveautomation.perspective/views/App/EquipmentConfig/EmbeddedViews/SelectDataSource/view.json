@@ -1,0 +1,181 @@
+{
+  "custom": {
+    "data": {
+      "selectedFile": {
+        "fileData": "",
+        "fileName": ""
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.selectedDataSource": {
+      "binding": {
+        "config": {
+          "path": "/root/AttributeContainer/Dropdown.props.value"
+        },
+        "transforms": [
+          {
+            "code": "\t\u0027\u0027\u0027 Clears the data source data and sends message to the dataSourceSelection message handler \u0027\u0027\u0027\n\t\n\t# Clears the data values\n\tfileName \u003d None\n\tfileData \u003d None\n\t\n\t# Sends a message to the dataSourceSelection message handler with the selected file\n\tpayload \u003d {\n\t\t\u0027dataSource\u0027: value,\n\t\t\u0027fileName\u0027: fileName,\n\t\t\u0027fileData\u0027: fileData\n\t}\n\t\n\tsystem.perspective.sendMessage(\u0027dataSourceSelection\u0027, payload)\n\t\n\treturn value",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "card-title"
+          },
+          "text": "Select Your Data Source"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SubTitle"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "color": "var(--neutral-50)"
+          },
+          "text": "Choose what data source you would like to configure material data from"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "300px",
+              "shrink": 0
+            },
+            "props": {
+              "options": [
+                {
+                  "label": "CSV",
+                  "value": "CSV"
+                },
+                {
+                  "label": "ERP",
+                  "value": "ERP"
+                }
+              ],
+              "placeholder": {
+                "text": "Select a data source..."
+              },
+              "showClearIcon": true,
+              "value": null
+            },
+            "type": "ia.input.dropdown"
+          }
+        ],
+        "meta": {
+          "name": "AttributeContainer"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "30px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onFileReceived": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Get\u0027s and sends the file to the dataSourceSelection message handler \u0027\u0027\u0027\n\t\n\t# Grabs the file name and converts the data into a dataset\n\tfileName \u003d event.file.name\n\tfileDataStr \u003d event.file.getString()\n\tfileData \u003d assetConfig.util.convertCSVToDataset(fileDataStr)\n\t\n\t# Sends a message to the dataSourceSelection message handler with the selected file\n\tpayload \u003d {\n\t\t\u0027dataSource\u0027: self.view.custom.data.selectedDataSource,\n\t\t\u0027fileName\u0027: fileName,\n\t\t\u0027fileData\u0027: fileData\n\t}\n\t\n\tsystem.perspective.sendMessage(\u0027dataSourceSelection\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                },
+                "onUploadsCleared": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Clears the data source data and sends message to the dataSourceSelection message handler \u0027\u0027\u0027\n\t\n\t# Clears the data values\n\tfileName \u003d None\n\tfileData \u003d None\n\t\n\t# Sends a message to the dataSourceSelection message handler with the selected file\n\tpayload \u003d {\n\t\t\u0027dataSource\u0027: self.view.custom.data.selectedDataSource,\n\t\t\u0027fileName\u0027: fileName,\n\t\t\u0027fileData\u0027: fileData\n\t}\n\t\n\tsystem.perspective.sendMessage(\u0027dataSourceSelection\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "FileUpload"
+            },
+            "position": {
+              "basis": "400px"
+            },
+            "props": {
+              "maxUploads": 1,
+              "supportedFileTypes": [
+                "csv"
+              ]
+            },
+            "type": "ia.input.fileupload"
+          }
+        ],
+        "meta": {
+          "name": "CSVUploadContainer"
+        },
+        "position": {
+          "basis": "150px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "if({view.custom.data.selectedDataSource} \u003d \u0027CSV\u0027, True, False)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "marginTop": "30px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

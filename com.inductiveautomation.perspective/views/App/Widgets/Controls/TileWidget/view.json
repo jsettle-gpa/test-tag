@@ -1,0 +1,148 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {
+    "params.inputs": {
+      "paramDirection": "input",
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 180,
+      "width": 180
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.inputs.fg"
+              },
+              "type": "property"
+            }
+          },
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.inputs.iconPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "32px",
+            "opacity": 0.95
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.inputs.label"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "600",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Sub"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.inputs.subLabel"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "12px",
+            "opacity": 0.9,
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\t# tile onClick: send a message and log.\n\t# messageHandler param may be:\n\t#   \"myHandler\"              -\u003e scope\u003d\u0027page\u0027 (default)\n\t#   \"session:myHandler\"      -\u003e scope\u003d\u0027session\u0027\n\t#   \"project:myHandler\"      -\u003e scope\u003d\u0027project\u0027\n\t#   \"view:myHandler\"         -\u003e scope\u003d\u0027view\u0027\n\t\n\thandler \u003d (self.view.params.inputs.messageHandler or \u0027\u0027).strip()\n\tif not handler:\n\t\tsystem.perspective.print(\u0027Tile: No messageHandler provided; click ignored.\u0027)\n\t\treturn\n\t\n\t# Parse optional \"\u003cscope\u003e:\u003chandler\u003e\" prefix\n\tparts \u003d handler.split(\u0027:\u0027, 1)\n\tif len(parts) \u003d\u003d 2:\n\t\tscope \u003d parts[0].strip().lower()\n\t\tmessageType \u003d parts[1].strip()\n\telse:\n\t\tscope \u003d \u0027page\u0027\n\t\tmessageType \u003d handler\n\t\n\tif scope not in (\u0027page\u0027, \u0027session\u0027, \u0027project\u0027, \u0027view\u0027):\n\t\tsystem.perspective.print(\"Tile: Invalid scope \u0027%s\u0027; defaulting to \u0027page\u0027.\" % scope)\n\t\tscope \u003d \u0027page\u0027\n\t\n\t# Minimal, helpful payload\n\tnow \u003d system.date.now()\n\tsessionInfo \u003d system.perspective.getSessionInfo() or {}\n\tpayload \u003d {\n\t\t\u0027label\u0027   : self.view.params.label,\n\t\t\u0027source\u0027  : {\u0027viewPath\u0027: self.view.path, \u0027pageId\u0027: system.perspective.getPageId(), \u0027sessionId\u0027: sessionInfo.get(\u0027id\u0027)},\n\t\t\u0027timestamp\u0027: now,\n\t\t\u0027epochMs\u0027 : system.date.toMillis(now)\n\t\t}\n\t\n\tsystem.perspective.print(\"Tile: sending message \u0027%s\u0027 (scope\u003d%s)\" % (messageType, scope))\n\ttry:\n\t\tsystem.perspective.sendMessage(messageType, payload, scope\u003dscope)\n\t\tsystem.perspective.print(\"Tile: message \u0027%s\u0027 sent.\" % messageType)\n\texcept:\n\t\tsystem.perspective.print(\"Tile: sendMessage failed for \u0027%s\u0027 (scope\u003d%s).\" % (messageType, scope))"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.params.inputs.bg"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.color": {
+        "binding": {
+          "config": {
+            "path": "view.params.inputs.fg"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "alignItems": "center",
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "borderRadius": "8px",
+        "gap": "8px",
+        "overflow": "hidden",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

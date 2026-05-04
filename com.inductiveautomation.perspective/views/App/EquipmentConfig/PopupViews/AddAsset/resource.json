@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "Adds a new asset depending on selected asset (area, line, cell, or cell group)\n\nInput Data:\n-No input data from the backend\n-params.selectedAssetData\n-params.isCellGroup\n\nOutput Data:\n-event script on the save button (calls addAsset message handler located on the root of the AssetConfig view)",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-29T12:10:24Z"
+    },
+    "lastModificationSignature": "58aef7effe1d564630fd825814236d81bc8f7b38e19953acddfcc9ea6057ee8f"
+  }
+}

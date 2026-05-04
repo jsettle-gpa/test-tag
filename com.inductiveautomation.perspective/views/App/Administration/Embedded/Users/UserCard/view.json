@@ -1,0 +1,225 @@
+{
+  "custom": {},
+  "params": {
+    "authProfile": "",
+    "displayName": "",
+    "email": "",
+    "enabled": true,
+    "initials": "??",
+    "roles": "",
+    "userName": ""
+  },
+  "propConfig": {
+    "params.authProfile": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.displayName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.email": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.initials": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.roles": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.userName": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 84,
+      "width": 524
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Avatar"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.initials"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "alignItems": "center",
+                "backgroundColor": "#3B4556",
+                "borderRadius": "50%",
+                "height": "36px",
+                "justifyContent": "center",
+                "width": "36px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "DisplayName"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.displayName"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Email"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.email"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "opacity": 0.8,
+                    "overflow": "hidden",
+                    "textOverflow": "ellipsis",
+                    "whiteSpace": "nowrap"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "NameBlock"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "2px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TopRow"
+        },
+        "props": {
+          "style": {
+            "alignItems": "center",
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "RoleChip"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.roles"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "10px",
+                "fontSize": "11px",
+                "padding": "2px 6px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "ProfileChip"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.authProfile"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "10px",
+                "fontSize": "11px",
+                "padding": "2px 6px"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Chips"
+        },
+        "props": {
+          "style": {
+            "gap": "6px"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-40)",
+        "borderRadius": "10px",
+        "gap": "6px",
+        "minHeight": "80px",
+        "padding": "10px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

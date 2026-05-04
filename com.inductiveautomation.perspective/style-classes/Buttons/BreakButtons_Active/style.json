@@ -1,0 +1,39 @@
+{
+  "base": {
+    "animation": {
+      "duration": "3s",
+      "timingFunction": "ease-in-out",
+      "keyframes": {
+        "0%": {
+          "backgroundColor": "#FFFFFF",
+          "color": "#000000",
+          "fontSize": "1rem",
+          "fontWeight": "normal"
+        },
+        "100%": {
+          "backgroundColor": "#BCC0FF",
+          "color": "#000000",
+          "fontSize": "1rem",
+          "fontWeight": "normal"
+        }
+      }
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "#298fc2",
+        "color": "#FFFFFF",
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "pseudo": "disabled",
+      "style": {
+        "backgroundColor": "#D5D5D5",
+        "color": "#808080"
+      }
+    }
+  ]
+}

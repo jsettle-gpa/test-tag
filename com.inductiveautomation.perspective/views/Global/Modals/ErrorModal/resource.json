@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "added a new parameter \u0027type\u0027: this SHOULD be how we are handling types like \u0027success\u0027, \u0027warning\u0027, \u0027failure\u0027 etc.\n\ncurrently how we are handling it is breaking apart the string and looking for keywords that determine the type of modal.\nNeeds to be reworked in the future - MB",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-23T16:11:37Z"
+    },
+    "lastModificationSignature": "d64d330e80f452f8b2412cbb578bc1750a76c27c207d43786aa0226d90139dea"
+  }
+}

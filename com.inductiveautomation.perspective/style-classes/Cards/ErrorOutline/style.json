@@ -1,0 +1,15 @@
+{
+  "base": {
+    "animation": {
+      "duration": "1s",
+      "keyframes": {
+        "0%": {},
+        "100%": {
+          "borderColor": "var(--error)",
+          "borderStyle": "solid",
+          "borderWidth": "0.5px"
+        }
+      }
+    }
+  }
+}

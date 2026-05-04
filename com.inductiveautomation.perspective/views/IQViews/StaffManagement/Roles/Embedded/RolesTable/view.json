@@ -1,0 +1,212 @@
+{
+  "custom": {},
+  "params": {
+    "SelectedRow": null
+  },
+  "propConfig": {
+    "params.SelectedRow": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/Table.props.selection.selectedRow"
+        },
+        "type": "property"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1041
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": [
+                  {
+                    "config": {
+                      "script": "\n\ttry:\n\t\tmodalName \u003d \"addUser\"\n\t\tmodalPath \u003d \"App/StaffManagement/Roles/Embedded/Popups/AddUser\"\n\t\t\n\t\tparams \u003d {\n\t\t\t\"ModalName\": modalName,\n\t\t\t\"Type\": \"add\"\n\t\t}\n\t\t\n\t\tsystem.perspective.openPopup(\n\t\t    modalName, # Identifier for the popup\n\t\t\tmodalPath,\n\t\t    params,\n\t\t    title\u003d\"Add User\", \n\t\t    modal\u003dTrue, \n\t\t    overlayDismiss\u003dTrue\n\t\t)\n\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+                    },
+                    "scope": "G",
+                    "type": "script"
+                  },
+                  {
+                    "config": {
+                      "draggable": true,
+                      "id": "addAttr",
+                      "modal": true,
+                      "overlayDismiss": true,
+                      "resizable": true,
+                      "showCloseIcon": true,
+                      "title": "Add Attribute",
+                      "type": "toggle",
+                      "viewParams": {
+                        "ModalName": "addAttr"
+                      },
+                      "viewPath": "App/EquipmentConfig/Embedded/Popups/AddAttribute",
+                      "viewportBound": false
+                    },
+                    "enabled": false,
+                    "scope": "C",
+                    "type": "popup"
+                  }
+                ]
+              }
+            },
+            "meta": {
+              "name": "AddIcon",
+              "tooltip": {
+                "style": {
+                  "classes": "Buttons/NormalButton"
+                }
+              }
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "path": "material/add",
+              "style": {
+                "classes": "Icons/Hover"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\ttry:\n\t\tmodalName \u003d \"editUser\"\n\t\tmodalPath \u003d \"App/StaffManagement/Roles/Embedded/Popups/EditUser\"\n\t\tselectedRowData \u003d self.parent.parent.getChild(\"Table\").props.selection.data\n\n\t\tif len(selectedRowData) \u003c\u003d 0:\n\t\t\traise ValueError(\"No row selected\")\n\t\t\t\n\t\tsystem.perspective.print(\"SelectedRowData: \" + str(selectedRowData[0]))\n\t\t\t\n\t\tparams \u003d {\n\t\t\t\"ModalName\": modalName,\n\t\t\t\"Data\": selectedRowData,\n\t\t\t\"Type\": \"edit\",\n\t\t\t\"UserId\": selectedRowData[0][\u0027User Name\u0027]\n\t\t}\n\t\t\n\t\tsystem.perspective.openPopup(\n\t\t    modalName, # Identifier for the popup\n\t\t\tmodalPath,\n\t\t    params,\n\t\t    title\u003d\"Edit User\", \n\t\t    modal\u003dTrue, \n\t\t    overlayDismiss\u003dTrue\n\t\t)\n\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "EditIcon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "path": "material/create",
+              "style": {
+                "classes": "Icons/Hover"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\ttry:\n\t\tselectedRowData \u003d self.parent.parent.getChild(\"Table\").props.selection.data\n\t\t\n\t\tif len(selectedRowData) \u003c\u003d 0:\n\t\t\traise ValueError(\"No row selected\")\n\t\t\n\t\tmodalName \u003d \"DeleteUser\"\n\t\tmodalPath \u003d \"App/StaffManagement/Roles/Embedded/Popups/DeleteConfirmation\"\n\t\tuserId \u003d selectedRowData[0][\"User Name\"]\n\t\tparams \u003d {\n\t\t\t\"ModalName\" : modalName,\n\t\t\t\"UserId\" : userId,\n\t\t\t\"Type\" : \"delete\"\t\t\t\n\t\t}\n\t\n\t\t\n\t\tsystem.perspective.openPopup(\t\t\t\t\n\t\t\tmodalName,\n\t\t\tmodalPath,\n\t\t\tparams \u003d params, \n\t\t\ttitle \u003d \"Confirm\",\n\t\t\tmodal \u003d True,\n\t\t\toverlayDismiss \u003d True\n\t\t)\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "DeleteIcon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "path": "material/delete",
+              "style": {
+                "classes": "Icons/Hover"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "Icons"
+        },
+        "position": {
+          "basis": "55px"
+        },
+        "props": {
+          "justify": "flex-end"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "component": {
+            "onRowDoubleClick": {
+              "config": {
+                "script": "\ttry:\n\t\tmodalName \u003d \"editUser\"\n\t\tmodalPath \u003d \"App/StaffManagement/Roles/Embedded/Popups/EditUser\"\n\t\tselectedRowData \u003d event.value\n\t\n#\t\tif len(selectedRowData) \u003c\u003d 0:\n#\t\t\traise ValueError(\"No row selected\")\n\t\t\t\n\t\tsystem.perspective.print(\"SelectedRowData: \" + str(selectedRowData))\n\t\t\t\n\t\tparams \u003d {\n\t\t\t\"ModalName\": modalName,\n\t\t\t\"Data\": [selectedRowData],\n\t\t\t\"Type\": \"edit\",\n\t\t\t\"UserId\": selectedRowData[\u0027User Name\u0027]\n\t\t}\n\t\t\n\t\tsystem.perspective.openPopup(\n\t\t    modalName, # Identifier for the popup\n\t\t\tmodalPath,\n\t\t    params,\n\t\t    title\u003d\"Edit User\", \n\t\t    modal\u003dTrue, \n\t\t    overlayDismiss\u003dTrue\n\t\t)\n\t\n\texcept Exception as e:\n\t\tgpa.frontEnd.localUI.throwError(str(e))"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "domId": "requirements-table",
+          "name": "Table"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "queryPath": "auth/getUserRoles"
+              },
+              "type": "query"
+            }
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "refreshUserTable",
+              "pageScope": true,
+              "script": "\tself.refreshBinding(\u0027props.data\u0027)",
+              "sessionScope": false,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refreshRequirementsTable",
+          "pageScope": true,
+          "script": "\tself.view.refreshBinding(\"custom.Data\")\n\tself.view.refreshBinding(\"params.TableDataset\")",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "custom": {
+    "sourceData": {
+      "lineId": null
+    }
+  },
+  "params": {
+    "EqPath": "Dis-Tran/LA/Cutting/Kinetic 4",
+    "tagBase": "MES/Workorders"
+  },
+  "propConfig": {
+    "custom.runTagPath": {
+      "binding": {
+        "config": {
+          "expression": "if(isNull({view.custom.selectedWO.WorkOrderID}), \u0027\u0027, concat({view.params.tagBase}, \u0027/\u0027, toString({view.custom.selectedWO.WorkOrderID}), \u0027/RunCmd\u0027))"
+        },
+        "type": "expression"
+      }
+    },
+    "custom.selectedWO": {
+      "binding": {
+        "config": {
+          "path": "root.children.0.props.selection.data"
+        },
+        "type": "property"
+      }
+    },
+    "custom.sourceData.availableWork": {
+      "binding": {
+        "config": {
+          "path": "view.params.workorders"
+        },
+        "type": "property"
+      }
+    },
+    "params.EqPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagBase": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.workorders": {
+      "paramDirection": "input",
+      "persistent": false
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 520,
+      "width": 900
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "48.9%"
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "path": "view.custom.sourceData.availableWork"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "columns": [
+            {
+              "align": "left",
+              "field": "WorkOrderID",
+              "header": {
+                "align": "left",
+                "title": "WO #"
+              },
+              "sortable": true,
+              "width": ""
+            },
+            {
+              "field": "WorkOrder",
+              "header": {
+                "align": "left",
+                "title": "Work Order"
+              },
+              "sortable": true
+            },
+            {
+              "align": "center",
+              "field": "Operation",
+              "header": {
+                "align": "center",
+                "title": "Op"
+              },
+              "sortable": true
+            },
+            {
+              "align": "right",
+              "field": "RequiredQty",
+              "header": {
+                "align": "right",
+                "title": "Req"
+              },
+              "numberFormat": "0,0"
+            },
+            {
+              "align": "right",
+              "field": "CompletedQty",
+              "header": {
+                "align": "right",
+                "title": "Done"
+              },
+              "numberFormat": "0,0"
+            },
+            {
+              "align": "center",
+              "field": "Line",
+              "header": {
+                "align": "center",
+                "title": "Line"
+              }
+            },
+            {
+              "align": "center",
+              "field": "Priority",
+              "header": {
+                "align": "center",
+                "title": "Prio"
+              },
+              "sortable": true
+            }
+          ],
+          "enableFilter": true,
+          "filter": {
+            "enabled": true
+          },
+          "selection": {
+            "enabled": true
+          }
+        },
+        "type": "ia.display.table"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Header"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "16px",
+                    "fontWeight": "600"
+                  },
+                  "text": "Selected Workorder"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblWO"
+                        },
+                        "position": {
+                          "basis": "25%"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "600"
+                          },
+                          "text": "WO #"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "ValWO"
+                        },
+                        "position": {
+                          "basis": "75%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.selectedWO.WorkOrderID"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row1"
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "gap": "8px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblOp"
+                        },
+                        "position": {
+                          "basis": "25%"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "600"
+                          },
+                          "text": "Op"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "ValOp"
+                        },
+                        "position": {
+                          "basis": "75%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "path": "view.custom.selectedWO.Operation"
+                              },
+                              "type": "property"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row2"
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "gap": "8px"
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblQty"
+                        },
+                        "position": {
+                          "basis": "25%"
+                        },
+                        "props": {
+                          "style": {
+                            "fontWeight": "600"
+                          },
+                          "text": "Qty"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "ValQty"
+                        },
+                        "position": {
+                          "basis": "75%"
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "config": {
+                                "expression": "concat(toString({view.custom.selectedWO.CompletedQty}), \u0027 / \u0027, toString({view.custom.selectedWO.RequiredQty}))"
+                              },
+                              "type": "expression"
+                            }
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Row3"
+                    },
+                    "props": {
+                      "alignItems": "center",
+                      "gap": "8px"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "WOInfo"
+                },
+                "props": {
+                  "direction": "column",
+                  "gap": "4px"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "RunLabel"
+                    },
+                    "position": {
+                      "basis": "50%"
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "600"
+                      },
+                      "text": "Run (Start/Stop)"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "RunSwitchRow"
+                },
+                "props": {
+                  "alignItems": "center",
+                  "justify": "space-between"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": {
+                  "name": "InfoRow"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "expression": "if(isNull({view.custom.selectedWO.WorkOrderID}), \u0027Select a workorder to enable controls\u0027, concat(\u0027Tag: \u0027, {view.custom.runTagPath}))"
+                      },
+                      "type": "expression"
+                    }
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "Card"
+            },
+            "props": {
+              "direction": "column",
+              "gap": "8px",
+              "style": {
+                "backgroundColor": "var(--neutral-0)",
+                "border": "1px solid var(--neutral-30)",
+                "borderRadius": "8px",
+                "boxShadow": "var(--low-elevation)",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "RightPanel"
+        },
+        "position": {
+          "basis": "51.1%"
+        },
+        "props": {
+          "direction": "column",
+          "gap": "8px",
+          "justify": "start",
+          "style": {
+            "padding": "12px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "justify": "start"
+    },
+    "type": "ia.container.flex"
+  }
+}

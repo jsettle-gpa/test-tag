@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "Opens from the LineStates view when adding or editing a line state. If its an edit it writes the data from the selectedRowData param into the custom.data.selection property to fill in the field with the current configuration. Saving with either run the editLineState or addLineState message handler located on the root of the LineStates view.\n\nInput Data:\n-selectedRowData param from the LineStates view\n-custom.config.options from the backend\n\nOutput Data:\n-message sent to the editLineState or addLineState message handlers containing the users entry stored in the custom.data.selection property",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-20T17:12:21Z"
+    },
+    "lastModificationSignature": "1355ca1aa7ab8ffb8e587b5e39de556fc2bc01cc7de0244f95fc8e424ef3b5ed"
+  }
+}

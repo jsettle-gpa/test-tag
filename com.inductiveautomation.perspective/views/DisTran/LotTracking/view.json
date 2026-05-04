@@ -1,0 +1,603 @@
+{
+  "custom": {
+    "IsAdmin": true,
+    "LineID": 1,
+    "Lots": [
+      {
+        "Capacity": 10,
+        "Color": "#556cd6",
+        "H": 120,
+        "LotID": 1,
+        "Name": "Messer 3",
+        "Occupancy": 2,
+        "W": 220,
+        "X": 40,
+        "Y": 40,
+        "Z": 1
+      },
+      {
+        "Capacity": 10,
+        "Color": "#2e7d32",
+        "H": 120,
+        "LotID": 2,
+        "Name": "Kinetic 5",
+        "Occupancy": 4,
+        "W": 220,
+        "X": 40,
+        "Y": 225,
+        "Z": 2
+      },
+      {
+        "Capacity": 10,
+        "Color": "#1565c0",
+        "H": 120,
+        "LotID": 3,
+        "Name": "Forklift Queue",
+        "Occupancy": 0,
+        "W": 220,
+        "X": 40,
+        "Y": 410,
+        "Z": 3
+      }
+    ],
+    "Queue": [
+      {
+        "Part": "P-1001",
+        "Priority": 2,
+        "Qty": 2,
+        "QueueItemID": 101,
+        "WorkOrder": "WO-5001"
+      },
+      {
+        "Part": "P-1002",
+        "Priority": 1,
+        "Qty": 1,
+        "QueueItemID": 102,
+        "WorkOrder": "WO-5002"
+      },
+      {
+        "Part": "P-1003",
+        "Priority": 3,
+        "Qty": 4,
+        "QueueItemID": 103,
+        "WorkOrder": "WO-5003"
+      }
+    ],
+    "QueueOptions": [
+      {
+        "label": "P-1001 (Qty 2) - WO-5001",
+        "value": 101
+      },
+      {
+        "label": "P-1002 (Qty 1) - WO-5002",
+        "value": 102
+      },
+      {
+        "label": "P-1003 (Qty 4) - WO-5003",
+        "value": 103
+      }
+    ],
+    "SelectedLocationID": 1,
+    "StackRows": [
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 1
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 2
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 3
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 4
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 5
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 6
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 7
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 8
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 9
+      },
+      {
+        "Part": "",
+        "Qty": null,
+        "QueueItemID": null,
+        "Slot": 10
+      }
+    ],
+    "User": "jjones"
+  },
+  "params": {},
+  "permissions": {
+    "securityLevels": [],
+    "type": "AnyOf"
+  },
+  "propConfig": {
+    "custom.QueueOptions": {
+      "binding": {
+        "config": {
+          "path": "view.custom.Queue"
+        },
+        "transforms": [
+          {
+            "code": "\topts \u003d []\n\tfor q in (value or []):\n\t    lbl \u003d \"%s (Qty %s) - %s\" % (q.get(\u0027Part\u0027,\u0027\u0027), q.get(\u0027Qty\u0027,\u0027\u0027), q.get(\u0027WorkOrder\u0027,\u0027\u0027))\n\t    opts.append({\"value\": q.get(\"QueueItemID\"), \"label\": lbl})\n\treturn opts",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 768,
+      "width": 1200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "classes": "h2"
+              },
+              "text": "Bending / Crane Placement"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tself.view.custom.IsAdmin \u003d not (self.view.custom.IsAdmin or False)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ToggleAdmin"
+            },
+            "props": {
+              "text": "Toggle Admin"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "56px"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "classes": "JeradCard Global/PaddingAll"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "MapHdr"
+                },
+                "props": {
+                  "style": {
+                    "classes": "h3"
+                  },
+                  "text": "Yard Map"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "LotCanvas"
+                },
+                "position": {
+                  "basis": "fill",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.Lots"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\tinstances \u003d []\n\tfor lot in (value or []):\n\t    instances.append({\n\t        \"position\": \"absolute\",\n\t        \"top\":  \"%dpx\" % int(lot.get(\"Y\",0)),\n\t        \"left\": \"%dpx\" % int(lot.get(\"X\",0)),\n\t        \"width\":\"%dpx\" % int(lot.get(\"W\",200)),\n\t        \"height\":\"%dpx\" % int(lot.get(\"H\",120)),\n\t        \"zIndex\": int(lot.get(\"Z\", 1)),   # ← use Z here\n\t        \"viewPath\": \"App/Yard/LotTileSimple\",\n\t        \"viewParams\": {\n\t            \"LotID\": lot.get(\"LotID\"),\n\t            \"Name\": lot.get(\"Name\"),\n\t            \"Capacity\": lot.get(\"Capacity\"),\n\t            \"Occupancy\": lot.get(\"Occupancy\"),\n\t            \"Color\": lot.get(\"Color\")\n\t        },\n\t        \"style\": {\"classes\": \"\"}\n\t    })\n\treturn instances",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#11171a",
+                    "height": "100%"
+                  },
+                  "transitionSettings": {
+                    "duration": "200ms",
+                    "timingFunction": "ease-in-out"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.viewcanvas"
+              }
+            ],
+            "meta": {
+              "name": "MapCard"
+            },
+            "position": {
+              "basis": "45%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "JeradCard Global/PaddingAll"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "StackHdr"
+                },
+                "props": {
+                  "style": {
+                    "classes": "h3"
+                  },
+                  "text": "Top of Stack → Bottom"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "StackTable"
+                },
+                "position": {
+                  "basis": "fill",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.columns[1].editor.options": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.QueueOptions"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.StackRows"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "editable": false,
+                      "field": "Slot",
+                      "header": {
+                        "title": "Slot"
+                      }
+                    },
+                    {
+                      "editable": true,
+                      "editor": {
+                        "allowNull": true
+                      },
+                      "field": "QueueItemID",
+                      "header": {
+                        "title": "Select..."
+                      },
+                      "render": "dropdown"
+                    }
+                  ],
+                  "selection": {
+                    "enabled": false
+                  },
+                  "style": {
+                    "height": "100%"
+                  }
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "rows \u003d list(self.getSibling(\u0027StackTable\u0027).props.data or [])\nqueue \u003d list(self.view.custom.Queue or [])\nlotId \u003d self.view.custom.SelectedLocationID\nchosen \u003d [r.get(\u0027QueueItemID\u0027) for r in rows if r.get(\u0027QueueItemID\u0027)]\nnew_queue \u003d [q for q in queue if q.get(\u0027QueueItemID\u0027) not in chosen]\nfor r in rows:\n    qid \u003d r.get(\u0027QueueItemID\u0027)\n    if qid:\n        qmatch \u003d next((q for q in queue if q.get(\u0027QueueItemID\u0027)\u003d\u003dqid), None)\n        if qmatch:\n            r[\u0027Part\u0027] \u003d qmatch.get(\u0027Part\u0027); r[\u0027Qty\u0027] \u003d qmatch.get(\u0027Qty\u0027)\nself.view.custom.Queue \u003d new_queue\nself.view.custom.StackRows \u003d rows\nsystem.perspective.print(\u0027Placed %d item(s) into Location %s\u0027 % (len(chosen), lotId))"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "PlaceBtn"
+                    },
+                    "props": {
+                      "text": "Place in Selected Location"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "rows \u003d list(self.view.custom.StackRows or [])\nfor r in rows:\n    r[\u0027QueueItemID\u0027] \u003d None\nself.view.custom.StackRows \u003d rows"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "ClearBtn"
+                    },
+                    "props": {
+                      "text": "Clear Selections"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "StackBtns"
+                },
+                "position": {
+                  "basis": "44px"
+                },
+                "props": {
+                  "gap": {
+                    "basis": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "StackCard"
+            },
+            "position": {
+              "basis": "30%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "JeradCard Global/PaddingAll"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "QueueHdr"
+                },
+                "props": {
+                  "style": {
+                    "classes": "h3"
+                  },
+                  "text": "Current Queue"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "QueueTable"
+                },
+                "position": {
+                  "basis": "fill",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.Queue"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "Part",
+                      "header": {
+                        "title": "Part"
+                      }
+                    },
+                    {
+                      "field": "WorkOrder",
+                      "header": {
+                        "title": "WO"
+                      }
+                    },
+                    {
+                      "field": "Qty",
+                      "header": {
+                        "title": "Qty"
+                      }
+                    },
+                    {
+                      "field": "Priority",
+                      "header": {
+                        "title": "Pri"
+                      }
+                    }
+                  ],
+                  "selection": {
+                    "enabled": true,
+                    "mode": "multiple"
+                  },
+                  "style": {
+                    "height": "100%"
+                  }
+                },
+                "type": "ia.display.table"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "qtbl \u003d self.getSibling(\u0027QueueTable\u0027)\nsel \u003d list(qtbl.props.selection.get(\u0027rows\u0027) or [])\nqrows \u003d list(qtbl.props.data or [])\nchosen \u003d [qrows[i] for i in sel]\nstack \u003d list(self.view.custom.StackRows or [])\nempties \u003d [r for r in stack if not r.get(\u0027QueueItemID\u0027)]\nimport itertools\nfor row, slot in itertools.izip(chosen, empties):\n    slot[\u0027QueueItemID\u0027] \u003d row.get(\u0027QueueItemID\u0027)\n    slot[\u0027Part\u0027] \u003d row.get(\u0027Part\u0027)\n    slot[\u0027Qty\u0027] \u003d row.get(\u0027Qty\u0027)\nself.view.custom.StackRows \u003d stack\nqtbl.props.selection \u003d {\"rows\": []}"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "SendToStackBtn"
+                    },
+                    "props": {
+                      "text": "Send to Stack"
+                    },
+                    "type": "ia.input.button"
+                  },
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "q \u003d list(self.view.custom.Queue or []);\nnextId \u003d max([i.get(\u0027QueueItemID\u0027,0) for i in q] + [100]) + 1;\nq.append({\"QueueItemID\": nextId, \"Part\": \"P-%d\" % nextId, \"WorkOrder\": \"WO-%d\" % nextId, \"Qty\": 1, \"Priority\": 3});\nself.view.custom.Queue \u003d q"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "AddToQueueBtn"
+                    },
+                    "props": {
+                      "text": "Add to Queue (demo)"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "QueueBtns"
+                },
+                "position": {
+                  "basis": "44px"
+                },
+                "props": {
+                  "gap": {
+                    "basis": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "QueueCard"
+            },
+            "position": {
+              "basis": "25%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "classes": "JeradCard Global/PaddingAll"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Main"
+        },
+        "position": {
+          "basis": "fill",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": 3
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "Global/MarginAll"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

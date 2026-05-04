@@ -1,0 +1,118 @@
+{
+  "custom": {},
+  "params": {
+    "QueueData": [
+      {
+        "From": "Line 1",
+        "State": "Open",
+        "Type": "Quality",
+        "When": "07:42"
+      },
+      {
+        "From": "Line 2",
+        "State": "Acknow.",
+        "Type": "Maintenance",
+        "When": "08:10"
+      },
+      {
+        "From": "Line 1",
+        "State": "Open",
+        "Type": "Material",
+        "When": "08:33"
+      }
+    ]
+  },
+  "propConfig": {
+    "params.QueueData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 327,
+      "width": 442
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "props": {
+          "style": {
+            "fontWeight": "600"
+          },
+          "text": "Calls / Andon Queue"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "282px"
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.QueueData"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "columns": [
+            {
+              "field": "When",
+              "header": {
+                "title": "Time"
+              },
+              "width": "120px"
+            },
+            {
+              "field": "From",
+              "header": {
+                "title": "From"
+              },
+              "width": "flex"
+            },
+            {
+              "field": "Type",
+              "header": {
+                "title": "Type"
+              },
+              "width": "120px"
+            },
+            {
+              "field": "State",
+              "header": {
+                "title": "State"
+              },
+              "width": "120px"
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-40)",
+        "borderRadius": "10px",
+        "classes": "card",
+        "gap": "8px",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

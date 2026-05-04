@@ -1,0 +1,346 @@
+{
+  "custom": {
+    "activeTab": "Production",
+    "productionRows": [
+      {
+        "job": 59,
+        "metric": "TOTAL PROD.",
+        "shift": 59,
+        "toGo": 99941
+      },
+      {
+        "job": 59,
+        "metric": "GOOD PROD.",
+        "shift": 59,
+        "toGo": 99941
+      },
+      {
+        "job": 0,
+        "metric": "SCRAP PROD.",
+        "shift": 0,
+        "toGo": 0
+      },
+      {
+        "job": 0,
+        "metric": "PACKED PROD.",
+        "shift": 0,
+        "toGo": 100000
+      },
+      {
+        "job": 59,
+        "metric": "MACHINE CYCLES",
+        "shift": 59,
+        "toGo": 0
+      },
+      {
+        "job": 59,
+        "metric": "CYC. OUT-OF-SPEC",
+        "shift": 59,
+        "toGo": 0
+      },
+      {
+        "job": "00:05",
+        "metric": "RUN TIME",
+        "shift": "00:05",
+        "toGo": "343:48"
+      },
+      {
+        "job": "06:51",
+        "metric": "DOWN TIME",
+        "shift": "06:51",
+        "toGo": 0
+      },
+      {
+        "job": 0,
+        "metric": "DOWN COUNT",
+        "shift": 0,
+        "toGo": 0
+      }
+    ]
+  },
+  "params": {
+    "EqPath": "",
+    "MachineName": "CFMIU",
+    "Part": "Laps"
+  },
+  "propConfig": {
+    "custom.activeTab": {
+      "persistent": true
+    },
+    "custom.productionRows": {
+      "persistent": true
+    },
+    "params.EqPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.MachineName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Part": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 780,
+      "width": 1200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "ProdTab"
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#3b3b3b",
+                        "borderRadius": "4px",
+                        "fontWeight": "600",
+                        "padding": "6px 10px"
+                      },
+                      "text": "Production"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "ChartsTab"
+                    },
+                    "props": {
+                      "style": {
+                        "backgroundColor": "#2f2f2f",
+                        "borderRadius": "4px",
+                        "opacity": 0.8,
+                        "padding": "6px 10px"
+                      },
+                      "text": "Charts"
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "TabsRow"
+                },
+                "props": {
+                  "alignItems": "center",
+                  "style": {
+                    "borderBottom": "1px solid #3a3a3a",
+                    "gap": "12px",
+                    "overflow": "hidden",
+                    "paddingBottom": "6px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "ProductionTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.data": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.productionRows"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "align": "left",
+                          "field": "metric",
+                          "header": {
+                            "title": ""
+                          },
+                          "sortable": false,
+                          "width": "45%"
+                        },
+                        {
+                          "align": "center",
+                          "field": "shift",
+                          "header": {
+                            "title": "SHIFT"
+                          },
+                          "sortable": false,
+                          "width": "18%"
+                        },
+                        {
+                          "align": "center",
+                          "field": "job",
+                          "header": {
+                            "title": "JOB"
+                          },
+                          "sortable": false,
+                          "width": "18%"
+                        },
+                        {
+                          "align": "center",
+                          "field": "toGo",
+                          "header": {
+                            "title": "TO GO"
+                          },
+                          "sortable": false,
+                          "width": "19%"
+                        }
+                      ],
+                      "style": {
+                        "backgroundColor": "#2a2a2a",
+                        "borderColor": "#3a3a3a",
+                        "cellPadding": "6px 8px",
+                        "rowHeight": 36
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "Body"
+                },
+                "position": {
+                  "basis": "100%"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "LeftPanel"
+            },
+            "position": {
+              "basis": "50%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "#2a2a2a",
+                "borderRadius": "6px",
+                "gap": "8px",
+                "height": "100%",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Dashboard"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "availableWidgets": [
+                    {
+                      "body": {
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "category": "Test",
+                      "defaultSize": {
+                        "columnSpan": 8,
+                        "rowSpan": 4
+                      },
+                      "header": {
+                        "enabled": true,
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "isConfigurable": true,
+                      "minSize": {
+                        "columnSpan": 1,
+                        "rowSpan": 1
+                      },
+                      "name": "Test",
+                      "style": {
+                        "classes": ""
+                      },
+                      "viewParams": {
+                        "label": "Test"
+                      },
+                      "viewPath": "App/Widgets/ControlWidgets/TileWidget"
+                    }
+                  ],
+                  "fixed": {
+                    "columnCount": 5
+                  },
+                  "stretch": {
+                    "columnCount": 10,
+                    "rowCount": 10
+                  }
+                },
+                "type": "ia.display.dashboard"
+              }
+            ],
+            "meta": {
+              "name": "RightPanel"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "alignContent": "flex-start",
+                "backgroundColor": "#2a2a2a",
+                "borderRadius": "6px",
+                "gap": "12px",
+                "height": "100%",
+                "minHeight": "0",
+                "minWidth": "0",
+                "overflowY": "auto",
+                "padding": "12px"
+              },
+              "wrap": "wrap"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "style": {
+            "gap": "12px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#1f1f1f",
+        "color": "#e6e6e6",
+        "gap": "12px",
+        "padding": "16px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

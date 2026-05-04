@@ -1,0 +1,191 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TitleLabel"
+        },
+        "props": {
+          "style": {
+            "fontSize": 28,
+            "fontWeight": "bold"
+          },
+          "text": "Derived Parameters"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_Custom"
+        },
+        "props": {
+          "text": "Custom Derived Values"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "CustomValuesDropdown"
+        },
+        "props": {
+          "options": [
+            {
+              "label": "Yes",
+              "value": "True"
+            },
+            {
+              "label": "No",
+              "value": "False"
+            }
+          ],
+          "showClearIcon": true
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Label_Reference"
+        },
+        "props": {
+          "text": "Path to Reference"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ReferenceDropdown"
+        },
+        "props": {
+          "options": [
+            {
+              "label": "Path1",
+              "value": "Path1"
+            },
+            {
+              "label": "Path2",
+              "value": "Path2"
+            }
+          ],
+          "showClearIcon": true
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label_TagValues"
+            },
+            "props": {
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "600"
+              },
+              "text": "Tag Values"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_Status"
+            },
+            "props": {
+              "text": "Status"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "StatusValue"
+            },
+            "props": {
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_Input"
+            },
+            "props": {
+              "text": "Input"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "InputValue"
+            },
+            "props": {
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_Outfeed"
+            },
+            "props": {
+              "text": "Outfeed"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "OutfeedValue"
+            },
+            "props": {
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_Reject"
+            },
+            "props": {
+              "text": "Reject"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "RejectValue"
+            },
+            "props": {
+              "text": "--"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TagValuesSection"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "border": "1px solid #ccc",
+            "borderRadius": "8px",
+            "gap": 8,
+            "padding": 16
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": 16,
+        "padding": 24
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

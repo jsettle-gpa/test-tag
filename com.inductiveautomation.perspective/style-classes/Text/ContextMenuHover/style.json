@@ -1,0 +1,17 @@
+{
+  "base": {
+    "style": {
+      "backgroundImage": "--cardBg",
+      "color": "--neutral-100"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "lightgrey",
+        "color": "black"
+      }
+    }
+  ]
+}

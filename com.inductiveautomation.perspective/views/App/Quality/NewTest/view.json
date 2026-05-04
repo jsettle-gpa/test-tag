@@ -1,0 +1,1198 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "props": {
+              "style": {
+                "fontSize": "20px",
+                "fontWeight": "600"
+              },
+              "text": "Quality • New Test Wizard"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "BtnCancel"
+                },
+                "props": {
+                  "text": "Cancel"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSaveDraft"
+                },
+                "props": {
+                  "text": "Save Draft"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnPublish"
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Publish"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "Actions"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "border": "1px solid var(--neutral-40)",
+            "borderRadius": "10px",
+            "padding": "8px 12px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblCode"
+                        },
+                        "props": {
+                          "text": "Test Code"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InCode"
+                        },
+                        "props": {
+                          "placeholder": "e.g. CUT-001"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "CodeCol"
+                    },
+                    "position": {
+                      "basis": "260px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblName"
+                        },
+                        "props": {
+                          "text": "Name"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InName"
+                        },
+                        "props": {
+                          "placeholder": "Cutting QC"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "NameCol"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblVer"
+                        },
+                        "props": {
+                          "text": "Version"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InVer"
+                        },
+                        "props": {
+                          "text": "1.0"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "VersionCol"
+                    },
+                    "position": {
+                      "basis": "160px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Row1"
+                },
+                "props": {
+                  "style": {
+                    "gap": "12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblCat"
+                        },
+                        "props": {
+                          "text": "Category"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "DropCat"
+                        },
+                        "props": {
+                          "options": [
+                            {
+                              "label": "Cutting",
+                              "value": "Cutting"
+                            },
+                            {
+                              "label": "Bending",
+                              "value": "Bending"
+                            },
+                            {
+                              "label": "Welding",
+                              "value": "Welding"
+                            },
+                            {
+                              "label": "Visual",
+                              "value": "Visual"
+                            }
+                          ],
+                          "placeholder": "Select…"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "CategoryCol"
+                    },
+                    "position": {
+                      "basis": "260px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblApplies"
+                        },
+                        "props": {
+                          "text": "Applies To (Areas/Workcenters/Products)"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InApplies"
+                        },
+                        "props": {
+                          "placeholder": "e.g. Area: Fabrication; Lines: 1S01,1S02; Product: A572-65"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "AppliesToCol"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblActive"
+                        },
+                        "props": {
+                          "text": "Active"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "LblRework"
+                        },
+                        "props": {
+                          "text": "Allow Rework"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "FlagsCol"
+                    },
+                    "position": {
+                      "basis": "240px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Row2"
+                },
+                "props": {
+                  "style": {
+                    "gap": "12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblCapture"
+                        },
+                        "props": {
+                          "text": "Data Capture Mode"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "DropCapture"
+                        },
+                        "props": {
+                          "options": [
+                            {
+                              "label": "Manual Entry",
+                              "value": "manual"
+                            },
+                            {
+                              "label": "Scanner (Barcode/RFID)",
+                              "value": "scan"
+                            },
+                            {
+                              "label": "Device (OPC/DAQ)",
+                              "value": "device"
+                            }
+                          ],
+                          "placeholder": {
+                            "text": "Choose…"
+                          }
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "CaptureCol"
+                    },
+                    "position": {
+                      "basis": "380px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblEvidence"
+                        },
+                        "props": {
+                          "text": "Evidence (Photos/Signatures Required)"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InEvidence"
+                        },
+                        "props": {
+                          "placeholder": "e.g. 1 photo, digital signature"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "AttachmentsCol"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Row3"
+                },
+                "props": {
+                  "style": {
+                    "gap": "12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "LblInstr"
+                    },
+                    "props": {
+                      "text": "Operator Instructions"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "TxtInstr"
+                    },
+                    "position": {
+                      "basis": "295px"
+                    },
+                    "props": {
+                      "placeholder": "Work instructions shown on the run screen…"
+                    },
+                    "type": "ia.input.text-area"
+                  }
+                ],
+                "meta": {
+                  "name": "RowNotes"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "6px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Basics"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "StepsTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "editable": true,
+                      "field": "Seq",
+                      "header": {
+                        "title": "#"
+                      },
+                      "number": "value",
+                      "numberFormat": "0",
+                      "sortable": true,
+                      "width": "80px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Instruction",
+                      "header": {
+                        "title": "Instruction"
+                      },
+                      "width": "flex"
+                    },
+                    {
+                      "editable": true,
+                      "field": "TimerSec",
+                      "header": {
+                        "title": "Timer (s)"
+                      },
+                      "number": "value",
+                      "numberFormat": "0",
+                      "width": "120px"
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "editable": true,
+                      "field": "Required",
+                      "header": {
+                        "title": "Required"
+                      },
+                      "width": "120px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Instruction": "Measure Length",
+                      "Required": true,
+                      "Seq": 10,
+                      "TimerSec": 0
+                    },
+                    {
+                      "Instruction": "Check Twist",
+                      "Required": true,
+                      "Seq": 20,
+                      "TimerSec": 0
+                    },
+                    {
+                      "Instruction": "Rough Cut visual",
+                      "Required": false,
+                      "Seq": 30,
+                      "TimerSec": 0
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Steps"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "MetricsTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "editable": true,
+                      "field": "Name",
+                      "header": {
+                        "title": "Metric"
+                      },
+                      "width": "220px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Type",
+                      "header": {
+                        "title": "Type"
+                      },
+                      "width": "140px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Unit",
+                      "header": {
+                        "title": "Unit"
+                      },
+                      "width": "120px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Target",
+                      "header": {
+                        "title": "Target"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "width": "120px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "TolMin",
+                      "header": {
+                        "title": "Tol -"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "width": "110px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "TolMax",
+                      "header": {
+                        "title": "Tol +"
+                      },
+                      "number": "value",
+                      "numberFormat": "0,0.##",
+                      "width": "110px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "Rule",
+                      "header": {
+                        "title": "Rule"
+                      },
+                      "width": "160px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Name": "Length",
+                      "Rule": "within",
+                      "Target": 45,
+                      "TolMax": 0.25,
+                      "TolMin": -0.25,
+                      "Type": "number",
+                      "Unit": "in"
+                    },
+                    {
+                      "Name": "Twist",
+                      "Rule": "within",
+                      "Target": 0,
+                      "TolMax": 1,
+                      "TolMin": -1,
+                      "Type": "number",
+                      "Unit": "deg"
+                    },
+                    {
+                      "Name": "RoughCut",
+                      "Rule": "within",
+                      "Target": 8,
+                      "TolMax": 0.5,
+                      "TolMin": -0.5,
+                      "Type": "number",
+                      "Unit": "in"
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Metrics"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblMode"
+                        },
+                        "props": {
+                          "text": "Sampling Mode"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "DropMode"
+                        },
+                        "props": {
+                          "options": [
+                            {
+                              "label": "Every Piece",
+                              "value": "every"
+                            },
+                            {
+                              "label": "Every N Pieces",
+                              "value": "nth"
+                            },
+                            {
+                              "label": "Time Based",
+                              "value": "time"
+                            },
+                            {
+                              "label": "First/Last Article",
+                              "value": "firstlast"
+                            }
+                          ],
+                          "placeholder": "Choose…"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "SampleModeCol"
+                    },
+                    "position": {
+                      "basis": "300px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblParams"
+                        },
+                        "props": {
+                          "text": "Parameters (e.g., N value or interval minutes)"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InParams"
+                        },
+                        "props": {
+                          "placeholder": "N\u003d10, or Interval\u003d60"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "SampleParamsCol"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblEval"
+                        },
+                        "props": {
+                          "text": "Auto-Evaluation Rule"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "DropEval"
+                        },
+                        "props": {
+                          "options": [
+                            {
+                              "label": "All metrics must pass",
+                              "value": "all"
+                            },
+                            {
+                              "label": "Any metric pass",
+                              "value": "any"
+                            }
+                          ],
+                          "placeholder": "Choose…"
+                        },
+                        "type": "ia.input.dropdown"
+                      }
+                    ],
+                    "meta": {
+                      "name": "EvalCol"
+                    },
+                    "position": {
+                      "basis": "320px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "SamplingRow"
+                },
+                "props": {
+                  "style": {
+                    "gap": "12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblStop"
+                        },
+                        "props": {
+                          "text": "Stop on Fail"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "StopOnFail"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px",
+                        "width": "220px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblTrace"
+                        },
+                        "props": {
+                          "text": "Require Lot/Serial Trace"
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "RequireTrace"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px",
+                        "width": "260px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "FlagsRow"
+                },
+                "props": {
+                  "style": {
+                    "gap": "24px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblEff"
+                        },
+                        "props": {
+                          "text": "Effective Date"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InEff"
+                        },
+                        "props": {
+                          "placeholder": "YYYY-MM-DD"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "EffectiveDate"
+                    },
+                    "position": {
+                      "basis": "260px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblExp"
+                        },
+                        "props": {
+                          "text": "Expires (days)"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "InExp"
+                        },
+                        "type": "ia.input.text-field"
+                      }
+                    ],
+                    "meta": {
+                      "name": "ExpiryDays"
+                    },
+                    "position": {
+                      "basis": "220px"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "LblRevNotes"
+                        },
+                        "props": {
+                          "text": "Revision Notes"
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": {
+                          "name": "TxtRev"
+                        },
+                        "props": {
+                          "placeholder": "What changed in this revision?"
+                        },
+                        "type": "ia.input.text-area"
+                      }
+                    ],
+                    "meta": {
+                      "name": "RevNotes"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": "6px"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "RevisionRow"
+                },
+                "props": {
+                  "style": {
+                    "gap": "12px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "SamplingRules"
+            },
+            "position": {
+              "tabIndex": 3
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "LblReview"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "600"
+                  },
+                  "text": "Review Summary (stub – bind these later)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "SummaryTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "Field",
+                      "header": {
+                        "title": "Field"
+                      },
+                      "width": "40%"
+                    },
+                    {
+                      "field": "Value",
+                      "header": {
+                        "title": "Value"
+                      },
+                      "width": "60%"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Field": "Test Code",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Name",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Version",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Category",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Applies To",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Active",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Allow Rework",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Capture Mode",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Evidence",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Sampling",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Auto Eval",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Stop on Fail",
+                      "Value": ""
+                    },
+                    {
+                      "Field": "Effective Date",
+                      "Value": ""
+                    }
+                  ]
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "Review"
+            },
+            "position": {
+              "tabIndex": 4
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "12px",
+                "padding": "12px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "WizardTabs"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "currentTabIndex": 4,
+          "menuType": "modern",
+          "style": {
+            "border": "1px solid var(--neutral-40)",
+            "borderRadius": "10px",
+            "overflow": "hidden"
+          },
+          "tabs": [
+            "Basics",
+            "Steps",
+            "Metrics",
+            "Sampling \u0026 Rules",
+            "Review"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "10px",
+        "height": "100%",
+        "padding": "12px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

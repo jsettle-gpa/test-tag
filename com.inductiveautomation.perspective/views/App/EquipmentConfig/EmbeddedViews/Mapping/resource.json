@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "The embedded view for the Mapping tab located on the AssetConfig view.\n\nInput Data:\n   -custom.data.assetSettings\n   -custom.data.tagPaths\n\nOutput Data:\n   -custom.data.assetSettings (change script)\n   -mapSetting (message handler on root)",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-27T17:53:30Z"
+    },
+    "lastModificationSignature": "79d9eafdc65a7668111c49ec2397c9afa1affee3f7ce49c398251e073e64d1e6"
+  }
+}

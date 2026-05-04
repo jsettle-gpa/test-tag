@@ -1,0 +1,1068 @@
+{
+  "custom": {},
+  "params": {
+    "Data": [],
+    "ModalName": "",
+    "UserId": ""
+  },
+  "propConfig": {
+    "params.Data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ModalName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.UserId": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 422,
+      "width": 1000
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "User Id",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "domId": "eqmanager-attributeadd-popup-textfield",
+                              "name": "TextField",
+                              "tooltip": {
+                                "delay": 0,
+                                "enabled": true,
+                                "text": "User ID changes are not allowed..."
+                              }
+                            },
+                            "position": {
+                              "basis": "260px"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.params.Data[0][\u0027User Name\u0027]"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "enabled": false,
+                              "placeholder": "User Id",
+                              "style": {
+                                "classes": "TextFields/TextField",
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Content"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "justify": "center",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Input"
+                    },
+                    "position": {
+                      "basis": "20%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "User Id"
+                },
+                "position": {
+                  "basis": "62px"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "First Name",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "domId": "eqmanager-attributeadd-popup-textfield",
+                              "name": "TextField"
+                            },
+                            "position": {
+                              "basis": "260px"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.params.Data[0][\u0027First Name\u0027]"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "placeholder": "First Name",
+                              "style": {
+                                "classes": "TextFields/TextField",
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Content"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "justify": "center",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Input"
+                    },
+                    "position": {
+                      "basis": "20%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "First Name"
+                },
+                "position": {
+                  "basis": "62px"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "Last Name",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "domId": "eqmanager-attributeadd-popup-textfield",
+                              "name": "TextField"
+                            },
+                            "position": {
+                              "basis": "260px"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.params.Data[0][\u0027Last Name\u0027]"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "placeholder": "Last Name",
+                              "style": {
+                                "classes": "TextFields/TextField",
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Content"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "justify": "center",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Input"
+                    },
+                    "position": {
+                      "basis": "20%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Last Name"
+                },
+                "position": {
+                  "basis": "62px"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "Email",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "domId": "eqmanager-attributeadd-popup-textfield",
+                              "name": "TextField"
+                            },
+                            "position": {
+                              "basis": "260px"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.params.Data[0][\u0027Email\u0027]"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "placeholder": "Email",
+                              "style": {
+                                "classes": "TextFields/TextField",
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Content"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "justify": "center",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Input"
+                    },
+                    "position": {
+                      "basis": "20%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Email"
+                },
+                "position": {
+                  "basis": "62px"
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "Badge",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "domId": "eqmanager-attributeadd-popup-textfield",
+                              "name": "TextField"
+                            },
+                            "position": {
+                              "basis": "260px"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.params.Data[0][\u0027Badge\u0027]"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "placeholder": "Scan Badge",
+                              "style": {
+                                "classes": "TextFields/TextField",
+                                "textAlign": "center"
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "Content"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "justify": "center",
+                          "style": {
+                            "overflow": "hidden"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Input"
+                    },
+                    "position": {
+                      "basis": "20%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "Badge"
+                },
+                "position": {
+                  "basis": "62px"
+                },
+                "propConfig": {
+                  "meta.visible": {
+                    "binding": {
+                      "config": {
+                        "path": "session.custom.NewellConfig.ManualBadge"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Col1"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "Available Roles",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "events": {
+                      "system": {
+                        "onStartup": {
+                          "config": {
+                            "script": "\tparams \u003d {\n\t\t\u0027userId\u0027 : self.view.params.UserId\n\t}\n\tself.props.data \u003d system.db.runNamedQuery(\u0027auth/getAvailableRoles\u0027, params)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Table"
+                    },
+                    "position": {
+                      "basis": "400px"
+                    },
+                    "propConfig": {
+                      "props.data": {
+                        "binding": {
+                          "config": {
+                            "queryPath": "auth/getRoles"
+                          },
+                          "type": "query"
+                        }
+                      },
+                      "props.selection.selectedRow": {
+                        "onChange": {
+                          "enabled": null,
+                          "script": "\tif self.props.selection.selectedRow is None:\n\t\tself.parent.parent.getChild(\"Col3\").getChild(\"Assign\").meta.enabled \u003d False\n\telse:\n\t\tself.parent.parent.getChild(\"Col3\").getChild(\"Assign\").meta.enabled \u003d True"
+                        }
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "Col2"
+                },
+                "position": {
+                  "basis": "29.2%",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tif self.meta.enabled:\n\t\tavailableRolesCurrData \u003d self.parent.parent.getChild(\"Col2\").getChild(\"Table\").props.data\n\t\tselectedRole \u003d self.parent.parent.getChild(\"Col4\").getChild(\"Table\").props.selection.data\n\t\tassignedRolesCurrData \u003d self.parent.parent.getChild(\"Col4\").getChild(\"Table\").props.data\n\n\t\t#Remove from assigned role\n\t\tcolKey \u003d \u0027RoleName\u0027\n\t\tidsToRemoveOnMatch \u003d [row[colKey] for row in selectedRole]\n\t\trowsToKeep \u003d []\n\t\t\n\t\tassignedRolesDataSet \u003d system.dataset.toPyDataSet(assignedRolesCurrData)\n\t\tcolumnNames \u003d list(assignedRolesDataSet.getColumnNames())\n\t\t\n\t\tfor row in assignedRolesDataSet:\n\t\t\tif row[colKey] not in idsToRemoveOnMatch:\n\t\t\t\trowsToKeep.append(list(row))\n\n\t\t# Convert rowsToKeep back to a Dataset with the original column names\n\t\tupdatedDataSet \u003d system.dataset.toDataSet(columnNames, rowsToKeep)\n\t\tself.parent.parent.getChild(\"Col4\").getChild(\"Table\").props.data \u003d updatedDataSet\n\n\t\t#Add to available roles\n\t\tavailableRolesDataSet \u003d system.dataset.toPyDataSet(availableRolesCurrData)\n\n\t\theaders \u003d []\n\t\tdata \u003d []\n\t\tfor row in selectedRole:\n\t\t\tif not headers:\n\t\t\t\theaders \u003d row.keys()\n\t\t\tdata.append([val for key,val in row.iteritems()])\n\t\tselectedRolesDataSet \u003d system.dataset.toPyDataSet(system.dataset.toDataSet(headers, data))\n\n\t\t#Sort columns\n\t\tsortedCols \u003d assignedRolesCurrData.getColumnNames()\n\t\trowToAdd \u003d selectedRolesDataSet[0]\n\t\tsortedRow \u003d [rowToAdd[selectedRolesDataSet.getColumnIndex(col)] for col in sortedCols]\n\n\t\t#Add to original dataset\n\t\tnewDataSet \u003d system.dataset.addRow(availableRolesDataSet, sortedRow)\n\t\tself.parent.parent.getChild(\"Col2\").getChild(\"Table\").props.data \u003d newDataSet"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "enabled": false,
+                      "name": "Unassign"
+                    },
+                    "position": {
+                      "basis": "30px"
+                    },
+                    "propConfig": {
+                      "props.color": {
+                        "binding": {
+                          "config": {
+                            "path": "this.meta.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": null,
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": true,
+                                  "output": "#C0C0C0"
+                                },
+                                {
+                                  "input": false,
+                                  "output": "#000000"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/arrow_back"
+                    },
+                    "type": "ia.display.icon"
+                  },
+                  {
+                    "events": {
+                      "dom": {
+                        "onClick": {
+                          "config": {
+                            "script": "\tif self.meta.enabled:\n\t\tavailableRolesCurrData \u003d self.parent.parent.getChild(\"Col2\").getChild(\"Table\").props.data\n\t\tselectedRole \u003d self.parent.parent.getChild(\"Col2\").getChild(\"Table\").props.selection.data\n\t\tassignedRolesCurrData \u003d self.parent.parent.getChild(\"Col4\").getChild(\"Table\").props.data\n\n\t\t#Remove from available roles\n\t\tcolKey \u003d \u0027RoleName\u0027\n\t\tidsToRemoveOnMatch \u003d [row[colKey] for row in selectedRole]\n\t\trowsToKeep \u003d []\n\n\t\tavailableRolesDataSet \u003d system.dataset.toPyDataSet(availableRolesCurrData)\n\t\tcolumnNames \u003d list(availableRolesDataSet.getColumnNames())\n\n\t\tfor row in availableRolesDataSet:\n\t\t    if row[colKey] not in idsToRemoveOnMatch:\n\t\t        rowsToKeep.append(list(row)) \n\n\t\t# Convert rowsToKeep back to a Dataset with the original column names\n\t\tupdatedDataSet \u003d system.dataset.toDataSet(columnNames, rowsToKeep)\n\t\tself.parent.parent.getChild(\"Col2\").getChild(\"Table\").props.data \u003d updatedDataSet\n\n\t\t#Add to assigned roles\n\t\tassignedRolesDataSet \u003d system.dataset.toPyDataSet(assignedRolesCurrData)\n\t\t\n\t\theaders \u003d []\n\t\tdata \u003d []\n\t\tfor row in selectedRole:\n\t\t\tif not headers:\n\t\t\t\theaders \u003d row.keys()\n\t\t\tdata.append([val for key,val in row.iteritems()])\n\t\tselectedRolesDataSet \u003d system.dataset.toPyDataSet(system.dataset.toDataSet(headers, data))\n\t\t\n\t\t#Sort columns\n\t\tsortedCols \u003d availableRolesCurrData.getColumnNames()\n\t\trowToAdd \u003d selectedRolesDataSet[0]\n\t\tsortedRow \u003d [rowToAdd[selectedRolesDataSet.getColumnIndex(col)] for col in sortedCols]\n\n\t\t#Add to original dataset\n\t\tnewDataSet \u003d system.dataset.addRow(assignedRolesDataSet, sortedRow)\n\t\tself.parent.parent.getChild(\"Col4\").getChild(\"Table\").props.data \u003d newDataSet"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "enabled": false,
+                      "name": "Assign"
+                    },
+                    "position": {
+                      "basis": "30px"
+                    },
+                    "propConfig": {
+                      "props.color": {
+                        "binding": {
+                          "config": {
+                            "path": "this.meta.enabled"
+                          },
+                          "transforms": [
+                            {
+                              "fallback": null,
+                              "inputType": "scalar",
+                              "mappings": [
+                                {
+                                  "input": true,
+                                  "output": "#C0C0C0"
+                                },
+                                {
+                                  "input": false,
+                                  "output": "#000000"
+                                }
+                              ],
+                              "outputType": "scalar",
+                              "type": "map"
+                            }
+                          ],
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "path": "material/arrow_forward"
+                    },
+                    "type": "ia.display.icon"
+                  }
+                ],
+                "meta": {
+                  "name": "Col3"
+                },
+                "position": {
+                  "basis": "10%",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "justify": "center"
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "meta": {
+                          "name": "Label"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "style": {
+                            "marginRight": "8px"
+                          },
+                          "text": "Assigned Roles",
+                          "textStyle": {
+                            "fontWeight": "bold",
+                            "textAlign": "center"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Title"
+                    },
+                    "props": {
+                      "style": {
+                        "overflow": "hidden"
+                      }
+                    },
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "events": {
+                      "system": {
+                        "onStartup": {
+                          "config": {
+                            "script": "\tparams \u003d {\n\t\t\u0027userId\u0027 : self.view.params.UserId\n\t}\n\tsystem.perspective.print(\"USER ID: \" + self.view.params.UserId)\n\tself.props.data \u003d system.db.runNamedQuery(\u0027auth/getAssignedRoles\u0027, params)"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "Table"
+                    },
+                    "position": {
+                      "basis": "400px"
+                    },
+                    "propConfig": {
+                      "props.selection.selectedRow": {
+                        "onChange": {
+                          "enabled": null,
+                          "script": "\tif self.props.selection.selectedRow is None:\n\t\tself.parent.parent.getChild(\"Col3\").getChild(\"Unassign\").meta.enabled \u003d False\n\telse:\n\t\tself.parent.parent.getChild(\"Col3\").getChild(\"Unassign\").meta.enabled \u003d True"
+                        }
+                      }
+                    },
+                    "props": {
+                      "data": {
+                        "$": [
+                          "ds",
+                          192,
+                          1743366768544
+                        ],
+                        "$columns": [
+                          {
+                            "data": [],
+                            "name": "RoleName",
+                            "type": "String"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "Col4"
+                },
+                "position": {
+                  "basis": "29.2%",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Roles"
+            },
+            "position": {
+              "basis": "60%",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Row1"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "classes": "Global/MarginTop"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\n\tlogger \u003d system.util.getLogger(\u0027editUser\u0027)\n\t\t\n\ttry:\n\t\tdata \u003d self.view.params.Data[0]\n\t\t\n\t\tuserId \u003d self.view.params.UserId\n\t\tnewUserId \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Col1\").getChild(\"User Id\").getChild(\"Input\").getChild(\"Content\").getChild(\"TextField\").props.text\n\t\tfirstName \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Col1\").getChild(\"First Name\").getChild(\"Input\").getChild(\"Content\").getChild(\"TextField\").props.text\n\t\tlastName \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Col1\").getChild(\"Last Name\").getChild(\"Input\").getChild(\"Content\").getChild(\"TextField\").props.text\n\t\temail \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Col1\").getChild(\"Email\").getChild(\"Input\").getChild(\"Content\").getChild(\"TextField\").props.text\n\t\tbadge \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Col1\").getChild(\"Badge\").getChild(\"Input\").getChild(\"Content\").getChild(\"TextField\").props.text\n\t\t\n\t\tassignedRolesData \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Roles\").getChild(\"Col4\").getChild(\"Table\").props.data\n\t\tavailableRolesData \u003d self.parent.parent.parent.getChild(\"Row1\").getChild(\"Roles\").getChild(\"Col2\").getChild(\"Table\").props.data\n\n\n\t\t# If current user is selected user update session props immediately\n\t\tif userId \u003d\u003d self.session.props.auth.user.userName:\n\t\t\t# Extract assigned roles from the dataset\n\t\t\tassignedRolesList \u003d assignedRolesData.getColumnAsList(0)\n\t\t\tsystem.perspective.print(\"assigned roles:\")\n\t\t\tsystem.perspective.print(assignedRolesList)\n\t\t\t# Assign it to the session property\n\t\t\tself.session.props.auth.user.roles \u003d assignedRolesList\n\t\t\tsystem.perspective.print(\"self.session.props.auth.user.roles after: \")\n\t\t\tsystem.perspective.print(self.session.props.auth.user.roles)\n\t\t\n\t\tparams \u003d {\n\t\t\t\"userId\" : userId,\n\t\t\t\"newUserId\": newUserId,\n\t\t\t\"firstName\" : firstName, \n\t\t\t\"lastName\" : lastName,\n\t\t\t\"email\" : email,\n\t\t\t\"badge\" : badge\n\t\t}\n\t\t\n\t\tif userId not in (\u0027\u0027, None):\t\n\t\t\tres \u003d system.db.runNamedQuery(\"auth/updateUser\", params)\n\n\t\t\tif res[0][0] !\u003d \u0027Success\u0027: \n\t\t\t\tsystem.perspective.closePopup(self.view.params.ModalName)\n\t\t\t\traise ValueError(str(res[0][0]))\n\t\t\t\t\n\t\t\t#Update role assignments\n\t\t\t#Remove all current roles\n\t\t\tsystem.db.runNamedQuery(\"auth/removeUserRoles\", { \"userId\": userId })\n\t\t\t#Assign roles from assignedRoleData\n\t\t\tfor row in system.dataset.toPyDataSet(assignedRolesData):\n\t\t\t\tparams \u003d {\n\t\t\t\t\t\"userId\" : userId,\n\t\t\t\t\t\"roleName\" : row[\u0027RoleName\u0027]\n\t\t\t\t}\n\t\t\t\tsystem.db.runNamedQuery(\"auth/assignRole\", params)\n\t\t\t\n\t\t\tsystem.perspective.sendMessage(\u0027refreshUserTable\u0027)\n\t\t\tsystem.perspective.closePopup(self.view.params.ModalName)\n\t\telse:\n\t\t\traise Exception(\"User Id can\u0027t be blank.\")\n\texcept Exception as e:\n\t    gpa.frontEnd.localUI.throwError(e)\n\telse:\n\t\tgpa.frontEnd.localUI.throwSuccess(\u0027Updated user \u0027 + userId)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "SaveButton"
+                },
+                "position": {
+                  "basis": "129px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "ButtonDomId": "eqmanager-add-popup-save-button",
+                    "DisabledPopup": {
+                      "message": "Please sign in as quarterback to proceed.",
+                      "messageType": "",
+                      "payload": {},
+                      "title": "Invalid Permissions"
+                    },
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/save",
+                    "IsSelectable": false,
+                    "Label": "Save",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "normalsuccess"
+                  },
+                  "path": "GlobalComponents/Buttons/Button",
+                  "style": {
+                    "marginLeft": "auto",
+                    "marginRight": "auto"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Save"
+            },
+            "position": {
+              "basis": "132px"
+            },
+            "props": {
+              "style": {
+                "marginLeft": "auto",
+                "marginRight": "auto"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\tsystem.perspective.closePopup(self.view.params.ModalName)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "CancelButton"
+                },
+                "position": {
+                  "basis": "129px"
+                },
+                "props": {
+                  "params": {
+                    "BackgroundColor": "value",
+                    "DisabledPopup": {
+                      "message": "Please sign in as quarterback to proceed.",
+                      "messageType": "",
+                      "payload": {},
+                      "title": "Invalid Permissions"
+                    },
+                    "Enabled": true,
+                    "Hover": true,
+                    "IconPath": "material/close",
+                    "IsSelectable": false,
+                    "Label": "Cancel",
+                    "Selected": true,
+                    "Size": "value",
+                    "Type": "normalsuccess"
+                  },
+                  "path": "GlobalComponents/Buttons/Button",
+                  "style": {
+                    "marginLeft": "auto",
+                    "marginRight": "auto"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "Cancel"
+            },
+            "position": {
+              "basis": "132px"
+            },
+            "props": {
+              "style": {
+                "marginLeft": "auto",
+                "marginRight": "auto"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Row2"
+        },
+        "props": {
+          "style": {
+            "classes": "Global/MarginBottom Global/MarginLeft Global/MarginRight"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

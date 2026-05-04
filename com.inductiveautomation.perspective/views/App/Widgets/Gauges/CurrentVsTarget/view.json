@@ -1,0 +1,351 @@
+{
+  "custom": {
+    "RequiredSpeed": 0,
+    "Speed": 0,
+    "State": "success"
+  },
+  "params": {
+    "EqPath": "[default]GPA/Site/Area/Line 1",
+    "ErrorColor": "#E53935",
+    "FontSize": 18,
+    "GoodColor": "#17A34A",
+    "TextColor": "#FFFFFF",
+    "Thickness": 8,
+    "WarnDelta": 0
+  },
+  "propConfig": {
+    "custom.RequiredSpeed": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 0.25,
+          "mode": "indirect",
+          "references": {
+            "EqPath": "{view.params.EqPath}"
+          },
+          "tagPath": "{EqPath}/calculatedValues/shiftRateTarget"
+        },
+        "transforms": [
+          {
+            "expression": "coalesce({value}, 0)",
+            "type": "expression"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.Speed": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 0.25,
+          "mode": "indirect",
+          "references": {
+            "EqPath": "{view.params.EqPath}"
+          },
+          "tagPath": "{EqPath}/calculatedValues/shiftRate"
+        },
+        "transforms": [
+          {
+            "expression": "coalesce({value}, 0)",
+            "type": "expression"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.State": {
+      "binding": {
+        "config": {
+          "expression": "if({view.custom.Speed} + {view.params.WarnDelta} \u003c {view.custom.RequiredSpeed}, \u0027fail\u0027, \u0027success\u0027)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.EqPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ErrorColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.FontSize": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.GoodColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.TextColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Thickness": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.WarnDelta": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 120,
+      "width": 620
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "CurrentHdr"
+            },
+            "props": {
+              "text": "Current",
+              "textStyle": {
+                "fontSize": "small",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "CurrentVal"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "coalesce({view.custom.Speed}, 0)"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "number",
+                      "type": "format"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.State}\u003d\u0027fail\u0027, {view.params.ErrorColor}, {view.params.GoodColor})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.textStyle.fontSize": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.FontSize"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontWeight": "700",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "CurrentCol"
+        },
+        "position": {
+          "basis": "30%",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "gap": "2px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "RateGauge"
+            },
+            "propConfig": {
+              "props.arc.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.State}\u003d\u0027fail\u0027, {view.params.ErrorColor}, {view.params.GoodColor})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.arc.width": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Thickness"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.arcBackground.color": {
+                "binding": {
+                  "config": {
+                    "expression": "if({view.custom.State}\u003d\u0027fail\u0027, {view.params.ErrorColor}, {view.params.GoodColor})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.maxValue": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.RequiredSpeed"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.Speed"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "arc": {},
+              "arcBackground": {},
+              "endAngle": 630,
+              "label": {
+                "visible": false
+              },
+              "startAngle": 270
+            },
+            "type": "ia.chart.simple-gauge"
+          }
+        ],
+        "meta": {
+          "name": "GaugeCol"
+        },
+        "position": {
+          "basis": "40%"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "center",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "TargetHdr"
+            },
+            "props": {
+              "text": "Target",
+              "textStyle": {
+                "fontSize": "small",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TargetVal"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "coalesce({view.custom.RequiredSpeed}, 0)"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "number",
+                      "type": "format"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.TextColor"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.textStyle.fontSize": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.FontSize"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontWeight": "700",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TargetCol"
+        },
+        "position": {
+          "basis": "30%",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "gap": "2px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "justify": "space-between",
+      "style": {
+        "borderRadius": "12px",
+        "classes": "card",
+        "gap": "16px",
+        "overflow": "visible",
+        "padding": "12px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

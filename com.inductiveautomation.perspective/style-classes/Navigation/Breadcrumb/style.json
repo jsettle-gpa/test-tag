@@ -1,0 +1,9 @@
+{
+  "base": {
+    "style": {
+      "borderStyle": "none",
+      "color": "var(--neutral-10)",
+      "fontSize": "small"
+    }
+  }
+}

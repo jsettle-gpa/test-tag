@@ -1,0 +1,27 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--containerRoot)",
+      "color": "var(--neutral-100)",
+      "fontSize": "small"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--neutral-10)",
+        "color": "var(--callToAction)"
+      }
+    },
+    {
+      "pseudo": "active",
+      "style": {
+        "borderBottomColor": "var(--callToAction)",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "3px",
+        "color": "var(--callToAction)"
+      }
+    }
+  ]
+}

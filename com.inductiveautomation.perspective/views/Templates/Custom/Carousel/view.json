@@ -1,0 +1,503 @@
+{
+  "custom": {
+    "result": {},
+    "wizard": {
+      "currentPane": 0,
+      "errors": {},
+      "panes": [
+        {
+          "id": "step-1",
+          "params": {
+            "allowUpload": true
+          },
+          "requiredFields": [
+            "dataSource",
+            "fileName",
+            "fileData"
+          ],
+          "subtitle": "Choose where your data comes from",
+          "title": "Select Source",
+          "validatorScript": "",
+          "viewPath": "Common/Embedded/SelectDataSource"
+        },
+        {
+          "id": "step-2",
+          "params": {},
+          "requiredFields": [
+            "attributeSelection"
+          ],
+          "subtitle": "Map incoming columns to attributes",
+          "title": "Map Fields",
+          "validatorScript": "",
+          "viewPath": "Common/Embedded/MapAttributes"
+        },
+        {
+          "id": "step-3",
+          "params": {},
+          "requiredFields": [],
+          "subtitle": "Verify before importing",
+          "title": "Preview",
+          "validatorScript": "",
+          "viewPath": "Common/Embedded/Preview"
+        }
+      ],
+      "values": {}
+    }
+  },
+  "params": {
+    "CloseOnFinish": true,
+    "FinishMessageType": "wizard.finished",
+    "PopupId": "GenericWizard",
+    "Title": "Wizard"
+  },
+  "propConfig": {
+    "custom.wizard": {
+      "persistent": true
+    },
+    "custom.wizard.navState": {
+      "binding": {
+        "config": {
+          "struct": {
+            "currentPane": "{view.custom.wizard.currentPane}",
+            "panes": "{view.custom.wizard.panes}",
+            "values": "{view.custom.wizard.values}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t# Compute navigation state from panes, current index, and collected values\n\ttry:\n\t\tpanes \u003d list(value.get(\u0027panes\u0027) or [])\n\texcept:\n\t\tpanes \u003d []\n\tidx \u003d int(value.get(\u0027currentPane\u0027) or 0)\n\tidx \u003d max(0, min(idx, len(panes)-1))\n\tvals \u003d dict(value.get(\u0027values\u0027) or {})\n\tisLast \u003d (len(panes) \u003e 0 and idx \u003d\u003d len(panes)-1)\n\tcanPrev \u003d (idx \u003e 0)\n\t# Validate current pane\n\tdef _hasRequired(p):\n\t\trequired \u003d list(p.get(\u0027requiredFields\u0027) or [])\n\t\tfor k in required:\n\t\t\tif k not in vals or vals.get(k) in (None, u\"\", [], {}):\n\t\t\t\treturn False\n\t\treturn True\n\tvalid \u003d False\n\tpane \u003d panes[idx] if panes else {}\n\t# Optional per-pane validator script (return True/False)\n\tvalidator \u003d pane.get(\u0027validatorScript\u0027) or \u0027\u0027\n\tif validator:\n\t\tctx \u003d {\u0027values\u0027: vals, \u0027pane\u0027: pane}\n\t\ttry:\n\t\t\tvalid \u003d bool(eval(validator, {}, ctx))\n\t\texcept:\n\t\t\tvalid \u003d False\n\telse:\n\t\tvalid \u003d _hasRequired(pane)\n\tcanNext \u003d (not isLast) and valid\n\tcanFinish \u003d isLast and valid\n\treturn {\n\t\t\u0027canPrev\u0027: canPrev,\n\t\t\u0027canNext\u0027: canNext,\n\t\t\u0027canFinish\u0027: canFinish,\n\t\t\u0027isLast\u0027: isLast\n\t}",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      }
+    },
+    "params.CloseOnFinish": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.FinishMessageType": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.PopupId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Title": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 560
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.Title"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "18px",
+                    "fontWeight": "600"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "StepSubtitle"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "struct": {
+                          "idx": "{view.custom.wizard.currentPane}",
+                          "panes": "{view.custom.wizard.panes}"
+                        },
+                        "waitOnAll": true
+                      },
+                      "transforms": [
+                        {
+                          "code": "\ttry:\n\t\tpanes \u003d list(value.get(\u0027panes\u0027) or [])\n\t\tidx \u003d int(value.get(\u0027idx\u0027) or 0)\n\t\treturn panes[idx].get(\u0027subtitle\u0027) or \u0027\u0027\n\texcept:\n\t\treturn \u0027\u0027",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr-struct"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "12px",
+                    "opacity": 0.8
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "TitleBox"
+            },
+            "position": {
+              "basis": "75%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "2px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "StepIndicator"
+            },
+            "position": {
+              "basis": "25%",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "idx": "{view.custom.wizard.currentPane}",
+                      "panes": "{view.custom.wizard.panes}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\ttry:\n\t\tpanes \u003d list(value.get(\u0027panes\u0027) or [])\n\t\tidx \u003d int(value.get(\u0027idx\u0027) or 0)\n\t\treturn u\"Step %d of %d\" % (idx+1, len(panes))\n\texcept:\n\t\treturn \u0027\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "12px",
+                "opacity": 0.7,
+                "textAlign": "right"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "64px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "borderBottom": "1px solid var(--neutral-300)"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedPane"
+            },
+            "position": {
+              "basis": "100%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "idx": "{view.custom.wizard.currentPane}",
+                      "panes": "{view.custom.wizard.panes}",
+                      "values": "{view.custom.wizard.values}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t# Provide pane params + current values so child views can read what was chosen earlier\n\ttry:\n\t\tpanes \u003d list(value.get(\u0027panes\u0027) or [])\n\t\tidx \u003d int(value.get(\u0027idx\u0027) or 0)\n\t\tpane \u003d panes[idx]\n\t\tparams \u003d dict(pane.get(\u0027params\u0027) or {})\n\t\tparams.update({\u0027wizardValues\u0027: dict(value.get(\u0027values\u0027) or {})})\n\t\treturn params\n\texcept:\n\t\treturn {}",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.path": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "idx": "{view.custom.wizard.currentPane}",
+                      "panes": "{view.custom.wizard.panes}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\ttry:\n\t\tpanes \u003d list(value.get(\u0027panes\u0027) or [])\n\t\tidx \u003d int(value.get(\u0027idx\u0027) or 0)\n\t\treturn panes[idx].get(\u0027viewPath\u0027) or \u0027\u0027\n\texcept:\n\t\treturn \u0027\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "height": "100%"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "overflow": "hidden",
+            "paddingBottom": "8px",
+            "paddingTop": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "self.view.custom.wizard.currentPane \u003d max(0, self.view.custom.wizard.currentPane - 1)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "BackButton"
+                },
+                "position": {
+                  "basis": "10%",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.wizard.navState.canPrev"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "primary": false,
+                  "text": "Back"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "system.perspective.closePopup(self.view.params.PopupId or \u0027GenericWizard\u0027)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "CancelButton"
+                },
+                "position": {
+                  "basis": "10%",
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "props": {
+                  "primary": false,
+                  "text": "Cancel"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "LeftButtons"
+            },
+            "position": {
+              "basis": "20%"
+            },
+            "props": {
+              "style": {
+                "gap": "8px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "self.view.custom.wizard.currentPane \u003d self.view.custom.wizard.currentPane + 1"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "NextButton"
+                },
+                "position": {
+                  "grow": 1,
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.enabled": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.wizard.navState.canNext"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "text": "Next"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "RightButtons"
+            },
+            "position": {
+              "basis": "10%"
+            },
+            "props": {
+              "style": {
+                "gap": "8px",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "56px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "borderTop": "1px solid var(--neutral-300)",
+            "overflow": "visible",
+            "paddingTop": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "12px",
+        "padding": "16px"
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "finish",
+          "params": [],
+          "script": "\t\t# Validate we can finish\n\tns \u003d dict(self.view.custom.wizard.navState or {})\n\tif not ns.get(\u0027canFinish\u0027, False):\n\t    return  # Current pane isn\u0027t valid to finish yet\n\t\n\t# Gather details\n\tvals \u003d dict(self.view.custom.wizard.values or {})\n\tpanes \u003d list(self.view.custom.wizard.panes or [])\n\tidx \u003d int(self.view.custom.wizard.currentPane or 0)\n\tidx \u003d max(0, min(idx, max(0, len(panes) - 1)))\n\tcurPane \u003d panes[idx] if panes else {}\n\t\n\tpayload \u003d {\n\t    \u0027wizardValues\u0027: vals,\n\t    \u0027paneCount\u0027: len(panes),\n\t    \u0027currentPaneIndex\u0027: idx,\n\t    \u0027currentPaneId\u0027: curPane.get(\u0027id\u0027),\n\t    \u0027currentPaneTitle\u0027: curPane.get(\u0027title\u0027),\n\t    \u0027timestamp\u0027: system.date.now()\n\t}\n\t\n\t# Send completion message\n\tmsgType \u003d self.view.params.FinishMessageType or \u0027wizard.finished\u0027\n\tsystem.perspective.sendMessage(messageType\u003dmsgType, payload\u003dpayload, scope\u003d\u0027page\u0027)\n\t\n\t# Optionally close the popup\n\tif bool(self.view.params.CloseOnFinish):\n\t    popupId \u003d self.view.params.PopupId or \u0027GenericWizard\u0027\n\t    try:\n\t        system.perspective.closePopup(popupId)\n\t    except:\n\t        pass  # Ignore if already closed or ID not found"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "wizard.update",
+          "pageScope": true,
+          "script": "\n\t# Update one or more keys in the wizard values\n\tvals \u003d self.view.custom.wizard.values\n\tif vals is None:\n\t\tvals \u003d {}\n\t\tself.view.custom.wizard.values \u003d vals\n\t# Allow payload like {key:\u0027fileName\u0027, value:\u0027foo.csv\u0027} or {updates:{k:v}}\n\tkey \u003d payload.get(\u0027key\u0027)\n\tif key is not None:\n\t\tvals[key] \u003d payload.get(\u0027value\u0027)\n\tupdates \u003d payload.get(\u0027updates\u0027) or {}\n\tif isinstance(updates, dict):\n\t\tfor k,v in updates.items():\n\t\t\tvals[k] \u003d v\n",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "wizard.go",
+          "pageScope": true,
+          "script": "\t\n\t# Navigate wizard panes via messages\n\tact \u003d (payload.get(\u0027action\u0027) or \u0027\u0027).lower()\n\tidx \u003d int(self.view.custom.wizard.currentPane)\n\tcount \u003d len(self.view.custom.wizard.panes or [])\n\tif act \u003d\u003d \u0027next\u0027 and idx \u003c max(0, count-1):\n\t\tself.view.custom.wizard.currentPane \u003d idx + 1\n\telif act \u003d\u003d \u0027prev\u0027 and idx \u003e 0:\n\t\tself.view.custom.wizard.currentPane \u003d idx - 1\n\telif act \u003d\u003d \u0027set\u0027:\n\t\ttarget \u003d int(payload.get(\u0027index\u0027) or 0)\n\t\tself.view.custom.wizard.currentPane \u003d max(0, min(target, max(0, count-1)))\n",
+          "sessionScope": false,
+          "viewScope": false
+        },
+        {
+          "messageType": "wizard.finish",
+          "pageScope": true,
+          "script": "\t\n\t# External trigger to finish\n\tself.finish()\n",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

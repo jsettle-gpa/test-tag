@@ -1,0 +1,32 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "10px",
+      "borderTopRightRadius": "10px",
+      "borderBottomLeftRadius": "10px",
+      "borderBottomRightRadius": "10px",
+      "fontSize": "16px",
+      "margin": "5px",
+      "textAlign": "center"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "outlineColor": "var(--callToAction)",
+        "outlineStyle": "solid",
+        "outlineWidth": "2px"
+      }
+    },
+    {
+      "pseudo": "disabled",
+      "style": {
+        "backgroundColor": "var(--neutral-50)",
+        "outlineColor": "var(--neutral-50)",
+        "outlineStyle": "none",
+        "outlineWidth": "2px"
+      }
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "custom": {},
+  "params": {
+    "Depth": 0,
+    "IsHiddenInNav": false,
+    "IsSpacer": false,
+    "clicked": true,
+    "favoritIcon": "elev8/star_border",
+    "highlightText": false,
+    "icon": "value",
+    "isChild": false,
+    "isDisabled": false,
+    "isVisible": true,
+    "optionText": "value",
+    "requiredRoles": [],
+    "showFavoriteIcon": true,
+    "target": ""
+  },
+  "propConfig": {
+    "params.Depth": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.IsHiddenInNav": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.IsSpacer": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.clicked": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.favoritIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.highlightText": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.icon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isChild": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isDisabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.isVisible": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.optionText": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.requiredRoles": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.showFavoriteIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.target": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 372
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "2em",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.icon"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Navigation/Menu/UniqueIcon",
+                    "width": "2em"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.style.color": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.highlightText"
+                      },
+                      "transforms": [
+                        {
+                          "expression": "if({value}, \u0027var(--callToAction)\u0027, \u0027\u0027)",
+                          "type": "expression"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  },
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.optionText"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "backgroundColor": "inherit"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.style.marginLeft": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.Depth"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value}+\u0027em\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignContent": "flex-start",
+              "alignItems": "center"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "script": "\timport json\n\ttry:\n\t\t#get current list of favorite icons\n\t\t#expected structure: [{\u0027target\u0027: \u0027/home\u0027, \u0027iconPath\u0027: \u0027elev8/home\u0027}] will be in string type, needs conversion\n\t\tcustomIcons \u003d self.session.custom.favoriteIcons\n\t\t#gets rid of the last entry which is the hard coded cog wheel\n\t\tcustomIcons.pop()\n\t\t#system.perspective.print(str(customIcons))\n\t\tif not self.parent.parent.parent.getChild(\"FlexContainer\").custom.postIsDisabled:\n\t\t\tformattedCustomIcons \u003d []\n\t\t\tif self.props.path \u003d\u003d \u0027elev8/star_border\u0027:\n\t\t\t\t#favoriting\n\t\t\t\tself.props.path \u003d \u0027elev8/star\u0027\n\t\t\t\tcustomIcons.append({\"target\": self.view.params.target, \"iconPath\": self.view.params.icon, \"tooltip\": self.view.params.optionText})\n\t\t\t\tformattedCustomIcons \u003d system.util.jsonEncode(customIcons)\n\t\t\telse:\n\t\t\t\t\n\t\t\t\t#unfavoriting\n\t\t\t\t#for whatever reason we need to put it into the converter and make sure its a dataset first\n\t\t\t\theaders \u003d [\"favorite_icons\"]\n\t\t\t\tdata \u003d []\n\t\t\t\tdata.append([\"[]\"])\n\t\t\t\ttemp \u003d system.dataset.toDataSet(headers, data)\n\t\t\t\tformattedTemp \u003d gpa.frontEnd.localUI.getDashboardArray(temp, 0)\n\t\t\t\t#system.perspective.print(formattedTemp)\n\t\t\t\tself.props.path \u003d \u0027elev8/star_border\u0027\n\t\t\t\tfor index, item in enumerate(customIcons):\n\t\t\t\t\t#system.perspective.print(\u0027comparing: \u0027 + self.view.params.target + \u0027 to \u0027 + item[\"target\"])\n\t\t\t\t\tif(self.view.params.target !\u003d item[\"target\"]):\n\t\t\t\t\t\t#we are trying to get rid of the one that matches so we dont want to add it to the formatted Icons\n\t\t\t\t\t\t#system.perspective.print(\u0027item: \u0027+ str(item))\n\t\t\t\t\t\tclean_item \u003d {str(k): str(v) for k, v in item.items()}\n\t\t\t\t\t\tformattedTemp.append(clean_item)\n\t\t\t\ttry:\n\t\t\t\t\t#system.perspective.print(formattedTemp)\n\t\t\t\t\tformattedCustomIcons \u003d json.dumps(formattedTemp)\n\t\t\t\texcept Exception as e:\n\t\t\t\t\tsystem.perspective.print(\u0027deeper: \u0027+str(e))\n\t\t\t\t\t\n\t\t\tsystem.db.runNamedQuery(\u0027app/UserSettings/sidebar/upsertSidebar\u0027, parameters \u003d {\"FavoriteObjArray\": formattedCustomIcons, \"userName\": self.session.props.auth.user.userName})\n\t\t\tself.session.refreshBinding(\u0027custom.favoriteIcons\u0027)\n\texcept Exception as e:\n\t\tsystem.perspective.print(e)"
+                      },
+                      "scope": "G",
+                      "stopPropagation": true,
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Icon"
+                },
+                "position": {
+                  "basis": "2em",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "custom.favoriteIcons": {
+                    "onChange": {
+                      "enabled": null,
+                      "script": "\tsystem.perspective.print(\u0027favorites list changed\u0027)"
+                    }
+                  },
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.showFavoriteIcon"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.favoritIcon"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "classes": "Navigation/Menu/StandardIcon z-index",
+                    "color": "",
+                    "width": "2em"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "Icon_0"
+                },
+                "position": {
+                  "basis": "2em",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "position.display": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.isChild"
+                      },
+                      "transforms": [
+                        {
+                          "expression": "if({value}, False, True)",
+                          "type": "expression"
+                        }
+                      ],
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "elev8/arrow_forward_ios",
+                  "style": {
+                    "transform": "",
+                    "width": "2em"
+                  }
+                },
+                "type": "ia.display.icon"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer_0"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\ttry:\n\t\tself.refreshBinding(\u0027custom.postIsDisabled\u0027)\n\t\tif(self.custom.postIsDisabled is False):\n\t\t\ttry:\n\t\t\t\tif(self.view.params.isChild):\n\t\t\t\t\t#system.perspective.print(self.view.params.target)\n\t\t\t\t\tsystem.perspective.navigate(page \u003d self.view.params.target, newTab \u003d False)\n\t\t\t\t\tsystem.perspective.closePopup(\u0027operatorHeader\u0027)\n\t\t\t\telse:\n\t\t\t\t\t#system.perspective.print(\u0027item clicked\u0027)\n\t\t\t\t\ttransformOnDropdown \u003d self.getChild(\"FlexContainer_0\").getChild(\"Icon_0\").props.style.transform\n\t\t\t\t\tself.getChild(\"FlexContainer_0\").getChild(\"Icon_0\").props.style.transform \u003d \u0027rotate(90deg)\u0027 if self.getChild(\"FlexContainer_0\").getChild(\"Icon_0\").props.style.transform \u003d\u003d \u0027\u0027 else \u0027\u0027\n\t\t\t\t\tself.view.params.clicked \u003d True if self.view.params.clicked \u003d\u003d False else False\n\t\t\t\t\t#system.perspective.print(self.view.params.clicked)\n\t\t\t\t\tsystem.perspective.sendMessage(\u0027navItemClicked\u0027, payload \u003d {\u0027parentSection\u0027: self.view.params.optionText})\n\t\t\texcept Exception as e:\n\t\t\t\tsystem.perspective.print(e)\n\texcept Exception as e:\n\t\tsystem.perspective.print(e)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.postIsDisabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.isDisabled"
+              },
+              "transforms": [
+                {
+                  "code": "\ttry:\n\t\tif(not value):\n\t\t\tif(len(self.view.params.requiredRoles)):\n\t\t\t\trequired \u003d set(role.lower() for role in self.view.params.requiredRoles)\n\t\t\t\tuser_roles \u003d self.session.props.auth.user.roles\n\t\t\t\t\n\t\t\t\thas_role \u003d any(role.lower() in required for role in user_roles)\n#\t\t\t\tif \"site_administrator\" in [role.lower() for role in self.session.props.auth.user.roles]:\n#\t\t\t\t\treturn False\n\t\t\t\tif (has_role):\n\t\t\t\t\treturn False\n\t\t\t\telse:\n\t\t\t\t\treturn True\n\t\t\telse:\n\t\t\t\treturn False\n\t\telse:\n\t\t\treturn True\n\texcept Exception as e:\n\t\tsystem.perspective.print(e)\n\t\treturn False",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "meta.visible": {
+            "binding": {
+              "config": {
+                "expression": "!{view.params.IsSpacer}"
+              },
+              "type": "expr"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.IsHiddenInNav} \u003d True, False, {view.params.isVisible})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.clicked"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value},\r\nif(if({view.params.Depth} % 2 \u003d 0, \"Even\", \"Odd\") \u003d \u0027Even\u0027, \u0027var(--callToAction)\u0027, \u0027var(--infoSecondary)\u0027),\r\n\u0027\u0027)\r\n",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "this.custom.postIsDisabled"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value}, \u0027Navigation/Menu/Disabled\u0027, \u0027Navigation/Menu/Item\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.clicked"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value}, \u0027var(--neutral-10)\u0027, \u0027\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "justify": "space-between",
+          "style": {
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

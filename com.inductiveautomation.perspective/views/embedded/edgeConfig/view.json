@@ -1,0 +1,174 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TitleLabel"
+        },
+        "props": {
+          "style": {
+            "fontSize": 28,
+            "fontWeight": "bold"
+          },
+          "text": "Edge Parameters"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_OPC"
+        },
+        "props": {
+          "text": "OPC Server"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "OpcServerDropdown"
+        },
+        "props": {
+          "options": [
+            {
+              "label": "Server1",
+              "value": "Server1"
+            },
+            {
+              "label": "Server2",
+              "value": "Server2"
+            }
+          ],
+          "showClearIcon": true
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Label_Device"
+        },
+        "props": {
+          "text": "Device"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "DeviceDropdown"
+        },
+        "props": {
+          "options": [
+            {
+              "label": "DeviceA",
+              "value": "DeviceA"
+            },
+            {
+              "label": "DeviceB",
+              "value": "DeviceB"
+            }
+          ],
+          "showClearIcon": true
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Label_Params"
+        },
+        "props": {
+          "style": {
+            "fontSize": 18,
+            "fontWeight": "600"
+          },
+          "text": "Edge Tag Parameters"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_Status"
+        },
+        "props": {
+          "text": "Status"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "StatusField"
+        },
+        "props": {
+          "placeholder": "Enter status tag"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label_Input"
+        },
+        "props": {
+          "text": "Input"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "InputField"
+        },
+        "props": {
+          "placeholder": "Enter input tag"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label_Outfeed"
+        },
+        "props": {
+          "text": "Outfeed"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "OutfeedField"
+        },
+        "props": {
+          "placeholder": "Enter outfeed tag"
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "Label_Reject"
+        },
+        "props": {
+          "text": "Reject"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "RejectField"
+        },
+        "props": {
+          "placeholder": "Enter reject tag"
+        },
+        "type": "ia.input.text-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": 16,
+        "padding": 24
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

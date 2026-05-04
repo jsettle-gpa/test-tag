@@ -1,0 +1,611 @@
+{
+  "custom": {
+    "CurrentQty": 0,
+    "Lines": [
+      {
+        "label": "Mixer 1",
+        "value": "GPA/Virginia/Mixing/Mixer 1"
+      },
+      {
+        "label": "Mixer 2",
+        "value": "GPA/Virginia/Mixing/Mixer 2"
+      },
+      {
+        "label": "Filler A",
+        "value": "GPA/Virginia/Filling/Filler A"
+      },
+      {
+        "label": "Filler B",
+        "value": "GPA/Virginia/Filling/Filler B"
+      }
+    ],
+    "MinutesRemaining": "",
+    "NextOrder": "",
+    "Order": "",
+    "ScheduledQty": 0,
+    "Units": null
+  },
+  "params": {
+    "EqPath": "GPA/Virginia/Mixing/Mixer 2",
+    "FontSize": "value",
+    "LineMode": "Auto",
+    "LineName": "Line Name",
+    "LineStatus": "Running",
+    "PlannedOrderDomId": "value",
+    "ProjEndOfOrderDomId": "value",
+    "StatusBorder": "#2f4a37",
+    "StatusColor": "#009900",
+    "StatusIcon": "material/directions_run"
+  },
+  "propConfig": {
+    "custom.CurrentQty": {
+      "persistent": true
+    },
+    "custom.Lines": {
+      "persistent": true
+    },
+    "custom.MinutesRemaining": {
+      "persistent": true
+    },
+    "custom.NextOrder": {
+      "persistent": true
+    },
+    "custom.Order": {
+      "persistent": true
+    },
+    "custom.ScheduledQty": {
+      "persistent": true
+    },
+    "custom.Units": {
+      "persistent": true
+    },
+    "params.EqPath": {
+      "paramDirection": "inout",
+      "persistent": true
+    },
+    "params.FontSize": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.LineMode": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.LineName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.LineStatus": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.PlannedOrderDomId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ProjEndOfOrderDomId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.StatusBorder": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.StatusColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.StatusIcon": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 520,
+      "width": 640
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Dropdown"
+            },
+            "position": {
+              "basis": "40%"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.Lines"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.EqPath"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "placeholder": {
+                "text": "Select Line…"
+              },
+              "style": {
+                "border": "1px solid #445",
+                "borderRadius": "8px",
+                "fontSize": 20,
+                "fontWeight": "700",
+                "minWidth": 0,
+                "padding": "6px 12px",
+                "textAlign": "center",
+                "whiteSpace": "normal"
+              }
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "StatusIcon"
+                },
+                "position": {
+                  "basis": "28px"
+                },
+                "propConfig": {
+                  "props.path": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.StatusIcon"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "18px"
+                  }
+                },
+                "type": "ia.display.icon"
+              },
+              {
+                "meta": {
+                  "name": "StatusText"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.LineStatus"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "minWidth": 0,
+                    "textAlign": "center",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "StatusPill"
+            },
+            "position": {
+              "basis": "40%"
+            },
+            "propConfig": {
+              "props.style.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.StatusColor"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.style.border": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.StatusBorder"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "borderRadius": "12px",
+                "boxShadow": "0 0 10px 3px rgba(0,0,0,0.25)",
+                "color": "#FFFFFF",
+                "gap": "8px",
+                "minWidth": 0,
+                "padding": "8px 14px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "15%"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-evenly",
+          "style": {
+            "borderBottom": "1px solid rgba(255,255,255,0.15)",
+            "gap": "12px",
+            "overflow": "visible",
+            "paddingBottom": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "PlannedOrderLabel"
+            },
+            "props": {
+              "style": {
+                "fontSize": 16
+              },
+              "text": "Planned Order:"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PlannedOrderValue"
+            },
+            "propConfig": {
+              "meta.domId": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.PlannedOrderDomId"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.Order"
+                  },
+                  "overlayOptOut": true,
+                  "transforms": [
+                    {
+                      "expression": "if({value}!\u003d\u0027\u0027, {value}, \u0027No Order Found\u0027)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": 16,
+                "fontWeight": "700",
+                "minWidth": 0,
+                "whiteSpace": "normal"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "PlannedOrderRow"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "CurrentRunTitle"
+            },
+            "position": {
+              "basis": "22px"
+            },
+            "props": {
+              "style": {
+                "fontSize": 16
+              },
+              "text": "Current Run:"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Progress"
+            },
+            "position": {
+              "basis": "32px"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "expression": "try(if(toFloat({view.custom.ScheduledQty})\u003e0,(toFloat({view.custom.CurrentQty})/toFloat({view.custom.ScheduledQty}))*100,0),0)"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "borderRadius": 20,
+                "height": 28,
+                "padding": "4px 0"
+              }
+            },
+            "type": "ia.display.progress"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "CurrentQty"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.CurrentQty"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "minWidth": 0,
+                    "textAlign": "right"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "Slash"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  },
+                  "text": "/"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ScheduledQty"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.ScheduledQty"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "minWidth": 0
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "CountsRow"
+            },
+            "position": {
+              "basis": "28px"
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "center",
+              "style": {
+                "gap": "6px",
+                "minWidth": 0
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "CurrentRunBlock"
+        },
+        "position": {
+          "basis": "140px"
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderTop": "1px solid rgba(255,255,255,0.15)",
+            "gap": "8px",
+            "paddingTop": "6px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "StartStopCTA"
+        },
+        "position": {
+          "basis": "68px"
+        },
+        "propConfig": {
+          "props.icon.path": {
+            "binding": {
+              "config": {
+                "expression": "if(lower({view.params.LineStatus})\u003d\u0027running\u0027,\u0027material/stop\u0027,\u0027material/play_arrow\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.backgroundColor": {
+            "binding": {
+              "config": {
+                "expression": "if(lower({view.params.LineStatus})\u003d\u0027running\u0027,\u0027#D93636\u0027,\u0027#17A34A\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.style.boxShadow": {
+            "binding": {
+              "config": {
+                "expression": "if(lower({view.params.LineStatus})\u003d\u0027running\u0027,\u00270 0 12px 4px rgba(217,54,54,0.35)\u0027,\u00270 0 12px 4px rgba(23,163,74,0.35)\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "if(lower({view.params.LineStatus})\u003d\u0027running\u0027,\u0027End Run\u0027,\u0027Start Run\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "icon": {
+            "position": "start"
+          },
+          "style": {
+            "borderRadius": 14,
+            "color": "#FFFFFF",
+            "fontSize": 20,
+            "fontWeight": "800",
+            "height": 60,
+            "letterSpacing": "0.3px",
+            "minWidth": 0,
+            "padding": "10px 18px"
+          }
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "NextOrderLabel"
+            },
+            "props": {
+              "style": {
+                "fontSize": 16
+              },
+              "text": "Next Planned Order:"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "NextOrderValue"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.NextOrder"
+                  },
+                  "overlayOptOut": true,
+                  "transforms": [
+                    {
+                      "expression": "if({value}!\u003d\u0027\u0027, {value}, \u0027No Order Found (Add Link To Schedule)\u0027)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": 16,
+                "fontWeight": "700",
+                "minWidth": 0,
+                "whiteSpace": "normal"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "NextOrderRow"
+        },
+        "position": {
+          "basis": "42px"
+        },
+        "props": {
+          "alignItems": "center",
+          "style": {
+            "borderTop": "1px solid rgba(255,255,255,0.15)",
+            "gap": "8px",
+            "paddingTop": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderRadius": "12px",
+        "classes": "card",
+        "gap": "14px",
+        "overflow": "hidden",
+        "padding": "16px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

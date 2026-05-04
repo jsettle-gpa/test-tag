@@ -1,0 +1,193 @@
+{
+  "custom": {
+    "data": {}
+  },
+  "params": {
+    "selectedAssetData": {
+      "assetEnabled": true,
+      "assetID": 1,
+      "assetName": "Line 1",
+      "assetPath": "GPA/Wilmington/Molding/Line 1",
+      "assetType": "line"
+    },
+    "setting": ""
+  },
+  "propConfig": {
+    "custom.data": {
+      "persistent": true
+    },
+    "custom.data.selectedTagPath": {
+      "binding": {
+        "config": {
+          "path": "/root/TagBrowseTree.props.selection.values[0]"
+        },
+        "transforms": [
+          {
+            "expression": "// If no selection was made then return a blank string\r\nif(isGood({value}), {value}, \u0027\u0027)",
+            "type": "expression"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "params.selectedAssetData": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.setting": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 417
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "domId": "eqmanager-tagbrowser-tree",
+          "name": "TagBrowseTree"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.root.path": {
+            "binding": {
+              "config": {
+                "path": "view.params.selectedAssetData.assetPath"
+              },
+              "transforms": [
+                {
+                  "expression": "\u0027[default]\u0027 + {value}",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "root": {},
+          "selection": {
+            "mode": "single"
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": [
+            {
+              "enabled": false,
+              "name": "filterBrowseNode",
+              "script": null
+            }
+          ],
+          "messageHandlers": []
+        },
+        "type": "ia.display.tag-browse-tree"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Closes the popup \u0027\u0027\u0027\n\t\n\tsystem.perspective.closePopup(\u0027\u0027)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "domId": "eqmanager-add-asset-button",
+              "name": "CancelButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "marginRight": "15px"
+              },
+              "text": "Cancel"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "script": "\t\u0027\u0027\u0027 Calls the mapTag message handler \u0027\u0027\u0027\n\t\n\tpayload \u003d {\n\t\t\u0027selectedTagPath\u0027: self.view.custom.data.selectedTagPath,\n\t\t\u0027setting\u0027: self.view.params.setting,\n\t\t\u0027selectedAssetData\u0027: self.view.params.selectedAssetData\n\t}\n\tsystem.perspective.sendMessage(\u0027mapSetting\u0027, payload)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "domId": "eqmanager-import-asset-button",
+              "name": "MapButton"
+            },
+            "position": {
+              "basis": "110px",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.data.selectedTagPath"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} !\u003d \u0027\u0027, True, False)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "text": "Map"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "ButtonContainer"
+        },
+        "position": {
+          "basis": "45px",
+          "shrink": 0
+        },
+        "props": {
+          "justify": "space-evenly",
+          "style": {
+            "marginTop": "15px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "margin": 15
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "custom": {},
+  "params": {
+    "modeGroup": ""
+  },
+  "propConfig": {
+    "params.modeGroup": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "props": {
+              "style": {
+                "fontSize": 28,
+                "fontWeight": "bold"
+              },
+              "text": "Mode Group Selection"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label_0"
+            },
+            "props": {
+              "text": "Mode Group"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "ModeGroupDropdown"
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[mes]global/mode_group"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn system.dataset.filterColumns(value, [\u0027id\u0027, \u0027name\u0027])",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.modeGroup"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "Label_1"
+            },
+            "props": {
+              "text": "Modes in Group"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "ModesTable"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "columns": [
+                {
+                  "field": "mode",
+                  "headerName": "Mode"
+                },
+                {
+                  "field": "description",
+                  "headerName": "Description"
+                }
+              ],
+              "data": [
+                {
+                  "description": "Equipment starting up",
+                  "mode": "Startup"
+                },
+                {
+                  "description": "Normal running state",
+                  "mode": "Run"
+                },
+                {
+                  "description": "Waiting state",
+                  "mode": "Idle"
+                },
+                {
+                  "description": "Planned maintenance",
+                  "mode": "Maintenance"
+                }
+              ],
+              "enablePagination": false,
+              "rowHeight": 32
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "ModeGroupSelectionPage"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "gap": 16,
+            "padding": "24px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

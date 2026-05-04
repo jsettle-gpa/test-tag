@@ -1,0 +1,268 @@
+{
+  "custom": {},
+  "params": {
+    "eqConfig": {}
+  },
+  "propConfig": {
+    "params.eqConfig": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 520,
+      "width": 900
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "props": {
+          "style": {
+            "classes": "card-title"
+          },
+          "text": "Equipment Config"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EqType"
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.type"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Type"
+              },
+              "options": [
+                {
+                  "label": "Line",
+                  "value": 4
+                },
+                {
+                  "label": "Cell",
+                  "value": 5
+                },
+                {
+                  "label": "Area",
+                  "value": 3
+                },
+                {
+                  "label": "Site",
+                  "value": 2
+                },
+                {
+                  "label": "Enterprise",
+                  "value": 1
+                }
+              ]
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "EnterpriseName"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.enterprise.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Enterprise Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "SiteName"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.site.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Site Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "AreaName"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.area.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Area Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "AreaMgr"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.area.managerName"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Area Manager Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "AreaMgrContact"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.area.managerContact"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Area Manager Contact"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "LineName"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.line.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Line Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "LineMgr"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.line.managerName"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Line Manager Name"
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "meta": {
+              "name": "LineMgrContact"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.eqConfig.line.managerContact"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "label": {
+                "text": "Line Manager Contact"
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "TypeAndNames"
+        },
+        "props": {
+          "style": {
+            "gap": 10
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": 12
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

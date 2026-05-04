@@ -1,0 +1,791 @@
+{
+  "custom": {
+    "sourceData": {},
+    "uiActions": {},
+    "viewData": {}
+  },
+  "params": {},
+  "propConfig": {
+    "custom.sourceData": {
+      "persistent": true
+    },
+    "custom.sourceData.jobs": {
+      "binding": {
+        "config": {
+          "queryPath": "Dis/jobs/getAll"
+        },
+        "type": "query"
+      }
+    },
+    "custom.uiActions": {
+      "persistent": true
+    },
+    "custom.uiActions.jobId": {
+      "persistent": false
+    },
+    "custom.viewData": {
+      "persistent": true
+    },
+    "custom.viewData.completed": {
+      "binding": {
+        "config": {
+          "path": "view.custom.viewData.workOrders"
+        },
+        "transforms": [
+          {
+            "code": "\tdef col(row, name, default\u003dNone):\n\t\t\ttry:\n\t\t\t\tv \u003d row[name]\n\t\t\t\treturn default if v is None else v\n\t\t\texcept:\n\t\t\t\treturn default\n\t\t\n\tif value is None:\n\t\treturn []\n\t\n\tpds \u003d system.dataset.toPyDataSet(value)\n\tinstances \u003d []\n\tlaneWanted \u003d \u0027Complete\u0027\n\tfor r in pds:\n\t\tif col(r,\u0027lane\u0027,\u0027\u0027) !\u003d laneWanted:\n\t\t\tcontinue\n\t\tinstances.append({\n\t\t\t\t\"workOrder\": {\n\t\t\t\t\t\"id\":\t\t\tint(col(r, \"jobPieceId\", 0)),\n\t\t\t\t\t\"no\":\t\t\tcol(r, \"pieceKey\", \"\"),\n\t\t\t\t\t\"pieceMark\":\tcol(r, \"pieceMark\", \"\"),\n\t\t\t\t\t\"status\":\t\tcol(r, \"lane\", \"Planned\"),\n\t\t\t\t\t\"percent\":\t\tfloat(col(r, \"routePct\", 0.0)),  # or qtyPct if you prefer\n\t\t\t\t\t\"dueDate\":\t\tcol(r, \"dueDate\", None)\n\t\t\t\t},\n\t\t\t\"instanceStyle\": {\n\t\t\t\t\"classes\": \"\",\n\t\t\t\t\"marginBottom\": \"2%\"\n\t\t\t},\n\t\t\t\"instancePosition\": {\n\t\t\t\t\"grow\": 1\n\t\t\t}\n\t\t})\n\t\n\treturn instances",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.viewData.notStarted": {
+      "binding": {
+        "config": {
+          "path": "view.custom.viewData.workOrders"
+        },
+        "transforms": [
+          {
+            "code": "\tdef col(row, name, default\u003dNone):\n\t\t\ttry:\n\t\t\t\tv \u003d row[name]\n\t\t\t\treturn default if v is None else v\n\t\t\texcept:\n\t\t\t\treturn default\n\t\t\n\tif value is None:\n\t\treturn []\n\t\n\tpds \u003d system.dataset.toPyDataSet(value)\n\tinstances \u003d []\n\tlaneWanted \u003d \u0027Planned\u0027\n\tfor r in pds:\n\t\tif col(r,\u0027lane\u0027,\u0027\u0027) !\u003d laneWanted:\n\t\t\tcontinue\n\t\tinstances.append({\n\t\t\t\t\"workOrder\": {\n\t\t\t\t\t\"id\":\t\t\tint(col(r, \"jobPieceId\", 0)),\n\t\t\t\t\t\"no\":\t\t\tcol(r, \"pieceKey\", \"\"),\n\t\t\t\t\t\"pieceMark\":\tcol(r, \"pieceMark\", \"\"),\n\t\t\t\t\t\"status\":\t\tcol(r, \"lane\", \"Planned\"),\n\t\t\t\t\t\"percent\":\t\tfloat(col(r, \"routePct\", 0.0)),  # or qtyPct if you prefer\n\t\t\t\t\t\"dueDate\":\t\tcol(r, \"dueDate\", None)\n\t\t\t\t},\n\t\t\t\"instanceStyle\": {\n\t\t\t\t\"classes\": \"\",\n\t\t\t\t\"marginBottom\": \"2%\"\n\t\t\t},\n\t\t\t\"instancePosition\": {\n\t\t\t\t\"grow\": 1\n\t\t\t}\n\t\t})\n\t\n\treturn instances",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.viewData.running": {
+      "binding": {
+        "config": {
+          "path": "view.custom.viewData.workOrders"
+        },
+        "transforms": [
+          {
+            "code": "\tdef col(row, name, default\u003dNone):\n\t\t\ttry:\n\t\t\t\tv \u003d row[name]\n\t\t\t\treturn default if v is None else v\n\t\t\texcept:\n\t\t\t\treturn default\n\t\t\n\tif value is None:\n\t\treturn []\n\t\n\tpds \u003d system.dataset.toPyDataSet(value)\n\tinstances \u003d []\n\tlaneWanted \u003d \u0027Running\u0027\n\tfor r in pds:\n\t\tif col(r,\u0027lane\u0027,\u0027\u0027) !\u003d laneWanted:\n\t\t\tcontinue\n\t\tinstances.append({\n\t\t\t\t\"workOrder\": {\n\t\t\t\t\t\"id\":\t\t\tint(col(r, \"jobPieceId\", 0)),\n\t\t\t\t\t\"no\":\t\t\tcol(r, \"pieceKey\", \"\"),\n\t\t\t\t\t\"pieceMark\":\tcol(r, \"pieceMark\", \"\"),\n\t\t\t\t\t\"status\":\t\tcol(r, \"lane\", \"Planned\"),\n\t\t\t\t\t\"percent\":\t\tfloat(col(r, \"routePct\", 0.0)),  # or qtyPct if you prefer\n\t\t\t\t\t\"dueDate\":\t\tcol(r, \"dueDate\", None)\n\t\t\t\t},\n\t\t\t\"instanceStyle\": {\n\t\t\t\t\"classes\": \"\",\n\t\t\t\t\"marginBottom\": \"2%\"\n\t\t\t},\n\t\t\t\"instancePosition\": {\n\t\t\t\t\"grow\": 1\n\t\t\t}\n\t\t})\n\t\n\treturn instances",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.viewData.workOrders": {
+      "binding": {
+        "config": {
+          "parameters": {
+            "jobId": "{view.custom.uiActions.jobId}"
+          },
+          "queryPath": "Dis/jobs/jobKanban"
+        },
+        "type": "query"
+      }
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 927,
+      "width": 1597
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "events": {
+              "component": {
+                "onRowClick": {
+                  "config": {
+                    "script": "\tself.view.custom.uiActions.jobId \u003d self.props.selection.data[0].jobId"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "JobsTable"
+            },
+            "position": {
+              "basis": "383px"
+            },
+            "propConfig": {
+              "props.data": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.sourceData.jobs"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "columns": [
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "jobId",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": false,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "jobNo",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "center",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": "Job Number"
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": true,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "createdAt",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": false,
+                  "width": ""
+                },
+                {
+                  "align": "center",
+                  "boolean": "checkbox",
+                  "dateFormat": "MM/DD/YYYY",
+                  "editable": false,
+                  "field": "workOrderCount",
+                  "filter": {
+                    "boolean": {
+                      "condition": ""
+                    },
+                    "date": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "enabled": false,
+                    "number": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "string": {
+                      "condition": "",
+                      "value": ""
+                    },
+                    "visible": "on-hover"
+                  },
+                  "footer": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "header": {
+                    "align": "center",
+                    "justify": "left",
+                    "style": {
+                      "classes": ""
+                    },
+                    "title": ""
+                  },
+                  "justify": "auto",
+                  "nullFormat": {
+                    "includeNullStrings": false,
+                    "nullFormatValue": "",
+                    "strict": false
+                  },
+                  "number": "value",
+                  "numberFormat": "0,0.##",
+                  "progressBar": {
+                    "bar": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "max": 100,
+                    "min": 0,
+                    "track": {
+                      "color": "",
+                      "style": {
+                        "classes": ""
+                      }
+                    },
+                    "value": {
+                      "enabled": true,
+                      "format": "0,0.##",
+                      "justify": "center",
+                      "style": {
+                        "classes": ""
+                      }
+                    }
+                  },
+                  "render": "auto",
+                  "resizable": true,
+                  "sort": "none",
+                  "sortable": true,
+                  "strictWidth": false,
+                  "style": {
+                    "classes": ""
+                  },
+                  "toggleSwitch": {
+                    "color": {
+                      "selected": "",
+                      "unselected": ""
+                    }
+                  },
+                  "viewParams": {},
+                  "viewPath": "",
+                  "visible": false,
+                  "width": ""
+                }
+              ],
+              "filter": {
+                "enabled": true
+              }
+            },
+            "type": "ia.display.table"
+          }
+        ],
+        "meta": {
+          "name": "Col1"
+        },
+        "position": {
+          "basis": "383px"
+        },
+        "props": {
+          "style": {
+            "boxShadow": "inset 0 0 2px white",
+            "classes": "Cards/Root",
+            "paddingBottom": "1%",
+            "paddingLeft": "1%",
+            "paddingRight": "1%",
+            "paddingTop": "1%"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "35px"
+                    },
+                    "props": {
+                      "alignVertical": "bottom",
+                      "style": {
+                        "classes": "Text/Heading"
+                      },
+                      "text": "Not Started",
+                      "textStyle": {
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "lane": "Planned"
+                    },
+                    "meta": {
+                      "name": "WorkOrders"
+                    },
+                    "position": {
+                      "grow": 1,
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.viewData.notStarted"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "0px",
+                        "grow": 0
+                      },
+                      "path": "App/DisTran/WorkOrders/Embedded/workOrdersFlex",
+                      "style": {
+                        "marginLeft": "1%",
+                        "marginRight": "1%",
+                        "marginTop": "2%"
+                      },
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "Planned"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "boxShadow": "inset 0 0 2px white",
+                    "classes": "Cards/Root",
+                    "opacity": "1",
+                    "overflow": "hidden",
+                    "overflowX": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "35px"
+                    },
+                    "props": {
+                      "alignVertical": "bottom",
+                      "style": {
+                        "classes": "Text/Heading"
+                      },
+                      "text": "In Progress",
+                      "textStyle": {
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "lane": "Running"
+                    },
+                    "meta": {
+                      "name": "WorkOrders"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.viewData.running"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "0px",
+                        "grow": 0
+                      },
+                      "path": "App/DisTran/WorkOrders/Embedded/workOrdersFlex",
+                      "style": {
+                        "marginLeft": "1%",
+                        "marginRight": "1%",
+                        "marginTop": "2%"
+                      },
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "inProgress"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "boxShadow": "inset 0 0 2px white",
+                    "classes": "Cards/Root",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Label"
+                    },
+                    "position": {
+                      "basis": "35px"
+                    },
+                    "props": {
+                      "alignVertical": "bottom",
+                      "style": {
+                        "classes": "Text/Heading"
+                      },
+                      "text": "Completed",
+                      "textStyle": {
+                        "textAlign": "center"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "custom": {
+                      "lane": "Completed"
+                    },
+                    "meta": {
+                      "name": "WorkOrders"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.instances": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.viewData.completed"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "direction": "column",
+                      "elementPosition": {
+                        "basis": "auto"
+                      },
+                      "path": "App/DisTran/WorkOrders/Embedded/workOrdersFlex",
+                      "style": {
+                        "marginLeft": "1%",
+                        "marginRight": "1%",
+                        "marginTop": "2%"
+                      },
+                      "useDefaultViewWidth": false
+                    },
+                    "type": "ia.display.flex-repeater"
+                  }
+                ],
+                "meta": {
+                  "name": "Completed"
+                },
+                "position": {
+                  "basis": "0px",
+                  "grow": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "boxShadow": "inset 0 0 2px white",
+                    "classes": "Cards/Root",
+                    "overflow": "hidden"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Row2"
+            },
+            "position": {
+              "basis": "0px",
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "boxShadow": "value"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Col2"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginLeft": "1%",
+            "min-width": 0,
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "base": {
+    "animation": {
+      "duration": "0.25s",
+      "direction": "reverse",
+      "iterationCount": "1",
+      "timingFunction": "ease-in-out",
+      "keyframes": {
+        "0%": {
+          "color": "#FFFFFF"
+        },
+        "100%": {
+          "color": "#FF6000"
+        }
+      }
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "animation": {
+        "duration": "0.25s",
+        "direction": "normal",
+        "iterationCount": "1",
+        "timingFunction": "ease-in-out",
+        "keyframes": {
+          "0%": {
+            "color": "#FFFFFF"
+          },
+          "100%": {
+            "color": "#FF6000"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--containerRoot)",
+      "borderColor": "var(--callToAction)",
+      "borderStyle": "solid",
+      "borderWidth": "1px",
+      "borderTopLeftRadius": "5px",
+      "borderTopRightRadius": "5px",
+      "borderBottomLeftRadius": "5px",
+      "borderBottomRightRadius": "5px",
+      "color": "var(--callToAction)",
+      "marginBottom": "3px",
+      "marginTop": "3px"
+    }
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "style": {
+        "backgroundColor": "var(--callToAction--activeAlt)"
+      }
+    },
+    {
+      "pseudo": "active",
+      "style": {
+        "backgroundColor": "var(--neutral-100)"
+      }
+    }
+  ]
+}

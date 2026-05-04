@@ -1,0 +1,2329 @@
+{
+  "custom": {
+    "UserSettings": {
+      "LeftPanelWidgets": [
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Start Break",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 9,
+            "rowStart": 7
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#2E92FA",
+              "fg": "#ffffff",
+              "iconPath": "material/free_breakfast",
+              "label": "Start Break",
+              "messageHandler": "page:op.command",
+              "subLabel": "15 min"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Start Lunch",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 9,
+            "rowStart": 7
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#1EB980",
+              "fg": "#ffffff",
+              "iconPath": "material/restaurant",
+              "label": "Start Lunch",
+              "messageHandler": "page:op.command",
+              "subLabel": "30 min"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Supervisor",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#E5484D",
+              "fg": "#ffffff",
+              "iconPath": "material/supervisor_account",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Supervisor"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Quality",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#485568",
+              "fg": "#ffffff",
+              "iconPath": "material/fact_check",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Quality"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Maintenance",
+          "position": {
+            "columnEnd": 7,
+            "columnStart": 5,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#00A3C4",
+              "fg": "#ffffff",
+              "iconPath": "material/build",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Maintenance"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Job Information",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 11,
+            "rowStart": 9
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#485568",
+              "fg": "#ffffff",
+              "iconPath": "material/article",
+              "label": "Job Information",
+              "messageHandler": "page:op.command",
+              "subLabel": ""
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Logout",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 11,
+            "rowStart": 9
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#3B4556",
+              "fg": "#ffffff",
+              "iconPath": "material/exit_to_app",
+              "label": "Logout",
+              "messageHandler": "page:op.command",
+              "subLabel": ""
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Test",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 6,
+            "rowSpan": 3
+          },
+          "name": "Order Information",
+          "position": {
+            "columnEnd": 7,
+            "columnStart": 1,
+            "rowEnd": 5,
+            "rowStart": 1
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "EqPath": "GPA/Virginia/Mixing/Mixer 1",
+            "FontSize": "value",
+            "LineMode": "Auto",
+            "LineName": "Line Name",
+            "LineStatus": "Running",
+            "PlannedOrderDomId": "value",
+            "ProjEndOfOrderDomId": "value",
+            "StatusBorder": "#2f4a37",
+            "StatusColor": "#009900",
+            "StatusIcon": "material/directions_run"
+          },
+          "viewPath": "App/Widgets/Controls/LineControl"
+        }
+      ],
+      "RightPanelWidgets": [
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Start Break",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 9,
+            "rowStart": 7
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#2E92FA",
+              "fg": "#ffffff",
+              "iconPath": "material/free_breakfast",
+              "label": "Start Break",
+              "messageHandler": "page:op.command",
+              "subLabel": "15 min"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Start Lunch",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 9,
+            "rowStart": 7
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#1EB980",
+              "fg": "#ffffff",
+              "iconPath": "material/restaurant",
+              "label": "Start Lunch",
+              "messageHandler": "page:op.command",
+              "subLabel": "30 min"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Supervisor",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#E5484D",
+              "fg": "#ffffff",
+              "iconPath": "material/supervisor_account",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Supervisor"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Quality",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#485568",
+              "fg": "#ffffff",
+              "iconPath": "material/fact_check",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Quality"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Call For Help - Maintenance",
+          "position": {
+            "columnEnd": 7,
+            "columnStart": 5,
+            "rowEnd": 7,
+            "rowStart": 5
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#00A3C4",
+              "fg": "#ffffff",
+              "iconPath": "material/build",
+              "label": "Call For Help",
+              "messageHandler": "page:op.command",
+              "subLabel": "Maintenance"
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Job Information",
+          "position": {
+            "columnEnd": 5,
+            "columnStart": 3,
+            "rowEnd": 11,
+            "rowStart": 9
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#485568",
+              "fg": "#ffffff",
+              "iconPath": "material/article",
+              "label": "Job Information",
+              "messageHandler": "page:op.command",
+              "subLabel": ""
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Operator",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 4
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          "name": "Logout",
+          "position": {
+            "columnEnd": 3,
+            "columnStart": 1,
+            "rowEnd": 11,
+            "rowStart": 9
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {
+            "inputs": {
+              "EqPath": "",
+              "bg": "#3B4556",
+              "fg": "#ffffff",
+              "iconPath": "material/exit_to_app",
+              "label": "Logout",
+              "messageHandler": "page:op.command",
+              "subLabel": ""
+            }
+          },
+          "viewPath": "App/Widgets/Controls/TileWidget"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Gauges",
+          "defaultSize": {
+            "columnSpan": 4,
+            "rowSpan": 2
+          },
+          "header": {
+            "enabled": false,
+            "style": {
+              "classes": ""
+            },
+            "title": ""
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 3,
+            "rowSpan": 2
+          },
+          "name": "OEE",
+          "position": {
+            "columnEnd": 7,
+            "columnStart": 1,
+            "rowEnd": 5,
+            "rowStart": 1
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {},
+          "viewPath": "App/Widgets/Gauges/AQP_Gauge"
+        },
+        {
+          "body": {
+            "style": {
+              "classes": ""
+            }
+          },
+          "category": "Gauges",
+          "defaultSize": {
+            "columnSpan": 3,
+            "rowSpan": 2
+          },
+          "header": {
+            "enabled": true,
+            "style": {
+              "classes": ""
+            },
+            "title": "Current VS Target Speed"
+          },
+          "isConfigurable": false,
+          "minSize": {
+            "columnSpan": 3,
+            "rowSpan": 2
+          },
+          "name": "Current vs Required Speed",
+          "position": {
+            "columnEnd": 7,
+            "columnStart": 1,
+            "rowEnd": 5,
+            "rowStart": 1
+          },
+          "style": {
+            "classes": ""
+          },
+          "viewParams": {},
+          "viewPath": "App/Widgets/Gauges/CurrentVsTarget"
+        }
+      ]
+    },
+    "inputs": {
+      "FilterWorkOrders": [
+        {
+          "data": {
+            "EndTs": 1759158000000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352068",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 3,
+            "ProgramName": "25-8912P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759150800000,
+            "WO": "25-8912P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759172400000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "355691",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 3,
+            "ProgramName": "25-2222P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759165200000,
+            "WO": "25-2222P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759345200000,
+            "HeatNumber": "B504454",
+            "Line": "1S02",
+            "LotNumber": "353224",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 3,
+            "ProgramName": "25-8912P-10-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759338000000,
+            "WO": "25-8912P-10-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759172400000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "356179",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-8912P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759165200000,
+            "WO": "25-8912P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759179600000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "355691",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-8912P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759172400000,
+            "WO": "25-8912P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759237200000,
+            "HeatNumber": "B504454",
+            "Line": "1S01",
+            "LotNumber": "353224",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-2222P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759230000000,
+            "WO": "25-2222P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759237200000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "356179",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-1111P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759230000000,
+            "WO": "25-1111P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759244400000,
+            "HeatNumber": "B504454",
+            "Line": "1S01",
+            "LotNumber": "353225",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-2222P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759244400000,
+            "WO": "25-2222P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759330800000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "356179",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-1234P-03-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759323600000,
+            "WO": "25-1234P-03-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759338000000,
+            "HeatNumber": "B504454",
+            "Line": "1S02",
+            "LotNumber": "353225",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-1234P-03-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759330800000,
+            "WO": "25-1234P-03-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759345200000,
+            "HeatNumber": "B504454",
+            "Line": "1S02",
+            "LotNumber": "353225",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-8912P-10-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759338000000,
+            "WO": "25-8912P-10-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759352400000,
+            "HeatNumber": "A504641",
+            "Line": "1S02",
+            "LotNumber": "352066",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 2,
+            "ProgramName": "25-8912P-10-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759345200000,
+            "WO": "25-8912P-10-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759158000000,
+            "HeatNumber": "A2525640",
+            "Line": "1S01",
+            "LotNumber": "355691",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1234P-03-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759150800000,
+            "WO": "25-1234P-03-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759165200000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352067",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1111P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759158000000,
+            "WO": "25-1111P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759165200000,
+            "HeatNumber": "B504454",
+            "Line": "1S01",
+            "LotNumber": "353224",
+            "MaterialName": "PL 1/4 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1234P-03-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759158000000,
+            "WO": "25-1234P-03-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759172400000,
+            "HeatNumber": "A504641",
+            "Line": "1S02",
+            "LotNumber": "352066",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1234P-03-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759165200000,
+            "WO": "25-1234P-03-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759179600000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352066",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-3333P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759172400000,
+            "WO": "25-3333P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759179600000,
+            "HeatNumber": "A504641",
+            "Line": "1S02",
+            "LotNumber": "352067",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1234P-03-1S02_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759172400000,
+            "WO": "25-1234P-03-1S02"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759179600000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352068",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-1111P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759172400000,
+            "WO": "25-1111P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759244400000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352067",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-3333P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759237200000,
+            "WO": "25-3333P-10-1S01"
+          }
+        },
+        {
+          "data": {
+            "EndTs": 1759251600000,
+            "HeatNumber": "A504641",
+            "Line": "1S01",
+            "LotNumber": "352068",
+            "MaterialName": "PL 3/16 A572-65",
+            "Operation": "Plasma",
+            "Priority": 1,
+            "ProgramName": "25-3333P-10-1S01_Plasma",
+            "ProgramUrl": "https://globalprocessautomation.sharepoint.com/:b:/g/PMO/DIS-TRAN%20Steel/Eb3pMVlyYzhEkdPG91QvNogBMbBROPV_w-nmBY7XE8po1A?e\u003dy9JwLw",
+            "QtyDone": 0,
+            "QtyPlanned": 1,
+            "StartTs": 1759244400000,
+            "WO": "25-3333P-10-1S01"
+          }
+        }
+      ],
+      "UserDashboards": {
+        "LeftPanelWidgets": [
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Start Break",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 9,
+              "rowStart": 7
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#2E92FA",
+                "fg": "#ffffff",
+                "iconPath": "material/free_breakfast",
+                "label": "Start Break",
+                "messageHandler": "page:op.command",
+                "subLabel": "15 min"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Start Lunch",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 9,
+              "rowStart": 7
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#1EB980",
+                "fg": "#ffffff",
+                "iconPath": "material/restaurant",
+                "label": "Start Lunch",
+                "messageHandler": "page:op.command",
+                "subLabel": "30 min"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Supervisor",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#E5484D",
+                "fg": "#ffffff",
+                "iconPath": "material/supervisor_account",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Supervisor"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Quality",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#485568",
+                "fg": "#ffffff",
+                "iconPath": "material/fact_check",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Quality"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Maintenance",
+            "position": {
+              "columnEnd": 7,
+              "columnStart": 5,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#00A3C4",
+                "fg": "#ffffff",
+                "iconPath": "material/build",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Maintenance"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Job Information",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 11,
+              "rowStart": 9
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#485568",
+                "fg": "#ffffff",
+                "iconPath": "material/article",
+                "label": "Job Information",
+                "messageHandler": "page:op.command",
+                "subLabel": ""
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Logout",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 11,
+              "rowStart": 9
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#3B4556",
+                "fg": "#ffffff",
+                "iconPath": "material/exit_to_app",
+                "label": "Logout",
+                "messageHandler": "page:op.command",
+                "subLabel": ""
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Test",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 6,
+              "rowSpan": 3
+            },
+            "name": "Order Information",
+            "position": {
+              "columnEnd": 7,
+              "columnStart": 1,
+              "rowEnd": 5,
+              "rowStart": 1
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "EqPath": "GPA/Virginia/Mixing/Mixer 1",
+              "FontSize": "value",
+              "LineMode": "Auto",
+              "LineName": "Line Name",
+              "LineStatus": "Running",
+              "PlannedOrderDomId": "value",
+              "ProjEndOfOrderDomId": "value",
+              "StatusBorder": "#2f4a37",
+              "StatusColor": "#009900",
+              "StatusIcon": "material/directions_run"
+            },
+            "viewPath": "App/Widgets/Controls/LineControl"
+          }
+        ],
+        "RightPanelWidgets": [
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Start Break",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 9,
+              "rowStart": 7
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#2E92FA",
+                "fg": "#ffffff",
+                "iconPath": "material/free_breakfast",
+                "label": "Start Break",
+                "messageHandler": "page:op.command",
+                "subLabel": "15 min"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Start Lunch",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 9,
+              "rowStart": 7
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#1EB980",
+                "fg": "#ffffff",
+                "iconPath": "material/restaurant",
+                "label": "Start Lunch",
+                "messageHandler": "page:op.command",
+                "subLabel": "30 min"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Supervisor",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#E5484D",
+                "fg": "#ffffff",
+                "iconPath": "material/supervisor_account",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Supervisor"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Quality",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#485568",
+                "fg": "#ffffff",
+                "iconPath": "material/fact_check",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Quality"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Call For Help - Maintenance",
+            "position": {
+              "columnEnd": 7,
+              "columnStart": 5,
+              "rowEnd": 7,
+              "rowStart": 5
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#00A3C4",
+                "fg": "#ffffff",
+                "iconPath": "material/build",
+                "label": "Call For Help",
+                "messageHandler": "page:op.command",
+                "subLabel": "Maintenance"
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Job Information",
+            "position": {
+              "columnEnd": 5,
+              "columnStart": 3,
+              "rowEnd": 11,
+              "rowStart": 9
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#485568",
+                "fg": "#ffffff",
+                "iconPath": "material/article",
+                "label": "Job Information",
+                "messageHandler": "page:op.command",
+                "subLabel": ""
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Operator",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 4
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 2,
+              "rowSpan": 2
+            },
+            "name": "Logout",
+            "position": {
+              "columnEnd": 3,
+              "columnStart": 1,
+              "rowEnd": 11,
+              "rowStart": 9
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {
+              "inputs": {
+                "EqPath": "",
+                "bg": "#3B4556",
+                "fg": "#ffffff",
+                "iconPath": "material/exit_to_app",
+                "label": "Logout",
+                "messageHandler": "page:op.command",
+                "subLabel": ""
+              }
+            },
+            "viewPath": "App/Widgets/Controls/TileWidget"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Gauges",
+            "defaultSize": {
+              "columnSpan": 4,
+              "rowSpan": 2
+            },
+            "header": {
+              "enabled": false,
+              "style": {
+                "classes": ""
+              },
+              "title": ""
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 3,
+              "rowSpan": 2
+            },
+            "name": "OEE",
+            "position": {
+              "columnEnd": 7,
+              "columnStart": 1,
+              "rowEnd": 5,
+              "rowStart": 1
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {},
+            "viewPath": "App/Widgets/Gauges/AQP_Gauge"
+          },
+          {
+            "body": {
+              "style": {
+                "classes": ""
+              }
+            },
+            "category": "Gauges",
+            "defaultSize": {
+              "columnSpan": 3,
+              "rowSpan": 2
+            },
+            "header": {
+              "enabled": true,
+              "style": {
+                "classes": ""
+              },
+              "title": "Current VS Target Speed"
+            },
+            "isConfigurable": false,
+            "minSize": {
+              "columnSpan": 3,
+              "rowSpan": 2
+            },
+            "name": "Current vs Required Speed",
+            "position": {
+              "columnEnd": 7,
+              "columnStart": 1,
+              "rowEnd": 5,
+              "rowStart": 1
+            },
+            "style": {
+              "classes": ""
+            },
+            "viewParams": {},
+            "viewPath": "App/Widgets/Gauges/CurrentVsTarget"
+          }
+        ]
+      },
+      "lineState": {
+        "color": "",
+        "mode": "",
+        "status": ""
+      },
+      "productionData": [
+        {
+          "job": 59,
+          "metric": "TOTAL PROD.",
+          "shift": 59,
+          "toGo": 99941
+        },
+        {
+          "job": 59,
+          "metric": "GOOD PROD.",
+          "shift": 59,
+          "toGo": 99941
+        },
+        {
+          "job": 0,
+          "metric": "SCRAP PROD.",
+          "shift": 0,
+          "toGo": 0
+        },
+        {
+          "job": 0,
+          "metric": "PACKED PROD.",
+          "shift": 0,
+          "toGo": 100000
+        },
+        {
+          "job": 59,
+          "metric": "MACHINE CYCLES",
+          "shift": 59,
+          "toGo": 0
+        },
+        {
+          "job": 59,
+          "metric": "CYC. OUT-OF-SPEC",
+          "shift": 59,
+          "toGo": 0
+        },
+        {
+          "job": "00:05",
+          "metric": "RUN TIME",
+          "shift": "00:05",
+          "toGo": "343:48"
+        },
+        {
+          "job": "06:51",
+          "metric": "DOWN TIME",
+          "shift": "06:51",
+          "toGo": 0
+        },
+        {
+          "job": 0,
+          "metric": "DOWN COUNT",
+          "shift": 0,
+          "toGo": 0
+        }
+      ]
+    }
+  },
+  "params": {
+    "Line": ""
+  },
+  "propConfig": {
+    "custom.UserSettings": {
+      "persistent": true
+    },
+    "custom.inputs": {
+      "persistent": true
+    },
+    "params.Line": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1024,
+      "width": 1758
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Dashboard"
+                    },
+                    "propConfig": {
+                      "props.availableWidgets": {
+                        "binding": {
+                          "config": {
+                            "path": "view.custom.UserSettings.LeftPanelWidgets"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.widgets": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "path": "view.custom.UserSettings.LeftPanelWidgets"
+                          },
+                          "type": "property"
+                        }
+                      },
+                      "props.widgets[7].viewParams.LineName": {
+                        "binding": {
+                          "config": {
+                            "path": "view.params.Line"
+                          },
+                          "type": "property"
+                        }
+                      }
+                    },
+                    "props": {
+                      "pack": false,
+                      "stretch": {
+                        "columnCount": 6,
+                        "columnGutterSize": 8,
+                        "rowCount": 10,
+                        "rowGutterSize": 10
+                      }
+                    },
+                    "type": "ia.display.dashboard"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "SearchLabel"
+                            },
+                            "props": {
+                              "style": {
+                                "fontWeight": "600"
+                              },
+                              "text": "Search by Lot #"
+                            },
+                            "type": "ia.display.label"
+                          },
+                          {
+                            "meta": {
+                              "name": "Search"
+                            },
+                            "position": {
+                              "basis": "57%"
+                            },
+                            "propConfig": {
+                              "props.text": {
+                                "persistent": false
+                              }
+                            },
+                            "props": {
+                              "deferUpdates": false,
+                              "placeholder": "e.g. 356123",
+                              "spellcheck": false,
+                              "style": {
+                                "marginBottom": 4,
+                                "marginTop": 4
+                              }
+                            },
+                            "type": "ia.input.text-field"
+                          }
+                        ],
+                        "meta": {
+                          "name": "SearchRow"
+                        },
+                        "position": {
+                          "basis": "10%"
+                        },
+                        "props": {
+                          "style": {
+                            "gap": "10px",
+                            "marginBottom": "8px",
+                            "overflow": "hidden",
+                            "paddingLeft": "2%"
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      },
+                      {
+                        "children": [
+                          {
+                            "meta": {
+                              "name": "Repeater"
+                            },
+                            "position": {
+                              "grow": 1
+                            },
+                            "propConfig": {
+                              "props.instances": {
+                                "binding": {
+                                  "config": {
+                                    "path": "view.custom.inputs.FilterWorkOrders"
+                                  },
+                                  "type": "property"
+                                }
+                              }
+                            },
+                            "props": {
+                              "elementPosition": {
+                                "basis": "100%",
+                                "grow": 0
+                              },
+                              "loading": {
+                                "order": "with-parent"
+                              },
+                              "path": "DisTran/Widgets/Operator/FlexRepeater/test",
+                              "style": {
+                                "gap": "3%",
+                                "paddingLeft": "2%",
+                                "paddingRight": "2%"
+                              },
+                              "useDefaultViewHeight": false,
+                              "useDefaultViewParams": true,
+                              "useDefaultViewWidth": false,
+                              "wrap": "wrap"
+                            },
+                            "type": "ia.display.flex-repeater"
+                          }
+                        ],
+                        "meta": {
+                          "name": "FlexContainer"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "props": {
+                          "direction": "column",
+                          "style": {
+                            "minHeight": 0
+                          }
+                        },
+                        "type": "ia.container.flex"
+                      }
+                    ],
+                    "meta": {
+                      "name": "Schedule"
+                    },
+                    "position": {
+                      "tabIndex": 1
+                    },
+                    "props": {
+                      "direction": "column"
+                    },
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "meta": {
+                  "name": "TabContainer"
+                },
+                "position": {
+                  "basis": "100%",
+                  "grow": 1
+                },
+                "props": {
+                  "contentStyle": {
+                    "backgroundColor": "transparent"
+                  },
+                  "menuType": "modern",
+                  "style": {
+                    "border": "1px solid rgba(255,255,255,0.14)",
+                    "borderRadius": "12px",
+                    "boxShadow": "0 0 0 1px rgba(0,0,0,0.25) inset",
+                    "overflow": "hidden"
+                  },
+                  "tabSize": {
+                    "height": 30,
+                    "width": 350
+                  },
+                  "tabs": [
+                    "Prodcution",
+                    "Schedule"
+                  ]
+                },
+                "type": "ia.container.tab"
+              }
+            ],
+            "meta": {
+              "name": "LeftPanel"
+            },
+            "position": {
+              "basis": "40%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "gap": "8px",
+                "height": "100%",
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Dashboard"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.availableWidgets": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.UserSettings.RightPanelWidgets"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "fixed": {
+                    "columnCount": 5
+                  },
+                  "stretch": {
+                    "columnCount": 10,
+                    "columnGutterSize": 10,
+                    "rowCount": 10,
+                    "rowGutterSize": 10
+                  },
+                  "widgets": [
+                    {
+                      "body": {
+                        "style": {
+                          "classes": ""
+                        }
+                      },
+                      "header": {
+                        "enabled": false,
+                        "style": {
+                          "classes": ""
+                        },
+                        "title": ""
+                      },
+                      "isConfigurable": false,
+                      "minSize": {
+                        "columnSpan": 3,
+                        "rowSpan": 2
+                      },
+                      "name": "OEE",
+                      "position": {
+                        "columnEnd": 11,
+                        "columnStart": 1,
+                        "rowEnd": 4,
+                        "rowStart": 1
+                      },
+                      "style": {
+                        "classes": ""
+                      },
+                      "viewParams": {
+                        "BadThreshold": 60,
+                        "EqPath": "",
+                        "ErrorColor": "#E53935",
+                        "FontSize": 18,
+                        "GoodColor": "#4AA3FF",
+                        "Thickness": 14,
+                        "WarnColor": "#FFC107",
+                        "WarnThreshold": 75
+                      },
+                      "viewPath": "App/Widgets/Gauges/AQP_Gauge"
+                    }
+                  ]
+                },
+                "type": "ia.display.dashboard"
+              }
+            ],
+            "meta": {
+              "name": "RightPanel"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "alignContent": "flex-start",
+                "border": "1px solid rgba(255,255,255,0.14)",
+                "borderRadius": "8px",
+                "height": "100%",
+                "minHeight": "0",
+                "minWidth": "0",
+                "overflowY": "auto"
+              },
+              "wrap": "wrap"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "style": {
+            "gap": "12px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "10px",
+        "height": "100%",
+        "padding": "12px",
+        "width": "100%"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

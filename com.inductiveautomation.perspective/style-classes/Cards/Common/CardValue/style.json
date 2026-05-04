@@ -1,0 +1,19 @@
+{
+  "base": {
+    "style": {
+      "borderTopLeftRadius": "0.25rem",
+      "borderTopRightRadius": "0.25rem",
+      "borderBottomLeftRadius": "0.25rem",
+      "borderBottomRightRadius": "0.25rem",
+      "color": "var(--neutral-100)",
+      "fontFamily": "Roboto",
+      "fontSize": "small",
+      "fontWeight": "bold",
+      "padding": "0.125rem",
+      "paddingLeft": "0.25rem",
+      "paddingRight": "0.25rem",
+      "textAlign": "center",
+      "textTransform": "uppercase"
+    }
+  }
+}

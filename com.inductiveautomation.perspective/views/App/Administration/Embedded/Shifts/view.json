@@ -1,0 +1,1338 @@
+{
+  "custom": {
+    "sourceData": {
+      "assignments": [
+        {
+          "CalendarKey": "CAL-STD",
+          "EffectiveFrom": "2025-10-01",
+          "EffectiveTo": "",
+          "ResourceId": "WC:Main:Line-1:Press-1",
+          "ShiftKey": "D1"
+        },
+        {
+          "CalendarKey": "CAL-STD",
+          "EffectiveFrom": "2025-10-01",
+          "EffectiveTo": "",
+          "ResourceId": "WC:Main:Line-1:Press-1",
+          "ShiftKey": "A2"
+        },
+        {
+          "CalendarKey": "CAL-STD",
+          "EffectiveFrom": "2025-10-01",
+          "EffectiveTo": "",
+          "ResourceId": "WC:Main:Line-1:Assembler-2",
+          "ShiftKey": "D1"
+        },
+        {
+          "CalendarKey": "CAL-AUX",
+          "EffectiveFrom": "2025-10-01",
+          "EffectiveTo": "",
+          "ResourceId": "WC:Aux:WH2:Packer-1",
+          "ShiftKey": "WKND"
+        },
+        {
+          "CalendarKey": "CAL-STD",
+          "EffectiveFrom": "2025-10-10",
+          "EffectiveTo": "",
+          "ResourceId": "AREA:Main:Line-1",
+          "ShiftKey": "N3"
+        }
+      ],
+      "calendars": [
+        {
+          "CalendarKey": "CAL-STD",
+          "Description": "Default working calendar",
+          "EffectiveFrom": "2025-01-01",
+          "EffectiveTo": "",
+          "Name": "Standard Plant Calendar",
+          "Timezone": "America/New_York"
+        },
+        {
+          "CalendarKey": "CAL-AUX",
+          "Description": "Aux warehouse calendar",
+          "EffectiveFrom": "2025-01-01",
+          "EffectiveTo": "",
+          "Name": "Aux Site Calendar",
+          "Timezone": "America/New_York"
+        }
+      ],
+      "exceptions": [
+        {
+          "CalendarKey": "CAL-STD",
+          "Date": "2025-11-27",
+          "Description": "Thanksgiving (US)",
+          "End": "23:59",
+          "Start": "00:00",
+          "Type": "Holiday"
+        },
+        {
+          "CalendarKey": "CAL-STD",
+          "Date": "2025-12-25",
+          "Description": "Christmas Day",
+          "End": "23:59",
+          "Start": "00:00",
+          "Type": "Holiday"
+        },
+        {
+          "CalendarKey": "CAL-AUX",
+          "Date": "2025-10-20",
+          "Description": "Dock door service",
+          "End": "12:00",
+          "Start": "08:00",
+          "Type": "Maintenance"
+        }
+      ],
+      "previewWeek": [
+        {
+          "Fri": "D1 06:00-14:30",
+          "Mon": "D1 06:00-14:30",
+          "Resource": "Press-1",
+          "ResourceId": "WC:Main:Line-1:Press-1",
+          "Sat": "",
+          "Sun": "",
+          "Thu": "A2 14:00-22:00",
+          "Tue": "D1 06:00-14:30",
+          "Wed": "A2 14:00-22:00"
+        },
+        {
+          "Fri": "D1",
+          "Mon": "D1",
+          "Resource": "Assembler-2",
+          "ResourceId": "WC:Main:Line-1:Assembler-2",
+          "Sat": "",
+          "Sun": "",
+          "Thu": "D1",
+          "Tue": "D1",
+          "Wed": "D1"
+        },
+        {
+          "Fri": "",
+          "Mon": "N3 22:00-06:00",
+          "Resource": "Area Line-1",
+          "ResourceId": "AREA:Main:Line-1",
+          "Sat": "",
+          "Sun": "",
+          "Thu": "N3 22:00-06:00",
+          "Tue": "N3 22:00-06:00",
+          "Wed": "N3 22:00-06:00"
+        },
+        {
+          "Fri": "",
+          "Mon": "",
+          "Resource": "Packer-1",
+          "ResourceId": "WC:Aux:WH2:Packer-1",
+          "Sat": "WKND 06:00-18:00",
+          "Sun": "WKND 06:00-18:00",
+          "Thu": "",
+          "Tue": "",
+          "Wed": ""
+        }
+      ],
+      "resources": [
+        {
+          "Area": "",
+          "DisplayName": "Site - Main",
+          "IsActive": true,
+          "ResourceId": "SITE:Main",
+          "Site": "Main",
+          "Type": "Site",
+          "Workcenter": ""
+        },
+        {
+          "Area": "WH1",
+          "DisplayName": "Area - Main / WH1",
+          "IsActive": true,
+          "ResourceId": "AREA:Main:WH1",
+          "Site": "Main",
+          "Type": "Area",
+          "Workcenter": ""
+        },
+        {
+          "Area": "Line-1",
+          "DisplayName": "Area - Main / Line-1",
+          "IsActive": true,
+          "ResourceId": "AREA:Main:Line-1",
+          "Site": "Main",
+          "Type": "Area",
+          "Workcenter": ""
+        },
+        {
+          "Area": "Line-1",
+          "DisplayName": "WC - Press-1",
+          "IsActive": true,
+          "ResourceId": "WC:Main:Line-1:Press-1",
+          "Site": "Main",
+          "Type": "Workcenter",
+          "Workcenter": "Press-1"
+        },
+        {
+          "Area": "Line-1",
+          "DisplayName": "WC - Assembler-2",
+          "IsActive": true,
+          "ResourceId": "WC:Main:Line-1:Assembler-2",
+          "Site": "Main",
+          "Type": "Workcenter",
+          "Workcenter": "Assembler-2"
+        },
+        {
+          "Area": "WH2",
+          "DisplayName": "Area - Aux / WH2",
+          "IsActive": true,
+          "ResourceId": "AREA:Aux:WH2",
+          "Site": "Aux",
+          "Type": "Area",
+          "Workcenter": ""
+        },
+        {
+          "Area": "WH2",
+          "DisplayName": "WC - Packer-1",
+          "IsActive": true,
+          "ResourceId": "WC:Aux:WH2:Packer-1",
+          "Site": "Aux",
+          "Type": "Workcenter",
+          "Workcenter": "Packer-1"
+        }
+      ],
+      "shiftPatterns": [
+        {
+          "BreakMin": 30,
+          "Color": "#E3F2FD",
+          "Days": "Mon-Fri",
+          "End": "14:30",
+          "Name": "Day Shift",
+          "Notes": "",
+          "Overnight": false,
+          "PaidBreakMin": 15,
+          "ShiftKey": "D1",
+          "Start": "06:00"
+        },
+        {
+          "BreakMin": 30,
+          "Color": "#E8F5E9",
+          "Days": "Mon-Fri",
+          "End": "22:00",
+          "Name": "Afternoon",
+          "Notes": "",
+          "Overnight": false,
+          "PaidBreakMin": 15,
+          "ShiftKey": "A2",
+          "Start": "14:00"
+        },
+        {
+          "BreakMin": 40,
+          "Color": "#F3E5F5",
+          "Days": "Sun-Thu",
+          "End": "06:00",
+          "Name": "Night",
+          "Notes": "Overnight crosses midnight",
+          "Overnight": true,
+          "PaidBreakMin": 20,
+          "ShiftKey": "N3",
+          "Start": "22:00"
+        },
+        {
+          "BreakMin": 60,
+          "Color": "#FFF3E0",
+          "Days": "Sat-Sun",
+          "End": "18:00",
+          "Name": "Weekend 12s",
+          "Notes": "",
+          "Overnight": false,
+          "PaidBreakMin": 30,
+          "ShiftKey": "WKND",
+          "Start": "06:00"
+        }
+      ]
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.sourceData": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 820,
+      "width": 1360
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontSize": "20px",
+                "fontWeight": "600"
+              },
+              "text": "Shift Manager (Workcenters \u0026 Areas)"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SearchResources"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "props": {
+                  "placeholder": "Search resources…"
+                },
+                "type": "ia.input.text-field"
+              },
+              {
+                "meta": {
+                  "name": "FilterType"
+                },
+                "position": {
+                  "basis": "220px"
+                },
+                "props": {
+                  "options": [
+                    {
+                      "label": "All",
+                      "value": ""
+                    },
+                    {
+                      "label": "Site",
+                      "value": "Site"
+                    },
+                    {
+                      "label": "Area",
+                      "value": "Area"
+                    },
+                    {
+                      "label": "Workcenter",
+                      "value": "Workcenter"
+                    }
+                  ],
+                  "placeholder": "Resource type"
+                },
+                "type": "ia.input.dropdown"
+              },
+              {
+                "meta": {
+                  "name": "BtnNewPattern"
+                },
+                "props": {
+                  "icon": "material/add",
+                  "text": "New Shift Pattern"
+                },
+                "type": "ia.input.button"
+              },
+              {
+                "meta": {
+                  "name": "BtnSave"
+                },
+                "props": {
+                  "icon": "material/save",
+                  "style": {
+                    "backgroundColor": "#2f7d32",
+                    "color": "#ffffff"
+                  },
+                  "text": "Save"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "HeaderControls"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "alignItems": "center",
+              "justify": "end",
+              "style": {
+                "gap": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "classes": "card",
+            "gap": "8px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ResourcesLabel"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "16px",
+                    "fontWeight": "600"
+                  },
+                  "text": "Resources (Sites / Areas / Workcenters)"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "ResourcesTable"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "columns": [
+                    {
+                      "field": "Type",
+                      "header": {
+                        "title": "Type"
+                      },
+                      "sortable": true,
+                      "width": "120px"
+                    },
+                    {
+                      "field": "Site",
+                      "header": {
+                        "title": "Site"
+                      },
+                      "sortable": true,
+                      "width": "120px"
+                    },
+                    {
+                      "field": "Area",
+                      "header": {
+                        "title": "Area"
+                      },
+                      "sortable": true,
+                      "width": "150px"
+                    },
+                    {
+                      "field": "Workcenter",
+                      "header": {
+                        "title": "Workcenter"
+                      },
+                      "sortable": true,
+                      "width": "160px"
+                    },
+                    {
+                      "editable": true,
+                      "field": "DisplayName",
+                      "header": {
+                        "title": "Display Name"
+                      },
+                      "width": "flex"
+                    },
+                    {
+                      "align": "center",
+                      "boolean": "checkbox",
+                      "editable": true,
+                      "field": "IsActive",
+                      "header": {
+                        "title": "Active"
+                      },
+                      "width": "100px"
+                    }
+                  ],
+                  "data": [
+                    {
+                      "Area": "",
+                      "DisplayName": "Site - Main",
+                      "IsActive": true,
+                      "ResourceId": "SITE:Main",
+                      "Site": "Main",
+                      "Type": "Site",
+                      "Workcenter": ""
+                    },
+                    {
+                      "Area": "WH1",
+                      "DisplayName": "Area - Main / WH1",
+                      "IsActive": true,
+                      "ResourceId": "AREA:Main:WH1",
+                      "Site": "Main",
+                      "Type": "Area",
+                      "Workcenter": ""
+                    },
+                    {
+                      "Area": "Line-1",
+                      "DisplayName": "Area - Main / Line-1",
+                      "IsActive": true,
+                      "ResourceId": "AREA:Main:Line-1",
+                      "Site": "Main",
+                      "Type": "Area",
+                      "Workcenter": ""
+                    },
+                    {
+                      "Area": "Line-1",
+                      "DisplayName": "WC - Press-1",
+                      "IsActive": true,
+                      "ResourceId": "WC:Main:Line-1:Press-1",
+                      "Site": "Main",
+                      "Type": "Workcenter",
+                      "Workcenter": "Press-1"
+                    },
+                    {
+                      "Area": "Line-1",
+                      "DisplayName": "WC - Assembler-2",
+                      "IsActive": true,
+                      "ResourceId": "WC:Main:Line-1:Assembler-2",
+                      "Site": "Main",
+                      "Type": "Workcenter",
+                      "Workcenter": "Assembler-2"
+                    },
+                    {
+                      "Area": "WH2",
+                      "DisplayName": "Area - Aux / WH2",
+                      "IsActive": true,
+                      "ResourceId": "AREA:Aux:WH2",
+                      "Site": "Aux",
+                      "Type": "Area",
+                      "Workcenter": ""
+                    },
+                    {
+                      "Area": "WH2",
+                      "DisplayName": "WC - Packer-1",
+                      "IsActive": true,
+                      "ResourceId": "WC:Aux:WH2:Packer-1",
+                      "Site": "Aux",
+                      "Type": "Workcenter",
+                      "Workcenter": "Packer-1"
+                    }
+                  ],
+                  "filter": {
+                    "enabled": true
+                  },
+                  "selection": {
+                    "data": [
+                      {
+                        "Area": "",
+                        "DisplayName": "Site - Main",
+                        "IsActive": true,
+                        "Site": "Main",
+                        "Type": "Site",
+                        "Workcenter": ""
+                      }
+                    ],
+                    "selectedColumn": "Site",
+                    "selectedRow": 0
+                  }
+                },
+                "type": "ia.display.table"
+              }
+            ],
+            "meta": {
+              "name": "LeftPane"
+            },
+            "position": {
+              "basis": "42%"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "6px",
+                "classes": "card",
+                "gap": "8px",
+                "padding": "8px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "PatternsLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Shift Patterns"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "PatternsTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "field": "ShiftKey",
+                          "header": {
+                            "title": "Key"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Name",
+                          "header": {
+                            "title": "Name"
+                          },
+                          "width": "200px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Start",
+                          "header": {
+                            "title": "Start"
+                          },
+                          "width": "110px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "End",
+                          "header": {
+                            "title": "End"
+                          },
+                          "width": "110px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "BreakMin",
+                          "header": {
+                            "title": "Break (min)"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0",
+                          "width": "130px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "PaidBreakMin",
+                          "header": {
+                            "title": "Paid (min)"
+                          },
+                          "number": "value",
+                          "numberFormat": "0,0",
+                          "width": "130px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Days",
+                          "header": {
+                            "title": "Days"
+                          },
+                          "width": "160px"
+                        },
+                        {
+                          "align": "center",
+                          "boolean": "checkbox",
+                          "editable": true,
+                          "field": "Overnight",
+                          "header": {
+                            "title": "Overnight"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Color",
+                          "header": {
+                            "title": "Color"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Notes",
+                          "header": {
+                            "title": "Notes"
+                          },
+                          "width": "flex"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "BreakMin": 30,
+                          "Color": "#E3F2FD",
+                          "Days": "Mon-Fri",
+                          "End": "14:30",
+                          "Name": "Day Shift",
+                          "Notes": "",
+                          "Overnight": false,
+                          "PaidBreakMin": 15,
+                          "ShiftKey": "D1",
+                          "Start": "06:00"
+                        },
+                        {
+                          "BreakMin": 30,
+                          "Color": "#E8F5E9",
+                          "Days": "Mon-Fri",
+                          "End": "22:00",
+                          "Name": "Afternoon",
+                          "Notes": "",
+                          "Overnight": false,
+                          "PaidBreakMin": 15,
+                          "ShiftKey": "A2",
+                          "Start": "14:00"
+                        },
+                        {
+                          "BreakMin": 40,
+                          "Color": "#F3E5F5",
+                          "Days": "Sun-Thu",
+                          "End": "06:00",
+                          "Name": "Night",
+                          "Notes": "Overnight crosses midnight",
+                          "Overnight": true,
+                          "PaidBreakMin": 20,
+                          "ShiftKey": "N3",
+                          "Start": "22:00"
+                        },
+                        {
+                          "BreakMin": 60,
+                          "Color": "#FFF3E0",
+                          "Days": "Sat-Sun",
+                          "End": "18:00",
+                          "Name": "Weekend 12s",
+                          "Notes": "",
+                          "Overnight": false,
+                          "PaidBreakMin": 30,
+                          "ShiftKey": "WKND",
+                          "Start": "06:00"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "data": [
+                          {
+                            "BreakMin": 60,
+                            "Color": "#FFF3E0",
+                            "Days": "Sat-Sun",
+                            "End": "18:00",
+                            "Name": "Weekend 12s",
+                            "Notes": "",
+                            "Overnight": false,
+                            "PaidBreakMin": 30,
+                            "ShiftKey": "WKND",
+                            "Start": "06:00"
+                          }
+                        ],
+                        "selectedColumn": "ShiftKey",
+                        "selectedRow": 3
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "TabPatterns"
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "CalendarsLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Calendars"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "CalendarsTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "field": "CalendarKey",
+                          "header": {
+                            "title": "Key"
+                          },
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Name",
+                          "header": {
+                            "title": "Name"
+                          },
+                          "width": "240px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveFrom",
+                          "header": {
+                            "title": "Effective From"
+                          },
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveTo",
+                          "header": {
+                            "title": "Effective To"
+                          },
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Timezone",
+                          "header": {
+                            "title": "Timezone"
+                          },
+                          "width": "220px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Description",
+                          "header": {
+                            "title": "Description"
+                          },
+                          "width": "flex"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "Description": "Default working calendar",
+                          "EffectiveFrom": "2025-01-01",
+                          "EffectiveTo": "",
+                          "Name": "Standard Plant Calendar",
+                          "Timezone": "America/New_York"
+                        },
+                        {
+                          "CalendarKey": "CAL-AUX",
+                          "Description": "Aux warehouse calendar",
+                          "EffectiveFrom": "2025-01-01",
+                          "EffectiveTo": "",
+                          "Name": "Aux Site Calendar",
+                          "Timezone": "America/New_York"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "enabled": true
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "TabCalendars"
+                },
+                "position": {
+                  "tabIndex": 1
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "ExceptionsLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Exceptions (Holidays, Maintenance, One-offs)"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "ExceptionsTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "editable": true,
+                          "field": "CalendarKey",
+                          "header": {
+                            "title": "Calendar"
+                          },
+                          "width": "180px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Date",
+                          "header": {
+                            "title": "Date"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Type",
+                          "header": {
+                            "title": "Type"
+                          },
+                          "width": "160px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Start",
+                          "header": {
+                            "title": "Start"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "End",
+                          "header": {
+                            "title": "End"
+                          },
+                          "width": "120px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "Description",
+                          "header": {
+                            "title": "Description"
+                          },
+                          "width": "flex"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "Date": "2025-11-27",
+                          "Description": "Thanksgiving (US)",
+                          "End": "23:59",
+                          "Start": "00:00",
+                          "Type": "Holiday"
+                        },
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "Date": "2025-12-25",
+                          "Description": "Christmas Day",
+                          "End": "23:59",
+                          "Start": "00:00",
+                          "Type": "Holiday"
+                        },
+                        {
+                          "CalendarKey": "CAL-AUX",
+                          "Date": "2025-10-20",
+                          "Description": "Dock door service",
+                          "End": "12:00",
+                          "Start": "08:00",
+                          "Type": "Maintenance"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "TabExceptions"
+                },
+                "position": {
+                  "tabIndex": 2
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "AssignmentsLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Assignments (Resource → Shift Pattern [+ Calendar])"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "AssignmentsTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "field": "ResourceId",
+                          "header": {
+                            "title": "Resource Id"
+                          },
+                          "width": "300px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "CalendarKey",
+                          "header": {
+                            "title": "Calendar"
+                          },
+                          "width": "180px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "ShiftKey",
+                          "header": {
+                            "title": "Shift"
+                          },
+                          "width": "140px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveFrom",
+                          "header": {
+                            "title": "From"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "editable": true,
+                          "field": "EffectiveTo",
+                          "header": {
+                            "title": "To"
+                          },
+                          "width": "150px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "EffectiveFrom": "2025-10-01",
+                          "EffectiveTo": "",
+                          "ResourceId": "WC:Main:Line-1:Press-1",
+                          "ShiftKey": "D1"
+                        },
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "EffectiveFrom": "2025-10-01",
+                          "EffectiveTo": "",
+                          "ResourceId": "WC:Main:Line-1:Press-1",
+                          "ShiftKey": "A2"
+                        },
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "EffectiveFrom": "2025-10-01",
+                          "EffectiveTo": "",
+                          "ResourceId": "WC:Main:Line-1:Assembler-2",
+                          "ShiftKey": "D1"
+                        },
+                        {
+                          "CalendarKey": "CAL-AUX",
+                          "EffectiveFrom": "2025-10-01",
+                          "EffectiveTo": "",
+                          "ResourceId": "WC:Aux:WH2:Packer-1",
+                          "ShiftKey": "WKND"
+                        },
+                        {
+                          "CalendarKey": "CAL-STD",
+                          "EffectiveFrom": "2025-10-10",
+                          "EffectiveTo": "",
+                          "ResourceId": "AREA:Main:Line-1",
+                          "ShiftKey": "N3"
+                        }
+                      ],
+                      "filter": {
+                        "enabled": true
+                      },
+                      "selection": {
+                        "enabled": true
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "TabAssignments"
+                },
+                "position": {
+                  "tabIndex": 3
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "PreviewLabel"
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "16px",
+                        "fontWeight": "600"
+                      },
+                      "text": "Preview (Sample Week)"
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "PreviewTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "props": {
+                      "columns": [
+                        {
+                          "field": "Resource",
+                          "header": {
+                            "title": "Resource"
+                          },
+                          "width": "220px"
+                        },
+                        {
+                          "field": "Mon",
+                          "header": {
+                            "title": "Mon"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Tue",
+                          "header": {
+                            "title": "Tue"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Wed",
+                          "header": {
+                            "title": "Wed"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Thu",
+                          "header": {
+                            "title": "Thu"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Fri",
+                          "header": {
+                            "title": "Fri"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Sat",
+                          "header": {
+                            "title": "Sat"
+                          },
+                          "width": "150px"
+                        },
+                        {
+                          "field": "Sun",
+                          "header": {
+                            "title": "Sun"
+                          },
+                          "width": "150px"
+                        }
+                      ],
+                      "data": [
+                        {
+                          "Fri": "D1 06:00-14:30",
+                          "Mon": "D1 06:00-14:30",
+                          "Resource": "Press-1",
+                          "ResourceId": "WC:Main:Line-1:Press-1",
+                          "Sat": "",
+                          "Sun": "",
+                          "Thu": "A2 14:00-22:00",
+                          "Tue": "D1 06:00-14:30",
+                          "Wed": "A2 14:00-22:00"
+                        },
+                        {
+                          "Fri": "D1",
+                          "Mon": "D1",
+                          "Resource": "Assembler-2",
+                          "ResourceId": "WC:Main:Line-1:Assembler-2",
+                          "Sat": "",
+                          "Sun": "",
+                          "Thu": "D1",
+                          "Tue": "D1",
+                          "Wed": "D1"
+                        },
+                        {
+                          "Fri": "",
+                          "Mon": "N3 22:00-06:00",
+                          "Resource": "Area Line-1",
+                          "ResourceId": "AREA:Main:Line-1",
+                          "Sat": "",
+                          "Sun": "",
+                          "Thu": "N3 22:00-06:00",
+                          "Tue": "N3 22:00-06:00",
+                          "Wed": "N3 22:00-06:00"
+                        },
+                        {
+                          "Fri": "",
+                          "Mon": "",
+                          "Resource": "Packer-1",
+                          "ResourceId": "WC:Aux:WH2:Packer-1",
+                          "Sat": "WKND 06:00-18:00",
+                          "Sun": "WKND 06:00-18:00",
+                          "Thu": "",
+                          "Tue": "",
+                          "Wed": ""
+                        }
+                      ],
+                      "selection": {
+                        "data": [
+                          {
+                            "Fri": "D1",
+                            "Mon": "D1",
+                            "Resource": "Assembler-2",
+                            "Sat": "",
+                            "Sun": "",
+                            "Thu": "D1",
+                            "Tue": "D1",
+                            "Wed": "D1"
+                          }
+                        ],
+                        "selectedColumn": "Thu",
+                        "selectedRow": 1
+                      }
+                    },
+                    "type": "ia.display.table"
+                  }
+                ],
+                "meta": {
+                  "name": "TabPreview"
+                },
+                "position": {
+                  "tabIndex": 4
+                },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "gap": "8px",
+                    "padding": "8px"
+                  }
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "RightTabs"
+            },
+            "position": {
+              "basis": "58%",
+              "grow": 1
+            },
+            "props": {
+              "menuType": "modern",
+              "style": {
+                "border": "1px solid var(--neutral-40)",
+                "borderRadius": "6px",
+                "overflow": "hidden"
+              },
+              "tabs": [
+                "Shift Patterns",
+                "Calendars",
+                "Exceptions",
+                "Assignments",
+                "Preview (Sample)"
+              ]
+            },
+            "type": "ia.container.tab"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "gap": "8px",
+            "height": "100%"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "gap": "8px",
+        "padding": "8px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

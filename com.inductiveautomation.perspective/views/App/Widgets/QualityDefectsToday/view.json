@@ -1,0 +1,104 @@
+{
+  "custom": {},
+  "params": {
+    "DefectData": [
+      {
+        "Count": 6,
+        "Defect": "Undercut"
+      },
+      {
+        "Count": 4,
+        "Defect": "Porosity"
+      },
+      {
+        "Count": 3,
+        "Defect": "High-Low"
+      },
+      {
+        "Count": 2,
+        "Defect": "Twist Out of Tol"
+      }
+    ]
+  },
+  "propConfig": {
+    "params.DefectData": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 329,
+      "width": 420
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "props": {
+          "style": {
+            "fontWeight": "600"
+          },
+          "text": "Quality Defects (Today)"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Table"
+        },
+        "position": {
+          "basis": "264px"
+        },
+        "propConfig": {
+          "props.data": {
+            "binding": {
+              "config": {
+                "path": "view.params.DefectData"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "columns": [
+            {
+              "field": "Defect",
+              "header": {
+                "title": "Defect"
+              },
+              "width": "flex"
+            },
+            {
+              "field": "Count",
+              "header": {
+                "title": "Count"
+              },
+              "number": "value",
+              "numberFormat": "0,0",
+              "width": "120px"
+            }
+          ]
+        },
+        "type": "ia.display.table"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-40)",
+        "borderRadius": "10px",
+        "classes": "card",
+        "gap": "8px",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

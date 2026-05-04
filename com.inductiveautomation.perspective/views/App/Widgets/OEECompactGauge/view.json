@@ -1,0 +1,233 @@
+{
+  "custom": {},
+  "params": {
+    "A": 82,
+    "OEE": 74,
+    "P": 90,
+    "Q": 100
+  },
+  "propConfig": {
+    "params.A": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.OEE": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.P": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.Q": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "props": {
+          "style": {
+            "fontWeight": "600"
+          },
+          "text": "OEE"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Gauge"
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.OEE"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "height": "120px",
+            "width": "120px"
+          },
+          "type": "circular"
+        },
+        "type": "ia.display.progress"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ALbl"
+                },
+                "props": {
+                  "style": {
+                    "opacity": 0.7
+                  },
+                  "text": "A"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "AVal"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.A"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ACol"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "alignItems": "center",
+                "gap": "2px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "PLbl"
+                },
+                "props": {
+                  "style": {
+                    "opacity": 0.7
+                  },
+                  "text": "P"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "PVal"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.P"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "PCol"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "alignItems": "center",
+                "gap": "2px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "QLbl"
+                },
+                "props": {
+                  "style": {
+                    "opacity": 0.7
+                  },
+                  "text": "Q"
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "QVal"
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.Q"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "QCol"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "alignItems": "center",
+                "gap": "2px",
+                "overflow": "hidden"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "APQ"
+        },
+        "props": {
+          "style": {
+            "gap": "16px",
+            "overflow": "hidden"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "direction": "column",
+      "style": {
+        "border": "1px solid var(--neutral-40)",
+        "borderRadius": "10px",
+        "classes": "card",
+        "gap": "8px",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

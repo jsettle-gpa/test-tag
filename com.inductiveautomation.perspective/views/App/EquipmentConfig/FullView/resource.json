@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "The main view for the asset configuration page that allows users to configure the various settings for each asset.\n\nInput Data:\n-custom.config.productionModel\n\nOutput Data:\n-Add cell/group, duplicate, delete assets from the tree             selection\n\nCustom Properties:\n-config.productionModel: unformatted data for the tree\n-data.formattedTree: formatted data for the tree (accounts for last expanded state and filter)\n-data.expandedTree: populated from tree items property change script, stores the last expanded state here\n-data.filter: stores the user entered filter\n-data.refresh: refreshes config.productionModel (and its dependencies)\n-data.tabs: the tabs for the Asset Settings card\n-data.filterChanged: triggers when filter is entered or cleared (prevents errors due to mismatched last expanded state and new data)",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2025-10-29T12:24:18Z"
+    },
+    "lastModificationSignature": "3a169955cc4eef6369aa5edb36996931e6a7b10dc4641a000526ae8af962fc86"
+  }
+}
