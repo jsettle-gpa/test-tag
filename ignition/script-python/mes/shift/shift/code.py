@@ -111,7 +111,7 @@ def _upsertShiftInstances(resolvedShifts):
 	""".format(", ".join(["(?, ?, ?)" for _ in candidates]))
 
 	insertParams = [val for row in candidates for val in row]
-	system.db.runPrepUpdate(insertQuery, insertParams, "MES")
+	system.db.runPrepUpdate(insertQuery, insertParams, "db")
 
 	placeholders = ", ".join(["?" for _ in candidates])
 	assignmentIds = [row[0] for row in candidates]
@@ -127,7 +127,7 @@ def _upsertShiftInstances(resolvedShifts):
 		AND is_deleted = 0
 	""".format(placeholders)
 
-	data = system.db.runPrepQuery(selectQuery, assignmentIds, "MES")
+	data = system.db.runPrepQuery(selectQuery, assignmentIds, "db")
 	rows = system.dataset.toPyDataSet(data)
 
 	startTimeSet = set(startTimes)

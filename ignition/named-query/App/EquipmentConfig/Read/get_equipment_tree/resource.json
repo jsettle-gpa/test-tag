@@ -16,7 +16,7 @@
     "enabled": true,
     "cacheAmount": 1,
     "cacheEnabled": false,
-    "database": "MES",
+    "database": "db",
     "fallbackEnabled": false,
     "lastModificationSignature": "2e0d753cb57dff53e83565c471af9481a5145e36fc413e91d3d3483bf416c789",
     "permissions": [
