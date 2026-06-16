@@ -4,7 +4,7 @@ def doGet(request, session):
 	path = params.get('path', '')
 
 	if not path:
-		return {'json': {'error': 'path parameter required', 'example': '/getUdtTypes?path=[MES]_types_/MES/Config'}}
+		return {'json': {'error': 'path parameter required', 'example': '/getUdtTypes?path=[tag]_types_/MES/Config'}}
 
 	try:
 		# Get the UDT configuration

@@ -89,7 +89,7 @@
                     "fallbackDelay": 2.5,
                     "mode": "indirect",
                     "references": {},
-                    "tagPath": "[mes]global/equipment_type"
+                    "tagPath": "[tag]global/equipment_type"
                   },
                   "transforms": [
                     {
@@ -131,7 +131,7 @@
                   "config": {
                     "fallbackDelay": 2.5,
                     "mode": "direct",
-                    "tagPath": "[mes]global/equipment"
+                    "tagPath": "[tag]global/equipment"
                   },
                   "transforms": [
                     {

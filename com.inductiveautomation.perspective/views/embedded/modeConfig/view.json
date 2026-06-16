@@ -46,7 +46,7 @@
                   "config": {
                     "fallbackDelay": 2.5,
                     "mode": "direct",
-                    "tagPath": "[mes]global/mode_group"
+                    "tagPath": "[tag]global/mode_group"
                   },
                   "transforms": [
                     {
